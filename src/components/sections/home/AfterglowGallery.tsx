@@ -21,7 +21,7 @@ export default function AfterglowGallery() {
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
-              className="h-32 min-w-[180px] flex-1 rounded-2xl bg-gradient-to-br from-rave.pink/40 via-rave.orange/40 to-black"
+              className="h-32 min-w-[180px] flex-1 rounded-2xl bg-gradient-to-br from-rave-pink/40 via-rave-orange/40 to-black"
             />
           ))}
         </div>

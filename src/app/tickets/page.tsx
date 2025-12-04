@@ -179,16 +179,15 @@ export default function TicketsPage() {
                         Venue drop: {index === 0 ? "10:00PM" : "Skyline Tower · Strip"}
                       </p>
                       <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave-pink/30 via-rave-purple/30 to-black/80 flex items-center justify-center">
-                      <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave-pink/30 via-rave-purple/30 to-black/80 flex items-center justify-center">                          {Array.from({ length: 18 }).map((_, idx) => (
-                            <div
-                              key={idx}
-                              className="w-[3px] rounded-full bg-black/80"
-                              style={{
-                                height: `${40 + ((idx * 13) % 25)}%`,
-                              }}
-                            />
-                          ))}
-                        </div>
+                        {Array.from({ length: 18 }).map((_, idx) => (
+                          <div
+                            key={idx}
+                            className="w-[3px] rounded-full bg-black/80"
+                            style={{
+                              height: `${40 + ((idx * 13) % 25)}%`,
+                            }}
+                          />
+                        ))}
                       </div>
                       <p className="mt-2 text-[11px] text-white/60">
                         Door staff will scan either code. Keep this open in line.

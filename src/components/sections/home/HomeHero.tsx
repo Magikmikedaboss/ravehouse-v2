@@ -99,6 +99,26 @@ export default function HomeHero() {
             Free RSVP available
           </ButtonLink>
         </Surface>
+
+        <Surface className="p-5">
+          <p className="text-xs text-white/60">Since 2019</p>
+          <h2 className="mt-1 text-lg font-semibold">
+            150+ Events Thrown
+          </h2>
+          <div className="mt-3 grid grid-cols-2 gap-4 text-center">
+            <div>
+              <div className="text-2xl font-bold text-rave-cyan">25K+</div>
+              <div className="text-xs text-white/60">Attendees</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-rave-pink">6</div>
+              <div className="text-xs text-white/60">Years Running</div>
+            </div>
+          </div>
+          <p className="mt-3 text-xs text-white/60">
+            Underground raves that keep Vegas dancing all night long.
+          </p>
+        </Surface>
       </div>
     </section>
   );
