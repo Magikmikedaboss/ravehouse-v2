@@ -18,7 +18,7 @@ export default function GalleryHero() {
               Gallery &amp; aftermovies
             </h1>
             <p className="max-w-xl text-sm text-white/75">
-              Relive the lasers, smoke and warehouse echoes from every Ravehouse
+              Relive the lasers, smoke and warehouse echoes from every Ravehouse Entertainment
               night in Las Vegas. Photo drops, aftermovies, clips and reels
               straight from the floor.
             </p>
@@ -78,7 +78,7 @@ export default function GalleryHero() {
                 Aftermovie · 04:27
               </Chip>
               <Chip className="bg-black/70 border-white/20">
-                Ravehouse · Las Vegas
+                Ravehouse Entertainment · Las Vegas
               </Chip>
             </div>
 

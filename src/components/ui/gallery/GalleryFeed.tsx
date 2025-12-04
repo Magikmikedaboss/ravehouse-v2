@@ -80,7 +80,7 @@ const galleryItems = [
     event: "Warehouse Eclipse",
     date: "Dec 2025",
     type: "Group Photo",
-    description: "Ravehouse family moment",
+    description: "Ravehouse Entertainment family moment",
     image: "/images/gallery/group.jpg"
   },
   {

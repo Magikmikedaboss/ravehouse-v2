@@ -7,7 +7,7 @@ const vipPlans = [
     price: "$45 / month",
     tag: "Best for LV regulars",
     bullets: [
-      "Priority entry at all Ravehouse or partner venues",
+      "Priority entry at all Ravehouse Entertainment or partner venues",
       "Access to locals-only drink & table specials",
       "Early access to RSVP windows",
       "Avg. 2–4 nights per month",
@@ -19,7 +19,7 @@ const vipPlans = [
     price: "From $680 / night",
     tag: "Most popular",
     bullets: [
-      "Premium table placement at Ravehouse events",
+      "Premium table placement at Ravehouse Entertainment events",
       "Dedicated host & direct text line for arrivals and changes",
       "Custom bottle & birthday add-ons curated each night",
       "Up to 10 guests per table",
@@ -32,8 +32,8 @@ const vipPlans = [
     tag: "Artists & high-volume hosts",
     bullets: [
       "Guaranteed access & seating for you and rotating guests",
-      "Custom room cards across Ravehouse + select partner venues",
-      "Direct line to Ravehouse team for collabs & private events",
+      "Custom room cards across Ravehouse Entertainment + select partner venues",
+      "Direct line to Ravehouse Entertainment team for collabs & private events",
       "Limited to 25 members",
     ],
     cta: "Request invite",
@@ -114,7 +114,7 @@ export default function VipPage() {
       <section id="perks" className="space-y-4">
         <h2 className="text-lg font-semibold">Why go VIP?</h2>
         <p className="max-w-2xl text-sm text-white/70">
-          Turn every Ravehouse night into a story. From secret entrances to curated tables,
+          Turn every Ravehouse Entertainment night into a story. From secret entrances to curated tables,
           we keep you inside the music, not stuck in line.
         </p>
 

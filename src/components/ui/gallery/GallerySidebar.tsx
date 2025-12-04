@@ -42,7 +42,7 @@ export default function GallerySidebar() {
           </div>
         </div>
 
-        <button className="w-full rounded-full bg-white/10 px-3 py-1.5 text-[11px] text-white/80 hover:bg-white/15">
+        <button disabled className="w-full rounded-full bg-white/10 px-3 py-1.5 text-[11px] text-white/80 hover:bg-white/15 disabled:opacity-50 disabled:cursor-not-allowed">
           Improve matches with more selfies
         </button>
       </Surface>
@@ -69,8 +69,8 @@ export default function GallerySidebar() {
             </Chip>
           </div>
           <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-[11px] text-white/80">
-            <p>Export with Ravehouse watermark or clean.</p>
-            <button className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black">
+            <p>Export with Ravehouse Entertainment watermark or clean.</p>
+            <button disabled className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black disabled:opacity-50 disabled:cursor-not-allowed">
               Export all
             </button>
           </div>
@@ -99,7 +99,7 @@ export default function GallerySidebar() {
           </div>
         </div>
 
-        <button className="w-full rounded-full bg-white/10 px-3 py-1.5 text-[11px] text-white/80 hover:bg-white/15">
+        <button disabled className="w-full rounded-full bg-white/10 px-3 py-1.5 text-[11px] text-white/80 hover:bg-white/15 disabled:opacity-50 disabled:cursor-not-allowed">
           Apply as house photographer
         </button>
       </Surface>

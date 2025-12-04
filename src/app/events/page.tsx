@@ -60,7 +60,7 @@ const upcomingEvents = [
     badge: "Sold out",
     price: "Free RSVP · Waitlist open",
     area: "Downtown · Alleyway · Open-air, street food, visual rigs.",
-    genres: ["Ravehouse Residents", "All night long"],
+    genres: ["Ravehouse Entertainment Residents", "All night long"],
   },
 ];
 
@@ -108,7 +108,7 @@ export default function EventsPage() {
                 Curated underground nights, every week in the city that never powers down.
               </p>
               <h1 className="text-3xl font-semibold sm:text-4xl">
-                FIND YOUR NEXT RAVEHOUSE
+                FIND YOUR NEXT RAVEHOUSE ENTERTAINMENT
               </h1>
               <p className="max-w-xl text-sm text-white/75">
                 Lock in your spot at upcoming warehouses, rooftop takeovers and secret
@@ -279,7 +279,7 @@ export default function EventsPage() {
             </Surface>
 
             <Surface className="p-4">
-              <p className="text-xs text-white/60">Ravehouse calendar drops</p>
+              <p className="text-xs text-white/60">Ravehouse Entertainment calendar drops</p>
               <h3 className="mt-1 text-sm font-semibold">
                 Be first in when new warehouses, rooftops or special guests are announced.
               </h3>

@@ -24,7 +24,7 @@ export default function ThisIsRavehouse() {
   return (
     <section className="space-y-5">
       <SectionHeader
-        title="This is Ravehouse"
+        title="This is Ravehouse Entertainment"
         description="An underground collective bringing warehouse energy to Las Vegas since 2019. A rotating crew of DJs, visual artists and producers obsessed with sound systems, strobes and safe spaces."
       />
 
@@ -41,7 +41,7 @@ export default function ThisIsRavehouse() {
           <div>
             <p className="text-xs text-white/50">Booking &amp; collabs</p>
             <p className="mt-2 text-sm text-white/80">
-              Bring Ravehouse to your warehouse, festival afterparty or brand experience.
+              Bring Ravehouse Entertainment to your warehouse, festival afterparty or brand experience.
             </p>
           </div>
           <ButtonLink

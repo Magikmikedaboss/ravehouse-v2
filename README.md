@@ -1,4 +1,4 @@
-# Ravehouse v2
+# Ravehouse Entertainment v2
 
 A modern Next.js web application for Ravehouse Entertainment, featuring underground warehouse raves and bass nights in Las Vegas. Built with the latest web technologies for a sleek, responsive experience.
 

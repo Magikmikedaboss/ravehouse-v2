@@ -44,7 +44,7 @@ export default function GalleryNeon() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-4xl font-semibold text-white drop-shadow-lg">
-          Ravehouse Gallery
+          Ravehouse Entertainment Gallery
         </h1>
         <p className="mt-2 text-neutral-300">
           Moments from the underground — warehouses, rooftops, afterhours.

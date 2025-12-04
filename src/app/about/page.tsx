@@ -27,7 +27,7 @@ const coreCrew: CrewMember[] = [
     role: "Resident DJ · Programming",
     tag: "Techno & breaks",
     blurb:
-      "Anchors the Ravehouse sound with late-night blends and long-form journeys.",
+      "Anchors the Ravehouse Entertainment sound with late-night blends and long-form journeys.",
     focus: ["Techno", "Breaks", "Closing sets"],
   },
   {
@@ -101,14 +101,14 @@ export default function AboutPage() {
               </Chip>
             </div>
             <div className="absolute bottom-7 left-6 right-6 space-y-3">
-              <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
-                About Ravehouse
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50">
+                About Ravehouse Entertainment
               </p>
               <h1 className="text-3xl font-semibold sm:text-4xl">
                 The crew behind the warehouse.
               </h1>
               <p className="max-w-xl text-sm text-white/75">
-                Ravehouse is a rotating collective of DJs, producers, visual artists
+                Ravehouse Entertainment is a rotating collective of DJs, producers, visual artists
                 and night runners building sound-first, consent-forward parties off
                 the strip and under the radar.
               </p>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                   See upcoming lineups
                 </ButtonLink>
                 <ButtonLink href="/contact" variant="secondary">
-                  Book a Ravehouse night
+                  Book a Ravehouse Entertainment night
                 </ButtonLink>
               </div>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-white/60">
@@ -134,7 +134,7 @@ export default function AboutPage() {
 
         {/* RIGHT SIDE SNAPSHOT */}
         <Surface className="p-6 space-y-4">
-          <p className="text-xs text-white/60">Ravehouse in one view</p>
+          <p className="text-xs text-white/60">Ravehouse Entertainment in one view</p>
           <ul className="space-y-3 text-sm text-white/80">
             <li>
               <span className="font-semibold">120+</span> nights thrown from desert
@@ -181,7 +181,7 @@ export default function AboutPage() {
       <section className="space-y-5">
         <SectionHeader
           eyebrow="Crew"
-          title="The residents and night runners keeping Ravehouse moving."
+          title="The residents and night runners keeping Ravehouse Entertainment moving."
           description="A tight core of DJs, producers, visual artists and managers, plus a wider orbit of friends who jump in for special nights, takeovers and collabs."
         />
 
@@ -241,7 +241,7 @@ export default function AboutPage() {
           <div>
             <p className="text-xs text-white/60">Collabs · Takeovers · Bookings</p>
             <h2 className="mt-1 text-lg font-semibold">
-              Want the Ravehouse crew on your system?
+              Want the Ravehouse Entertainment crew on your system?
             </h2>
             <p className="mt-1 text-sm text-white/70">
               From full-venue takeovers to curated stages, we can bring residents,

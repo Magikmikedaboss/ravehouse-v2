@@ -49,7 +49,7 @@ export default function TicketsPage() {
             </h1>
             <p className="mt-2 max-w-xl text-sm text-white/70">
               Your digital wristbands for every warehouse, rooftop and afterhours
-              you&apos;ve unlocked with Ravehouse. Show this screen at the door, keep
+              you&apos;ve unlocked with Ravehouse Entertainment. Show this screen at the door, keep
               brightness high for scan.
             </p>
             <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
@@ -222,7 +222,7 @@ export default function TicketsPage() {
             <Surface className="p-4 space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs text-white/60">Ravehouse streak</p>
+                  <p className="text-xs text-white/60">Ravehouse Entertainment streak</p>
                   <h3 className="mt-1 text-sm font-semibold text-white">
                     How deep you&apos;ve gone into the underground this year.
                   </h3>

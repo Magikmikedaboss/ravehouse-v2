@@ -13,7 +13,7 @@ export default function HomeHero() {
           {/* TODO: swap with your real hero image */}
           <Image
             src="/images/hero-warehouse.jpg"
-            alt="Warehouse crowd at Ravehouse"
+            alt="Warehouse crowd at Ravehouse Entertainment"
             fill
             className="object-cover"
           />
@@ -85,7 +85,7 @@ export default function HomeHero() {
         </Surface>
 
         <Surface className="p-5">
-          <p className="text-xs text-white/60">This week at Ravehouse</p>
+          <p className="text-xs text-white/60">This week at Ravehouse Entertainment</p>
           <h2 className="mt-1 text-lg font-semibold">
             2 events · Rooftop &amp; Warehouse · Vegas Strip
           </h2>
