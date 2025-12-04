@@ -63,10 +63,9 @@ export default function TicketsPage() {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-3 text-xs">
-            <Chip className="bg-rave.pink/25 border-none text-[11px]">
+            <Chip className="bg-rave-pink/25 border-none text-[11px]">
               2 active tickets tonight
-            </Chip>
-            <ButtonLink href="/tickets" variant="secondary" className="px-4 py-2">
+            </Chip>            <ButtonLink href="/tickets" variant="secondary" className="px-4 py-2">
               Export as PDF wallet
             </ButtonLink>
           </div>
@@ -116,7 +115,7 @@ export default function TicketsPage() {
                         className={
                           index === 0
                             ? "bg-green-500/15 border-green-400/30 text-green-300"
-                            : "bg-rave.cyan/20 border-none text-rave.cyan-300"
+                            : "bg-rave-cyan/20 border-none text-rave-cyan/80"
                         }
                       >
                         {index === 0 ? "Checked in early" : "Upcoming · Not scanned"}
@@ -179,9 +178,8 @@ export default function TicketsPage() {
                       <p className="text-[11px] text-white/50">
                         Venue drop: {index === 0 ? "10:00PM" : "Skyline Tower · Strip"}
                       </p>
-                      <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave.pink/30 via-rave.purple/30 to-black/80 flex items-center justify-center">
-                        <div className="flex items-end gap-[3px]">
-                          {Array.from({ length: 18 }).map((_, idx) => (
+                      <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave-pink/30 via-rave-purple/30 to-black/80 flex items-center justify-center">
+                      <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave-pink/30 via-rave-purple/30 to-black/80 flex items-center justify-center">                          {Array.from({ length: 18 }).map((_, idx) => (
                             <div
                               key={idx}
                               className="w-[3px] rounded-full bg-black/80"
@@ -258,7 +256,7 @@ export default function TicketsPage() {
                 <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
                   Local
                 </button>
-                <button className="flex-1 rounded-full bg-gradient-to-r from-rave.pink to-rave.orange px-3 py-1 text-center text-black font-semibold">
+                <button className="flex-1 rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-3 py-1 text-center text-black font-semibold">
                   Glow
                 </button>
                 <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
