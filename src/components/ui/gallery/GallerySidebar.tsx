@@ -1,4 +1,4 @@
-// src/components/sections/gallery/GallerySidebar.tsx
+// src/components/ui/gallery/GallerySidebar.tsx
 
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";

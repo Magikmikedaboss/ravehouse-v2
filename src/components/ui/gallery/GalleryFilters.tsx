@@ -1,5 +1,4 @@
-// src/components/sections/gallery/GalleryFilters.tsx
-
+// src/components/ui/gallery/GalleryFilters.tsx
 import Chip from "@/components/ui/Chip";
 
 const FILTERS = [

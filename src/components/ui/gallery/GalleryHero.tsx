@@ -1,5 +1,4 @@
-// src/components/sections/gallery/GalleryHero.tsx
-
+// src/components/ui/gallery/GalleryHero.tsx
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import Link from "next/link";
