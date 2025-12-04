@@ -73,9 +73,9 @@ export default function VipPage() {
               </Link>
             </div>
             <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-              <span className="chip bg-white/5">Priority entry at all events</span>
-              <span className="chip bg-white/5">Dedicated host &amp; bottle service</span>
-              <span className="chip bg-white/5">Local venue deals all week</span>
+              <span className="chip bg-rave-pink/15 border-rave-pink/30">Priority entry at all events</span>
+              <span className="chip bg-rave-cyan/15 border-rave-cyan/30">Dedicated host &amp; bottle service</span>
+              <span className="chip bg-rave-purple/15 border-rave-purple/30">Local venue deals all week</span>
             </div>
           </div>
         </article>
@@ -220,11 +220,16 @@ export default function VipPage() {
             />
             <div className="flex flex-wrap gap-2">
               {["Vegas local", "Visiting for a weekend", "Birthday / celebration", "Corporate / brand group"].map(
-                (chip) => (
+                (chip, index) => (
                   <button
                     key={chip}
                     type="button"
-                    className="chip bg-white/5 text-[11px]"
+                    className={`chip text-[11px] ${
+                      index === 0 ? "bg-rave-pink/15 border-rave-pink/30" :
+                      index === 1 ? "bg-rave-cyan/15 border-rave-cyan/30" :
+                      index === 2 ? "bg-rave-orange/15 border-rave-orange/30" :
+                      "bg-rave-purple/15 border-rave-purple/30"
+                    }`}
                   >
                     {chip}
                   </button>

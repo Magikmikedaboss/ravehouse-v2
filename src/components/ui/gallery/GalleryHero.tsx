@@ -41,13 +41,13 @@ export default function GalleryHero() {
             </div>
 
             <div className="flex flex-wrap gap-2 text-[11px] text-white/65">
-              <Chip className="bg-white/10 border-transparent">
+              <Chip className="bg-rave-pink/15 border-rave-pink/30">
                 128+ nights captured
               </Chip>
-              <Chip className="bg-white/10 border-transparent">
+              <Chip className="bg-rave-cyan/15 border-rave-cyan/30">
                 Vegas · Downtown · Warehouse
               </Chip>
-              <Chip className="bg-white/10 border-transparent">
+              <Chip className="bg-rave-purple/15 border-rave-purple/30">
                 Tag @ravehouse for a feature
               </Chip>
             </div>
@@ -74,10 +74,10 @@ export default function GalleryHero() {
 
             {/* Top meta */}
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-[11px] text-white/80">
-              <Chip className="bg-black/70 border-white/20">
+              <Chip className="bg-rave-orange/20 border-rave-orange/40">
                 Aftermovie · 04:27
               </Chip>
-              <Chip className="bg-black/70 border-white/20">
+              <Chip className="bg-rave-cyan/20 border-rave-cyan/40">
                 Ravehouse Entertainment · Las Vegas
               </Chip>
             </div>

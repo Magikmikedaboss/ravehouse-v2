@@ -93,10 +93,10 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-[url('/images/backgrounds/crew-warehouse.jpg')] bg-cover bg-center opacity-60" />
             <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-black/80" />
             <div className="absolute left-6 right-6 top-6 flex flex-wrap items-center justify-between gap-2 text-[11px] text-white/80">
-              <Chip className="bg-black/70 border-white/20">
+              <Chip className="bg-rave-pink/20 border-rave-pink/40">
                 Built by ravers, for ravers.
               </Chip>
-              <Chip className="bg-black/70 border-white/20">
+              <Chip className="bg-rave-cyan/20 border-rave-cyan/40">
                 DJs · Producers · Visuals · Hosts
               </Chip>
             </div>
@@ -121,10 +121,10 @@ export default function AboutPage() {
                 </ButtonLink>
               </div>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-white/60">
-                <Chip className="bg-white/10 border-transparent">
+                <Chip className="bg-rave-orange/15 border-rave-orange/30">
                   Las Vegas · Warehouses, rooftops, afterhours
                 </Chip>
-                <Chip className="bg-white/10 border-transparent">
+                <Chip className="bg-rave-purple/15 border-rave-purple/30">
                   Since 2019 · 120+ events
                 </Chip>
               </div>

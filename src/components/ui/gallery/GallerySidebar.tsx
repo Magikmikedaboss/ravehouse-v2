@@ -15,7 +15,7 @@ export default function GallerySidebar() {
               We auto-cut every set so you might be in from last night.
             </h3>
           </div>
-          <Chip className="bg-white/10 border-white/10 text-[11px]">
+          <Chip className="bg-rave-pink/15 border-rave-pink/30 text-[11px]">
             Warehouse Eclipse
           </Chip>
         </div>
@@ -63,8 +63,8 @@ export default function GallerySidebar() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
           <div className="absolute left-3 right-3 top-3 flex flex-wrap gap-2 text-[10px]">
-            <Chip className="bg-black/70 border-white/20">Techno marathon</Chip>
-            <Chip className="bg-black/70 border-white/20">
+            <Chip className="bg-rave-cyan/20 border-rave-cyan/40">Techno marathon</Chip>
+            <Chip className="bg-rave-purple/20 border-rave-purple/40">
               House on the Strip
             </Chip>
           </div>

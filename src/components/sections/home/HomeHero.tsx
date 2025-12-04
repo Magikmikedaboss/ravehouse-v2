@@ -45,9 +45,9 @@ export default function HomeHero() {
             </ButtonLink>
           </div>
           <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-            <Chip className="bg-white/5">This Friday · 2AM – Sunrise</Chip>
-            <Chip className="bg-white/5">Location drops day-of only</Chip>
-            <Chip className="bg-white/5">21+ · Techno, house, bass</Chip>
+            <Chip className="bg-rave-pink/15 border-rave-pink/30">This Friday · 2AM – Sunrise</Chip>
+            <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Location drops day-of only</Chip>
+            <Chip className="bg-rave-purple/15 border-rave-purple/30">21+ · Techno, house, bass</Chip>
           </div>
         </div>
       </Surface>

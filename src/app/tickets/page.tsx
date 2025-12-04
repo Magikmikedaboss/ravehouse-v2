@@ -53,11 +53,11 @@ export default function TicketsPage() {
               brightness high for scan.
             </p>
             <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
-              <Chip className="bg-white/5 border-white/10">Las Vegas · PT</Chip>
-              <Chip className="bg-white/5 border-white/10">
+              <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Las Vegas · PT</Chip>
+              <Chip className="bg-rave-orange/15 border-rave-orange/30">
                 Show this screen at the door
               </Chip>
-              <Chip className="bg-white/5 border-white/10">
+              <Chip className="bg-rave-purple/15 border-rave-purple/30">
                 Keep brightness high for scan
               </Chip>
             </div>
@@ -108,7 +108,7 @@ export default function TicketsPage() {
                   {/* Ticket info */}
                   <div className="space-y-2">
                     <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-white/60">
-                      <Chip className="bg-black/70 border-white/20">
+                      <Chip className="bg-rave-pink/20 border-rave-pink/40">
                         {ticket.when}
                       </Chip>
                       <Chip
@@ -227,7 +227,7 @@ export default function TicketsPage() {
                     How deep you&apos;ve gone into the underground this year.
                   </h3>
                 </div>
-                <Chip className="bg-white/5 border-white/10 text-[11px]">
+                <Chip className="bg-rave-orange/15 border-rave-orange/30 text-[11px]">
                   Member since 2023
                 </Chip>
               </div>
