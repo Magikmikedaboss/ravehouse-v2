@@ -194,8 +194,7 @@ export default function AboutPage() {
                     <p className="text-sm font-semibold">{person.name}</p>
                     <p className="text-[11px] text-white/60">{person.role}</p>
                   </div>
-                  <Chip className="bg-rave.pink/20 border-none text-[11px]">
-                    {person.tag}
+                  <Chip className="bg-rave-pink/20 border-none text-[11px]">                    {person.tag}
                   </Chip>
                 </div>
                 <p className="text-xs text-white/70">{person.blurb}</p>
