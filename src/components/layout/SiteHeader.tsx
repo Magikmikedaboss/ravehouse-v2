@@ -23,7 +23,7 @@ export default function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 md:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-rave.pink to-rave.orange shadow-glow text-xs font-bold">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-rave-pink to-rave-orange shadow-glow text-xs font-bold">
             RH
           </div>
           <span className="text-sm font-semibold tracking-wide">
@@ -60,7 +60,7 @@ export default function SiteHeader() {
             </Chip>
             <Link
               href="/tickets"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-rave.pink to-rave.orange px-4 py-2 text-xs font-semibold shadow-glow"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-4 py-2 text-xs font-semibold shadow-glow"
             >
               Get Tickets
             </Link>

@@ -73,7 +73,7 @@ export default function UpcomingEvents() {
                 {event.tag}
               </Chip>
               {/* Placeholder gradient – replace with real event image */}
-              <div className="h-full w-full bg-gradient-to-br from-rave.pink/40 via-rave.purple/40 to-black" />
+              <div className="h-full w-full bg-gradient-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
             </div>
             <div className="p-4">
               <p className="text-[11px] text-white/50">

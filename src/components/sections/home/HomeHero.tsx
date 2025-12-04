@@ -63,14 +63,14 @@ export default function HomeHero() {
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                <Chip className="bg-rave.pink/20 border-transparent">Techno</Chip>
-                <Chip className="bg-rave.orange/20 border-transparent">Warehouse</Chip>
-                <Chip className="bg-rave.cyan/20 border-transparent">Secret lineup</Chip>
+                <Chip className="bg-rave-pink/20 border-transparent">Techno</Chip>
+                <Chip className="bg-rave-orange/20 border-transparent">Warehouse</Chip>
+                <Chip className="bg-rave-cyan/20 border-transparent">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">
               <div className="rounded-full bg-white/5 px-3 py-1 text-xs text-white/60">
-                Spots left: <span className="font-semibold text-rave.cyan">84 / 400</span>
+                Spots left: <span className="font-semibold text-rave-cyan">84 / 400</span>
               </div>
               <div className="mt-3 font-semibold">$45 GA</div>
             </div>
@@ -94,7 +94,7 @@ export default function HomeHero() {
           </p>
           <ButtonLink
             href="/events"
-            className="mt-4 bg-gradient-to-r from-rave.cyan to-rave.purple text-black"
+            className="mt-4 bg-gradient-to-r from-rave-cyan to-rave-purple text-black"
           >
             Free RSVP available
           </ButtonLink>

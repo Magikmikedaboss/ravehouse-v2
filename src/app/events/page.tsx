@@ -95,10 +95,10 @@ export default function EventsPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
             <div className="absolute left-4 right-4 top-4 flex justify-between text-[11px] text-white/80">
-              <Chip className="bg-rave.cyan/30 border-rave.cyan/50">
+              <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                 Upcoming raves · Las Vegas
               </Chip>
-              <Chip className="bg-rave.cyan/30 border-rave.cyan/50">
+              <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                 Warehouse · Rooftop · Afterhours
               </Chip>
             </div>
@@ -123,13 +123,13 @@ export default function EventsPage() {
                 </ButtonLink>
               </div>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-white/60">
-                <Chip className="bg-rave.pink/20 border-transparent">
+                <Chip className="bg-rave-pink/20 border-transparent">
                   Location drops 24h before doors
                 </Chip>
-                <Chip className="bg-rave.orange/20 border-transparent">
+                <Chip className="bg-rave-orange/20 border-transparent">
                   No dress code · Just energy
                 </Chip>
-                <Chip className="bg-rave.purple/20 border-transparent">
+                <Chip className="bg-rave-purple/20 border-transparent">
                   All genres: Techno, House, Bass
                 </Chip>
               </div>
@@ -145,13 +145,13 @@ export default function EventsPage() {
               Three nights, three different stories. Pick your vibe or run the full trilogy.
             </h2>
             <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
-              <Chip className="bg-rave.pink/25 border-none">
+              <Chip className="bg-rave-pink/25 border-none">
                 Fri · Warehouse Eclipse
               </Chip>
-              <Chip className="bg-rave.cyan/25 border-none">
+              <Chip className="bg-rave-cyan/25 border-none">
                 Sat · Neon Alley Rooftop
               </Chip>
-              <Chip className="bg-rave.purple/25 border-none">
+              <Chip className="bg-rave-purple/25 border-none">
                 Sun · Basement 305 afterhours
               </Chip>
             </div>
@@ -212,14 +212,14 @@ export default function EventsPage() {
             {upcomingEvents.map((event) => (
               <Surface key={event.id} className="overflow-hidden">
                 <div className="relative h-32 w-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-rave.pink/40 via-rave-purple/40 to-black" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
                   <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/40 via-rave-purple/40 to-black" />                  <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute left-3 top-3 flex items-center gap-2 text-[11px]">
-                    <Chip className="bg-rave.cyan/30 border-rave.cyan/50">
+                    <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                       {event.day} · {event.time}
                     </Chip>
-                    <Chip className="bg-rave.cyan/30 border-rave.cyan/50">
+                    <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                       {event.badge}
                     </Chip>
                   </div>
