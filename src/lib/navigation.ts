@@ -1,10 +1,15 @@
 // src/lib/navigation.ts
 // Phase 1: Navigation config with submenu support
 
+export type NavChild = {
+  label: string;
+  href: string;
+};
+
 export type NavItem = {
   label: string;
   href?: string;
-  children?: { label: string; href: string }[];
+  children?: NavChild[];
 };
 
 export const NAV_ITEMS: NavItem[] = [
@@ -12,14 +17,17 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Gallery", href: "/gallery" },
   { label: "Tickets", href: "/tickets" },
   { label: "VIP", href: "/vip" },
+
   {
-    label: "The Circuit",                     // Submenu trigger
+    label: "The Circuit",
     children: [
       { label: "Blog", href: "/blog" },
       { label: "Guides", href: "/blog?tag=guides" },
       { label: "Rave Gear", href: "/gear" },
+      { label: "Membership", href: "/membership" },
     ],
   },
+
   { label: "Contact", href: "/contact" },
 ];
 

@@ -7,6 +7,7 @@ import SiteShell from "@/components/layout/SiteShell";
 export const metadata: Metadata = {
   title: "Ravehouse Entertainment",
   description: "Underground warehouse raves and bass nights in Las Vegas.",
+  metadataBase: new URL("https://ravehouse.com"),
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 export default function SiteHeader() {
   const pathname = usePathname();
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
 
@@ -27,62 +27,67 @@ export default function SiteHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden flex-1 items-center justify-between gap-6 md:flex">
-          <div className="flex gap-1 rounded-full bg-white/5 p-1 relative">
+        <NavigationMenu.Root className="hidden md:flex">
+          <NavigationMenu.List className="flex gap-1 rounded-full bg-white/5 p-1">
             {NAV_ITEMS.map((item) => {
+              const normalizedPathname = pathname.replace(/\/$/, "");
+              const normalizedHref = item.href?.replace(/\/$/, "") || "";
               const active = item.href && (
-                (item.href === "/" && pathname === "/") ||
-                (item.href !== "/" && pathname.startsWith(item.href))
+                normalizedPathname === normalizedHref ||
+                (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"))
               );
 
               return (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => setHoveredItem(item.label)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                >
-                  {item.href ? (
-                    <Link
-                      href={item.href}
-                      className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                <NavigationMenu.Item key={item.label}>
+                  {item.children ? (
+                    <>
+                      <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                         active
                           ? "bg-white text-black shadow"
-                          : "text-white/70 hover:bg-white/10 hover:text-white"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+                          : "text-white/70 hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white"
+                      }`}>
+                        {item.label}
+                      </NavigationMenu.Trigger>
+                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-xl animate-in fade-in-0 zoom-in-95">
+                        <ul className="p-2">
+                          {item.children.map((child) => (
+                            <li key={child.href}>
+                              <NavigationMenu.Link asChild>
+                                <Link
+                                  href={child.href}
+                                  className="block px-3 py-2 text-xs text-white/70 hover:bg-white/10 hover:text-white transition rounded-md focus:bg-white/10 focus:text-white focus:outline-none"
+                                >
+                                  {child.label}
+                                </Link>
+                              </NavigationMenu.Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenu.Content>
+                    </>
                   ) : (
-                    <button
-                      className={`rounded-full px-3 py-1 text-xs font-medium transition ${
-                        hoveredItem === item.label
-                          ? "bg-white/10 text-white"
-                          : "text-white/70 hover:bg-white/10 hover:text-white"
-                      }`}
-                    >
-                      {item.label}
-                    </button>
+                    <NavigationMenu.Link asChild>
+                      <Link
+                        href={item.href || "#"}
+                        className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                          active
+                            ? "bg-white text-black shadow"
+                            : "text-white/70 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </NavigationMenu.Link>
                   )}
-
-                  {/* Desktop submenu dropdown */}
-                  {item.children && hoveredItem === item.label && (
-                    <div className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-xl">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-4 py-2 text-xs text-white/70 hover:bg-white/10 hover:text-white transition"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                </NavigationMenu.Item>
               );
             })}
+          </NavigationMenu.List>
+
+          <div className="absolute top-full left-0 flex w-full justify-center">
+            <NavigationMenu.Viewport className="relative mt-2 h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-[top_center] overflow-hidden rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-xl transition-[width,height] duration-300" />
           </div>
+        </NavigationMenu.Root>
 
           <div className="flex items-center gap-3">
             <Chip className="bg-green-500/15 text-[11px] text-green-300 border-green-400/30">
@@ -95,10 +100,10 @@ export default function SiteHeader() {
               Get Tickets
             </Link>
           </div>
-        </nav>
 
         {/* Mobile menu button */}
         <button
+          type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white transition"
           aria-label="Toggle mobile menu"
@@ -110,21 +115,20 @@ export default function SiteHeader() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
-        </button>
-      </div>
+        </button>      </div>
 
       {/* Mobile nav */}
       {mobileMenuOpen && (
         <div className="border-t border-white/5 bg-black/90 backdrop-blur md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="flex flex-col gap-2">
-              {NAV_ITEMS.map((item) => {
-                const active = item.href && (
-                  (item.href === "/" && pathname === "/") ||
-                  (item.href !== "/" && pathname.startsWith(item.href))
-                );
-
-                return (
+            {NAV_ITEMS.map((item) => {
+              const normalizedPathname = pathname.replace(/\/$/, "");
+              const normalizedHref = item.href?.replace(/\/$/, "") || "";
+              const active = item.href && (
+                normalizedPathname === normalizedHref ||
+                (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"))
+              );                return (
                   <div key={item.label}>
                     {item.href ? (
                       <Link
@@ -140,6 +144,7 @@ export default function SiteHeader() {
                       </Link>
                     ) : (
                       <button
+                        type="button"
                         onClick={() => setExpandedMobileItem(
                           expandedMobileItem === item.label ? null : item.label
                         )}
@@ -156,8 +161,7 @@ export default function SiteHeader() {
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
-                      </button>
-                    )}
+                      </button>                    )}
 
                     {/* Mobile submenu */}
                     {item.children && expandedMobileItem === item.label && (

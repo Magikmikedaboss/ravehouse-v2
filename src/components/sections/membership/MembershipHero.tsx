@@ -1,13 +1,88 @@
-// src/components/sections/membership/MembershipHero.tsx
-// Phase 2: Membership hero section
+import Surface from "@/components/ui/Surface";
+import Chip from "@/components/ui/Chip";
+import Link from "next/link";
 
 export default function MembershipHero() {
   return (
-    <section className="text-center space-y-4 py-10">
-      <h1 className="text-4xl font-bold">Join Ravehouse</h1>
-      <p className="text-xl text-white/70 max-w-2xl mx-auto">
-        Become part of the exclusive underground community
-      </p>
+    <section className="px-4 pt-8 lg:px-6">
+      <Surface className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/25 via-rave-purple/15 to-transparent" />
+        <div className="relative grid gap-6 p-6 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.1fr)] md:p-8">
+          {/* Left: copy */}
+          <div className="space-y-4">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+              Membership · Ravehouse
+            </p>
+            <h1 className="text-3xl font-semibold sm:text-4xl">
+              Join the inner circle.
+            </h1>
+            <p className="max-w-xl text-sm text-white/75">
+              Ravehouse Membership is built for the heads who don&apos;t leave
+              before the lights come on. Early drops, cheaper nights, line
+              skip, and moments you don&apos;t get from the regular queue.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="#tiers"
+                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rave-pink/40 transition hover:brightness-105"
+              >
+                View membership tiers
+              </Link>
+              <Link
+                href="/vip"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/85 hover:bg-white/10"
+              >
+                Explore VIP nights
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap gap-2 text-[11px] mt-2">
+              <Chip className="bg-white/10 border-transparent">
+                Vegas · Warehouse · Rooftop
+              </Chip>
+              <Chip className="bg-white/10 border-transparent">
+                Member presales &amp; line skip
+              </Chip>
+              <Chip className="bg-white/10 border-transparent">
+                Photo drops &amp; aftermovies
+              </Chip>
+            </div>
+          </div>
+
+          {/* Right: quick stats */}
+          <div className="space-y-4 text-xs text-white/75">
+            <div className="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p className="text-2xl font-semibold text-white">3</p>
+                <p className="text-white/60">Tiers</p>
+              </div>
+              <div>
+                <p className="text-2xl font-semibold text-white">10+</p>
+                <p className="text-white/60">Nights / year</p>
+              </div>
+              <div>
+                <p className="text-2xl font-semibold text-white">LV</p>
+                <p className="text-white/60">Home base</p>
+              </div>
+            </div>
+
+            <p className="text-white/60">
+              Founding members will lock in early pricing and get first access
+              to new formats, secret locations, and test events.
+            </p>
+
+            <div className="space-y-1 text-[11px]">
+              <p className="text-white/55">Coming soon:</p>
+              <ul className="list-disc pl-4 space-y-1 text-white/65">
+                <li>Digital membership card &amp; wristband sync</li>
+                <li>Auto-claim for member ticket allocations</li>
+                <li>Members-only photo archives &amp; mixes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Surface>
     </section>
   );
 }

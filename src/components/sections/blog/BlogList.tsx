@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BLOG_POSTS } from "@/lib/blog";
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
+import Image from "next/image";
 
 interface BlogListProps {
   selectedCategory?: string;
@@ -27,9 +28,11 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
             <Surface className="flex h-full flex-col overflow-hidden">
               {/* Image */}
               <div className="relative h-40 w-full overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url('${post.heroImage}')` }}
+                <Image
+                  src={post.heroImage}
+                  alt={post.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute left-3 right-3 top-3 flex items-center justify-between text-[11px]">
@@ -47,7 +50,6 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                   </p>
                 </div>
               </div>
-
               {/* Meta */}
               <div className="flex flex-1 flex-col justify-between p-4">
                 <div className="space-y-2">

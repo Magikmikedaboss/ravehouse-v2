@@ -4,13 +4,49 @@ import { getPostBySlug, getRecentPosts } from "@/lib/blog";
 import BlogPostBody from "@/components/sections/blog/BlogPostBody";
 import Surface from "@/components/ui/Surface";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export async function generateStaticParams() {
+  // Import BLOG_POSTS to get all available slugs for static generation
+  const { BLOG_POSTS } = await import("@/lib/blog");
+  return BLOG_POSTS.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolved = await params;
+  const post = getPostBySlug(resolved.slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [
+        {
+          url: post.heroImage,
+          alt: post.title,
+        },
+      ],
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const resolved = await params;
+  const post = getPostBySlug(resolved.slug);
 
   if (!post) {
     return (
