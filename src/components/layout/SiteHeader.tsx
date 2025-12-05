@@ -85,7 +85,7 @@ export default function SiteHeader() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
-          <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <Chip className="bg-green-500/15 text-[11px] text-green-300 border-green-400/30">
               Live this weekend
             </Chip>

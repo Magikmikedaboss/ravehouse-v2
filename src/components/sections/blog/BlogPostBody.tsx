@@ -60,6 +60,75 @@ export default function BlogPostBody({ post }: Props) {
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeSanitize]}
+            components={{
+              h1: ({ children }) => (
+                <h1 className="text-xl font-semibold text-rh-pink-light mb-4 mt-6 first:mt-0">
+                  {children}
+                </h1>
+              ),
+              h2: ({ children }) => (
+                <h2 className="text-lg font-semibold text-rh-cyan-light mb-3 mt-5">
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3 className="text-base font-semibold text-rh-orange-light mb-2 mt-4">
+                  {children}
+                </h3>
+              ),
+              p: ({ children }) => (
+                <p className="text-white/80 leading-relaxed mb-4">
+                  {children}
+                </p>
+              ),
+              a: ({ href, children }) => (
+                <a
+                  href={href}
+                  className="text-rh-pink-light hover:text-rh-pink-dark underline decoration-rh-pink-light/50 hover:decoration-rh-pink-dark/50 transition"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {children}
+                </a>
+              ),
+              blockquote: ({ children }) => (
+                <blockquote className="border-l-4 border-rh-cyan-light pl-4 italic text-white/70 my-4">
+                  {children}
+                </blockquote>
+              ),
+              code: (props) => {
+                const { inline, children } = props as { inline?: boolean; children: React.ReactNode };
+                return inline ? (
+                  <code className="bg-black/30 px-1.5 py-0.5 rounded text-rh-orange-light font-mono text-sm">
+                    {children}
+                  </code>
+                ) : (
+                  <code className="block bg-black/50 p-4 rounded-lg text-rh-orange-light font-mono text-sm overflow-x-auto">
+                    {children}
+                  </code>
+                );
+              },
+              pre: ({ children }) => (
+                <pre className="bg-black/50 p-4 rounded-lg overflow-x-auto my-4">
+                  {children}
+                </pre>
+              ),
+              ul: ({ children }) => (
+                <ul className="list-disc list-inside space-y-1 mb-4 text-white/80">
+                  {children}
+                </ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal list-inside space-y-1 mb-4 text-white/80">
+                  {children}
+                </ol>
+              ),
+              li: ({ children }) => (
+                <li className="text-white/80">
+                  {children}
+                </li>
+              ),
+            }}
           >
             {post.content}
           </ReactMarkdown>

@@ -13,6 +13,7 @@
   --rh-tin: 215 215 216;
   --rh-tin-dark: 174 174 177;
   --rh-pewter-vdark: 66 66 66;
+  --rh-border-subtle: 215 215 216;
 
   /* Additional colors */
   --rh-cyan: 75 226 255;
@@ -25,10 +26,10 @@
   /* Surfaces */
   --rh-bg-page: 15 5 8;
   --rh-bg-card: 20 8 12;
-  --rh-border-subtle: 215 215 216;
 
   --rh-radius-lg: 1.5rem;
   --rh-radius-md: 1rem;
+}
 }
 
 body {
