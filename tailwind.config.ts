@@ -8,6 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        bg: {
+          soft: "var(--color-bg-soft)",
+        },
+        rave: {
+          pink: "var(--color-rave-pink)",
+          orange: "var(--color-rave-orange)",
+          cyan: "var(--color-rave-cyan)",
+          purple: "var(--color-rave-purple)",
+        },
+      },
       boxShadow: {
         card: "0 18px 45px rgba(0,0,0,0.6)",
         glow: "0 0 40px rgba(255, 75, 139, 0.45)",
