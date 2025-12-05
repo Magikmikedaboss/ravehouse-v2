@@ -2,35 +2,44 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
         rh: {
           pink: {
-            shell: "var(--rh-pink-shell-vdark)",
-            dark: "var(--rh-pink-dark)",
-            light: "var(--rh-pink-light)",
+            shell: "rgb(from var(--rh-pink-shell-vdark) r g b / <alpha-value>)",
+            dark: "rgb(from var(--rh-pink-dark) r g b / <alpha-value>)",
+            light: "rgb(from var(--rh-pink-light) r g b / <alpha-value>)",
           },
           gray: {
-            tin: "var(--rh-tin)",
-            dark: "var(--rh-tin-dark)",
-            pewter: "var(--rh-pewter-vdark)",
+            tin: "rgb(from var(--rh-tin) r g b / <alpha-value>)",
+            dark: "rgb(from var(--rh-tin-dark) r g b / <alpha-value>)",
+            pewter: "rgb(from var(--rh-pewter-vdark) r g b / <alpha-value>)",
           },
-          cyan: "#4be2ff",
-          orange: "#ff9f4b",
-          purple: "#7c3aed",
+          cyan: {
+            DEFAULT: "rgb(from var(--rh-cyan) r g b / <alpha-value>)",
+            light: "rgb(from var(--rh-cyan) r g b / <alpha-value>)", // Alias for consistency
+          },
+          orange: {
+            DEFAULT: "rgb(from var(--rh-orange) r g b / <alpha-value>)",
+            light: "rgb(from var(--rh-orange) r g b / <alpha-value>)", // Alias for consistency
+          },
+          purple: {
+            DEFAULT: "rgb(from var(--rh-purple) r g b / <alpha-value>)",
+            light: "rgb(from var(--rh-purple) r g b / <alpha-value>)", // Alias for consistency
+          },
         },
-        // Add rave- aliases for component usage
+        // Add rave- aliases for backward compatibility
         rave: {
-          pink: "var(--rh-pink-light)",
-          cyan: "#4be2ff",
-          orange: "#ff9f4b",
-          purple: "#7c3aed",
+          pink: "rgb(from var(--rh-pink-light) r g b / <alpha-value>)",
+          cyan: "rgb(from var(--rh-cyan) r g b / <alpha-value>)",
+          orange: "rgb(from var(--rh-orange) r g b / <alpha-value>)",
+          purple: "rgb(from var(--rh-purple) r g b / <alpha-value>)",
         },
         bg: {
-          page: "var(--rh-bg-page)",
-          card: "var(--rh-bg-card)",
+          page: "rgb(from var(--rh-bg-page) r g b / <alpha-value>)",
+          card: "rgb(from var(--rh-bg-card) r g b / <alpha-value>)",
         },
       },
       borderRadius: {
