@@ -1,60 +1,44 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* 🎨 Ravehouse mural palette – DMC based */
 :root {
-  /* Reds / pinks - RGB channel format for Tailwind v4 */
-  --rh-pink-shell-vdark: 136 62 67;      /* #883e43 */
-  --rh-pink-dark:        238 50 70;      /* #ee3246 */
-  --rh-pink-light:       246 104 121;    /* #f66879 */
+  /* Reds / pinks - RGB channel format */
+  --rh-pink-shell-vdark: 136 62 67;
+  --rh-pink-dark: 238 50 70;
+  --rh-pink-light: 246 104 121;
 
   /* Grays */
-  --rh-tin:          215 215 216;        /* #d7d7d8 */
-  --rh-tin-dark:     174 174 177;        /* #aeaeb1 */
-  --rh-pewter-vdark: 66 66 66;           /* #424242 */
+  --rh-tin: 215 215 216;
+  --rh-tin-dark: 174 174 177;
+  --rh-pewter-vdark: 66 66 66;
 
-  /* Additional colors for palette */
-  --rh-cyan:    75 226 255;              /* #4be2ff */
-  --rh-orange:  255 159 75;              /* #ff9f4b */
-  --rh-purple:  124 58 237;              /* #7c3aed */
-  --rh-cyan-light:    150 240 255;       /* lighter cyan */
-  --rh-orange-light:  255 200 150;       /* lighter orange */
-  --rh-purple-light:  180 120 250;       /* lighter purple */
+  /* Additional colors */
+  --rh-cyan: 75 226 255;
+  --rh-orange: 255 159 75;
+  --rh-purple: 124 58 237;
+  --rh-cyan-light: 150 240 255;
+  --rh-orange-light: 255 200 150;
+  --rh-purple-light: 180 120 250;
 
-  /* Base surfaces */
-  --rh-bg-page:   15 5 8;                /* #0f0508 */
-  --rh-bg-card:   20 8 12;               /* #14080c */
-  --rh-border-subtle: 215 215 216;       /* for rgba usage */
+  /* Surfaces */
+  --rh-bg-page: 15 5 8;
+  --rh-bg-card: 20 8 12;
 
   --rh-radius-lg: 1.5rem;
   --rh-radius-md: 1rem;
-
-  color-scheme: dark;
-}
-
-/* Reset-ish basics */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Inter", sans-serif;
-  background:
-    radial-gradient(circle at 0% 0%, rgb(var(--rh-pink-light)) 0, transparent 45%),
-    radial-gradient(circle at 100% 100%, rgb(var(--rh-pink-shell-vdark)) 0, transparent 55%),
-    radial-gradient(circle at 100% 0%, #000 0, transparent 60%),
-    rgb(var(--rh-bg-page));
-  color: rgb(var(--rh-tin));
+  background: radial-gradient(circle at 0% 0%, rgb(246 104 121 / 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 100% 100%, rgb(136 62 67 / 0.3) 0%, transparent 55%),
+    radial-gradient(circle at 100% 0%, #000 0%, transparent 60%),
+    rgb(15 5 8);
+  color: rgb(215 215 216);
 }
+
+/* Your custom utilities below */
 
 /* Glassy card container */
 .surface {
