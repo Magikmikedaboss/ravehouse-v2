@@ -8,7 +8,7 @@ export default function GalleryHero() {
     <section className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)]">
       {/* Left: text intro */}
       <Surface className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/15 via-rave-orange/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/15 via-rh-pink-dark/10 to-transparent" />
         <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
           <div className="space-y-3">
             <p className="text-[11px] uppercase tracking-[0.3em] text-white/55">
@@ -28,7 +28,7 @@ export default function GalleryHero() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="#latest-aftermovie"
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rave-pink/40 transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rh-pink-light/40 transition hover:brightness-105"
               >
                 ▶ Play latest aftermovie
               </Link>
@@ -41,13 +41,13 @@ export default function GalleryHero() {
             </div>
 
             <div className="flex flex-wrap gap-2 text-[11px] text-white/65">
-              <Chip className="bg-rave-pink/15 border-rave-pink/30">
+              <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">
                 128+ nights captured
               </Chip>
-              <Chip className="bg-rave-cyan/15 border-rave-cyan/30">
+              <Chip className="bg-rh-cyan/15 border-rh-cyan/30">
                 Vegas · Downtown · Warehouse
               </Chip>
-              <Chip className="bg-rave-purple/15 border-rave-purple/30">
+              <Chip className="bg-rh-purple/15 border-rh-purple/30">
                 Tag @ravehouse for a feature
               </Chip>
             </div>
@@ -74,10 +74,10 @@ export default function GalleryHero() {
 
             {/* Top meta */}
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-[11px] text-white/80">
-              <Chip className="bg-rave-orange/20 border-rave-orange/40">
+              <Chip className="bg-rh-orange/20 border-rh-orange/40">
                 Aftermovie · 04:27
               </Chip>
-              <Chip className="bg-rave-cyan/20 border-rave-cyan/40">
+              <Chip className="bg-rh-cyan/20 border-rh-cyan/40">
                 Ravehouse Entertainment · Las Vegas
               </Chip>
             </div>

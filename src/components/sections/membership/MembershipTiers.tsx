@@ -70,7 +70,7 @@ export default function MembershipTiers() {
             key={tier.name}
             className={`flex h-full flex-col justify-between border ${
               tier.highlighted
-                ? "border-rave-pink/70 shadow-[0_0_35px_rgba(255,75,139,0.45)]"
+                ? "border-rh-pink-light/70 shadow-[0_0_35px_rgba(246,104,121,0.45)]"
                 : "border-white/10"
             }`}
           >
@@ -80,7 +80,7 @@ export default function MembershipTiers() {
                   {tier.name}
                 </h3>
                 {tier.highlighted && (
-                  <Chip className="bg-rave-pink text-black border-none text-[11px]">
+                  <Chip className="bg-rh-pink-light text-black border-none text-[11px]">
                     Most popular
                   </Chip>
                 )}
@@ -99,7 +99,7 @@ export default function MembershipTiers() {
               <ul className="mt-3 space-y-2 text-xs text-white/80">
                 {tier.perks.map((perk) => (
                   <li key={perk} className="flex gap-2">
-                    <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-rave-pink" />
+                    <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-rh-pink-light" />
                     <span>{perk}</span>
                   </li>
                 ))}

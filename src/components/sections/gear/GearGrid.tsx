@@ -86,7 +86,7 @@ export default function GearGrid() {
                 </h3>
               </div>
               {item.badge && (
-                <Chip className="bg-rave-pink text-black border-none text-[10px]">
+                <Chip className="bg-rh-pink-light text-black border-none text-[10px]">
                   {item.badge}
                 </Chip>
               )}

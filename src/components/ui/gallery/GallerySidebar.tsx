@@ -15,7 +15,7 @@ export default function GallerySidebar() {
               We auto-cut every set so you might be in from last night.
             </h3>
           </div>
-          <Chip className="bg-rave-pink/15 border-rave-pink/30 text-[11px]">
+          <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30 text-[11px]">
             Warehouse Eclipse
           </Chip>
         </div>
@@ -38,7 +38,7 @@ export default function GallerySidebar() {
         <div className="space-y-1 text-[11px] text-white/65">
           <p>Face match is 80% complete.</p>
           <div className="h-2 rounded-full bg-white/10">
-            <div className="h-2 w-4/5 rounded-full bg-gradient-to-r from-rave-pink to-rave-orange" />
+            <div className="h-2 w-4/5 rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark" />
           </div>
         </div>
 
@@ -63,8 +63,8 @@ export default function GallerySidebar() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
           <div className="absolute left-3 right-3 top-3 flex flex-wrap gap-2 text-[10px]">
-            <Chip className="bg-rave-cyan/20 border-rave-cyan/40">Techno marathon</Chip>
-            <Chip className="bg-rave-purple/20 border-rave-purple/40">
+            <Chip className="bg-rh-cyan/20 border-rh-cyan/40">Techno marathon</Chip>
+            <Chip className="bg-rh-purple/20 border-rh-purple/40">
               House on the Strip
             </Chip>
           </div>

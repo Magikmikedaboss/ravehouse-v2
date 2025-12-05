@@ -11,8 +11,8 @@ export default function GalleryBottomStrip() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
         <div className="absolute left-4 right-4 top-3 flex items-center gap-2 text-[11px]">
-          <Chip className="bg-rave-orange/20 border-rave-orange/40">Aftermovie</Chip>
-          <Chip className="bg-rave-cyan/20 border-rave-cyan/40">Downtown LV</Chip>
+          <Chip className="bg-rh-orange/20 border-rh-orange/40">Aftermovie</Chip>
+          <Chip className="bg-rh-cyan/20 border-rh-cyan/40">Downtown LV</Chip>
         </div>
 
         <div className="absolute left-4 right-4 bottom-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">

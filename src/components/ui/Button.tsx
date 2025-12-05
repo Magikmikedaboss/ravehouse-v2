@@ -16,7 +16,7 @@ type ButtonProps = ButtonBaseProps &
   };
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rave-cyan/70";
+  "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rh-cyan/70";
 
 function variantClasses(variant: Variant = "primary") {
   if (variant === "secondary") {
@@ -25,7 +25,7 @@ function variantClasses(variant: Variant = "primary") {
   if (variant === "ghost") {
     return "bg-transparent text-white/80 hover:bg-white/10";
   }
-  return "bg-gradient-to-r from-rave-pink to-rave-orange text-black shadow-glow hover:brightness-110";
+  return "bg-gradient-to-r from-rh-pink-light to-rh-pink-dark text-white shadow-rh-soft hover:brightness-110";
 }
 
 export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {

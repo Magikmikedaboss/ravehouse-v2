@@ -1,43 +1,127 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-bg-soft: #140415;
-  --color-rave-pink: #ff4b8b;
-  --color-rave-orange: #ff9f4b;
-  --color-rave-cyan: #4be2ff;
-  --color-rave-purple: #7c3aed;
-  --shadow-card: 0 18px 45px rgba(0,0,0,0.6);
-  --shadow-glow: 0 0 40px rgba(255, 75, 139, 0.45);
-}
-
+/* 🎨 Ravehouse mural palette – DMC based */
 :root {
+  /* Reds / pinks */
+  --rh-pink-shell-vdark: #883e43; /* DMC 221 Very Dark Shell Pink */
+  --rh-pink-dark:        #ee3246; /* DMC 891 Dark Carnation */
+  --rh-pink-light:       #f66879; /* DMC 893 Light Carnation */
+
+  /* Grays */
+  --rh-tin:          #d7d7d8; /* DMC 02 Tin */
+  --rh-tin-dark:     #aeaeb1; /* DMC 04 Dark Tin */
+  --rh-pewter-vdark: #424242; /* DMC 3799 Very Dark Pewter Gray */
+
+  /* Base surfaces & radii */
+  --rh-bg-page:   #0f0508;
+  --rh-bg-card:   #14080c;
+  --rh-border-subtle: rgba(215, 215, 216, 0.18);
+
+  --rh-radius-lg: 1.5rem;
+  --rh-radius-md: 1rem;
+
   color-scheme: dark;
 }
 
+/* Reset-ish basics */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  @apply text-white antialiased;
-  background: linear-gradient(to bottom, #1b0612, #13010f, #050309);
-  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
-/* Focus ring */
-*:focus-visible {
-  @apply outline-none ring-2 ring-rave-cyan/60 ring-offset-2 ring-offset-bg-soft;
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Inter", sans-serif;
+  background:
+    radial-gradient(circle at 0% 0%, var(--rh-pink-light) 0, transparent 45%),
+    radial-gradient(circle at 100% 100%, var(--rh-pink-shell-vdark) 0, transparent 55%),
+    radial-gradient(circle at 100% 0%, #000 0, transparent 60%),
+    var(--rh-bg-page);
+  color: var(--rh-tin);
 }
 
-/* Helper classes */
+/* 🔧 Reusable primitives */
+
+/* Glassy card container */
 .surface {
-  @apply bg-bg-soft/80 rounded-3xl border border-white/5 shadow-card backdrop-blur;
+  border-radius: var(--rh-radius-lg);
+  background:
+    radial-gradient(circle at 0 0, rgba(246, 104, 121, 0.12), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(136, 62, 67, 0.18), transparent 60%),
+    rgba(10, 5, 8, 0.9);
+  border: 1px solid var(--rh-border-subtle);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(24px);
 }
 
-.glow {
-  box-shadow: 0 0 40px rgba(255, 75, 139, 0.45);
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background 150ms ease-out,
+    color 150ms ease-out,
+    box-shadow 150ms ease-out,
+    transform 120ms ease-out;
 }
 
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--rh-pink-light),
+    var(--rh-pink-dark)
+  );
+  color: #fff;
+  box-shadow:
+    0 0 18px rgba(246, 104, 121, 0.45),
+    0 12px 30px rgba(0, 0, 0, 0.7);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 22px rgba(246, 104, 121, 0.7),
+    0 14px 36px rgba(0, 0, 0, 0.85);
+}
+
+.btn-ghost {
+  background: rgba(10, 8, 10, 0.8);
+  border-color: var(--rh-border-subtle);
+  color: var(--rh-tin);
+}
+
+.btn-ghost:hover {
+  border-color: var(--rh-pink-light);
+  color: var(--rh-pink-light);
+}
+
+/* Misc utilities */
+.hr-soft {
+  border: 0;
+  border-top: 1px solid rgba(215, 215, 216, 0.15);
+  margin: 1.5rem 0;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }

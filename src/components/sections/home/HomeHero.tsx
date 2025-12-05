@@ -45,7 +45,7 @@ export default function HomeHero() {
             </ButtonLink>
           </div>
           <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-            <Chip className="bg-rave-pink/15 border-rave-pink/30">This Friday · 2AM – Sunrise</Chip>
+            <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">This Friday · 2AM – Sunrise</Chip>
             <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Location drops day-of only</Chip>
             <Chip className="bg-rave-purple/15 border-rave-purple/30">21+ · Techno, house, bass</Chip>
           </div>
@@ -63,7 +63,7 @@ export default function HomeHero() {
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                <Chip className="bg-rave-pink/20 border-transparent">Techno</Chip>
+                <Chip className="bg-rh-pink-light/20 border-transparent">Techno</Chip>
                 <Chip className="bg-rave-orange/20 border-transparent">Warehouse</Chip>
                 <Chip className="bg-rave-cyan/20 border-transparent">Secret lineup</Chip>
               </div>
@@ -111,7 +111,7 @@ export default function HomeHero() {
               <div className="text-xs text-white/60">Attendees</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-rave-pink">6</div>
+              <div className="text-2xl font-bold text-rh-pink-light">6</div>
               <div className="text-xs text-white/60">Years Running</div>
             </div>
           </div>

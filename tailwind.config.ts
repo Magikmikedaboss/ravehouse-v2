@@ -2,26 +2,36 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        bg: {
-          soft: "var(--color-bg-soft)",
+        rh: {
+          pink: {
+            shell: "var(--rh-pink-shell-vdark)",
+            dark: "var(--rh-pink-dark)",
+            light: "var(--rh-pink-light)",
+          },
+          gray: {
+            tin: "var(--rh-tin)",
+            dark: "var(--rh-tin-dark)",
+            pewter: "var(--rh-pewter-vdark)",
+          },
+          cyan: "#4be2ff",
+          orange: "#ff9f4b",
+          purple: "#7c3aed",
         },
-        rave: {
-          pink: "var(--color-rave-pink)",
-          orange: "var(--color-rave-orange)",
-          cyan: "var(--color-rave-cyan)",
-          purple: "var(--color-rave-purple)",
+        bg: {
+          page: "var(--rh-bg-page)",
+          card: "var(--rh-bg-card)",
         },
       },
+      borderRadius: {
+        "rh-lg": "var(--rh-radius-lg)",
+        "rh-md": "var(--rh-radius-md)",
+      },
       boxShadow: {
-        card: "0 18px 45px rgba(0,0,0,0.6)",
-        glow: "0 0 40px rgba(255, 75, 139, 0.45)",
+        "rh-soft": "0 18px 45px rgba(0,0,0,0.75)",
       },
     },
   },

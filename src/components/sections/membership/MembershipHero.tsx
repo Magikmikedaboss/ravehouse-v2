@@ -6,7 +6,7 @@ export default function MembershipHero() {
   return (
     <section className="px-4 pt-8 lg:px-6">
       <Surface className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/25 via-rave-purple/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/25 via-rh-pink-shell/15 to-transparent" />
         <div className="relative grid gap-6 p-6 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.1fr)] md:p-8">
           {/* Left: copy */}
           <div className="space-y-4">
@@ -25,7 +25,7 @@ export default function MembershipHero() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="#tiers"
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rave-pink/40 transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rh-pink-light/40 transition hover:brightness-105"
               >
                 View membership tiers
               </Link>

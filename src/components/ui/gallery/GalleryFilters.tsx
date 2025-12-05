@@ -32,8 +32,8 @@ export default function GalleryFilters() {
         <button className="rounded-full border border-white/15 bg-white/5 px-3 py-1 hover:bg-white/10">
           ⬇ Download your snaps
         </button>
-        <Chip className="bg-rave-pink/15 border-rave-pink/30">Grid</Chip>
-        <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Stack</Chip>
+        <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">Grid</Chip>
+        <Chip className="bg-rh-cyan/15 border-rh-cyan/30">Stack</Chip>
       </div>
     </div>
   );
