@@ -21,6 +21,13 @@ const config: Config = {
           orange: "#ff9f4b",
           purple: "#7c3aed",
         },
+        // Add rave- aliases for component usage
+        rave: {
+          pink: "var(--rh-pink-light)",
+          cyan: "#4be2ff",
+          orange: "#ff9f4b",
+          purple: "#7c3aed",
+        },
         bg: {
           page: "var(--rh-bg-page)",
           card: "var(--rh-bg-card)",

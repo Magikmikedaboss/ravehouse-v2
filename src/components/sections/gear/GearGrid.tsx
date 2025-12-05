@@ -97,7 +97,7 @@ export default function GearGrid() {
             </p>
 
             <div className="mt-3 flex items-center justify-between text-[11px] text-white/60">
-              <span>Brand &amp; link TBD</span>
+              {!item.link && <span>Brand &amp; link TBD</span>}
               {item.link ? (
                 <Link
                   href={item.link}

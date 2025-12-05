@@ -83,10 +83,6 @@ export default function SiteHeader() {
               );
             })}
           </NavigationMenu.List>
-
-          <div className="absolute top-full left-0 flex w-full justify-center">
-            <NavigationMenu.Viewport className="relative mt-2 h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-[top_center] overflow-hidden rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-xl transition-[width,height] duration-300" />
-          </div>
         </NavigationMenu.Root>
 
           <div className="flex items-center gap-3">

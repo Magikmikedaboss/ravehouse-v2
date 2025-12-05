@@ -46,8 +46,8 @@ export default function HomeHero() {
           </div>
           <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
             <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">This Friday · 2AM – Sunrise</Chip>
-            <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Location drops day-of only</Chip>
-            <Chip className="bg-rave-purple/15 border-rave-purple/30">21+ · Techno, house, bass</Chip>
+            <Chip className="bg-rh-cyan-light/15 border-rh-cyan-light/30">Location drops day-of only</Chip>
+            <Chip className="bg-rh-purple-light/15 border-rh-purple-light/30">21+ · Techno, house, bass</Chip>
           </div>
         </div>
       </Surface>
@@ -64,8 +64,8 @@ export default function HomeHero() {
               </p>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
                 <Chip className="bg-rh-pink-light/20 border-transparent">Techno</Chip>
-                <Chip className="bg-rave-orange/20 border-transparent">Warehouse</Chip>
-                <Chip className="bg-rave-cyan/20 border-transparent">Secret lineup</Chip>
+                <Chip className="bg-rh-orange-light/20 border-transparent">Warehouse</Chip>
+                <Chip className="bg-rh-cyan-light/20 border-transparent">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">

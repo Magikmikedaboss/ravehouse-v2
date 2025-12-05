@@ -92,7 +92,7 @@ export default function MembershipTiers() {
                   {tier.price}
                 </span>
                 <span className="text-xs text-white/60">
-                  {tier.cadence} · TBD
+                  {tier.cadence} · launch date TBD
                 </span>
               </div>
 
@@ -108,10 +108,12 @@ export default function MembershipTiers() {
 
             <div className="border-t border-white/10 p-4">
               <button
+                disabled={true}
+                aria-label={`Join ${tier.name} coming soon - not yet available`}
                 className={`w-full rounded-full px-3 py-2 text-xs font-semibold transition ${
                   tier.highlighted
-                    ? "bg-white text-black hover:brightness-110"
-                    : "bg-white/5 text-white hover:bg-white/10"
+                    ? "bg-white text-black opacity-50"
+                    : "bg-white/5 text-white opacity-50"
                 }`}
               >
                 Join {tier.name} (coming soon)
