@@ -13,7 +13,7 @@ export default function HomeHero() {
           {/* TODO: swap with your real hero image */}
           <Image
             src="/images/hero-warehouse.jpg"
-            alt="Warehouse crowd at Ravehouse"
+            alt="Warehouse crowd at Ravehouse Entertainment"
             fill
             className="object-cover"
           />
@@ -45,9 +45,9 @@ export default function HomeHero() {
             </ButtonLink>
           </div>
           <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-            <Chip className="bg-white/5">This Friday · 2AM – Sunrise</Chip>
-            <Chip className="bg-white/5">Location drops day-of only</Chip>
-            <Chip className="bg-white/5">21+ · Techno, house, bass</Chip>
+            <Chip className="bg-rave-pink/15 border-rave-pink/30">This Friday · 2AM – Sunrise</Chip>
+            <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Location drops day-of only</Chip>
+            <Chip className="bg-rave-purple/15 border-rave-purple/30">21+ · Techno, house, bass</Chip>
           </div>
         </div>
       </Surface>
@@ -63,14 +63,14 @@ export default function HomeHero() {
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                <Chip className="bg-rave.pink/20 border-transparent">Techno</Chip>
-                <Chip className="bg-rave.orange/20 border-transparent">Warehouse</Chip>
-                <Chip className="bg-rave.cyan/20 border-transparent">Secret lineup</Chip>
+                <Chip className="bg-rave-pink/20 border-transparent">Techno</Chip>
+                <Chip className="bg-rave-orange/20 border-transparent">Warehouse</Chip>
+                <Chip className="bg-rave-cyan/20 border-transparent">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">
               <div className="rounded-full bg-white/5 px-3 py-1 text-xs text-white/60">
-                Spots left: <span className="font-semibold text-rave.cyan">84 / 400</span>
+                Spots left: <span className="font-semibold text-rave-cyan">84 / 400</span>
               </div>
               <div className="mt-3 font-semibold">$45 GA</div>
             </div>
@@ -85,7 +85,7 @@ export default function HomeHero() {
         </Surface>
 
         <Surface className="p-5">
-          <p className="text-xs text-white/60">This week at Ravehouse</p>
+          <p className="text-xs text-white/60">This week at Ravehouse Entertainment</p>
           <h2 className="mt-1 text-lg font-semibold">
             2 events · Rooftop &amp; Warehouse · Vegas Strip
           </h2>
@@ -94,10 +94,30 @@ export default function HomeHero() {
           </p>
           <ButtonLink
             href="/events"
-            className="mt-4 bg-gradient-to-r from-rave.cyan to-rave.purple text-black"
+            className="mt-4 bg-gradient-to-r from-rave-cyan to-rave-purple text-black"
           >
             Free RSVP available
           </ButtonLink>
+        </Surface>
+
+        <Surface className="p-5">
+          <p className="text-xs text-white/60">Since 2019</p>
+          <h2 className="mt-1 text-lg font-semibold">
+            150+ Events Thrown
+          </h2>
+          <div className="mt-3 grid grid-cols-2 gap-4 text-center">
+            <div>
+              <div className="text-2xl font-bold text-rave-cyan">25K+</div>
+              <div className="text-xs text-white/60">Attendees</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-rave-pink">6</div>
+              <div className="text-xs text-white/60">Years Running</div>
+            </div>
+          </div>
+          <p className="mt-3 text-xs text-white/60">
+            Underground raves that keep Vegas dancing all night long.
+          </p>
         </Surface>
       </div>
     </section>

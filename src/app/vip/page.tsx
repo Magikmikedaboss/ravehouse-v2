@@ -7,7 +7,7 @@ const vipPlans = [
     price: "$45 / month",
     tag: "Best for LV regulars",
     bullets: [
-      "Priority entry at all Ravehouse or partner venues",
+      "Priority entry at all Ravehouse Entertainment or partner venues",
       "Access to locals-only drink & table specials",
       "Early access to RSVP windows",
       "Avg. 2–4 nights per month",
@@ -19,7 +19,7 @@ const vipPlans = [
     price: "From $680 / night",
     tag: "Most popular",
     bullets: [
-      "Premium table placement at Ravehouse events",
+      "Premium table placement at Ravehouse Entertainment events",
       "Dedicated host & direct text line for arrivals and changes",
       "Custom bottle & birthday add-ons curated each night",
       "Up to 10 guests per table",
@@ -32,8 +32,8 @@ const vipPlans = [
     tag: "Artists & high-volume hosts",
     bullets: [
       "Guaranteed access & seating for you and rotating guests",
-      "Custom room cards across Ravehouse + select partner venues",
-      "Direct line to Ravehouse team for collabs & private events",
+      "Custom room cards across Ravehouse Entertainment + select partner venues",
+      "Direct line to Ravehouse Entertainment team for collabs & private events",
       "Limited to 25 members",
     ],
     cta: "Request invite",
@@ -46,7 +46,7 @@ export default function VipPage() {
       {/* Hero */}
       <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
         <article className="surface overflow-hidden">
-          <div className="h-64 w-full bg-gradient-to-br from-rave.pink via-rave.purple to-rave.cyan" />
+          <div className="h-64 w-full bg-gradient-to-br from-rave-pink via-rave-purple to-rave-cyan" />
           <div className="p-6 sm:p-8">
             <p className="text-xs uppercase tracking-[0.25em] text-white/60">
               For the ones closing the floor, not watching from the bar.
@@ -61,7 +61,7 @@ export default function VipPage() {
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="#apply"
-                className="rounded-full bg-gradient-to-r from-rave.pink to-rave.orange px-5 py-2.5 text-sm font-semibold shadow-glow"
+                className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold shadow-glow"
               >
                 Join VIP Waitlist
               </Link>
@@ -73,9 +73,9 @@ export default function VipPage() {
               </Link>
             </div>
             <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-              <span className="chip bg-white/5">Priority entry at all events</span>
-              <span className="chip bg-white/5">Dedicated host &amp; bottle service</span>
-              <span className="chip bg-white/5">Local venue deals all week</span>
+              <span className="chip bg-rave-pink/15 border-rave-pink/30">Priority entry at all events</span>
+              <span className="chip bg-rave-cyan/15 border-rave-cyan/30">Dedicated host &amp; bottle service</span>
+              <span className="chip bg-rave-purple/15 border-rave-purple/30">Local venue deals all week</span>
             </div>
           </div>
         </article>
@@ -103,7 +103,7 @@ export default function VipPage() {
             <p className="mt-2 text-xs text-white/60">
               Strip rooftops, downtown lounges and afterhours dens in one network.
             </p>
-            <button className="mt-4 w-full rounded-full bg-gradient-to-r from-rave.cyan to-rave.purple px-4 py-2 text-xs font-semibold text-black">
+            <button className="mt-4 w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-black">
               See venue map
             </button>
           </div>
@@ -114,7 +114,7 @@ export default function VipPage() {
       <section id="perks" className="space-y-4">
         <h2 className="text-lg font-semibold">Why go VIP?</h2>
         <p className="max-w-2xl text-sm text-white/70">
-          Turn every Ravehouse night into a story. From secret entrances to curated tables,
+          Turn every Ravehouse Entertainment night into a story. From secret entrances to curated tables,
           we keep you inside the music, not stuck in line.
         </p>
 
@@ -154,7 +154,7 @@ export default function VipPage() {
               <div className="flex items-baseline justify-between gap-2">
                 <div>
                   <h3 className="text-sm font-semibold">{plan.name}</h3>
-                  <p className="mt-1 text-xs text-rave.cyan/80">{plan.tag}</p>
+                  <p className="mt-1 text-xs text-rave-cyan/80">{plan.tag}</p>
                 </div>
                 <div className="text-xs text-white/70">{plan.price}</div>
               </div>
@@ -220,11 +220,16 @@ export default function VipPage() {
             />
             <div className="flex flex-wrap gap-2">
               {["Vegas local", "Visiting for a weekend", "Birthday / celebration", "Corporate / brand group"].map(
-                (chip) => (
+                (chip, index) => (
                   <button
                     key={chip}
                     type="button"
-                    className="chip bg-white/5 text-[11px]"
+                    className={`chip text-[11px] ${
+                      index === 0 ? "bg-rave-pink/15 border-rave-pink/30" :
+                      index === 1 ? "bg-rave-cyan/15 border-rave-cyan/30" :
+                      index === 2 ? "bg-rave-orange/15 border-rave-orange/30" :
+                      "bg-rave-purple/15 border-rave-purple/30"
+                    }`}
                   >
                     {chip}
                   </button>
@@ -235,7 +240,7 @@ export default function VipPage() {
 
           <button
             type="submit"
-            className="mt-2 w-full rounded-full bg-gradient-to-r from-rave.pink to-rave.orange px-4 py-2 text-xs font-semibold text-black shadow-glow"
+            className="mt-2 w-full rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-4 py-2 text-xs font-semibold text-black shadow-glow"
           >
             Submit request
           </button>

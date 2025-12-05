@@ -1,118 +1,43 @@
 @import "tailwindcss";
 
-@layer utilities {
-  .glow {
-    box-shadow: 0 0 40px rgba(255, 75, 139, 0.45);
-  }
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+@theme inline {
+  --color-bg-soft: #140415;
+  --color-rave-pink: #ff4b8b;
+  --color-rave-orange: #ff9f4b;
+  --color-rave-cyan: #4be2ff;
+  --color-rave-purple: #7c3aed;
+  --shadow-card: 0 18px 45px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 40px rgba(255, 75, 139, 0.45);
 }
 
-/* -------------------------------------------
-   RAVEHOUSE GLOBAL THEME
---------------------------------------------*/
-
-/* Enable dark mode colors everywhere */
 :root {
   color-scheme: dark;
 }
 
-/* Base body styling */
 body {
   @apply text-white antialiased;
-  background: linear-gradient(
-    to bottom,
-    #1b0612,
-    #13010f,
-    #050309
-  );
+  background: linear-gradient(to bottom, #1b0612, #13010f, #050309);
   min-height: 100vh;
 }
 
-/* Smooth rendering */
-img, svg {
-  image-rendering: smooth;
-}
-
-/* Disable default outlines, replace with focus styles */
+/* Focus ring */
 *:focus-visible {
-  @apply outline-none ring-2 ring-rave-cyan/60 ring-offset-2 ring-offset-bg;
+  @apply outline-none ring-2 ring-rave-cyan/60 ring-offset-2 ring-offset-bg-soft;
 }
 
-/* Scrollbar styling (desktop only) */
-@media (min-width: 768px) {
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0c040a;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #4a2244;
-    border-radius: 9999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #7a2b7a;
-  }
-}
-
-/* -------------------------------------------
-   LINK + TEXT GLOBALS
---------------------------------------------*/
-
-a {
-  @apply text-white/80 transition;
-}
-a:hover {
-  @apply text-white;
-}
-
-/* Typography overrides */
-h1, h2, h3, h4, h5 {
-  @apply font-semibold tracking-tight;
-}
-
-p {
-  @apply leading-relaxed;
-}
-
-/* -------------------------------------------
-   SHARED UTILITIES
---------------------------------------------*/
-
-/* Ravehouse surface container override
-   (Used in <Surface /> component styles)
-*/
+/* Helper classes */
 .surface {
   @apply bg-bg-soft/80 rounded-3xl border border-white/5 shadow-card backdrop-blur;
 }
 
-/* -------------------------------------------
-   BUTTON RESET + OVERRIDES
---------------------------------------------*/
-
-button {
-  @apply cursor-pointer select-none;
+.glow {
+  box-shadow: 0 0 40px rgba(255, 75, 139, 0.45);
 }
 
-button:disabled {
-  @apply opacity-50 cursor-not-allowed;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-
-/* -------------------------------------------
-   FORM ELEMENTS
---------------------------------------------*/
-
-input, textarea {
-  @apply bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30;
-}
-
-input:focus, textarea:focus {
-  @apply ring-2 ring-rave-cyan/60 outline-none;
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
