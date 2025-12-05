@@ -4,8 +4,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
-  // TODO: Implement newsletter signup
+export async function POST() {  // TODO: Implement newsletter signup
   // - Validate email
   // - Add to mailing list
   // - Return success/error

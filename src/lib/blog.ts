@@ -1,55 +1,83 @@
 // src/lib/blog.ts
-// Phase 1: Blog post metadata & seed content
 
-export interface BlogPost {
+export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
-  content: string;
-  publishedAt: string;
-  author: string;
+  date: string; // ISO string
+  category: string;
+  readTime: string; // e.g. "6 min read"
+  heroImage: string;
   tags: string[];
-  image?: string;
-}
+  content: string; // simple markdown-ish / paragraphs separated by \n\n
+};
 
-// Seed blog posts for Phase 1
-export const blogPosts: BlogPost[] = [
-  {
-    slug: 'circuit-01',
-    title: 'Welcome to The Circuit',
-    excerpt: 'Introducing Ravehouse\'s editorial hub for underground stories and scene insights.',
-    content: '# Welcome to The Circuit\n\nThis is the first post in our editorial series...',
-    publishedAt: '2025-01-01',
-    author: 'Ravehouse Team',
-    tags: ['announcement', 'editorial'],
-    image: '/images/blog/circuit-01.jpg'
-  },
-  {
-    slug: 'warehouse-guide',
-    title: 'The Ultimate Warehouse Guide',
-    excerpt: 'Everything you need to know about finding and enjoying underground warehouse raves.',
-    content: '# The Ultimate Warehouse Guide\n\nFinding the best warehouse experiences...',
-    publishedAt: '2025-01-15',
-    author: 'Nova',
-    tags: ['guide', 'warehouse', 'tips'],
-    image: '/images/blog/warehouse-guide.jpg'
-  },
-  {
-    slug: 'gear-roundup',
-    title: 'Essential Rave Gear 2025',
-    excerpt: 'Curated recommendations for earplugs, lights, and everything you need for the scene.',
-    content: '# Essential Rave Gear 2025\n\nThe must-have items for any serious raver...',
-    publishedAt: '2025-02-01',
-    author: 'Ravehouse Team',
-    tags: ['gear', 'recommendations', 'affiliate'],
-    image: '/images/blog/gear-roundup.jpg'
-  }
+export const BLOG_CATEGORIES = [
+  "All",
+  "Recaps",
+  "Guides",
+  "Gear",
+  "Industry",
+  "Behind the Scenes",
 ];
 
-export function getAllPosts(): BlogPost[] {
-  return blogPosts.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-}
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "warehouse-eclipse-recap",
+    title: "Warehouse Eclipse: 3AM Lasers & Concrete Echoes",
+    excerpt:
+      "Four hundred heads, one warehouse, and a closing set that felt like sunrise in slow motion.",
+    date: "2025-01-22",
+    category: "Recaps",
+    readTime: "7 min read",
+    heroImage: "/images/blog/warehouse-eclipse.jpg",
+    tags: ["Warehouse", "Techno", "Las Vegas"],
+    content: [
+      "Last Friday's Warehouse Eclipse was everything we love about underground shows: no VIP ropes, no bottle parades, just a wall of sound and people losing it in every direction.",
+      "Doors opened just after 11PM, but the room didn't truly catch fire until well after 1AM. By the time the headliner took over, the fog had thinned just enough to see silhouettes cutting through laser tunnels.",
+      "We're still going through the full photo and video dump, but this recap hits the highlights: the system, the crowd, the booth, and the little details that made the night feel like a movie.",
+    ].join("\n\n"),
+  },
+  {
+    slug: "top-rave-gear-2025",
+    title: "Top Rave Gear Essentials for 2025 (Vegas Underground Edition)",
+    excerpt:
+      "From hydration packs to subtle earplugs and LED add-ons, here's what survives a proper warehouse.",
+    date: "2025-01-20",
+    category: "Gear",
+    readTime: "5 min read",
+    heroImage: "/images/blog/rave-gear-2025.jpg",
+    tags: ["Gear", "Tips", "New ravers"],
+    content: [
+      "Vegas underground shows aren't just about looking good—you also want to survive the night and remember it.",
+      "We pulled together a simple loadout: hydration, protection, comfort, and a little bit of glow. Nothing you don't need, everything you actually use.",
+      "Over time we'll keep this list updated with links to brands and pieces we've seen hold up under real-world punishment.",
+    ].join("\n\n"),
+  },
+  {
+    slug: "how-to-find-underground-raves-in-vegas",
+    title: "How to Find Underground Raves in Las Vegas (Without Being Weird)",
+    excerpt:
+      "If your feed is all big-room clubs, but your heart wants concrete floors and unknown names, this one's for you.",
+    date: "2025-01-15",
+    category: "Guides",
+    readTime: "8 min read",
+    heroImage: "/images/blog/find-underground-vegas.jpg",
+    tags: ["Guides", "Vegas", "Community"],
+    content: [
+      "Finding the real stuff in Vegas means looking beyond the Strip and leaning on people, not billboards.",
+      "We're talking group chats, smaller collectives, niche record shops, and those friends who always seem to disappear at 11PM and resurface at 7AM with glitter in their hair.",
+      "This guide lays out how to tap into the network respectfully and safely, without being that person.",
+    ].join("\n\n"),
+  },
+];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find(post => post.slug === slug);
+  return BLOG_POSTS.find((p) => p.slug === slug);
+}
+
+export function getRecentPosts(limit = 4): BlogPost[] {
+  return [...BLOG_POSTS]
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, limit);
 }

@@ -1,50 +1,37 @@
-// src/components/ui/NewsletterSignup.tsx
-// Phase 1: Reusable email capture component
+"use client";
 
-'use client';
-
-import { useState } from 'react';
-import { Button } from './Button';
+import { useState } from "react";
 
 export default function NewsletterSignup() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus('loading');
-
-    // TODO: Implement newsletter signup API call
-    setTimeout(() => {
-      setStatus('success');
-      setEmail('');
-    }, 1000);
-  };
+    // TODO: wire up /api/newsletter or external service
+    console.log("Newsletter signup:", email);
+  }
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold">Join The Circuit</h3>
-      <p className="text-sm text-white/70">
-        Get exclusive content, early access, and underground updates.
-      </p>
-
-      <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className="space-y-2 text-xs text-white">
+      <div className="flex gap-2">
         <input
           type="email"
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
-          className="flex-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50"
-          required
+          className="flex-1 rounded-full border border-white/20 bg-black/40 px-3 py-2 text-xs text-white placeholder:text-white/40"
+          placeholder="you@nightshift.com"
         />
-        <Button type="submit" disabled={status === 'loading'}>
-          {status === 'loading' ? 'Joining...' : 'Join'}
-        </Button>
-      </form>
-
-      {status === 'success' && (
-        <p className="text-green-400 text-sm">Welcome to The Circuit! 🎉</p>
-      )}
-    </div>
+        <button
+          type="submit"
+          className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-black hover:brightness-110"
+        >
+          Join
+        </button>
+      </div>
+      <p className="text-[11px] text-white/50">
+        No spam. Just events, recaps and the occasional mix.
+      </p>
+    </form>
   );
 }
