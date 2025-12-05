@@ -30,7 +30,6 @@
   --rh-radius-lg: 1.5rem;
   --rh-radius-md: 1rem;
 }
-}
 
 body {
   background: radial-gradient(circle at 0% 0%, rgb(246 104 121 / 0.3) 0%, transparent 45%),
