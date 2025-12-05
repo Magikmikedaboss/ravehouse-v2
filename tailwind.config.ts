@@ -8,38 +8,38 @@ const config: Config = {
       colors: {
         rh: {
           pink: {
-            shell: "rgb(from var(--rh-pink-shell-vdark) r g b / <alpha-value>)",
-            dark: "rgb(from var(--rh-pink-dark) r g b / <alpha-value>)",
-            light: "rgb(from var(--rh-pink-light) r g b / <alpha-value>)",
+            shell: "rgb(var(--rh-pink-shell-vdark) / <alpha-value>)",
+            dark: "rgb(var(--rh-pink-dark) / <alpha-value>)",
+            light: "rgb(var(--rh-pink-light) / <alpha-value>)",
           },
           gray: {
-            tin: "rgb(from var(--rh-tin) r g b / <alpha-value>)",
-            dark: "rgb(from var(--rh-tin-dark) r g b / <alpha-value>)",
-            pewter: "rgb(from var(--rh-pewter-vdark) r g b / <alpha-value>)",
+            tin: "rgb(var(--rh-tin) / <alpha-value>)",
+            dark: "rgb(var(--rh-tin-dark) / <alpha-value>)",
+            pewter: "rgb(var(--rh-pewter-vdark) / <alpha-value>)",
           },
           cyan: {
-            DEFAULT: "rgb(from var(--rh-cyan) r g b / <alpha-value>)",
-            light: "rgb(from var(--rh-cyan) r g b / <alpha-value>)", // Alias for consistency
+            DEFAULT: "rgb(var(--rh-cyan) / <alpha-value>)",
+            light: "rgb(var(--rh-cyan-light) / <alpha-value>)", // Alias for consistency
           },
           orange: {
-            DEFAULT: "rgb(from var(--rh-orange) r g b / <alpha-value>)",
-            light: "rgb(from var(--rh-orange) r g b / <alpha-value>)", // Alias for consistency
+            DEFAULT: "rgb(var(--rh-orange) / <alpha-value>)",
+            light: "rgb(var(--rh-orange-light) / <alpha-value>)", // Alias for consistency
           },
           purple: {
-            DEFAULT: "rgb(from var(--rh-purple) r g b / <alpha-value>)",
-            light: "rgb(from var(--rh-purple) r g b / <alpha-value>)", // Alias for consistency
+            DEFAULT: "rgb(var(--rh-purple) / <alpha-value>)",
+            light: "rgb(var(--rh-purple-light) / <alpha-value>)", // Alias for consistency
           },
         },
         // Add rave- aliases for backward compatibility
         rave: {
-          pink: "rgb(from var(--rh-pink-light) r g b / <alpha-value>)",
-          cyan: "rgb(from var(--rh-cyan) r g b / <alpha-value>)",
-          orange: "rgb(from var(--rh-orange) r g b / <alpha-value>)",
-          purple: "rgb(from var(--rh-purple) r g b / <alpha-value>)",
+          pink: "rgb(var(--rh-pink-light) / <alpha-value>)",
+          cyan: "rgb(var(--rh-cyan-light) / <alpha-value>)",
+          orange: "rgb(var(--rh-orange-light) / <alpha-value>)",
+          purple: "rgb(var(--rh-purple-light) / <alpha-value>)",
         },
         bg: {
-          page: "rgb(from var(--rh-bg-page) r g b / <alpha-value>)",
-          card: "rgb(from var(--rh-bg-card) r g b / <alpha-value>)",
+          page: "rgb(var(--rh-bg-page) / <alpha-value>)",
+          card: "rgb(var(--rh-bg-card) / <alpha-value>)",
         },
       },
       borderRadius: {

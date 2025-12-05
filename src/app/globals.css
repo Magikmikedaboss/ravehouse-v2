@@ -16,6 +16,9 @@
   --rh-cyan:    75 226 255;              /* #4be2ff */
   --rh-orange:  255 159 75;              /* #ff9f4b */
   --rh-purple:  124 58 237;              /* #7c3aed */
+  --rh-cyan-light:    150 240 255;       /* lighter cyan */
+  --rh-orange-light:  255 200 150;       /* lighter orange */
+  --rh-purple-light:  180 120 250;       /* lighter purple */
 
   /* Base surfaces */
   --rh-bg-page:   15 5 8;                /* #0f0508 */
@@ -88,31 +91,31 @@ body {
 .btn-primary {
   background: linear-gradient(
     135deg,
-    var(--rh-pink-light),
-    var(--rh-pink-dark)
+    rgb(var(--rh-pink-light)),
+    rgb(var(--rh-pink-dark))
   );
   color: #fff;
   box-shadow:
-    0 0 18px rgba(246, 104, 121, 0.45),
+    0 0 18px rgba(var(--rh-pink-light), 0.45),
     0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 0 22px rgba(246, 104, 121, 0.7),
+    0 0 22px rgba(var(--rh-pink-light), 0.7),
     0 14px 36px rgba(0, 0, 0, 0.85);
 }
 
 .btn-ghost {
   background: rgba(10, 8, 10, 0.8);
-  border-color: var(--rh-border-subtle);
-  color: var(--rh-tin);
+  border-color: rgb(var(--rh-border-subtle));
+  color: rgb(var(--rh-tin));
 }
 
 .btn-ghost:hover {
-  border-color: var(--rh-pink-light);
-  color: var(--rh-pink-light);
+  border-color: rgb(var(--rh-pink-light));
+  color: rgb(var(--rh-pink-light));
 }
 
 /* Misc utilities */
