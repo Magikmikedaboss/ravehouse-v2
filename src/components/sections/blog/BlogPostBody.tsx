@@ -3,7 +3,6 @@ import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import Image from "next/image";
 import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize from 'rehype-sanitize';
 
@@ -60,7 +59,7 @@ export default function BlogPostBody({ post }: Props) {
         <div className="space-y-4 text-sm leading-relaxed text-white/80 prose prose-invert max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw, rehypeSanitize]}
+            rehypePlugins={[rehypeSanitize]}
           >
             {post.content}
           </ReactMarkdown>

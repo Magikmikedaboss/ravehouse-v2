@@ -103,7 +103,7 @@ export default function GearGrid() {
                   href={item.link}
                   className="text-white hover:underline"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   View →
                 </Link>

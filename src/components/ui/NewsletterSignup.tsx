@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     // TODO: wire up /api/newsletter or external service
     console.log("Newsletter signup:", email);
