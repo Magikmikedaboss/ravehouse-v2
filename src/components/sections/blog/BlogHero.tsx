@@ -20,14 +20,16 @@ export default function BlogHero() {
               Recaps, guides, gear breakdowns and behind-the-scenes notes from
               Ravehouse nights across Las Vegas.
             </p>
+            
+            {/* ADD COLORFUL CHIPS: */}
             <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-              <Chip className="bg-white/10 border-transparent">
+              <Chip className="bg-rh-pink-light/20 border-rh-pink-light/40">
                 Recaps &amp; photo dumps
               </Chip>
-              <Chip className="bg-white/10 border-transparent">
+              <Chip className="bg-rh-cyan/20 border-rh-cyan/40">
                 Guides for new heads
               </Chip>
-              <Chip className="bg-white/10 border-transparent">
+              <Chip className="bg-rh-orange/20 border-rh-orange/40">
                 Rave gear &amp; essentials
               </Chip>
             </div>
