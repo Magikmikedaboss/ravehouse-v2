@@ -63,15 +63,9 @@ export default function GearGrid() {
             Built for warehouses, rooftops and afterhours.
           </h2>
           <p className="mt-1 text-xs text-white/70 max-w-xl">
-            These are the categories we&apos;ll lean into for real affiliate
-            partnerships and product collabs. Every item should earn its place.
+            Essential gear tested in real underground settings. Each item chosen for durability, function, and style.
           </p>
-        </div>
-        <p className="text-[11px] text-white/55">
-          Links and brands are placeholders for now. Treat this as a layout and
-          planning map.
-        </p>
-      </div>
+        </div>      </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {GEAR_ITEMS.map((item) => (

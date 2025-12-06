@@ -14,14 +14,14 @@ export default function SiteHeader() {
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-black/10 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 md:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-rh-pink-light to-rh-pink-dark shadow-rh-soft text-xs font-bold">
             RH
           </div>
-          <span className="text-sm font-semibold tracking-wide text-black">
+          <span className="text-sm font-semibold tracking-wide text-white">
             RAVEHOUSE
           </span>
         </Link>
@@ -43,19 +43,19 @@ export default function SiteHeader() {
                     <>
                       <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                         active
-                          ? "bg-black text-white shadow"
-                          : "text-black/70 hover:bg-black/10 hover:text-black data-[state=open]:bg-black/10 data-[state=open]:text-black"
+                          ? "bg-white text-black shadow"
+                          : "text-white/70 hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white"
                       }`}>
                         {item.label}
                       </NavigationMenu.Trigger>
-                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-black/10 bg-white/90 backdrop-blur shadow-xl animate-in fade-in-0 zoom-in-95">
+                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-xl animate-in fade-in-0 zoom-in-95">
                         <ul className="p-2">
                           {item.children.map((child) => (
                             <li key={child.href}>
                               <NavigationMenu.Link asChild>
                                 <Link
                                   href={child.href}
-                                  className="block px-3 py-2 text-xs text-black/70 hover:bg-black/10 hover:text-black transition rounded-md focus:bg-black/10 focus:text-black focus:outline-none"
+                                  className="block px-3 py-2 text-xs text-white/70 hover:bg-white/10 hover:text-white transition rounded-md focus:bg-white/10 focus:text-white focus:outline-none"
                                 >
                                   {child.label}
                                 </Link>
@@ -71,8 +71,8 @@ export default function SiteHeader() {
                         href={item.href || "#"}
                         className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                           active
-                            ? "bg-black text-white shadow"
-                            : "text-black/70 hover:bg-black/10 hover:text-black"
+                            ? "bg-white text-black shadow"
+                            : "text-white/70 hover:bg-white/10 hover:text-white"
                         }`}
                       >
                         {item.label}
@@ -100,7 +100,7 @@ export default function SiteHeader() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden rounded-lg p-2 text-black/70 hover:bg-black/10 hover:text-black transition"
+          className="md:hidden rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white transition"
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
         >
@@ -113,7 +113,7 @@ export default function SiteHeader() {
           </svg>        </button>      </div>
       {/* Mobile nav */}
       {mobileMenuOpen && (
-        <div className="border-t border-black/10 bg-white/95 backdrop-blur md:hidden">
+        <div className="border-t border-white/10 bg-black/95 backdrop-blur md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="flex flex-col gap-2">
             {NAV_ITEMS.map((item) => {
@@ -130,8 +130,8 @@ export default function SiteHeader() {
                         onClick={() => setMobileMenuOpen(false)}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
                           active
-                            ? "bg-black text-white"
-                            : "text-black/70 hover:bg-black/10 hover:text-black"
+                            ? "bg-white text-black"
+                            : "text-white/70 hover:bg-white/10 hover:text-white"
                         }`}
                       >
                         {item.label}
@@ -142,7 +142,7 @@ export default function SiteHeader() {
                         onClick={() => setExpandedMobileItem(
                           expandedMobileItem === item.label ? null : item.label
                         )}
-                        className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-black/70 hover:bg-black/10 hover:text-black transition"
+                        className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition"
                       >
                         {item.label}
                         <svg
@@ -165,7 +165,7 @@ export default function SiteHeader() {
                             key={child.href}
                             href={child.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block rounded-lg px-3 py-2 text-sm text-black/60 hover:bg-black/5 hover:text-black transition"
+                            className="block rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/5 hover:text-white transition"
                           >
                             {child.label}
                           </Link>
@@ -176,7 +176,7 @@ export default function SiteHeader() {
                 );
               })}
 
-              <div className="mt-4 flex flex-col gap-3 border-t border-black/10 pt-4">
+              <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
                 <Chip className="self-start bg-green-500/15 text-[11px] text-green-700 border-green-400/30">
                   Live this weekend
                 </Chip>

@@ -17,16 +17,15 @@ export default function SectionHeader({
     <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div>
         {eyebrow && (
-          <p className="text-[11px] uppercase tracking-[0.25em] text-black/50">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-white/50">
             {eyebrow}
           </p>
         )}
-        <h2 className="text-lg font-semibold text-black">{title}</h2>
+        <h2 className="text-lg font-semibold text-white">{title}</h2>
         {description && (
-          <p className="mt-1 max-w-2xl text-sm text-black/65">{description}</p>
+          <p className="mt-1 max-w-2xl text-sm text-white/65">{description}</p>
         )}
       </div>
-      {endSlot && <div className="text-xs text-black/60">{endSlot}</div>}
-    </div>
+      {endSlot && <div className="text-xs text-white/60">{endSlot}</div>}    </div>
   );
 }

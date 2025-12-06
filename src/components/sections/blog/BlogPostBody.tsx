@@ -106,10 +106,8 @@ export default function BlogPostBody({ post }: Props) {
                 </code>
               ),
               pre: ({ children }) => (
-                <pre className="bg-black/50 p-4 rounded-lg overflow-x-auto my-4">
-                  <code className="text-rh-orange-light font-mono text-sm">
-                    {children}
-                  </code>
+                <pre className="bg-black/50 p-4 rounded-lg overflow-x-auto my-4 text-rh-orange-light font-mono text-sm">
+                  {children}
                 </pre>
               ),
               ul: ({ children }) => (
