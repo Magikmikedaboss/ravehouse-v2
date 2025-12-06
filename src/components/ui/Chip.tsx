@@ -9,7 +9,8 @@ type ChipVariant =
   | "neutral"
   | "ghost"
   | "success"
-  | "brand";
+  | "brand"
+  | "dark";
 
 type ChipProps = {
   children: ReactNode;
@@ -27,6 +28,7 @@ const variantClasses: Record<ChipVariant, string> = {
   ghost: "bg-black/60 border-white/20 text-white",
   success: "bg-rh-green/15 border-rh-green/30 text-rh-green",
   brand: "bg-gradient-to-r from-rh-pink-light/20 to-rh-cyan/20 border-rh-pink-light/30 text-white",
+  dark: "bg-black/40 border-white/20 text-white",
 };
 
 export default function Chip({

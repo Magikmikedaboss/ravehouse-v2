@@ -24,7 +24,7 @@ export default function BlogPostBody({ post }: Props) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="absolute left-4 right-4 bottom-4 space-y-2">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] text-white/75">
+            <div className="flex flex-wrap items-center gap-2 text-xxs text-white/75">
               <Chip className="bg-black/60 border-white/20 text-white">
                 {post.category}
               </Chip>
@@ -46,17 +46,12 @@ export default function BlogPostBody({ post }: Props) {
       </Surface>
 
       <Surface className="p-5 space-y-4">
-        <div className="flex flex-wrap gap-2 text-[11px]">
-          {post.tags.map((tag) => {
-            // Use dark theme colors for dark backgrounds
-            const tagClass = "bg-black/40 border-white/20 text-white";
-
-            return (
-              <Chip key={tag} className={tagClass}>
-                #{tag}
-              </Chip>
-            );
-          })}
+        <div className="flex flex-wrap gap-2 text-xs">
+          {post.tags.map((tag) => (
+            <Chip key={tag} variant="dark">
+              #{tag}
+            </Chip>
+          ))}
         </div>
 
         <div className="space-y-4 text-sm leading-relaxed text-white/80 prose prose-invert max-w-none">
@@ -86,12 +81,12 @@ export default function BlogPostBody({ post }: Props) {
               ),
               a: ({ href, children }) => {
                 if (href) {
+                  const isExternal = href.startsWith('http://') || href.startsWith('https://');
                   return (
                     <a
                       href={href}
                       className="text-rh-pink-light hover:text-rh-pink-dark underline decoration-rh-pink-light/50 hover:decoration-rh-pink-dark/50 transition"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     >
                       {children}
                     </a>

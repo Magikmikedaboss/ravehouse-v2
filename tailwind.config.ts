@@ -47,6 +47,11 @@ const config: Config = {
           page: "rgb(var(--rh-bg-page) / <alpha-value>)",
           card: "rgb(var(--rh-bg-card) / <alpha-value>)",
         },
+        "rh-cyan-light": "rgb(var(--rh-cyan-light) / <alpha-value>)",
+        "rh-orange-light": "rgb(var(--rh-orange-light) / <alpha-value>)",
+        "rh-pink-light": "rgb(var(--rh-pink-light) / <alpha-value>)",
+        "rh-pink-dark": "rgb(var(--rh-pink-dark) / <alpha-value>)",
+        "rh-purple-light": "rgb(var(--rh-purple-light) / <alpha-value>)",
       },
       borderRadius: {
         "rh-lg": "var(--rh-radius-lg)",

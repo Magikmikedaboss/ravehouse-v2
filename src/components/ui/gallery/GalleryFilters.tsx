@@ -1,7 +1,7 @@
 // src/components/ui/gallery/GalleryFilters.tsx
 "use client";
 
-const FILTERS = ["All nights", "This month", "Warehouse", "Rooftop", "Afterhours"];
+export const FILTERS = ["All nights", "This month", "Warehouse", "Rooftop", "Afterhours"];
 
 interface GalleryFiltersProps {
   selectedFilter: string;
