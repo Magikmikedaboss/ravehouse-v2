@@ -144,14 +144,14 @@ export default function EventsPage() {
             <h2 className="mt-1 text-sm font-semibold">
               Three nights, three different stories. Pick your vibe or run the full trilogy.
             </h2>
-            <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
-              <Chip className="bg-rave-pink/25 border-none">
+            <div className="mt-3 flex flex-wrap gap-2 text-xxs">
+              <Chip variant="pink">
                 Fri · Warehouse Eclipse
               </Chip>
-              <Chip className="bg-rave-cyan/25 border-none">
+              <Chip variant="cyan">
                 Sat · Neon Alley Rooftop
               </Chip>
-              <Chip className="bg-rave-purple/25 border-none">
+              <Chip variant="purple">
                 Sun · Basement 305 afterhours
               </Chip>
             </div>
@@ -231,7 +231,7 @@ export default function EventsPage() {
                     {event.genres.map((g) => (
                       <Chip
                         key={g}
-                        className="bg-rave-purple/15 border-rave-purple/30 text-[11px]"
+                        variant="purple"
                       >
                         {g}
                       </Chip>
@@ -268,9 +268,9 @@ export default function EventsPage() {
                   >
                     <div>
                       <p className="font-medium text-white">{item.title}</p>
-                      <p className="text-[11px] text-white/65">{item.slot}</p>
+                      <p className="text-xxs text-white/65">{item.slot}</p>
                     </div>
-                    <Chip className="bg-green-500/15 border-green-400/30 text-[11px] text-green-300">
+                    <Chip variant="success">
                       {item.status}
                     </Chip>
                   </div>

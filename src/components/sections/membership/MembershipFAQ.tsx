@@ -4,10 +4,10 @@
 export default function MembershipFAQ() {
   return (
     <section className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-white">Frequently Asked Questions</h2>
+      <h2 className="text-xl font-bold text-center text-white sm:text-2xl md:text-3xl">Frequently Asked Questions</h2>
       {/* TODO: Display FAQ accordion */}
       <div className="text-center text-white/50 py-10">
-        <p>🚧 Membership FAQ coming in Phase 2 implementation</p>
+        <p className="text-sm md:text-base">🚧 Membership FAQ coming in Phase 2 implementation</p>
       </div>
     </section>
   );

@@ -43,10 +43,10 @@ export default function GalleryNeon() {
       
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-semibold text-white drop-shadow-lg">
+        <h1 className="text-2xl font-semibold text-white shadow-rh-soft sm:text-3xl md:text-4xl">
           Ravehouse Entertainment Gallery
         </h1>
-        <p className="mt-2 text-neutral-300">
+        <p className="mt-2 text-sm text-neutral-300 md:text-base">
           Moments from the underground — warehouses, rooftops, afterhours.
         </p>
       </div>
@@ -77,7 +77,7 @@ export default function GalleryNeon() {
             key={item.id}
             className="mb-6 break-inside-avoid group cursor-pointer transition-all"
           >
-            <div className="relative overflow-hidden rounded-2xl shadow-md
+            <div className="relative overflow-hidden rounded-2xl shadow-rh-soft
                 bg-[#1A0B0B]/60 border border-white/5
                 group-hover:shadow-[0_0_30px_rgba(255,0,80,0.5)]
                 group-hover:-translate-y-1 transition-all duration-300"
@@ -91,7 +91,7 @@ export default function GalleryNeon() {
               />
 
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                <h3 className="text-white text-lg font-semibold drop-shadow-lg">
+                <h3 className="text-white text-lg font-semibold shadow-rh-soft">
                   {item.title}
                 </h3>
                 <span className="text-pink-400 text-sm">{item.tag}</span>

@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
@@ -12,6 +12,41 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Close mobile menu on outside click
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [mobileMenuOpen]);
+
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [mobileMenuOpen]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur">
@@ -53,7 +88,7 @@ export default function SiteHeader() {
                       }`}>
                         {item.label}
                       </NavigationMenu.Trigger>
-                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-xl animate-in fade-in-0 zoom-in-95">
+                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95">
                         <ul className="p-2">
                           {item.children.map((child) => (
                             <li key={child.href}>
@@ -118,7 +153,7 @@ export default function SiteHeader() {
           </svg>        </button>      </div>
       {/* Mobile nav */}
       {mobileMenuOpen && (
-        <div className="border-t border-white/10 bg-black/95 backdrop-blur md:hidden">
+        <div ref={mobileMenuRef} className="border-t border-white/10 bg-black/95 backdrop-blur md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="flex flex-col gap-2">
             {NAV_ITEMS.map((item) => {
@@ -132,7 +167,6 @@ export default function SiteHeader() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
                           active
                             ? "bg-white text-black"
@@ -169,7 +203,6 @@ export default function SiteHeader() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            onClick={() => setMobileMenuOpen(false)}
                             className="block rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/5 hover:text-white transition"
                           >
                             {child.label}
@@ -187,7 +220,6 @@ export default function SiteHeader() {
                 </Chip>
                 <Link
                   href="/tickets"
-                  onClick={() => setMobileMenuOpen(false)}
                   className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-sm font-semibold text-white shadow-rh-soft"
                 >
                   Get Tickets

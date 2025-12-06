@@ -12,7 +12,7 @@ interface BlogFiltersProps {
   onViewChange?: (view: "grid" | "stack") => void;
 }
 
-export default function BlogFilters({ selectedCategory: externalSelected, onCategoryChange, view: externalView, onViewChange }: BlogFiltersProps = {}) {
+export default function BlogFilters({ selectedCategory: externalSelected, onCategoryChange, view: externalView, onViewChange }: BlogFiltersProps) {
   const [internalActive, setInternalActive] = useState("All");
   const active = externalSelected ?? internalActive;
   const handleCategoryChange = (category: string) => {

@@ -112,7 +112,7 @@ export default function AboutPage() {
                 and night runners building sound-first, consent-forward parties off
                 the strip and under the radar.
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
+              <div className="mt-4 flex flex-wrap gap-3">
                 <ButtonLink href="/events" className="glow">
                   See upcoming lineups
                 </ButtonLink>
@@ -120,11 +120,11 @@ export default function AboutPage() {
                   Book a Ravehouse Entertainment night
                 </ButtonLink>
               </div>
-              <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-white/60">
-                <Chip className="bg-rave-orange/15 border-rave-orange/30">
+              <div className="mt-2 flex flex-wrap gap-2 text-xxs text-white/60">
+                <Chip variant="orange">
                   Las Vegas · Warehouses, rooftops, afterhours
                 </Chip>
-                <Chip className="bg-rave-purple/15 border-rave-purple/30">
+                <Chip variant="purple">
                   Since 2019 · 120+ events
                 </Chip>
               </div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
           </ul>
           <div className="grid grid-cols-2 gap-3 text-xs text-white/65">
             <div className="rounded-2xl bg-white/5 p-3">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">
+              <p className="text-xxs uppercase tracking-wider text-white/40">
                 BASE
               </p>
               <p className="mt-1 text-sm font-medium text-white">
@@ -162,7 +162,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="rounded-2xl bg-white/5 p-3">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">
+              <p className="text-xxs uppercase tracking-wider text-white/40">
                 VIBE
               </p>
               <p className="mt-1 text-sm font-medium text-white">
@@ -192,18 +192,18 @@ export default function AboutPage() {
                 <div className="flex items-center justify-between gap-2">
                   <div>
                     <p className="text-sm font-semibold">{person.name}</p>
-                    <p className="text-[11px] text-white/60">{person.role}</p>
+                    <p className="text-xxs text-white/60">{person.role}</p>
                   </div>
-                  <Chip className="bg-rave-pink/20 border-none text-[11px]">                    {person.tag}
+                  <Chip variant="pink">                    {person.tag}
                   </Chip>
                 </div>
                 <p className="text-xs text-white/70">{person.blurb}</p>
               </div>
-              <div className="mt-3 flex flex-wrap gap-1 text-[11px] text-white/70">
+              <div className="mt-3 flex flex-wrap gap-1 text-xxs text-white/70">
                 {person.focus.map((f) => (
                   <Chip
                     key={f}
-                    className="bg-white/5 border-white/10 text-[11px]"
+                    variant="neutral"
                   >
                     {f}
                   </Chip>
@@ -226,7 +226,7 @@ export default function AboutPage() {
           {values.map((value) => (
             <Surface key={value.title} className="p-4">
               <p className="text-xs text-white/50">Principle</p>
-              <h3 className="mt-1 text-sm font-semibold text-white">
+              <h3 className="mt-2 text-sm font-semibold text-white">
                 {value.title}
               </h3>
               <p className="mt-2 text-xs text-white/70">{value.body}</p>

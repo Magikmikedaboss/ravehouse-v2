@@ -10,7 +10,6 @@ import GalleryBottomStrip from "@/components/ui/gallery/GalleryBottomStrip";
 export default function GalleryPage() {
   // TODO: Implement actual filtering logic when backend/gallery data is available
   const handleFilterChange = (filter: string) => {
-    console.log("Filter changed to:", filter);
     // Future: Filter gallery items based on selected filter
   };
 

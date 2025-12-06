@@ -32,7 +32,7 @@ export default function ThisIsRavehouse() {
         {stats.map((s) => (
           <Surface key={s.label} className="p-4">
             <p className="text-xs text-white/70">{s.label}</p>
-            <div className="mt-2 text-2xl font-semibold text-white">{s.value}</div>
+            <div className="mt-2 text-lg font-semibold text-white sm:text-xl md:text-2xl">{s.value}</div>
             <p className="mt-1 text-xs text-white/80">{s.blurb}</p>          </Surface>
         ))}
 

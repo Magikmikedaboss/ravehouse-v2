@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { Button } from "./Button";
+import { Input } from "./Input";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -28,27 +30,27 @@ export default function NewsletterSignup() {
   return (
     <form onSubmit={handleSubmit} className="space-y-2 text-xs text-white">
       <div className="flex gap-2">
-        <input
+        <Input
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 rounded-full border border-white/20 bg-black/40 px-3 py-2 text-xs text-white placeholder:text-white/40"
           placeholder="you@nightshift.com"
+          error={status === "error" ? errorMessage : undefined}
+          className="flex-1"
         />
-        <button
+        <Button
           type="submit"
-          disabled={status === "loading"}
-          className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-black hover:brightness-110"
+          loading={status === "loading"}
+          className="text-xs"
         >
-          {status === "loading" ? "..." : "Join"}
-        </button>
+          Join
+        </Button>
       </div>
-      {status === "error" && errorMessage && (
-        <p className="text-[11px] text-red-400">{errorMessage}</p>
-      )}
       {status === "success" && (
-        <p className="text-[11px] text-green-400">Thanks! Check your inbox.</p>
+        <div aria-live="polite" aria-atomic="true">
+          <p className="text-[11px] text-green-400">Thanks! Check your inbox.</p>
+        </div>
       )}
       <p className="text-[11px] text-white/50">
         No spam. Just events, recaps and the occasional mix.

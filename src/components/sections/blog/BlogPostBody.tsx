@@ -84,16 +84,25 @@ export default function BlogPostBody({ post }: Props) {
                   {children}
                 </p>
               ),
-              a: ({ href, children }) => (
-                <a
-                  href={href}
-                  className="text-rh-pink-light hover:text-rh-pink-dark underline decoration-rh-pink-light/50 hover:decoration-rh-pink-dark/50 transition"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {children}
-                </a>
-              ),
+              a: ({ href, children }) => {
+                if (href) {
+                  return (
+                    <a
+                      href={href}
+                      className="text-rh-pink-light hover:text-rh-pink-dark underline decoration-rh-pink-light/50 hover:decoration-rh-pink-dark/50 transition"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {children}
+                    </a>
+                  );
+                }
+                return (
+                  <span className="text-rh-pink-light underline decoration-rh-pink-light/50">
+                    {children}
+                  </span>
+                );
+              },
               blockquote: ({ children }) => (
                 <blockquote className="border-l-4 border-rh-cyan-light pl-4 italic text-white/70 my-4">
                   {children}

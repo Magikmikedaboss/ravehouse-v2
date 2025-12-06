@@ -9,6 +9,7 @@ type ButtonBaseProps = {
   children: ReactNode;
   variant?: Variant;
   className?: string;
+  loading?: boolean;
 };
 
 type ButtonProps = ButtonBaseProps &
@@ -21,7 +22,7 @@ const baseClasses =
 
 function variantClasses(variant: Variant = "primary") {
   if (variant === "secondary") {
-    return "border border-white/20 bg-white/5 text-white/90 hover:bg-white/10";
+    return "border border-white/20 bg-white/10 text-white hover:bg-white/15";
   }
   if (variant === "ghost") {
     return "btn-ghost";
@@ -32,12 +33,51 @@ function variantClasses(variant: Variant = "primary") {
   return "";
 }
 
-export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
+// Simple spinner component
+function Spinner({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={`animate-spin ${className}`}
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      />
+    </svg>
+  );
+}
+
+export function Button({ 
+  children, 
+  variant = "primary", 
+  className = "", 
+  loading = false,
+  disabled,
+  ...props 
+}: ButtonProps) {
+  const isDisabled = disabled || loading;
+  
   return (
     <button
       {...props}
-      className={`btn ${baseClasses} ${variantClasses(variant)} ${className}`}
+      disabled={isDisabled}
+      className={`btn ${baseClasses} ${variantClasses(variant)} ${
+        loading ? 'opacity-70 cursor-wait' : ''
+      } ${isDisabled && !loading ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
     >
+      {loading && <Spinner className="mr-2 h-4 w-4" />}
       {children}
     </button>
   );
@@ -52,13 +92,17 @@ export function ButtonLink({
   children,
   variant = "primary",
   className = "",
+  loading = false,
   href,
 }: ButtonLinkProps) {
   return (
     <Link
       href={href}
-      className={`btn ${baseClasses} ${variantClasses(variant)} ${className}`}
+      className={`btn ${baseClasses} ${variantClasses(variant)} ${
+        loading ? 'opacity-70 cursor-wait' : ''
+      } ${className}`}
     >
+      {loading && <Spinner className="mr-2 h-4 w-4" />}
       {children}
     </Link>
   );

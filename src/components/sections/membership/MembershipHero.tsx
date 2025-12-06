@@ -25,26 +25,26 @@ export default function MembershipHero() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="#tiers"
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rh-pink-light/40 transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-rh-medium shadow-rh-pink-light/40 transition hover:brightness-105"
               >
                 View membership tiers
               </Link>
               <Link
                 href="/vip"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/85 hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/90 hover:bg-white/15"
               >
                 Explore VIP nights
               </Link>
             </div>
 
-            <div className="flex flex-wrap gap-2 text-[11px] mt-2">
-              <Chip className="bg-white/10 border-transparent">
+            <div className="flex flex-wrap gap-2 text-xxs mt-2">
+              <Chip variant="neutral">
                 Vegas · Warehouse · Rooftop
               </Chip>
-              <Chip className="bg-white/10 border-transparent">
+              <Chip variant="neutral">
                 Member presales &amp; line skip
               </Chip>
-              <Chip className="bg-white/10 border-transparent">
+              <Chip variant="neutral">
                 Photo drops &amp; aftermovies
               </Chip>
             </div>
@@ -54,15 +54,15 @@ export default function MembershipHero() {
           <div className="space-y-4 text-xs text-white/75">
             <div className="grid grid-cols-3 gap-3 text-center">
               <div>
-                <p className="text-2xl font-semibold text-white">3</p>
+                <p className="text-lg font-semibold text-white sm:text-xl md:text-2xl">3</p>
                 <p className="text-white/60">Tiers</p>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-white">10+</p>
+                <p className="text-lg font-semibold text-white sm:text-xl md:text-2xl">10+</p>
                 <p className="text-white/60">Nights / year</p>
               </div>
               <div>
-                <p className="text-2xl font-semibold text-white">LV</p>
+                <p className="text-lg font-semibold text-white sm:text-xl md:text-2xl">LV</p>
                 <p className="text-white/60">Home base</p>
               </div>
             </div>

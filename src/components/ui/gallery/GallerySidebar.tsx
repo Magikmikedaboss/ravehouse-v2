@@ -15,34 +15,34 @@ export default function GallerySidebar() {
               We auto-cut every set so you might be in from last night.
             </h3>
           </div>
-          <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30 text-[11px] text-white/90">
+          <Chip variant="pink">
             Warehouse Eclipse
           </Chip>
         </div>
 
         <div className="grid grid-cols-3 gap-3 text-center text-xs">
           <div>
-            <p className="text-2xl font-semibold text-white/90">47</p>
+            <p className="text-lg font-semibold text-white/90 sm:text-xl md:text-2xl">47</p>
             <p className="text-white/70">Photos found</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold text-white/90">6</p>
+            <p className="text-lg font-semibold text-white/90 sm:text-xl md:text-2xl">6</p>
             <p className="text-white/70">Clips with you</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold text-white/90">3</p>
+            <p className="text-lg font-semibold text-white/90 sm:text-xl md:text-2xl">3</p>
             <p className="text-white/70">Polaroids scanned</p>
           </div>
         </div>
 
-        <div className="space-y-1 text-[11px] text-white/65">
+        <div className="space-y-1 text-xxs text-white/65">
           <p>Face match is 80% complete.</p>
           <div className="h-2 rounded-full bg-black/10">
             <div className="h-2 w-4/5 rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark" />
           </div>
         </div>
 
-        <button disabled className="w-full rounded-full bg-black/10 px-3 py-1.5 text-[11px] text-white/80 hover:bg-black/15 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed">
+        <button disabled className="w-full rounded-full bg-black/10 px-3 py-1.5 text-xxs text-white/80 hover:bg-black/15 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed">
           Improve matches with more selfies
         </button>
       </Surface>

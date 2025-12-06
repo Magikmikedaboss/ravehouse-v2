@@ -31,7 +31,7 @@ export default function GalleryHero() {
           <div className="flex flex-wrap gap-2">
             <a
               href="#gallery-feed"
-              className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rh-pink-light/40 transition hover:brightness-105"
+              className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-rh-medium shadow-rh-pink-light/40 transition hover:brightness-105"
             >
               Browse full gallery
             </a>
@@ -43,16 +43,10 @@ export default function GalleryHero() {
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-2 text-[11px] text-white/70">
-            <Chip className="bg-rh-pink-light/20 border-rh-pink-light/40 text-white">
-              High-res downloads
-            </Chip>
-            <Chip className="bg-rh-cyan/20 border-rh-cyan/40 text-white">
-              Story-ready reels
-            </Chip>
-            <Chip className="bg-rh-purple/20 border-rh-purple/40 text-white">
-              Polaroid prints
-            </Chip>
+          <div className="flex flex-wrap gap-2 text-xxs text-white/70">
+            <Chip variant="orange">High-res downloads</Chip>
+            <Chip variant="cyan">Photo dumps & recaps</Chip>
+            <Chip variant="purple">Polaroid prints</Chip>
           </div>
         </div>
       </Surface>
@@ -61,26 +55,26 @@ export default function GalleryHero() {
       <Surface
         className="relative overflow-hidden bg-black/40 p-3 md:p-4"
       >
-        <div className="relative rounded-[1.75rem] bg-black/60 shadow-card overflow-hidden">
+        <div className="relative rounded-[1.75rem] bg-black/60 shadow-rh-soft overflow-hidden">
           <div className="relative aspect-[9/16] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/30 via-rh-purple/20 to-black" />
 
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-[11px] text-white/80">
               <div className="flex gap-2">
-                <Chip className="bg-rh-orange/20 border-rh-orange/40 text-white">
+                <Chip variant="orange">
                   Aftermovie
                 </Chip>
-                <Chip className="bg-rh-cyan/20 border-rh-cyan/40 text-white">
+                <Chip variant="cyan">
                   Feb 1
                 </Chip>
               </div>
             </div>
 
             <div className="absolute left-4 right-4 bottom-16 space-y-2">
-              <p className="text-[11px] text-white/75">
+              <p className="text-xxs text-white/75">
                 🔊 Sound On · 0:58 · Warehouse District
               </p>
-              <button className="mt-2 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-semibold text-black hover:bg-white">
+              <button className="mt-2 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 text-xxs font-semibold text-black hover:bg-white">
                 Watch full aftermovie
               </button>
             </div>

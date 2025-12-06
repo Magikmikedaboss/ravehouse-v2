@@ -52,18 +52,18 @@ export default function TicketsPage() {
               you&apos;ve unlocked with Ravehouse Entertainment. Show this screen at the door, keep
               brightness high for scan.
             </p>
-            <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
-              <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Las Vegas · PT</Chip>
-              <Chip className="bg-rave-orange/15 border-rave-orange/30">
+            <div className="mt-3 flex flex-wrap gap-2 text-xxs">
+              <Chip variant="cyan">Las Vegas · PT</Chip>
+              <Chip variant="orange">
                 Show this screen at the door
               </Chip>
-              <Chip className="bg-rave-purple/15 border-rave-purple/30">
+              <Chip variant="purple">
                 Keep brightness high for scan
               </Chip>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-3 text-xs">
-            <Chip className="bg-rave-pink/25 border-none text-[11px]">
+            <Chip variant="pink">
               2 active tickets tonight
             </Chip>            <ButtonLink href="/tickets" variant="secondary" className="px-4 py-2">
               Export as PDF wallet
@@ -79,10 +79,10 @@ export default function TicketsPage() {
             <button className="rounded-full bg-black text-white px-3 py-1 font-medium">
               Upcoming
             </button>
-            <button className="rounded-full border border-black/15 bg-black/5 px-3 py-1">
+            <button className="rounded-full border border-black/15 bg-black/10 px-3 py-1">
               Past nights
             </button>
-            <button className="rounded-full border border-black/15 bg-black/5 px-3 py-1">
+            <button className="rounded-full border border-black/15 bg-black/10 px-3 py-1">
               Transfers
             </button>
           </div>
@@ -126,7 +126,7 @@ export default function TicketsPage() {
                       {ticket.title}
                     </h2>
 
-                    <div className="grid gap-2 text-[11px] text-black/70 sm:grid-cols-3">
+                    <div className="grid gap-2 text-xxs text-black/70 sm:grid-cols-3">
                       <div>
                         <p className="text-black/50">Entry window</p>
                         <p className="mt-0.5">{ticket.entryWindow}</p>
@@ -141,17 +141,17 @@ export default function TicketsPage() {
                       </div>
                     </div>
 
-                    <p className="mt-1 text-[11px] text-black/60">
+                    <p className="mt-1 text-xxs text-black/60">
                       {index === 0
                         ? "Admit 1 · No re-entry · 21+ · Bring valid ID. Location drops 3h before doors."
                         : "Host will text with booth arrival details. Bottle minimum applies."}
                     </p>
 
-                    <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-black/70">
+                    <div className="mt-2 flex flex-wrap gap-2 text-xxs text-black/70">
                       {ticket.tags.map((t) => (
                         <Chip
                           key={t}
-                          className="bg-black/5 border-black/10 text-[11px] text-black"
+                          className="bg-black/10 border-black/15 text-[11px] text-black"
                         >
                           {t}
                         </Chip>
@@ -175,7 +175,7 @@ export default function TicketsPage() {
                   {/* Right mini card: barcode + meta */}
                   <div className="flex flex-col justify-between rounded-2xl bg-black/40 p-3 text-xs">
                     <div>
-                      <p className="text-[11px] text-black/50">
+                      <p className="text-xxs text-black/50">
                         Venue drop: {index === 0 ? "10:00PM" : "Skyline Tower · Strip"}
                       </p>
                       <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave-pink/30 via-rave-purple/30 to-black/80 flex items-center justify-center">
@@ -189,12 +189,12 @@ export default function TicketsPage() {
                           />
                         ))}
                       </div>
-                      <p className="mt-2 text-[11px] text-black/60">
+                      <p className="mt-2 text-xxs text-black/60">
                         Door staff will scan either code. Keep this open in line.
                       </p>
                     </div>
 
-                    <div className="mt-3 flex items-center justify-between text-[11px] text-black/60">
+                    <div className="mt-3 flex items-center justify-between text-xxs text-black/60">
                       <div>
                         <p className="text-black/40">Ticket ID</p>
                         <p className="font-mono text-xs text-black">{ticket.id}</p>
@@ -227,7 +227,7 @@ export default function TicketsPage() {
                     How deep you&apos;ve gone into the underground this year.
                   </h3>
                 </div>
-                <Chip className="bg-rave-orange/15 border-rave-orange/30 text-[11px] text-black">
+                <Chip variant="orange">
                   Member since 2023
                 </Chip>
               </div>
@@ -247,11 +247,11 @@ export default function TicketsPage() {
                 </div>
               </div>
 
-              <p className="text-[11px] text-black/60">
+              <p className="text-xxs text-black/60">
                 3 more nights and you hit your next status.
               </p>
 
-              <div className="flex gap-2 text-[11px]">
+              <div className="flex gap-2 text-xxs">
                 <button className="flex-1 rounded-full bg-black/5 px-3 py-1 text-center text-black/75">
                   Local
                 </button>
@@ -269,11 +269,11 @@ export default function TicketsPage() {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-xs text-black/60">Ticket perks</p>
-                  <h3 className="mt-1 text-sm font-semibold text-black">
+                  <h3 className="mt-2 text-sm font-semibold text-black">
                     Your tickets are more than barcodes. Unlock extras as you go.
                   </h3>
                 </div>
-                <button className="text-[11px] text-black/60 hover:text-black">
+                <button className="text-xxs text-black/60 hover:text-black">
                   Manage
                 </button>
               </div>
@@ -281,17 +281,17 @@ export default function TicketsPage() {
               <div className="grid gap-3 text-xs md:grid-cols-3">
                 <div>
                   <p className="text-black/50">Skip-line tokens</p>
-                  <p className="mt-1 text-lg font-semibold text-black">2</p>
-                  <p className="text-[11px] text-black/60">Available</p>
+                  <p className="mt-2 text-lg font-semibold text-black">2</p>
+                  <p className="text-xxs text-black/60">Available</p>
                 </div>
                 <div>
                   <p className="text-black/50">Guestlist credits</p>
-                  <p className="mt-1 text-lg font-semibold text-black">1</p>
-                  <p className="text-[11px] text-black/60">For this month</p>
+                  <p className="mt-2 text-lg font-semibold text-black">1</p>
+                  <p className="text-xxs text-black/60">For this month</p>
                 </div>
                 <div>
                   <p className="text-black/50">Free drink chips</p>
-                  <p className="mt-1 text-lg font-semibold text-black">
+                  <p className="mt-2 text-lg font-semibold text-black">
                     0 <span className="text-xs text-black/60">→ earn 2 more nights</span>
                   </p>
                 </div>

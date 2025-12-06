@@ -1,14 +1,42 @@
 import { ReactNode } from "react";
 
+type ChipVariant =
+  | "default"
+  | "pink"
+  | "cyan"
+  | "orange"
+  | "purple"
+  | "neutral"
+  | "ghost"
+  | "success"
+  | "brand";
+
 type ChipProps = {
   children: ReactNode;
+  variant?: ChipVariant;
   className?: string;
 };
 
-export default function Chip({ children, className = "" }: ChipProps) {
+const variantClasses: Record<ChipVariant, string> = {
+  default: "bg-white/5 border-white/10 text-white/80",
+  pink: "bg-rh-pink-light/20 border-rh-pink-light/40 text-white",
+  cyan: "bg-rh-cyan/20 border-rh-cyan/40 text-white",
+  orange: "bg-rh-orange/20 border-rh-orange/40 text-white",
+  purple: "bg-rh-purple/20 border-rh-purple/40 text-white",
+  neutral: "bg-white/10 border-transparent text-white/80",
+  ghost: "bg-black/60 border-white/20 text-white",
+  success: "bg-green-500/15 border-green-400/30 text-green-300",
+  brand: "bg-gradient-to-r from-rh-pink-light/20 to-rh-cyan/20 border-rh-pink-light/30 text-white",
+};
+
+export default function Chip({
+  children,
+  variant = "default",
+  className = ""
+}: ChipProps) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${className}`}
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${variantClasses[variant]} ${className}`}
     >
       {children}
     </span>

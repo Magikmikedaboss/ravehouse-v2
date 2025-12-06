@@ -17,10 +17,12 @@ export default function GalleryFilters({ selectedFilter, onFilterChange }: Galle
           <button
             key={filter}
             onClick={() => onFilterChange(filter)}
+            aria-pressed={selectedFilter === filter}
+            aria-label={`Filter gallery by ${filter.toLowerCase()}`}
             className={`rounded-full border px-3 py-1 text-xs transition ${
               selectedFilter === filter
                 ? "border-white/30 bg-white/10 text-white"
-                : "border-white/10 bg-white/5 text-white/70 hover:bg-white/10"
+                : "border-white/10 bg-white/10 text-white/80 hover:bg-white/15"
             }`}
           >
             {filter}
@@ -29,7 +31,7 @@ export default function GalleryFilters({ selectedFilter, onFilterChange }: Galle
       </div>
       <button 
         disabled 
-        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/70 text-xs opacity-50 cursor-not-allowed"
+        className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-white/80 text-xs opacity-50 cursor-not-allowed"
       >
         {/* TODO: Phase 2 - Implement download selected photos */}
         Download selected

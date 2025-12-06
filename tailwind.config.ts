@@ -52,7 +52,37 @@ const config: Config = {
         "rh-md": "var(--rh-radius-md)",
       },
       boxShadow: {
-        "rh-soft": "0 18px 45px rgba(0,0,0,0.75)",
+        "rh-soft": "0 18px 45px rgba(0,0,0,0.75)",        // Components
+        "rh-medium": "0 8px 24px rgba(0,0,0,0.6)",        // Cards
+        "rh-hard": "0 24px 60px rgba(0,0,0,0.9)",         // Modals
+        "rh-glow": "0 0 24px rgba(246, 104, 121, 0.6)",   // Glow effects
+      },
+      fontSize: {
+        'xxs': ['0.688rem', { lineHeight: '1rem' }],      // 11px
+        'xs': ['0.75rem', { lineHeight: '1rem' }],         // 12px
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],     // 14px
+        'base': ['1rem', { lineHeight: '1.5rem' }],        // 16px
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],     // 18px
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],      // 20px
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],         // 24px
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],    // 30px
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],      // 36px
+      },
+      letterSpacing: {
+        'wider': '0.2em',
+        'wider-lg': '0.25em',
+        'wider-xl': '0.3em',
+      },
+      spacing: {
+        // Use only these for consistency
+        '1': '0.25rem',   // 4px
+        '2': '0.5rem',    // 8px
+        '3': '0.75rem',   // 12px
+        '4': '1rem',      // 16px
+        '6': '1.5rem',    // 24px
+        '8': '2rem',      // 32px
+        '12': '3rem',     // 48px
+        '16': '4rem',     // 64px
       },
     },
   },

@@ -18,37 +18,33 @@ export default function HomeHero() {
             className="object-cover"
           />
           <div className="absolute inset-x-4 top-4 flex justify-between text-xs text-white/80">
-            <Chip className="bg-black/60 border-white/20 text-white">
-              Next up: Warehouse Eclipse
-            </Chip>
-            <Chip className="bg-black/60 border-white/20 text-white">
-              Las Vegas, NV · Secret warehouse
-            </Chip>
+            <Chip variant="ghost">Next up: Warehouse Eclipse</Chip>
+            <Chip variant="ghost">Las Vegas, NV · Secret warehouse</Chip>
           </div>
         </div>
 
         <div className="p-6 sm:p-8">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-white/70">
+          <p className="text-xxs uppercase tracking-wider-xl text-white/70">
             Underground parties for the nocturnal.
           </p>
           <h1 className="mt-2 text-3xl font-semibold sm:text-4xl text-white">
             RAVEHOUSE ENTERTAINMENT
           </h1>
-          <p className="mt-3 max-w-xl text-sm text-white/80">
+          <p className="mt-4 max-w-xl text-sm text-white/80">
             Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
             across Las Vegas. No fluff, just sweat and strobes.
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink href="/events">See Upcoming Raves</ButtonLink>
             <ButtonLink href="/tickets" variant="secondary">
               Join Guestlist
             </ButtonLink>
           </div>
-          <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-            <Chip className="bg-white/10 border-white/20 text-white">This Friday · 2AM – Sunrise</Chip>
-            <Chip className="bg-white/10 border-white/20 text-white">Location drops day-of only</Chip>
-            <Chip className="bg-white/10 border-white/20 text-white">21+ · Techno, house, bass</Chip>
-          </div>
+            <div className="mt-3 flex flex-wrap gap-2 text-xxs">
+              <Chip variant="ghost">This Friday · 2AM – Sunrise</Chip>
+              <Chip variant="ghost">Location drops day-of only</Chip>
+              <Chip variant="ghost">21+ · Techno, house, bass</Chip>
+            </div>
         </div>
       </Surface>
 
@@ -62,10 +58,10 @@ export default function HomeHero() {
               <p className="mt-1 text-xs text-white/70">
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
-              <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                <Chip className="bg-white/10 border-white/20 text-white">Techno</Chip>
-                <Chip className="bg-white/10 border-white/20 text-white">Warehouse</Chip>
-                <Chip className="bg-white/10 border-white/20 text-white">Secret lineup</Chip>
+              <div className="mt-2 flex flex-wrap gap-2 text-xxs">
+                <Chip variant="neutral">Techno</Chip>
+                <Chip variant="neutral">Warehouse</Chip>
+                <Chip variant="neutral">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">
