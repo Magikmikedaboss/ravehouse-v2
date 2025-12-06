@@ -91,7 +91,6 @@ export default function GearGrid() {
             </p>
 
             <div className="mt-3 flex items-center justify-between text-[11px] text-white/60">
-              {!item.link && <span>Brand &amp; link TBD</span>}
               {item.link ? (
                 <Link
                   href={item.link}
@@ -103,11 +102,10 @@ export default function GearGrid() {
                 </Link>
               ) : (
                 <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px]">
-                  Coming soon
+                  Brand &amp; link coming soon
                 </span>
               )}
-            </div>
-          </Surface>
+            </div>          </Surface>
         ))}
       </div>
     </section>

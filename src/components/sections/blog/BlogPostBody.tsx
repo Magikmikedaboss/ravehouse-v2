@@ -29,16 +29,15 @@ export default function BlogPostBody({ post }: Props) {
                 {post.category}
               </Chip>
               <div className="rounded bg-white/20 px-2 py-1">
-                <span className="text-black">
+                <span className="text-white">
                   {new Date(post.date).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
                     year: "numeric",
                   })}
                 </span>
-                <span className="text-black"> · {post.readTime}</span>
-              </div>
-            </div>
+                <span className="text-white"> · {post.readTime}</span>
+              </div>            </div>
             <h1 className="text-2xl font-semibold sm:text-3xl text-white">
               {post.title}
             </h1>

@@ -32,11 +32,14 @@ export default function SiteHeader() {
             {NAV_ITEMS.map((item) => {
               const normalizedPathname = pathname.replace(/\/$/, "");
               const normalizedHref = item.href?.replace(/\/$/, "") || "";
-              const active = item.href && (
-                normalizedPathname === normalizedHref ||
-                (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"))
-              );
-
+              const active = item.href
+                ? normalizedPathname === normalizedHref ||
+                  (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"))
+                : item.children?.some((child) => {
+                    const childHref = child.href.replace(/\/$/, "");
+                    return normalizedPathname === childHref ||
+                      normalizedPathname.startsWith(childHref + "/");
+                  });
               return (
                 <NavigationMenu.Item key={item.label}>
                   {item.children ? (
