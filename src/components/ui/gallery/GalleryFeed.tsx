@@ -114,7 +114,7 @@ export default function GalleryFeed() {
 
             {/* Overlay on hover */}
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="text-center text-white">
+              <div className="text-center text-black">
                 <p className="text-sm font-semibold">{item.event}</p>
                 <p className="text-xs opacity-80">{item.type}</p>
               </div>
@@ -122,10 +122,9 @@ export default function GalleryFeed() {
 
             {/* Bottom info */}
             <div className="absolute bottom-3 left-3 right-3">
-              <p className="text-xs text-white/80 font-medium">{item.event} · {item.date}</p>
-              <p className="text-xs text-white/60 mt-1">{item.description}</p>
-            </div>
-          </div>
+              <p className="text-xs text-white/90 font-medium">{item.event} · {item.date}</p>
+              <p className="text-xs text-white/70 mt-1">{item.description}</p>
+            </div>          </div>
         </Surface>
       ))}
     </div>

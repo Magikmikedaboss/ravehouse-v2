@@ -11,13 +11,13 @@ export default function GalleryHero() {
         <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/15 via-rh-pink-dark/10 to-transparent" />
         <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
           <div className="space-y-3">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-white/55">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-black/55">
               Afterhours archive
             </p>
-            <h1 className="text-3xl font-semibold sm:text-4xl">
+            <h1 className="text-3xl font-semibold sm:text-4xl text-black">
               Gallery &amp; aftermovies
             </h1>
-            <p className="max-w-xl text-sm text-white/75">
+            <p className="max-w-xl text-sm text-black/75">
               Relive the lasers, smoke and warehouse echoes from every Ravehouse Entertainment
               night in Las Vegas. Photo drops, aftermovies, clips and reels
               straight from the floor.

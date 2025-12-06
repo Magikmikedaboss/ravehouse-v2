@@ -4,9 +4,9 @@ A modern Next.js web application for Ravehouse Entertainment, featuring undergro
 
 ## 🚀 Technologies Used
 
-- **Framework**: Next.js 16 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS v4 with custom rave color palette
+- **Styling**: Tailwind CSS v3 with custom rave color palette
 - **UI Components**: Radix UI (accessible navigation)
 - **Content**: React Markdown with GitHub Flavored Markdown support
 - **Build Tool**: Turbopack (via Next.js)
@@ -33,7 +33,7 @@ A modern Next.js web application for Ravehouse Entertainment, featuring undergro
 ravehouse-v2/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── globals.css         # Global styles & Tailwind v4 theme
+│   │   ├── globals.css         # Global styles & Tailwind v3 theme
 │   │   ├── layout.tsx          # Root layout with metadata & navigation
 │   │   ├── page.tsx            # Homepage composition
 │   │   ├── about/              # About page (fully implemented)
@@ -206,7 +206,7 @@ Ready for deployment on Vercel, Netlify, or any Node.js host. The app uses stati
 - **Routes**: 10 fully functional pages (/ /blog /about /events /gallery /gear /membership /tickets /vip /contact)
 - **Blog System**: Static generation with SEO metadata for all posts
 - **Static Assets**: Image placeholders ready for real assets
-- **Performance**: Optimized with Next.js 16, Turbopack, and modern React 19
+- **Performance**: Optimized with Next.js 15, Turbopack, and modern React 19
 - **Security**: Proper sanitization, secure external links, TypeScript safety
 - **Accessibility**: Radix UI components, proper ARIA attributes
 
@@ -227,7 +227,7 @@ This is a personal project for Ravehouse Entertainment. For AI-assisted developm
 ## 🔧 Build Status
 
 ```bash
-✓ Next.js 16.0.7 with React 19.2.0
+✓ Next.js 15 with React 19.2.0
 ✓ TypeScript compilation successful
 ✓ All 10 routes build without errors
 ✓ Static generation working for blog posts

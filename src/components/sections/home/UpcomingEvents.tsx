@@ -43,7 +43,7 @@ export default function UpcomingEvents() {
         title="Upcoming events"
         description="Curated underground parties across Las Vegas. No fluff, just sweat and strobes."
         endSlot={
-          <Link href="/events" className="hover:text-white">
+          <Link href="/events" className="hover:text-black">
             View all events →
           </Link>
         }
@@ -56,8 +56,8 @@ export default function UpcomingEvents() {
             type="button"
             className={`inline-flex items-center rounded-full border px-3 py-1 text-xs ${
               f === "All"
-                ? "border-white bg-white text-black"
-                : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+                ? "border-black bg-black text-white"
+                : "border-black/10 bg-black/5 text-black/75 hover:bg-black/10"
             }`}
           >
             {f}
@@ -69,23 +69,23 @@ export default function UpcomingEvents() {
         {upcomingEvents.map((event) => (
           <Surface key={event.id} className="overflow-hidden">
             <div className="relative h-40 w-full">
-              <Chip className="absolute left-3 top-3 bg-black/75 border-white/20">
+              <Chip className="absolute left-3 top-3 bg-white/80 border-black/20 text-black">
                 {event.tag}
               </Chip>
               {/* Placeholder gradient – replace with real event image */}
-              <div className="h-full w-full bg-gradient-to-br from-rh-pink-light/40 via-rh-pink-shell/40 to-black" />
+              <div className="h-full w-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400" />
             </div>
             <div className="p-4">
-              <p className="text-[11px] text-white/50">
+              <p className="text-[11px] text-black/50">
                 {event.date} · {event.time}
               </p>
-              <h3 className="mt-1 text-sm font-semibold">{event.title}</h3>
-              <p className="mt-1 text-xs text-white/65">{event.venue}</p>
+              <h3 className="mt-1 text-sm font-semibold text-black">{event.title}</h3>
+              <p className="mt-1 text-xs text-black/65">{event.venue}</p>
               <div className="mt-3 flex items-center justify-between text-xs">
-                <span className="text-white/75">{event.price}</span>
+                <span className="text-black/75">{event.price}</span>
                 <Link
                   href={`/events/${event.id}`}
-                  className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black"
+                  className="rounded-full bg-black px-3 py-1 text-[11px] font-semibold text-white"
                 >
                   View Event
                 </Link>

@@ -36,7 +36,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute left-3 right-3 top-3 flex items-center justify-between text-[11px]">
-                  <Chip className="bg-black/70 border-white/20">
+                  <Chip className="bg-rh-pink-light/20 border-rh-pink-light/40 text-white">
                     {post.category}
                   </Chip>
                   <span className="text-white/70">{post.readTime}</span>

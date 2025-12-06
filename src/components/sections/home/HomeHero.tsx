@@ -17,24 +17,24 @@ export default function HomeHero() {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-x-4 top-4 flex justify-between text-xs text-white/80">
-            <Chip className="bg-black/60 border-white/20">
+          <div className="absolute inset-x-4 top-4 flex justify-between text-xs text-black/80">
+            <Chip className="bg-white/60 border-black/20 text-black">
               Next up: Warehouse Eclipse
             </Chip>
-            <Chip className="bg-black/60 border-white/20">
+            <Chip className="bg-white/60 border-black/20 text-black">
               Las Vegas, NV · Secret warehouse
             </Chip>
           </div>
         </div>
 
         <div className="p-6 sm:p-8">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-black/50">
             Underground parties for the nocturnal.
           </p>
-          <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-semibold sm:text-4xl text-black">
             RAVEHOUSE ENTERTAINMENT
           </h1>
-          <p className="mt-3 max-w-xl text-sm text-white/70">
+          <p className="mt-3 max-w-xl text-sm text-black/70">
             Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
             across Las Vegas. No fluff, just sweat and strobes.
           </p>
@@ -44,10 +44,10 @@ export default function HomeHero() {
               Join Guestlist
             </ButtonLink>
           </div>
-          <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-            <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">This Friday · 2AM – Sunrise</Chip>
-            <Chip className="bg-rh-cyan-light/15 border-rh-cyan-light/30">Location drops day-of only</Chip>
-            <Chip className="bg-rh-purple-light/15 border-rh-purple-light/30">21+ · Techno, house, bass</Chip>
+          <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-black/50">
+            <Chip className="bg-gray-100/80 border-gray-200 text-black">This Friday · 2AM – Sunrise</Chip>
+            <Chip className="bg-gray-100/80 border-gray-200 text-black">Location drops day-of only</Chip>
+            <Chip className="bg-gray-100/80 border-gray-200 text-black">21+ · Techno, house, bass</Chip>
           </div>
         </div>
       </Surface>
@@ -57,27 +57,27 @@ export default function HomeHero() {
         <Surface className="flex flex-col justify-between p-5">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs text-white/50">Warehouse Eclipse</p>
-              <h2 className="text-lg font-semibold">This Saturday</h2>
-              <p className="mt-1 text-xs text-white/60">
+              <p className="text-xs text-black/50">Warehouse Eclipse</p>
+              <h2 className="text-lg font-semibold text-black">This Saturday</h2>
+              <p className="mt-1 text-xs text-black/60">
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
               <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                <Chip className="bg-rh-pink-light/20 border-transparent">Techno</Chip>
-                <Chip className="bg-rh-orange-light/20 border-transparent">Warehouse</Chip>
-                <Chip className="bg-rh-cyan-light/20 border-transparent">Secret lineup</Chip>
+                <Chip className="bg-gray-100 border-gray-200 text-black">Techno</Chip>
+                <Chip className="bg-gray-100 border-gray-200 text-black">Warehouse</Chip>
+                <Chip className="bg-gray-100 border-gray-200 text-black">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">
-              <div className="rounded-full bg-white/5 px-3 py-1 text-xs text-white/60">
-                Spots left: <span className="font-semibold text-rave-cyan">84 / 400</span>
+              <div className="rounded-full bg-black/5 px-3 py-1 text-xs text-black/60">
+                Spots left: <span className="font-semibold text-blue-600">84 / 400</span>
               </div>
-              <div className="mt-3 font-semibold">$45 GA</div>
+              <div className="mt-3 font-semibold text-black">$45 GA</div>
             </div>
           </div>
           <ButtonLink
             href="/events/warehouse-eclipse"
-            className="mt-4 w-full justify-center bg-white text-black"
+            className="mt-4 w-full justify-center"
             variant="secondary"
           >
             View Event
@@ -85,16 +85,17 @@ export default function HomeHero() {
         </Surface>
 
         <Surface className="p-5">
-          <p className="text-xs text-white/60">This week at Ravehouse Entertainment</p>
-          <h2 className="mt-1 text-lg font-semibold">
+          <p className="text-xs text-black/60">This week at Ravehouse Entertainment</p>
+          <h2 className="mt-1 text-lg font-semibold text-black">
             2 events · Rooftop &amp; Warehouse · Vegas Strip
           </h2>
-          <p className="mt-2 text-xs text-white/60">
-            Tap into: <span className="font-medium">House · Techno · Bass</span>
+          <p className="mt-2 text-xs text-black/60">
+            Tap into: <span className="font-medium text-black">House · Techno · Bass</span>
           </p>
           <ButtonLink
             href="/events"
-            className="mt-4 bg-gradient-to-r from-rave-cyan to-rave-purple text-black"
+            className="mt-4"
+            variant="primary"
           >
             Free RSVP available
           </ButtonLink>

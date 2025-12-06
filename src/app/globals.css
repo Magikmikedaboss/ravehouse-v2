@@ -1,54 +1,74 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* src/app/globals.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* 🎨 Ravehouse mural palette – DMC based */
 :root {
-  /* Reds / pinks - RGB channel format */
-  --rh-pink-shell-vdark: 136 62 67;
-  --rh-pink-dark: 238 50 70;
-  --rh-pink-light: 246 104 121;
+  /* Reds / pinks */
+  --rh-pink-shell-vdark: 136 62 67; /* DMC 221 Very Dark Shell Pink */
+  --rh-pink-dark:        238 50 70; /* DMC 891 Dark Carnation */
+  --rh-pink-light:       246 104 121; /* DMC 893 Light Carnation */
+
+  /* Cyans */
+  --rh-cyan:       0 206 209; /* Dark Turquoise */
+  --rh-cyan-light: 64 224 208; /* Turquoise */
+
+  /* Oranges */
+  --rh-orange:       255 69 0; /* Orange Red */
+  --rh-orange-light: 255 165 0; /* Orange */
+
+  /* Purples */
+  --rh-purple:       138 43 226; /* Blue Violet */
+  --rh-purple-light: 153 50 204; /* Dark Orchid */
 
   /* Grays */
-  --rh-tin: 215 215 216;
-  --rh-tin-dark: 174 174 177;
-  --rh-pewter-vdark: 66 66 66;
-  --rh-border-subtle: 215 215 216;
+  --rh-tin:          215 215 216; /* DMC 02 Tin */
+  --rh-tin-dark:     174 174 177; /* DMC 04 Dark Tin */
+  --rh-pewter-vdark: 66 66 66; /* DMC 3799 Very Dark Pewter Gray */
 
-  /* Additional colors */
-  --rh-cyan: 75 226 255;
-  --rh-orange: 255 159 75;
-  --rh-purple: 124 58 237;
-  --rh-cyan-light: 150 240 255;
-  --rh-orange-light: 255 200 150;
-  --rh-purple-light: 180 120 250;
-
-  /* Surfaces */
-  --rh-bg-page: 15 5 8;
-  --rh-bg-card: 20 8 12;
+  /* Base surfaces & radii */
+  --rh-bg-page:   15 5 8;
+  --rh-bg-card:   20 8 12;
+  --rh-border-subtle: rgba(215, 215, 216, 0.18);
 
   --rh-radius-lg: 1.5rem;
   --rh-radius-md: 1rem;
+
+  color-scheme: light;
+}
+
+/* Reset-ish basics */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
 body {
-  background: radial-gradient(circle at 0% 0%, rgb(246 104 121 / 0.3) 0%, transparent 45%),
-    radial-gradient(circle at 100% 100%, rgb(136 62 67 / 0.3) 0%, transparent 55%),
-    radial-gradient(circle at 100% 0%, #000 0%, transparent 60%),
-    rgb(15 5 8);
-  color: rgb(215 215 216);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Inter", sans-serif;
+  background: white;
+  color: black;
 }
 
-/* Your custom utilities below */
+/* 🔧 Reusable primitives */
 
 /* Glassy card container */
 .surface {
   border-radius: var(--rh-radius-lg);
   background:
-    radial-gradient(circle at 0 0, rgba(var(--rh-pink-light), 0.12), transparent 55%),
-    radial-gradient(circle at 100% 100%, rgba(var(--rh-pink-shell-vdark), 0.18), transparent 60%),
-    rgba(var(--rh-bg-card), 0.9);
-  border: 1px solid rgba(215, 215, 216, 0.18);
+    radial-gradient(circle at 0 0, rgba(246, 104, 121, 0.12), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(136, 62, 67, 0.18), transparent 60%),
+    rgba(10, 5, 8, 0.9);
+  border: 1px solid var(--rh-border-subtle);
   box-shadow:
     0 18px 45px rgba(0, 0, 0, 0.75),
     0 0 0 1px rgba(0, 0, 0, 0.6);
@@ -76,31 +96,31 @@ body {
 .btn-primary {
   background: linear-gradient(
     135deg,
-    rgb(var(--rh-pink-light)),
-    rgb(var(--rh-pink-dark))
+    var(--rh-pink-light),
+    var(--rh-pink-dark)
   );
   color: #fff;
   box-shadow:
-    0 0 18px rgba(var(--rh-pink-light), 0.45),
+    0 0 18px rgba(246, 104, 121, 0.45),
     0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 0 22px rgba(var(--rh-pink-light), 0.7),
+    0 0 22px rgba(246, 104, 121, 0.7),
     0 14px 36px rgba(0, 0, 0, 0.85);
 }
 
 .btn-ghost {
   background: rgba(10, 8, 10, 0.8);
-  border-color: rgb(var(--rh-border-subtle));
-  color: rgb(var(--rh-tin));
+  border-color: var(--rh-border-subtle);
+  color: var(--rh-tin);
 }
 
 .btn-ghost:hover {
-  border-color: rgb(var(--rh-pink-light));
-  color: rgb(var(--rh-pink-light));
+  border-color: var(--rh-pink-light);
+  color: var(--rh-pink-light);
 }
 
 /* Misc utilities */

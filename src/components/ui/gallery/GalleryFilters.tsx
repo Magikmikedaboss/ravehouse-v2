@@ -19,8 +19,8 @@ export default function GalleryFilters() {
             type="button"
             className={`rounded-full border px-3 py-1 transition ${
               index === 0
-                ? "border-white bg-white text-black"
-                : "border-white/15 bg-white/5 text-white/75 hover:bg-white/10"
+                ? "border-black bg-black text-white"
+                : "border-black/15 bg-black/5 text-black/75 hover:bg-black/10"
             }`}
           >
             {filter}
@@ -29,12 +29,11 @@ export default function GalleryFilters() {
       </div>
 
       <div className="flex flex-wrap items-center gap-2 text-[11px]">
-        <button className="rounded-full border border-white/15 bg-white/5 px-3 py-1 hover:bg-white/10">
+        <button className="rounded-full border border-black/15 bg-black/5 px-3 py-1 hover:bg-black/10 text-black/75">
           ⬇ Download your snaps
         </button>
-        <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">Grid</Chip>
-        <Chip className="bg-rh-cyan/15 border-rh-cyan/30">Stack</Chip>
-      </div>
+        <Chip className="border bg-rh-pink-light/15 border-rh-pink-light/30">Grid</Chip>
+        <Chip className="border bg-rh-cyan/15 border-rh-cyan/30">Stack</Chip>      </div>
     </div>
   );
 }

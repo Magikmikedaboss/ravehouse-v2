@@ -22,20 +22,22 @@ export default function BlogPostBody({ post }: Props) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/85 via-white/40 to-transparent" />
           <div className="absolute left-4 right-4 bottom-4 space-y-2">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] text-white/75">
-              <Chip className="bg-black/70 border-white/20">
+            <div className="flex flex-wrap items-center gap-2 text-[11px] text-black/75">
+              <Chip className="bg-white/80 border-black/20 text-black">
                 {post.category}
               </Chip>
-              <span className="text-white/70">
-                {new Date(post.date).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </span>
-              <span>· {post.readTime}</span>
+              <div className="rounded bg-black/20 px-2 py-1">
+                <span className="text-white">
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+                <span className="text-white"> · {post.readTime}</span>
+              </div>
             </div>
             <h1 className="text-2xl font-semibold sm:text-3xl">
               {post.title}
@@ -45,15 +47,17 @@ export default function BlogPostBody({ post }: Props) {
       </Surface>
 
       <Surface className="p-5 space-y-4">
-        <div className="flex flex-wrap gap-2 text-[11px] text-white/70">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-white/5 px-2 py-0.5"
-            >
-              #{tag}
-            </span>
-          ))}
+        <div className="flex flex-wrap gap-2 text-[11px]">
+          {post.tags.map((tag, index) => {
+            // Use light colors for light theme
+            const tagClass = "bg-gray-100 border-gray-200 text-black";
+
+            return (
+              <Chip key={tag} className={tagClass}>
+                #{tag}
+              </Chip>
+            );
+          })}
         </div>
 
         <div className="space-y-4 text-sm leading-relaxed text-white/80 prose prose-invert max-w-none">
@@ -96,21 +100,16 @@ export default function BlogPostBody({ post }: Props) {
                   {children}
                 </blockquote>
               ),
-              code: (props) => {
-                const { inline, children } = props as { inline?: boolean; children: React.ReactNode };
-                return inline ? (
-                  <code className="bg-black/30 px-1.5 py-0.5 rounded text-rh-orange-light font-mono text-sm">
-                    {children}
-                  </code>
-                ) : (
-                  <code className="block bg-black/50 p-4 rounded-lg text-rh-orange-light font-mono text-sm overflow-x-auto">
-                    {children}
-                  </code>
-                );
-              },
+              code: ({ children }) => (
+                <code className="bg-black/30 px-1.5 py-0.5 rounded text-rh-orange-light font-mono text-sm">
+                  {children}
+                </code>
+              ),
               pre: ({ children }) => (
                 <pre className="bg-black/50 p-4 rounded-lg overflow-x-auto my-4">
-                  {children}
+                  <code className="text-rh-orange-light font-mono text-sm">
+                    {children}
+                  </code>
                 </pre>
               ),
               ul: ({ children }) => (

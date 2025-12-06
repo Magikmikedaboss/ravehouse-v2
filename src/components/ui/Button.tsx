@@ -20,19 +20,47 @@ const baseClasses =
 
 function variantClasses(variant: Variant = "primary") {
   if (variant === "secondary") {
-    return "border border-white/20 bg-white/5 text-white/90 hover:bg-white/10";
+    return "border border-black/20 bg-black/5 text-black/90 hover:bg-black/10";
   }
   if (variant === "ghost") {
-    return "bg-transparent text-white/80 hover:bg-white/10";
+    return "bg-transparent text-black/80 hover:bg-black/10";
   }
-  return "bg-gradient-to-r from-rh-pink-light to-rh-pink-dark text-white shadow-rh-soft hover:brightness-110";
+  return "";
 }
 
 export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
+  const isPrimary = variant === "primary";
+  const primaryStyles = isPrimary ? {
+    background: "linear-gradient(135deg, var(--rh-pink-light), var(--rh-pink-dark))",
+    color: "#fff",
+    boxShadow: "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
+  } : {};
+
+  const primaryHoverStyles = isPrimary ? {
+    transform: "translateY(-1px)",
+    boxShadow: "0 0 22px rgba(246, 104, 121, 0.7), 0 14px 36px rgba(0, 0, 0, 0.85)",
+  } : {};
+
   return (
     <button
       {...props}
       className={`${baseClasses} ${variantClasses(variant)} ${className}`}
+      style={{
+        ...primaryStyles,
+        ...props.style,
+      }}
+      onMouseEnter={(e) => {
+        if (isPrimary) {
+          Object.assign(e.currentTarget.style, primaryHoverStyles);
+        }
+        props.onMouseEnter?.(e);
+      }}
+      onMouseLeave={(e) => {
+        if (isPrimary) {
+          Object.assign(e.currentTarget.style, primaryStyles);
+        }
+        props.onMouseLeave?.(e);
+      }}
     >
       {children}
     </button>
@@ -50,10 +78,18 @@ export function ButtonLink({
   className = "",
   href,
 }: ButtonLinkProps) {
+  const isPrimary = variant === "primary";
+  const primaryStyles = isPrimary ? {
+    background: "linear-gradient(135deg, var(--rh-pink-light), var(--rh-pink-dark))",
+    color: "#fff",
+    boxShadow: "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
+  } : {};
+
   return (
     <Link
       href={href}
       className={`${baseClasses} ${variantClasses(variant)} ${className}`}
+      style={primaryStyles}
     >
       {children}
     </Link>
