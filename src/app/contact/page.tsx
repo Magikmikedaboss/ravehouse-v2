@@ -3,7 +3,7 @@
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { ButtonLink } from "@/components/ui/Button";
+import { Button, ButtonLink } from "@/components/ui/Button";
 
 const contactMethods = [
   {
@@ -104,12 +104,9 @@ export default function ContactPage() {
                         Contact
                       </ButtonLink>
                     ) : (
-                      <button 
-                        disabled 
-                        className="text-xs opacity-50 cursor-not-allowed px-3 py-1 rounded-lg border border-white/10"
-                      >
+                      <Button disabled variant="secondary" className="text-xs">
                         Coming soon
-                      </button>
+                      </Button>
                     )}                  </div>
                 </div>
               </div>

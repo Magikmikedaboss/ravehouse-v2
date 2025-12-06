@@ -9,7 +9,8 @@ import GalleryBottomStrip from "@/components/ui/gallery/GalleryBottomStrip";
 
 export default function GalleryPage() {
   // TODO: Implement actual filtering logic when backend/gallery data is available
-  const handleFilterChange = (filter: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleFilterChange = (_filter: string) => {
     // Future: Filter gallery items based on selected filter
   };
 

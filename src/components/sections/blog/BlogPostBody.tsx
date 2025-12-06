@@ -47,7 +47,7 @@ export default function BlogPostBody({ post }: Props) {
 
       <Surface className="p-5 space-y-4">
         <div className="flex flex-wrap gap-2 text-[11px]">
-          {post.tags.map((tag, index) => {
+          {post.tags.map((tag) => {
             // Use dark theme colors for dark backgrounds
             const tagClass = "bg-black/40 border-white/20 text-white";
 
