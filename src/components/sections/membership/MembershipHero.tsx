@@ -25,7 +25,7 @@ export default function MembershipHero() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="#tiers"
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-rh-medium shadow-rh-pink-light/40 transition hover:brightness-105"
+                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-rh-pink-light/40 transition hover:brightness-105"
               >
                 View membership tiers
               </Link>
@@ -36,7 +36,6 @@ export default function MembershipHero() {
                 Explore VIP nights
               </Link>
             </div>
-
             <div className="flex flex-wrap gap-2 text-xxs mt-2">
               <Chip variant="neutral">
                 Vegas · Warehouse · Rooftop

@@ -63,11 +63,10 @@ export default function GallerySidebar() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
           <div className="absolute left-3 right-3 top-3 flex flex-wrap gap-2 text-[10px]">
-            <Chip className="bg-rh-cyan/20 border-rh-cyan/40 text-white/90">Techno marathon</Chip>
-            <Chip className="bg-rh-purple/20 border-rh-purple/40 text-white/90">
+            <Chip variant="cyan">Techno marathon</Chip>
+            <Chip variant="purple">
               House on the Strip
-            </Chip>
-          </div>
+            </Chip>          </div>
           <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-[11px] text-white/80">
             <p>Export with Ravehouse Entertainment watermark or clean.</p>
             <button disabled className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed">
