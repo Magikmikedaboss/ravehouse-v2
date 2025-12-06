@@ -100,6 +100,15 @@ body {
     transform 120ms ease-out;
 }
 
+.btn:focus-visible {
+  outline: 2px solid rgb(var(--rh-cyan));
+  outline-offset: 2px;
+}
+
+.btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .btn-primary {
   background: linear-gradient(
     135deg,
@@ -119,6 +128,19 @@ body {
     0 14px 36px rgba(0, 0, 0, 0.85);
 }
 
+.btn-primary:focus-visible {
+  outline: 2px solid rgb(var(--rh-cyan));
+  outline-offset: 2px;
+  box-shadow:
+    0 0 18px rgba(246, 104, 121, 0.45),
+    0 12px 30px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(var(--rh-cyan), 0.3);
+}
+
+.btn-primary:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .btn-ghost {
   background: rgba(10, 8, 10, 0.8);
   border-color: rgba(var(--rh-border-subtle), 0.3);
@@ -128,6 +150,17 @@ body {
 .btn-ghost:hover {
   border-color: rgb(var(--rh-pink-light));
   color: rgb(var(--rh-pink-light));
+}
+
+.btn-ghost:focus-visible {
+  outline: 2px solid rgb(var(--rh-cyan));
+  outline-offset: 2px;
+  border-color: rgba(var(--rh-border-subtle), 0.5);
+  box-shadow: 0 0 0 4px rgba(var(--rh-cyan), 0.3);
+}
+
+.btn-ghost:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Misc utilities */

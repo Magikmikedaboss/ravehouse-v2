@@ -102,6 +102,7 @@ export default function SiteHeader() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden rounded-lg p-2 text-black/70 hover:bg-black/10 hover:text-black transition"
           aria-label="Toggle mobile menu"
+          aria-expanded={mobileMenuOpen}
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {mobileMenuOpen ? (
@@ -109,8 +110,7 @@ export default function SiteHeader() {
             ) : (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
-          </svg>
-        </button>      </div>
+          </svg>        </button>      </div>
       {/* Mobile nav */}
       {mobileMenuOpen && (
         <div className="border-t border-black/10 bg-white/95 backdrop-blur md:hidden">

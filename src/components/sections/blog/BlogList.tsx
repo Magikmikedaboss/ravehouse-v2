@@ -86,10 +86,9 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
       </div>
 
       {filteredPosts.length === 0 && (
-        <div className="text-center text-white/50 py-10">
+        <div className="text-center text-black/50 py-10">
           <p>No posts found in this category yet.</p>
         </div>
-      )}
-    </div>
+      )}    </div>
   );
 }

@@ -31,16 +31,16 @@ export default function ThisIsRavehouse() {
       <div className="grid gap-4 md:grid-cols-4">
         {stats.map((s) => (
           <Surface key={s.label} className="p-4">
-            <p className="text-xs text-black/50">{s.label}</p>
-            <div className="mt-2 text-2xl font-semibold text-black">{s.value}</div>
-            <p className="mt-1 text-xs text-black/70">{s.blurb}</p>
-          </Surface>
+            <p className="text-xs text-white/60">{s.label}</p>
+            <div className="mt-2 text-2xl font-semibold text-white">{s.value}</div>
+            <p className="mt-1 text-xs text-white/80">{s.blurb}</p>          </Surface>
         ))}
 
         <Surface className="flex flex-col justify-between p-4">
           <div>
             <p className="text-xs text-black/50">Booking &amp; collabs</p>
-            <p className="mt-2 text-sm text-black/80">
+            <p className="text-xs text-white/60">Booking &amp; collabs</p>
+            <p className="mt-2 text-sm text-white/90">
               Bring Ravehouse Entertainment to your warehouse, festival afterparty or brand experience.
             </p>
           </div>
