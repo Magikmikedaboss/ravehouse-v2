@@ -39,7 +39,7 @@ export default function TicketsPage() {
     <div className="space-y-10 pb-10">
       {/* PAGE HEADER */}
       <section className="space-y-4">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-black/50">
           My access
         </p>
         <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
@@ -47,7 +47,7 @@ export default function TicketsPage() {
             <h1 className="text-3xl font-semibold sm:text-4xl">
               Tickets &amp; passes
             </h1>
-            <p className="mt-2 max-w-xl text-sm text-white/70">
+            <p className="mt-2 max-w-xl text-sm text-black/70">
               Your digital wristbands for every warehouse, rooftop and afterhours
               you&apos;ve unlocked with Ravehouse Entertainment. Show this screen at the door, keep
               brightness high for scan.
@@ -74,19 +74,19 @@ export default function TicketsPage() {
 
       {/* MAIN BODY */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between text-xs text-white/70">
+        <div className="flex items-center justify-between text-xs text-black/70">
           <div className="flex gap-2">
-            <button className="rounded-full bg-white text-black px-3 py-1 font-medium">
+            <button className="rounded-full bg-black text-white px-3 py-1 font-medium">
               Upcoming
             </button>
-            <button className="rounded-full border border-white/15 bg-white/5 px-3 py-1">
+            <button className="rounded-full border border-black/15 bg-black/5 px-3 py-1">
               Past nights
             </button>
-            <button className="rounded-full border border-white/15 bg-white/5 px-3 py-1">
+            <button className="rounded-full border border-black/15 bg-black/5 px-3 py-1">
               Transfers
             </button>
           </div>
-          <button className="text-white/60 hover:text-white">
+          <button className="text-black/60 hover:text-black">
             Show all as stack
           </button>
         </div>
@@ -107,14 +107,14 @@ export default function TicketsPage() {
                 >
                   {/* Ticket info */}
                   <div className="space-y-2">
-                    <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-white/60">
-                      <Chip className="bg-rave-pink/20 border-rave-pink/40">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-black/60">
+                      <Chip className="bg-rave-pink/20 border-rave-pink/40 text-black">
                         {ticket.when}
                       </Chip>
                       <Chip
                         className={
                           index === 0
-                            ? "bg-green-500/15 border-green-400/30 text-green-300"
+                            ? "bg-green-500/15 border-green-400/30 text-green-700"
                             : "bg-rave-cyan/20 border-none text-rave-cyan/80"
                         }
                       >
@@ -122,36 +122,36 @@ export default function TicketsPage() {
                       </Chip>
                     </div>
 
-                    <h2 className="text-sm font-semibold text-white">
+                    <h2 className="text-sm font-semibold text-black">
                       {ticket.title}
                     </h2>
 
-                    <div className="grid gap-2 text-[11px] text-white/70 sm:grid-cols-3">
+                    <div className="grid gap-2 text-[11px] text-black/70 sm:grid-cols-3">
                       <div>
-                        <p className="text-white/50">Entry window</p>
+                        <p className="text-black/50">Entry window</p>
                         <p className="mt-0.5">{ticket.entryWindow}</p>
                       </div>
                       <div>
-                        <p className="text-white/50">Name on ticket</p>
+                        <p className="text-black/50">Name on ticket</p>
                         <p className="mt-0.5">{ticket.nameLine}</p>
                       </div>
                       <div>
-                        <p className="text-white/50">Ticket type</p>
+                        <p className="text-black/50">Ticket type</p>
                         <p className="mt-0.5">{ticket.ticketType}</p>
                       </div>
                     </div>
 
-                    <p className="mt-1 text-[11px] text-white/60">
+                    <p className="mt-1 text-[11px] text-black/60">
                       {index === 0
                         ? "Admit 1 · No re-entry · 21+ · Bring valid ID. Location drops 3h before doors."
                         : "Host will text with booth arrival details. Bottle minimum applies."}
                     </p>
 
-                    <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-white/70">
+                    <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-black/70">
                       {ticket.tags.map((t) => (
                         <Chip
                           key={t}
-                          className="bg-white/5 border-white/10 text-[11px]"
+                          className="bg-black/5 border-black/10 text-[11px] text-black"
                         >
                           {t}
                         </Chip>
@@ -175,7 +175,7 @@ export default function TicketsPage() {
                   {/* Right mini card: barcode + meta */}
                   <div className="flex flex-col justify-between rounded-2xl bg-black/40 p-3 text-xs">
                     <div>
-                      <p className="text-[11px] text-white/50">
+                      <p className="text-[11px] text-black/50">
                         Venue drop: {index === 0 ? "10:00PM" : "Skyline Tower · Strip"}
                       </p>
                       <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave-pink/30 via-rave-purple/30 to-black/80 flex items-center justify-center">
@@ -189,19 +189,19 @@ export default function TicketsPage() {
                           />
                         ))}
                       </div>
-                      <p className="mt-2 text-[11px] text-white/60">
+                      <p className="mt-2 text-[11px] text-black/60">
                         Door staff will scan either code. Keep this open in line.
                       </p>
                     </div>
 
-                    <div className="mt-3 flex items-center justify-between text-[11px] text-white/60">
+                    <div className="mt-3 flex items-center justify-between text-[11px] text-black/60">
                       <div>
-                        <p className="text-white/40">Ticket ID</p>
-                        <p className="font-mono text-xs text-white">{ticket.id}</p>
+                        <p className="text-black/40">Ticket ID</p>
+                        <p className="font-mono text-xs text-black">{ticket.id}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-white/40">Order total</p>
-                        <p className="font-semibold text-white">
+                        <p className="text-black/40">Order total</p>
+                        <p className="font-semibold text-black">
                           {ticket.orderTotal}
                         </p>
                       </div>
@@ -211,7 +211,7 @@ export default function TicketsPage() {
               ))}
             </div>
 
-            <div className="text-xs text-white/60">
+            <div className="text-xs text-black/60">
               Recent nights · <span className="underline">View full history</span>
             </div>
           </div>
@@ -222,43 +222,43 @@ export default function TicketsPage() {
             <Surface className="p-4 space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs text-white/60">Ravehouse Entertainment streak</p>
-                  <h3 className="mt-1 text-sm font-semibold text-white">
+                  <p className="text-xs text-black/60">Ravehouse Entertainment streak</p>
+                  <h3 className="mt-1 text-sm font-semibold text-black">
                     How deep you&apos;ve gone into the underground this year.
                   </h3>
                 </div>
-                <Chip className="bg-rave-orange/15 border-rave-orange/30 text-[11px]">
+                <Chip className="bg-rave-orange/15 border-rave-orange/30 text-[11px] text-black">
                   Member since 2023
                 </Chip>
               </div>
 
               <div className="grid grid-cols-3 gap-3 text-center text-xs">
                 <div>
-                  <p className="text-2xl font-semibold text-white">14</p>
-                  <p className="text-white/60">Nights attended</p>
+                  <p className="text-2xl font-semibold text-black">14</p>
+                  <p className="text-black/60">Nights attended</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-semibold text-white">6</p>
-                  <p className="text-white/60">Warehouses</p>
+                  <p className="text-2xl font-semibold text-black">6</p>
+                  <p className="text-black/60">Warehouses</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-semibold text-white">3</p>
-                  <p className="text-white/60">Genres unlocked</p>
+                  <p className="text-2xl font-semibold text-black">3</p>
+                  <p className="text-black/60">Genres unlocked</p>
                 </div>
               </div>
 
-              <p className="text-[11px] text-white/60">
+              <p className="text-[11px] text-black/60">
                 3 more nights and you hit your next status.
               </p>
 
               <div className="flex gap-2 text-[11px]">
-                <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
+                <button className="flex-1 rounded-full bg-black/5 px-3 py-1 text-center text-black/75">
                   Local
                 </button>
                 <button className="flex-1 rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-3 py-1 text-center text-black font-semibold">
                   Glow
                 </button>
-                <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
+                <button className="flex-1 rounded-full bg-black/5 px-3 py-1 text-center text-black/75">
                   Afterhours
                 </button>
               </div>
@@ -268,40 +268,40 @@ export default function TicketsPage() {
             <Surface className="p-4 space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs text-white/60">Ticket perks</p>
-                  <h3 className="mt-1 text-sm font-semibold text-white">
+                  <p className="text-xs text-black/60">Ticket perks</p>
+                  <h3 className="mt-1 text-sm font-semibold text-black">
                     Your tickets are more than barcodes. Unlock extras as you go.
                   </h3>
                 </div>
-                <button className="text-[11px] text-white/60 hover:text-white">
+                <button className="text-[11px] text-black/60 hover:text-black">
                   Manage
                 </button>
               </div>
 
               <div className="grid gap-3 text-xs md:grid-cols-3">
                 <div>
-                  <p className="text-white/50">Skip-line tokens</p>
-                  <p className="mt-1 text-lg font-semibold text-white">2</p>
-                  <p className="text-[11px] text-white/60">Available</p>
+                  <p className="text-black/50">Skip-line tokens</p>
+                  <p className="mt-1 text-lg font-semibold text-black">2</p>
+                  <p className="text-[11px] text-black/60">Available</p>
                 </div>
                 <div>
-                  <p className="text-white/50">Guestlist credits</p>
-                  <p className="mt-1 text-lg font-semibold text-white">1</p>
-                  <p className="text-[11px] text-white/60">For this month</p>
+                  <p className="text-black/50">Guestlist credits</p>
+                  <p className="mt-1 text-lg font-semibold text-black">1</p>
+                  <p className="text-[11px] text-black/60">For this month</p>
                 </div>
                 <div>
-                  <p className="text-white/50">Free drink chips</p>
-                  <p className="mt-1 text-lg font-semibold text-white">
-                    0 <span className="text-xs text-white/60">→ earn 2 more nights</span>
+                  <p className="text-black/50">Free drink chips</p>
+                  <p className="mt-1 text-lg font-semibold text-black">
+                    0 <span className="text-xs text-black/60">→ earn 2 more nights</span>
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2 text-[11px]">
-                <button className="rounded-full bg-white/10 px-3 py-1">
+                <button className="rounded-full bg-black/10 px-3 py-1 text-black/80">
                   Apply skip-line to Eclipse
                 </button>
-                <button className="rounded-full bg-white/10 px-3 py-1">
+                <button className="rounded-full bg-black/10 px-3 py-1 text-black/80">
                   Save perks for afterhours
                 </button>
               </div>
@@ -309,11 +309,11 @@ export default function TicketsPage() {
 
             {/* Keep tickets handy */}
             <Surface className="p-4 space-y-3">
-              <p className="text-xs text-white/60">Keep tickets handy</p>
-              <h3 className="mt-1 text-sm font-semibold text-white">
+              <p className="text-xs text-black/60">Keep tickets handy</p>
+              <h3 className="mt-1 text-sm font-semibold text-black">
                 Sync your passes to your favorite wallet apps.
               </h3>
-              <p className="text-xs text-white/70">
+              <p className="text-xs text-black/70">
                 Add all upcoming tickets to your phone&apos;s wallet with one tap.
               </p>
               <div className="mt-2 flex flex-wrap gap-2 text-xs">
@@ -321,12 +321,12 @@ export default function TicketsPage() {
                   Add all
                 </ButtonLink>
               </div>
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2 text-[11px] text-white/70">
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-black/5 px-3 py-2 text-[11px] text-black/70">
                 <div>
-                  <p className="font-medium text-white">
+                  <p className="font-medium text-black">
                     Turn on &quot;Door alert&quot; notifications?
                   </p>
-                  <p className="text-white/60">
+                  <p className="text-black/60">
                     We&apos;ll nudge you 20 minutes before your entry window.
                   </p>
                 </div>

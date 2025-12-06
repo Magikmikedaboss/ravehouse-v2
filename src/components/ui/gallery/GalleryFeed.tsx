@@ -108,7 +108,7 @@ export default function GalleryFeed() {
         <Surface key={item.id} className="overflow-hidden group cursor-pointer">
           <div className="relative h-48 w-full">
             {/* Placeholder gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/40 via-rh-pink-shell/40 to-black" />
             {/* TODO: Replace with actual image: <Image src={item.image} alt={item.description} fill className="object-cover" /> */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
@@ -122,10 +122,9 @@ export default function GalleryFeed() {
 
             {/* Bottom info */}
             <div className="absolute bottom-3 left-3 right-3">
-              <p className="text-xs text-white/80 font-medium">{item.event} · {item.date}</p>
-              <p className="text-xs text-white/60 mt-1">{item.description}</p>
-            </div>
-          </div>
+              <p className="text-xs text-white/90 font-medium">{item.event} · {item.date}</p>
+              <p className="text-xs text-white/70 mt-1">{item.description}</p>
+            </div>          </div>
         </Surface>
       ))}
     </div>

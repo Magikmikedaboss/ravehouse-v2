@@ -1,4 +1,5 @@
 // src/components/ui/Button.tsx
+"use client";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import Link from "next/link";
 
@@ -16,23 +17,26 @@ type ButtonProps = ButtonBaseProps &
   };
 
 const baseClasses =
-  "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rave-cyan/70";
+  "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rh-cyan/70";
 
 function variantClasses(variant: Variant = "primary") {
   if (variant === "secondary") {
     return "border border-white/20 bg-white/5 text-white/90 hover:bg-white/10";
   }
   if (variant === "ghost") {
-    return "bg-transparent text-white/80 hover:bg-white/10";
+    return "btn-ghost";
   }
-  return "bg-gradient-to-r from-rave-pink to-rave-orange text-black shadow-glow hover:brightness-110";
+  if (variant === "primary") {
+    return "btn-primary";
+  }
+  return "";
 }
 
 export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
   return (
     <button
       {...props}
-      className={`${baseClasses} ${variantClasses(variant)} ${className}`}
+      className={`btn ${baseClasses} ${variantClasses(variant)} ${className}`}
     >
       {children}
     </button>
@@ -53,7 +57,7 @@ export function ButtonLink({
   return (
     <Link
       href={href}
-      className={`${baseClasses} ${variantClasses(variant)} ${className}`}
+      className={`btn ${baseClasses} ${variantClasses(variant)} ${className}`}
     >
       {children}
     </Link>

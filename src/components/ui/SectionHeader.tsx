@@ -21,12 +21,11 @@ export default function SectionHeader({
             {eyebrow}
           </p>
         )}
-        <h2 className="text-lg font-semibold">{title}</h2>
+        <h2 className="text-lg font-semibold text-white">{title}</h2>
         {description && (
           <p className="mt-1 max-w-2xl text-sm text-white/65">{description}</p>
         )}
       </div>
-      {endSlot && <div className="text-xs text-white/60">{endSlot}</div>}
-    </div>
+      {endSlot && <div className="text-xs text-white/60">{endSlot}</div>}    </div>
   );
 }
