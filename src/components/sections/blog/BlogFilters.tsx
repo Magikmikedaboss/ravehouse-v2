@@ -47,7 +47,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
             className={`rounded-full border px-3 py-1 transition ${
               active === category
                 ? "border-white bg-white text-black"
-                : "border-white/15 bg-white/5 text-white/75 hover:bg-white/10"
+                : "border-white/15 bg-white/10 text-white/90 hover:bg-white/10"
             }`}
           >
             {category}
@@ -64,7 +64,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
           className={`rounded-full border px-3 py-1 transition ${
             currentView === "grid"
               ? "border-white bg-white text-black"
-              : "border-white/15 bg-white/5 text-white/75 hover:bg-white/10"
+              : "border-white/15 bg-white/10 text-white/90 hover:bg-white/10"
           }`}
         >
           Grid
@@ -77,7 +77,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
           className={`rounded-full border px-3 py-1 transition ${
             currentView === "stack"
               ? "border-white bg-white text-black"
-              : "border-white/15 bg-white/5 text-white/75 hover:bg-white/10"
+              : "border-white/15 bg-white/10 text-white/90 hover:bg-white/10"
           }`}
         >
           Stack

@@ -165,11 +165,17 @@ export default function SiteHeader() {
             {NAV_ITEMS.map((item) => {
               const normalizedPathname = pathname.replace(/\/$/, "");
               const normalizedHref = item.href?.replace(/\/$/, "") || "";
-              const active = item.href && (
+              const active = item.href
+                ? (
                 normalizedPathname === normalizedHref ||
                 (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"))
-              );                return (
-                  <div key={item.label}>
+                )
+                : item.children?.some((child) => {
+                    const childHref = child.href.replace(/\/$/, "");
+                    return normalizedPathname === childHref ||
+                      normalizedPathname.startsWith(childHref + "/");
+                  });
+              return (                  <div key={item.label}>
                     {item.href ? (
                       <Link
                         href={item.href}
@@ -188,6 +194,8 @@ export default function SiteHeader() {
                           expandedMobileItem === item.label ? null : item.label
                         )}
                         className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition"
+                        aria-expanded={expandedMobileItem === item.label}
+                        aria-haspopup="true"
                       >
                         {item.label}
                         <svg

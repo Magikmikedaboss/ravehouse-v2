@@ -104,11 +104,13 @@ export default function ContactPage() {
                         Contact
                       </ButtonLink>
                     ) : (
-                      <ButtonLink href="#" className="text-xs opacity-50 cursor-not-allowed">
+                      <button 
+                        disabled 
+                        className="text-xs opacity-50 cursor-not-allowed px-3 py-1 rounded-lg border border-white/10"
+                      >
                         Coming soon
-                      </ButtonLink>
-                    )}
-                  </div>
+                      </button>
+                    )}                  </div>
                 </div>
               </div>
             </Surface>

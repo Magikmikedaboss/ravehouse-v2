@@ -18,7 +18,7 @@ type ChipProps = {
 };
 
 const variantClasses: Record<ChipVariant, string> = {
-  default: "bg-white/5 border-white/10 text-white/80",
+  default: "bg-white/10 border-white/10 text-white/90",
   pink: "bg-rh-pink-light/20 border-rh-pink-light/40 text-white",
   cyan: "bg-rh-cyan/20 border-rh-cyan/40 text-white",
   orange: "bg-rh-orange/20 border-rh-orange/40 text-white",

@@ -196,7 +196,7 @@ export default function EventsPage() {
               className={`inline-flex items-center rounded-full border px-3 py-1 text-xs ${
                 i === 1
                   ? "border-white bg-white text-black"
-                  : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+                  : "border-white/10 bg-white/10 text-white/90 hover:bg-white/10"
               }`}
               type="button"
             >

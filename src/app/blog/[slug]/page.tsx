@@ -5,6 +5,7 @@ import BlogPostBody from "@/components/sections/blog/BlogPostBody";
 import Surface from "@/components/ui/Surface";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -48,17 +49,7 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(resolved.slug);
 
   if (!post) {
-    return (
-      <div className="px-4 py-10 text-white">
-        <h1 className="text-3xl font-semibold">Post not found</h1>
-        <p className="mt-2 text-white/70">
-          The article you&apos;re looking for doesn&apos;t exist or moved.
-        </p>
-        <Link href="/blog" className="mt-4 inline-block text-sm underline">
-          Back to The Circuit
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   const recent = getRecentPosts(5).filter((p) => p.slug !== post.slug).slice(0, 4);
