@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
@@ -14,6 +14,23 @@ export default function SiteHeader() {
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Helper function to determine if a nav item is active
+  const isItemActive = useMemo(() => {
+    const normalizedPathname = pathname.replace(/\/$/, "");
+    return (item: typeof NAV_ITEMS[0]) => {
+      if (item.href) {
+        const normalizedHref = item.href.replace(/\/$/, "");
+        return normalizedPathname === normalizedHref ||
+          (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"));
+      }
+      return item.children?.some((child) => {
+        const childHref = child.href.replace(/\/$/, "");
+        return normalizedPathname === childHref ||
+          normalizedPathname.startsWith(childHref + "/");
+      }) || false;
+    };
+  }, [pathname]);
 
   // Close mobile menu on outside click
   useEffect(() => {
@@ -49,10 +66,8 @@ export default function SiteHeader() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileMenuOpen(false);
   }, [pathname]);
-
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 md:px-6 lg:px-8">
@@ -72,16 +87,7 @@ export default function SiteHeader() {
         <NavigationMenu.Root className="hidden md:flex">
           <NavigationMenu.List className="flex gap-1 rounded-full bg-black/5 p-1">
             {NAV_ITEMS.map((item) => {
-              const normalizedPathname = pathname.replace(/\/$/, "");
-              const normalizedHref = item.href?.replace(/\/$/, "") || "";
-              const active = item.href
-                ? normalizedPathname === normalizedHref ||
-                  (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"))
-                : item.children?.some((child) => {
-                    const childHref = child.href.replace(/\/$/, "");
-                    return normalizedPathname === childHref ||
-                      normalizedPathname.startsWith(childHref + "/");
-                  });
+              const active = isItemActive(item);
               return (
                 <NavigationMenu.Item key={item.label}>
                   {item.children ? (
@@ -110,10 +116,10 @@ export default function SiteHeader() {
                         </ul>
                       </NavigationMenu.Content>
                     </>
-                  ) : (
+                  ) : item.href ? (
                     <NavigationMenu.Link asChild>
                       <Link
-                        href={item.href || "#"}
+                        href={item.href}
                         className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                           active
                             ? "bg-white text-black shadow"
@@ -123,7 +129,7 @@ export default function SiteHeader() {
                         {item.label}
                       </Link>
                     </NavigationMenu.Link>
-                  )}
+                  ) : null}
                 </NavigationMenu.Item>
               );
             })}
@@ -163,18 +169,7 @@ export default function SiteHeader() {
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="flex flex-col gap-2">
             {NAV_ITEMS.map((item) => {
-              const normalizedPathname = pathname.replace(/\/$/, "");
-              const normalizedHref = item.href?.replace(/\/$/, "") || "";
-              const active = item.href
-                ? (
-                normalizedPathname === normalizedHref ||
-                (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"))
-                )
-                : item.children?.some((child) => {
-                    const childHref = child.href.replace(/\/$/, "");
-                    return normalizedPathname === childHref ||
-                      normalizedPathname.startsWith(childHref + "/");
-                  });
+              const active = isItemActive(item);
               return (                  <div key={item.label}>
                     {item.href ? (
                       <Link

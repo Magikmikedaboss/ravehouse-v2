@@ -74,17 +74,6 @@ const config: Config = {
         'wider-lg': '0.25em',
         'wider-xl': '0.3em',
       },
-      spacing: {
-        // Use only these for consistency
-        '1': '0.25rem',   // 4px
-        '2': '0.5rem',    // 8px
-        '3': '0.75rem',   // 12px
-        '4': '1rem',      // 16px
-        '6': '1.5rem',    // 24px
-        '8': '2rem',      // 32px
-        '12': '3rem',     // 48px
-        '16': '4rem',     // 64px
-      },
     },
   },
   plugins: [
