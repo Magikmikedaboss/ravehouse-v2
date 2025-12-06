@@ -36,11 +36,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.excerpt,
       images: [
         {
-          url: post.heroImage,
+          url: post.heroImage || "/images/placeholder.jpg",
           alt: post.title,
         },
-      ],
-    },
+      ],    },
   };
 }
 

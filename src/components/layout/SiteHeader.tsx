@@ -17,13 +17,15 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 md:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-rh-pink-light to-rh-pink-dark shadow-rh-soft text-xs font-bold">
-            RH
+        <Link href="/" className="flex items-center">
+          <div className="flex flex-col leading-tight">
+            <span className="text-lg font-black tracking-wider text-white bg-gradient-to-r from-rh-pink-light via-white to-rh-cyan bg-clip-text text-transparent">
+              RAVEHOUSE
+            </span>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-rh-pink-light/80 uppercase">
+              ENTERTAINMENT
+            </span>
           </div>
-          <span className="text-sm font-semibold tracking-wide text-white">
-            RAVEHOUSE
-          </span>
         </Link>
 
         {/* Desktop nav */}

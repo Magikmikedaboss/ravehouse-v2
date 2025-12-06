@@ -69,11 +69,11 @@ export default function GallerySidebar() {
             </Chip>
           </div>
           <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-[11px] text-white/80">
-            <p>Export with Ravehouse Entertainment watermark or clean.</p>            <button disabled className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed">
+            <p>Export with Ravehouse Entertainment watermark or clean.</p>
+            <button disabled className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed">
               Export all
             </button>
-          </div>
-        </div>
+          </div>        </div>
       </Surface>
 
       {/* Photographer wall */}

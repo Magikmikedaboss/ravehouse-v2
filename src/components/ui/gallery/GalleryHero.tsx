@@ -1,122 +1,100 @@
 // src/components/ui/gallery/GalleryHero.tsx
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
-import Link from "next/link";
 
 export default function GalleryHero() {
   return (
-    <section className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)]">
-      {/* Left: text intro */}
+    <section className="grid gap-5 px-4 pt-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:px-6">
+      {/* Left panel */}
       <Surface className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/15 via-rh-pink-dark/10 to-transparent" />
-        <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/gallery/medium-vecteezy_happy-people-partying-together-on-music-enjoying-night-out_42274992_medium.jpg')",
+          }}
+        />
+        <div className="relative space-y-4 p-6 md:p-8">
           <div className="space-y-3">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-black/55">
-              Afterhours archive
+            <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+              The Afterglow
             </p>
-            <h1 className="text-3xl font-semibold sm:text-4xl text-black">
-              Gallery &amp; aftermovies
+            <h1 className="text-3xl font-semibold sm:text-4xl text-white">
+              Every night, captured.
             </h1>
-            <p className="max-w-xl text-sm text-black/75">
-              Relive the lasers, smoke and warehouse echoes from every Ravehouse Entertainment
-              night in Las Vegas. Photo drops, aftermovies, clips and reels
-              straight from the floor.
+            <p className="max-w-xl text-sm text-white/75">
+              High-res exports, story-ready reels, and Polaroid-style prints
+              from every Ravehouse night. Tag your crew, download your favorites,
+              and relive the energy.
             </p>
           </div>
 
-          <div className="mt-5 space-y-4">
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="#latest-aftermovie"
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rh-pink-light/40 transition hover:brightness-105"
-              >
-                ▶ Play latest aftermovie
-              </Link>
-              <Link
-                href="#recent"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 hover:bg-white/10"
-              >
-                View photo drops
-              </Link>
-            </div>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href="#gallery-feed"
+              className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg shadow-rh-pink-light/40 transition hover:brightness-105"
+            >
+              Browse full gallery
+            </a>
+            <button
+              disabled
+              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Find me in photos (soon)
+            </button>
+          </div>
 
-            <div className="flex flex-wrap gap-2 text-[11px] text-black/65">
-              <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">
-                128+ nights captured
-              </Chip>
-              <Chip className="bg-rh-cyan/15 border-rh-cyan/30">
-                Vegas · Downtown · Warehouse
-              </Chip>
-              <Chip className="bg-rh-purple/15 border-rh-purple/30">
-                Tag @ravehouse for a feature
-              </Chip>
-            </div>
+          <div className="flex flex-wrap gap-2 text-[11px] text-white/70">
+            <Chip className="bg-rh-pink-light/20 border-rh-pink-light/40 text-white">
+              High-res downloads
+            </Chip>
+            <Chip className="bg-rh-cyan/20 border-rh-cyan/40 text-white">
+              Story-ready reels
+            </Chip>
+            <Chip className="bg-rh-purple/20 border-rh-purple/40 text-white">
+              Polaroid prints
+            </Chip>
           </div>
         </div>
       </Surface>
 
-      {/* Right: massive aftermovie feature */}
+      {/* Right panel - Aftermovie preview */}
       <Surface
-        id="latest-aftermovie"
         className="relative overflow-hidden bg-black/40 p-3 md:p-4"
       >
         <div className="relative rounded-[1.75rem] bg-black/60 shadow-card overflow-hidden">
-          {/* Main frame */}
-          <div className="relative h-[340px] w-full sm:h-[420px]">
-            {/* Background image placeholder */}
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: "url('/images/gallery/hero-afterhours.jpg')",
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
+          <div className="relative aspect-[9/16] overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/30 via-rh-purple/20 to-black" />
 
-            {/* Top meta */}
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-[11px] text-white/80">
-              <Chip className="bg-rh-orange/20 border-rh-orange/40">
-                Aftermovie · 04:27
-              </Chip>
-              <Chip className="bg-rh-cyan/20 border-rh-cyan/40">
-                Ravehouse Entertainment · Las Vegas
-              </Chip>
+              <div className="flex gap-2">
+                <Chip className="bg-rh-orange/20 border-rh-orange/40 text-white">
+                  Aftermovie
+                </Chip>
+                <Chip className="bg-rh-cyan/20 border-rh-cyan/40 text-white">
+                  Feb 1
+                </Chip>
+              </div>
             </div>
 
-            {/* Bottom labels */}
-            <div className="absolute left-4 right-4 bottom-4 space-y-1">
-              <p className="text-sm font-semibold">
-                Warehouse Eclipse · Last Friday
-              </p>
+            <div className="absolute left-4 right-4 bottom-16 space-y-2">
               <p className="text-[11px] text-white/75">
-                Strobes, fog and 400 people losing their minds at 3:12AM.
+                🔊 Sound On · 0:58 · Warehouse District
               </p>
               <button className="mt-2 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-semibold text-black hover:bg-white">
-                ▶ Watch recap
+                Watch full aftermovie
               </button>
             </div>
           </div>
 
-          {/* Thumbnail strip */}
           <div className="flex gap-2 border-t border-white/10 bg-black/70 px-3 py-2 text-[11px]">
-            {[
-              "DJ booth POV",
-              "Confetti hit",
-              "Laser tunnel",
-              "Crowd close-up",
-            ].map((label, idx) => (
+            {[1, 2, 3, 4].map((i) => (
               <div
-                key={label}
+                key={i}
                 className="relative h-16 flex-1 overflow-hidden rounded-xl bg-white/5"
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url('/images/gallery/thumb-${idx + 1}.jpg')`,
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/40 via-rh-pink-dark/40 to-black" />
                 <p className="absolute bottom-1 left-2 text-[10px] text-white/80">
-                  {label}
+                  0:{String(i * 15).padStart(2, "0")}
                 </p>
               </div>
             ))}

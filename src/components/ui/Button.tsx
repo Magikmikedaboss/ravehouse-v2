@@ -21,7 +21,7 @@ const baseClasses =
 
 function variantClasses(variant: Variant = "primary") {
   if (variant === "secondary") {
-    return "border border-black/20 bg-black/5 text-black/90 hover:bg-black/10";
+    return "border border-white/20 bg-white/5 text-white/90 hover:bg-white/10";
   }
   if (variant === "ghost") {
     return "btn-ghost";

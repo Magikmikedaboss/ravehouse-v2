@@ -12,7 +12,7 @@ export default function HomeHero() {
         <div className="relative h-80 w-full sm:h-[420px]">
           {/* TODO: swap with your real hero image */}
           <Image
-            src="/images/hero-warehouse.jpg"
+            src="/images/events/vecteezy_crowded-dance-floor-illuminated-by-disco-balls-and-colorful_71852730.jpeg"
             alt="Warehouse crowd at Ravehouse Entertainment"
             fill
             className="object-cover"
