@@ -111,7 +111,7 @@ ravehouse-v2/
 ## 🎨 Styling & Design
 
 - **Theme**: Dark mode with custom gradient backgrounds (#1b0612 to #050309)
-- **Colors**: Custom Tailwind v4 colors (rave-pink, rave-orange, rave-cyan, rave-purple)
+- **Colors**: Custom Tailwind v3 colors (rave-pink, rave-orange, rave-cyan, rave-purple)
 - **Typography**: Sans-serif fonts with tight tracking
 - **Components**: Surface containers with blur effects, glows, and shadows
 - **Chips**: Colorful rave-themed chips replacing neutral backgrounds

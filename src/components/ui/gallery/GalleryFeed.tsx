@@ -114,7 +114,7 @@ export default function GalleryFeed() {
 
             {/* Overlay on hover */}
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="text-center text-black">
+              <div className="text-center text-white">
                 <p className="text-sm font-semibold">{item.event}</p>
                 <p className="text-xs opacity-80">{item.type}</p>
               </div>

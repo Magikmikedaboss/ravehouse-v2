@@ -33,12 +33,14 @@ const config: Config = {
             DEFAULT: "rgb(var(--rh-purple) / <alpha-value>)",
             light: "rgb(var(--rh-purple-light) / <alpha-value>)",
           },
+          green: "rgb(var(--rh-green) / <alpha-value>)",
         },
         rave: {
           pink: "rgb(var(--rh-pink-light) / <alpha-value>)",
           cyan: "rgb(var(--rh-cyan) / <alpha-value>)",
           orange: "rgb(var(--rh-orange) / <alpha-value>)",
           purple: "rgb(var(--rh-purple) / <alpha-value>)",
+          green: "rgb(var(--rh-green) / <alpha-value>)",
         },
         bg: {
           page: "rgb(var(--rh-bg-page) / <alpha-value>)",

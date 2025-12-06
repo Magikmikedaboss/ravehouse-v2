@@ -68,9 +68,8 @@ export default function GallerySidebar() {
               House on the Strip
             </Chip>
           </div>
-          <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-[11px] text-black/80">
-            <p>Export with Ravehouse Entertainment watermark or clean.</p>
-            <button disabled className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black disabled:opacity-50 disabled:cursor-not-allowed">
+          <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-[11px] text-white/80">
+            <p>Export with Ravehouse Entertainment watermark or clean.</p>            <button disabled className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black disabled:opacity-50 disabled:cursor-not-allowed">
               Export all
             </button>
           </div>

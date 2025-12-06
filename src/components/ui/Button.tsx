@@ -1,5 +1,6 @@
 // src/components/ui/Button.tsx
-import { ButtonHTMLAttributes, ReactNode } from "react";
+"use client";
+import { ButtonHTMLAttributes, ReactNode, useState } from "react";
 import Link from "next/link";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -30,15 +31,15 @@ function variantClasses(variant: Variant = "primary") {
 
 export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
   const isPrimary = variant === "primary";
-  const primaryStyles = isPrimary ? {
-    background: "linear-gradient(135deg, var(--rh-pink-light), var(--rh-pink-dark))",
-    color: "#fff",
-    boxShadow: "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
-  } : {};
+  const [isHovered, setIsHovered] = useState(false);
 
-  const primaryHoverStyles = isPrimary ? {
-    transform: "translateY(-1px)",
-    boxShadow: "0 0 22px rgba(246, 104, 121, 0.7), 0 14px 36px rgba(0, 0, 0, 0.85)",
+  const primaryStyles = isPrimary ? {
+    background: "linear-gradient(135deg, rgb(var(--rh-pink-light)), rgb(var(--rh-pink-dark)))",
+    color: "#fff",
+    boxShadow: isHovered 
+      ? "0 0 22px rgba(246, 104, 121, 0.7), 0 14px 36px rgba(0, 0, 0, 0.85)"
+      : "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
+    transform: isHovered ? "translateY(-1px)" : "none",
   } : {};
 
   return (
@@ -50,15 +51,11 @@ export function Button({ children, variant = "primary", className = "", ...props
         ...props.style,
       }}
       onMouseEnter={(e) => {
-        if (isPrimary) {
-          Object.assign(e.currentTarget.style, primaryHoverStyles);
-        }
+        if (isPrimary) setIsHovered(true);
         props.onMouseEnter?.(e);
       }}
       onMouseLeave={(e) => {
-        if (isPrimary) {
-          Object.assign(e.currentTarget.style, primaryStyles);
-        }
+        if (isPrimary) setIsHovered(false);
         props.onMouseLeave?.(e);
       }}
     >
@@ -80,7 +77,7 @@ export function ButtonLink({
 }: ButtonLinkProps) {
   const isPrimary = variant === "primary";
   const primaryStyles = isPrimary ? {
-    background: "linear-gradient(135deg, var(--rh-pink-light), var(--rh-pink-dark))",
+    background: "linear-gradient(135deg, rgb(var(--rh-pink-light)), rgb(var(--rh-pink-dark)))",
     color: "#fff",
     boxShadow: "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
   } : {};

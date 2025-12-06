@@ -22,24 +22,24 @@ export default function BlogPostBody({ post }: Props) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/85 via-white/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="absolute left-4 right-4 bottom-4 space-y-2">
-            <div className="flex flex-wrap items-center gap-2 text-[11px] text-black/75">
-              <Chip className="bg-white/80 border-black/20 text-black">
+            <div className="flex flex-wrap items-center gap-2 text-[11px] text-white/75">
+              <Chip className="bg-black/60 border-white/20 text-white">
                 {post.category}
               </Chip>
-              <div className="rounded bg-black/20 px-2 py-1">
-                <span className="text-white">
+              <div className="rounded bg-white/20 px-2 py-1">
+                <span className="text-black">
                   {new Date(post.date).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
                     year: "numeric",
                   })}
                 </span>
-                <span className="text-white"> · {post.readTime}</span>
+                <span className="text-black"> · {post.readTime}</span>
               </div>
             </div>
-            <h1 className="text-2xl font-semibold sm:text-3xl">
+            <h1 className="text-2xl font-semibold sm:text-3xl text-white">
               {post.title}
             </h1>
           </div>
@@ -49,8 +49,8 @@ export default function BlogPostBody({ post }: Props) {
       <Surface className="p-5 space-y-4">
         <div className="flex flex-wrap gap-2 text-[11px]">
           {post.tags.map((tag, index) => {
-            // Use light colors for light theme
-            const tagClass = "bg-gray-100 border-gray-200 text-black";
+            // Use dark theme colors for dark backgrounds
+            const tagClass = "bg-black/40 border-white/20 text-white";
 
             return (
               <Chip key={tag} className={tagClass}>

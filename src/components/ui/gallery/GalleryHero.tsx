@@ -40,7 +40,7 @@ export default function GalleryHero() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap gap-2 text-[11px] text-white/65">
+            <div className="flex flex-wrap gap-2 text-[11px] text-black/65">
               <Chip className="bg-rh-pink-light/15 border-rh-pink-light/30">
                 128+ nights captured
               </Chip>

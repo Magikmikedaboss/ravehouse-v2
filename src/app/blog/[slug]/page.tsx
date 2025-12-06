@@ -62,8 +62,7 @@ export default async function BlogPostPage({ params }: Props) {
     );
   }
 
-  const recent = getRecentPosts(4).filter((p) => p.slug !== post.slug);
-
+  const recent = getRecentPosts(5).filter((p) => p.slug !== post.slug).slice(0, 4);
   return (
     <div className="pb-16">
       <div className="mx-auto grid max-w-6xl gap-6 px-4 pt-8 lg:grid-cols-[minmax(0,2.1fr)_minmax(0,0.9fr)] lg:px-6">
