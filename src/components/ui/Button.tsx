@@ -37,7 +37,7 @@ export function Button({ children, variant = "primary", className = "", ...props
     <button
       {...props}
       className={`btn ${baseClasses} ${variantClasses(variant)} ${className}`}
-    >    >
+    >
       {children}
     </button>
   );
