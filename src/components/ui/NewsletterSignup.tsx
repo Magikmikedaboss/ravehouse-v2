@@ -11,6 +11,7 @@ export default function NewsletterSignup() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setErrorMessage("");
     setStatus("loading");
     try {
       const response = await fetch("/api/newsletter", {
@@ -18,14 +19,16 @@ export default function NewsletterSignup() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      if (!response.ok) throw new Error("Signup failed");
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "Signup failed");
+      }
       setStatus("success");
       setEmail("");
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Signup failed");
-    }
-  }
+    }  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-2 text-xs text-white">
@@ -42,11 +45,11 @@ export default function NewsletterSignup() {
         <Button
           type="submit"
           loading={status === "loading"}
+          disabled={status === "loading"}
           className="text-xs"
         >
           Join
-        </Button>
-      </div>
+        </Button>      </div>
       {status === "success" && (
         <div aria-live="polite" aria-atomic="true">
           <p className="text-[11px] text-green-400">Thanks! Check your inbox.</p>

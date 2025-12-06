@@ -35,6 +35,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-3">
+      {/* Using 11px for secondary text/labels - may affect readability for some users but appropriate for compact filter buttons */}
       <div className="flex flex-wrap gap-2 text-[11px]">
         {BLOG_CATEGORIES.map((category) => (
           <button
@@ -53,6 +54,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
           </button>
         ))}      </div>
 
+      {/* Secondary controls use smaller text for compact layout */}
       <div className="flex items-center gap-2 text-[11px] text-white/60">
         <button
           type="button"

@@ -13,13 +13,18 @@ export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   // Close mobile menu on outside click
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
     const handleClickOutside = (event: MouseEvent) => {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const isInsideMenu = mobileMenuRef.current && mobileMenuRef.current.contains(target);
+      const isInsideButton = toggleButtonRef.current && toggleButtonRef.current.contains(target);
+      
+      if (!isInsideMenu && !isInsideButton) {
         setMobileMenuOpen(false);
       }
     };
@@ -138,6 +143,7 @@ export default function SiteHeader() {
           </div>
         {/* Mobile menu button */}
         <button
+          ref={toggleButtonRef}
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white transition"
