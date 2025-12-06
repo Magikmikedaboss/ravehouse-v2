@@ -139,7 +139,7 @@ export default function SiteHeader() {
         </NavigationMenu.Root>
 
           <div className="ml-auto hidden md:flex items-center gap-3">
-            <Chip className="bg-green-500/15 text-[11px] text-green-700 border-green-500/30">
+            <Chip className="bg-rh-green/15 text-[12px] text-rh-green border-rh-green/30">
               Live this weekend
             </Chip>
             <Link
@@ -226,7 +226,7 @@ export default function SiteHeader() {
               })}
 
               <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
-                <Chip className="self-start bg-green-500/15 text-[11px] text-green-700 border-green-400/30">
+                <Chip className="self-start bg-rh-green/15 text-[12px] text-rh-green border-rh-green/30">
                   Live this weekend
                 </Chip>
                 <Link

@@ -25,7 +25,7 @@ const variantClasses: Record<ChipVariant, string> = {
   purple: "bg-rh-purple/20 border-rh-purple/40 text-white",
   neutral: "bg-white/10 border-transparent text-white/80",
   ghost: "bg-black/60 border-white/20 text-white",
-  success: "bg-green-500/15 border-green-400/30 text-green-300",
+  success: "bg-rh-green/15 border-rh-green/30 text-rh-green",
   brand: "bg-gradient-to-r from-rh-pink-light/20 to-rh-cyan/20 border-rh-pink-light/30 text-white",
 };
 

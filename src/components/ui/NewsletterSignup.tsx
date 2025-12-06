@@ -28,8 +28,8 @@ export default function NewsletterSignup() {
     } catch (error) {
       setStatus("error");
       setErrorMessage(error instanceof Error ? error.message : "Signup failed");
-    }  }
-
+    }
+  }
   return (
     <form onSubmit={handleSubmit} className="space-y-2 text-xs text-white">
       <div className="flex gap-2">
@@ -52,7 +52,7 @@ export default function NewsletterSignup() {
         </Button>      </div>
       {status === "success" && (
         <div aria-live="polite" aria-atomic="true">
-          <p className="text-[11px] text-green-400">Thanks! Check your inbox.</p>
+          <p className="text-[11px] text-rh-green">Thanks! Check your inbox.</p>
         </div>
       )}
       <p className="text-[11px] text-white/50">

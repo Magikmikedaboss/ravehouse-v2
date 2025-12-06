@@ -90,7 +90,12 @@ export default function GalleryHero() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/40 via-rh-pink-dark/40 to-black" />
                 <p className="absolute bottom-1 left-2 text-[10px] text-white/80">
-                  0:{String(i * 15).padStart(2, "0")}
+                  {(() => {
+                    const totalSeconds = i * 15;
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds % 60;
+                    return `${minutes}:${String(seconds).padStart(2, "0")}`;
+                  })()}
                 </p>
               </div>
             ))}

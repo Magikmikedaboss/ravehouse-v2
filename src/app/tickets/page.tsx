@@ -114,7 +114,7 @@ export default function TicketsPage() {
                       <Chip
                         className={
                           index === 0
-                            ? "bg-green-500/15 border-green-400/30 text-green-700"
+                            ? "bg-rh-green/15 border-rh-green/30 text-rh-green"
                             : "bg-rave-cyan/20 border-none text-rave-cyan/80"
                         }
                       >
