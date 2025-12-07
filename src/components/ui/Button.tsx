@@ -22,7 +22,7 @@ const baseClasses =
 
 function variantClasses(variant: Variant = "primary") {
   if (variant === "secondary") {
-    return "border border-white/20 bg-white/10 text-white hover:bg-white/15";
+    return "border border-[rgb(var(--rh-border))]/20 bg-[rgb(var(--rh-bg-surface))]/10 text-[rgb(var(--rh-text-primary))] hover:bg-[rgb(var(--rh-bg-surface))]/15";
   }
   if (variant === "ghost") {
     return "btn-ghost";

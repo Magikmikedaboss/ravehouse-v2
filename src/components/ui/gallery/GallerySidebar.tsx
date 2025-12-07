@@ -10,8 +10,8 @@ export default function GallerySidebar() {
       <Surface className="p-4 space-y-3">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-xs text-white/70">Your night in pixels</p>
-            <h3 className="mt-1 text-sm font-semibold text-white/90">
+            <p className="text-xs text-[rgb(var(--rh-text-secondary))]">Your night in pixels</p>
+            <h3 className="mt-1 text-sm font-semibold text-[rgb(var(--rh-text-primary))]/90">
               We auto-cut every set so you might be in from last night.
             </h3>
           </div>
@@ -22,20 +22,20 @@ export default function GallerySidebar() {
 
         <div className="grid grid-cols-3 gap-3 text-center text-xs">
           <div>
-            <p className="text-lg font-semibold text-white/90 sm:text-xl md:text-2xl">47</p>
-            <p className="text-white/70">Photos found</p>
+            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary))]/90 sm:text-xl md:text-2xl">47</p>
+            <p className="text-[rgb(var(--rh-text-secondary))]">Photos found</p>
           </div>
           <div>
-            <p className="text-lg font-semibold text-white/90 sm:text-xl md:text-2xl">6</p>
-            <p className="text-white/70">Clips with you</p>
+            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary))]/90 sm:text-xl md:text-2xl">6</p>
+            <p className="text-[rgb(var(--rh-text-secondary))]">Clips with you</p>
           </div>
           <div>
-            <p className="text-lg font-semibold text-white/90 sm:text-xl md:text-2xl">3</p>
-            <p className="text-white/70">Polaroids scanned</p>
+            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary))]/90 sm:text-xl md:text-2xl">3</p>
+            <p className="text-[rgb(var(--rh-text-secondary))]">Polaroids scanned</p>
           </div>
         </div>
 
-        <div className="space-y-1 text-xxs text-white/65">
+        <div className="space-y-1 text-xxs text-[rgb(var(--rh-text-secondary))]">
           <p>Face match is 80% complete.</p>
           <div className="h-2 rounded-full bg-black/10">
             <div className="h-2 w-4/5 rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark" />

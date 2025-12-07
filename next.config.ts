@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'suspexraveoutfits.com',
+        pathname: '/cdn/shop/files/**',
       },
     ],
   },

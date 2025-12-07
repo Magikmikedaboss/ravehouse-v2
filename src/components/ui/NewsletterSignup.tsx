@@ -31,7 +31,7 @@ export default function NewsletterSignup() {
     }
   }
   return (
-    <form onSubmit={handleSubmit} className="space-y-2 text-xs text-white">
+    <form onSubmit={handleSubmit} className="space-y-2 text-xs text-[rgb(var(--rh-text-primary))]">
       <div className="flex gap-2">
         <Input
           type="email"
@@ -55,7 +55,7 @@ export default function NewsletterSignup() {
           <p className="text-xxs text-rh-green">Thanks! Check your inbox.</p>
         </div>
       )}
-      <p className="text-xxs text-white/50">
+      <p className="text-xxs text-[rgb(var(--rh-text-secondary))]">
         No spam. Just events, recaps and the occasional mix.
       </p>
     </form>  );

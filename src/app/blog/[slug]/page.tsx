@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: post.heroImage || "/images/gallery/medium-vecteezy_happy-people-partying-together-on-music-enjoying-night-out_42274992_medium.jpg",
           alt: post.title,
         },
-      ],    },
-  };
+      ],
+    },  };
 }
 
 export default async function BlogPostPage({ params }: Props) {

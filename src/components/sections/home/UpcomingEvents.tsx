@@ -43,7 +43,7 @@ export default function UpcomingEvents() {
         title="Upcoming events"
         description="Curated underground parties across Las Vegas. No fluff, just sweat and strobes."
         endSlot={
-          <Link href="/events" className="hover:text-black">
+          <Link href="/events" className="hover:text-[rgb(var(--rh-text-primary))]">
             View all events →
           </Link>
         }
@@ -56,8 +56,8 @@ export default function UpcomingEvents() {
             type="button"
             className={`inline-flex items-center rounded-full border px-3 py-1 text-xs ${
               f === "All"
-                ? "border-black bg-black text-white"
-                : "border-black/10 bg-black/5 text-black/75 hover:bg-black/10"
+                ? "border-[rgb(var(--rh-text-primary))] bg-[rgb(var(--rh-text-primary))] text-[rgb(var(--rh-bg-page))]"
+                : "border-[rgb(var(--rh-border))]/10 bg-[rgb(var(--rh-bg-surface))]/5 text-[rgb(var(--rh-text-secondary))] hover:bg-[rgb(var(--rh-bg-surface))]/10"
             }`}
           >
             {f}
@@ -76,16 +76,16 @@ export default function UpcomingEvents() {
               <div className="h-full w-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400" />
             </div>
             <div className="p-4">
-              <p className="text-xxs text-black/50">
+              <p className="text-xxs text-[rgb(var(--rh-text-secondary))]">
                 {event.date} · {event.time}
               </p>
-              <h3 className="mt-1 text-sm font-semibold text-black">{event.title}</h3>
-              <p className="mt-1 text-xs text-black/65">{event.venue}</p>
+              <h3 className="mt-1 text-sm font-semibold text-[rgb(var(--rh-text-primary))]">{event.title}</h3>
+              <p className="mt-1 text-xs text-[rgb(var(--rh-text-secondary))]">{event.venue}</p>
               <div className="mt-3 flex items-center justify-between text-xs">
-                <span className="text-black/75">{event.price}</span>
+                <span className="text-[rgb(var(--rh-text-secondary))]">{event.price}</span>
                 <Link
                   href={`/events/${event.id}`}
-                  className="rounded-full bg-black px-3 py-1 text-xxs font-semibold text-white"
+                  className="rounded-full bg-[rgb(var(--rh-text-primary))] px-3 py-1 text-xxs font-semibold text-[rgb(var(--rh-bg-page))]"
                 >
                   View Event
                 </Link>

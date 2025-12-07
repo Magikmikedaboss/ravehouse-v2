@@ -18,7 +18,6 @@ export default function SiteHeader() {
   const desktopThemeToggleRef = useRef<HTMLDivElement>(null);
   const mobileThemeToggleRef = useRef<HTMLDivElement>(null);
 
-  // Helper function to determine if a nav item is active
   const isItemActive = useMemo(() => {
     const normalizedPathname = pathname.replace(/\/$/, "");
     return (item: typeof NAV_ITEMS[0]) => {
@@ -35,16 +34,15 @@ export default function SiteHeader() {
     };
   }, [pathname]);
 
-  // Close mobile menu on outside click
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
-      const isInsideMenu = mobileMenuRef.current && mobileMenuRef.current.contains(target);
-      const isInsideButton = toggleButtonRef.current && toggleButtonRef.current.contains(target);
-      const isInsideDesktopThemeToggle = desktopThemeToggleRef.current && desktopThemeToggleRef.current.contains(target);
-      const isInsideMobileThemeToggle = mobileThemeToggleRef.current && mobileThemeToggleRef.current.contains(target);
+      const isInsideMenu = mobileMenuRef.current?.contains(target);
+      const isInsideButton = toggleButtonRef.current?.contains(target);
+      const isInsideDesktopThemeToggle = desktopThemeToggleRef.current?.contains(target);
+      const isInsideMobileThemeToggle = mobileThemeToggleRef.current?.contains(target);
       
       if (!isInsideMenu && !isInsideButton && !isInsideDesktopThemeToggle && !isInsideMobileThemeToggle) {
         setMobileMenuOpen(false);
@@ -55,7 +53,6 @@ export default function SiteHeader() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileMenuOpen]);
 
-  // Close mobile menu on Escape key
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
@@ -75,10 +72,10 @@ export default function SiteHeader() {
   }, [pathname]);
 
   return (
-    <header>
-      <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 md:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-4 md:gap-6 md:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center shrink-0">
           <div className="flex flex-col leading-tight">
             <span className="text-lg font-black tracking-wider text-white bg-gradient-to-r from-rh-pink-light via-white to-rh-cyan bg-clip-text text-transparent">
               RAVEHOUSE
@@ -89,61 +86,64 @@ export default function SiteHeader() {
           </div>
         </Link>
 
-        {/* Desktop nav */}
-        <NavigationMenu.Root className="hidden md:flex">
-          <NavigationMenu.List className="flex gap-1 rounded-full bg-black/5 dark:bg-white/5 p-1">
-            {NAV_ITEMS.map((item) => {
-              const active = isItemActive(item);
-              return (
-                <NavigationMenu.Item key={item.label}>
-                  {item.children ? (
-                    <>
-                      <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
-                        active
-                          ? "bg-white text-black shadow"
-                          : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
-                      }`}>
-                        {item.label}
-                      </NavigationMenu.Trigger>
-                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95 z-50">
-                        <ul className="p-2">
-                          {item.children.map((child) => (
-                            <li key={child.href}>
-                              <NavigationMenu.Link asChild>
-                                <Link
-                                  href={child.href}
-                                  className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none"
-                                >
-                                  {child.label}
-                                </Link>
-                              </NavigationMenu.Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </NavigationMenu.Content>
-                    </>
-                  ) : item.href ? (
-                    <NavigationMenu.Link asChild>
-                      <Link
-                        href={item.href}
-                        className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+        {/* Desktop nav - EXPLICITLY HIDDEN ON MOBILE */}
+        <div className="hidden md:block">
+          <NavigationMenu.Root>
+            <NavigationMenu.List className="flex gap-1 rounded-full bg-black/5 dark:bg-white/5 p-1">
+              {NAV_ITEMS.map((item) => {
+                const active = isItemActive(item);
+                return (
+                  <NavigationMenu.Item key={item.label}>
+                    {item.children ? (
+                      <>
+                        <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                           active
                             ? "bg-white text-black shadow"
-                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </NavigationMenu.Link>
-                  ) : null}
-                </NavigationMenu.Item>
-              );
-            })}
-          </NavigationMenu.List>
-        </NavigationMenu.Root>
+                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
+                        }`}>
+                          {item.label}
+                        </NavigationMenu.Trigger>
+                        <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95 z-50">
+                          <ul className="p-2">
+                            {item.children.map((child) => (
+                              <li key={child.href}>
+                                <NavigationMenu.Link asChild>
+                                  <Link
+                                    href={child.href}
+                                    className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                </NavigationMenu.Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </NavigationMenu.Content>
+                      </>
+                    ) : item.href ? (
+                      <NavigationMenu.Link asChild>
+                        <Link
+                          href={item.href}
+                          className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                            active
+                              ? "bg-white text-black shadow"
+                              : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </NavigationMenu.Link>
+                    ) : null}
+                  </NavigationMenu.Item>
+                );
+              })}
+            </NavigationMenu.List>
+          </NavigationMenu.Root>
+        </div>
 
-        <div className="ml-auto hidden md:flex items-center gap-3">
-          <div className="relative z-10 pointer-events-auto" ref={desktopThemeToggleRef}>
+        {/* Desktop actions - WRAPPED IN SEPARATE DIV WITH EXPLICIT HIDING */}
+        <div className="hidden md:flex ml-auto items-center gap-3">
+          <div className="relative z-10" ref={desktopThemeToggleRef}>
             <ThemeToggle />
           </div>
           <Chip className="hidden sm:flex text-[12px]" variant="success">
@@ -151,17 +151,18 @@ export default function SiteHeader() {
           </Chip>
           <Link
             href="/tickets"
-            className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold shadow-rh-soft"
+            className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold text-[rgb(var(--rh-text-primary))] shadow-rh-soft"
           >
             Get Tickets
           </Link>
         </div>
-        {/* Mobile menu button */}
+
+        {/* Mobile menu button - POSITIONED ABSOLUTELY TO AVOID LAYOUT CONFLICTS */}
         <button
           ref={toggleButtonRef}
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden rounded-lg p-2 text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition"
+          className="ml-auto md:hidden relative z-50 rounded-lg p-2 text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition"
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
         >
@@ -174,15 +175,17 @@ export default function SiteHeader() {
           </svg>
         </button>
       </div>
-      {/* Mobile nav */}
+
+      {/* Mobile menu */}
       {mobileMenuOpen && (
         <div ref={mobileMenuRef} className="border-t border-black/10 dark:border-white/10 bg-white/95 dark:bg-black/95 backdrop-blur md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="flex flex-col gap-2">
-            {NAV_ITEMS.map((item) => {
-              const active = isItemActive(item);
-              return (
-                <div key={item.label}>                    {item.href ? (
+              {NAV_ITEMS.map((item) => {
+                const active = isItemActive(item);
+                return (
+                  <div key={item.label}>
+                    {item.href ? (
                       <Link
                         href={item.href}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
@@ -193,14 +196,14 @@ export default function SiteHeader() {
                       >
                         {item.label}
                       </Link>
-                    ) : (                      <button
+                    ) : (
+                      <button
                         type="button"
                         onClick={() => setExpandedMobileItem(
                           expandedMobileItem === item.label ? null : item.label
                         )}
                         className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition"
                         aria-expanded={expandedMobileItem === item.label}
-                        aria-haspopup="true"
                       >
                         {item.label}
                         <svg
@@ -215,7 +218,6 @@ export default function SiteHeader() {
                         </svg>
                       </button>
                     )}
-                    {/* Mobile submenu */}
                     {item.children && expandedMobileItem === item.label && (
                       <div className="ml-4 mt-1 space-y-1">
                         {item.children.map((child) => (
@@ -234,10 +236,10 @@ export default function SiteHeader() {
               })}
 
               <div className="mt-4 flex flex-col gap-3 border-t border-black/10 dark:border-white/10 pt-4">
-                {/* Theme toggle for mobile */}
-                <div className="flex items-center justify-between">
+                {/* Theme toggle - ISOLATED IN MOBILE MENU */}
+                <div className="flex items-center justify-between py-1">
                   <span className="text-sm font-medium text-black/70 dark:text-white/70">Theme</span>
-                  <div ref={mobileThemeToggleRef}>
+                  <div ref={mobileThemeToggleRef} className="relative z-10">
                     <ThemeToggle />
                   </div>
                 </div>
@@ -250,7 +252,8 @@ export default function SiteHeader() {
                   className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-sm font-semibold text-white shadow-rh-soft"
                 >
                   Get Tickets
-                </Link>              </div>
+                </Link>
+              </div>
             </nav>
           </div>
         </div>
