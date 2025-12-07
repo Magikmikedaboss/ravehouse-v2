@@ -12,15 +12,19 @@ const rateLimitMap = new Map<string, RateLimitEntry>();
 // Rate limit configuration
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5; // 5 requests per window
-export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; resetTime?: number }> {
-  const now = Date.now();
 
-  // Lazy cleanup: remove expired entries before processing
+// Background cleanup job - runs every 5 minutes
+setInterval(() => {
+  const now = Date.now();
   for (const [key, entry] of rateLimitMap) {
     if (now > entry.resetTime) {
       rateLimitMap.delete(key);
     }
   }
+}, 5 * 60 * 1000); // 5 minutes
+
+export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; resetTime?: number }> {
+  const now = Date.now();
 
   const entry = rateLimitMap.get(ip);
 

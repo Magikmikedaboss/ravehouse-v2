@@ -12,5 +12,6 @@ export default function NotFound() {
       <Link href="/blog" className="mt-4 inline-block text-sm underline hover:opacity-90">
         Back to The Circuit
       </Link>
-    </div>  );
+    </div>
+  );
 }

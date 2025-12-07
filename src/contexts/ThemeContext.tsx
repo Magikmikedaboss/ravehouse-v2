@@ -22,7 +22,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     try {
       const saved = localStorage.getItem("ravehouse-theme");
       if (saved === "dark" || saved === "light") {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setTheme(saved);
       }
     } catch (error) {
