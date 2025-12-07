@@ -20,9 +20,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Load theme from localStorage on mount
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("ravehouse-theme") as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
+    try {
+      const saved = localStorage.getItem("ravehouse-theme");
+      if (saved === "dark" || saved === "light") {
+        setTheme(saved);
+      }
+    } catch (error) {
+      console.warn("Failed to read theme from localStorage:", error);
     }
   }, []);
 
@@ -32,7 +36,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     
     document.documentElement.classList.remove("dark", "light");
     document.documentElement.classList.add(theme);
-    localStorage.setItem("ravehouse-theme", theme);
+    try {
+      localStorage.setItem("ravehouse-theme", theme);
+    } catch (error) {
+      console.warn("Failed to save theme to localStorage:", error);
+    }
   }, [theme, mounted]);
 
   const toggleTheme = () => {

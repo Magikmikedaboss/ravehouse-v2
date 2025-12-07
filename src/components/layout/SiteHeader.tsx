@@ -65,13 +65,9 @@ export default function SiteHeader() {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [mobileMenuOpen]);
 
-  // Close mobile menu on route change
-  /* eslint-disable react-hooks/set-state-in-effect */
-  useLayoutEffect(() => {
+  useEffect(() => {
     setMobileMenuOpen(false);
-  }, [pathname]);
-  /* eslint-enable react-hooks/set-state-in-effect */
-  return (
+  }, [pathname]);  return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 md:px-6 lg:px-8">
         {/* Logo */}

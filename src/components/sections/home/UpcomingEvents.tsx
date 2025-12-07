@@ -78,7 +78,8 @@ export default function UpcomingEvents() {
             <div className="p-4">
               <p className="text-xxs text-black/50">
                 {event.date} · {event.time}
-              </p>              <h3 className="mt-1 text-sm font-semibold text-black">{event.title}</h3>
+              </p>
+              <h3 className="mt-1 text-sm font-semibold text-black">{event.title}</h3>
               <p className="mt-1 text-xs text-black/65">{event.venue}</p>
               <div className="mt-3 flex items-center justify-between text-xs">
                 <span className="text-black/75">{event.price}</span>
