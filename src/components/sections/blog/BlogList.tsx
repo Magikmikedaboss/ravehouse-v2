@@ -29,9 +29,10 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
               {/* Image */}
               <div className="relative h-40 w-full overflow-hidden">
                 <Image
-                  src={post.heroImage || "/images/placeholder.jpg"}
+                  src={post.heroImage || "/images/placeholder.svg"}
                   alt={post.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute left-3 right-3 top-3 flex items-center justify-between text-xxs">

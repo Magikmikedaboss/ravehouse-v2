@@ -1,6 +1,7 @@
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import Link from "next/link";
+import Image from "next/image";
 
 type GearItem = {
   name: string;
@@ -8,6 +9,7 @@ type GearItem = {
   blurb: string;
   badge?: string;
   link?: string; // future affiliate link
+  image?: string; // optional product image
 };
 
 const GEAR_ITEMS: GearItem[] = [
@@ -49,6 +51,15 @@ const GEAR_ITEMS: GearItem[] = [
       "For heatwave nights or deep crowd pockets—turns dying into dancing again.",
     badge: "Summer saver",
   },
+  {
+    name: "Suspex Rogue Rave Outfit",
+    category: "Comfort",
+    blurb:
+      "Premium rave-ready outfit designed for all-night energy. Perfect for warehouse parties and rooftop vibes.",
+    badge: "New",
+    link: "https://suspexraveoutfits.com/products/rogue",
+    image: "https://suspexraveoutfits.com/cdn/shop/files/black-corset-top-rave-outfit-rogue.jpg?v=1746565512&width=1440",
+  },
 ];
 
 export default function GearGrid() {
@@ -70,6 +81,16 @@ export default function GearGrid() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {GEAR_ITEMS.map((item) => (
           <Surface key={item.name} className="flex h-full flex-col p-4">
+            {item.image && (
+              <div className="relative mb-3 aspect-video w-full overflow-hidden rounded-lg bg-black/20">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
             <div className="flex items-start justify-between gap-3">
               <div className="space-y-1">
                 <p className="text-xs uppercase tracking-[0.15em] text-white/60">

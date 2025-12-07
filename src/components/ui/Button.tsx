@@ -1,6 +1,6 @@
 // src/components/ui/Button.tsx
 "use client";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode, useState } from "react";
 import Link from "next/link";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -28,19 +28,21 @@ function variantClasses(variant: Variant = "primary") {
     return "btn-ghost";
   }
   if (variant === "primary") {
-    return "btn-primary";
+    return ""; // Primary styles now handled with inline styles
   }
   return "";
 }
 
 // Simple spinner component
-function Spinner({ className = "" }: { className?: string }) {
+function Spinner({ className = "", ariaLabel = "Loading" }: { className?: string; ariaLabel?: string }) {
   return (
     <svg
       className={`animate-spin ${className}`}
       fill="none"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
+      role="status"
+      aria-label={ariaLabel}
     >
       <circle
         className="opacity-25"
@@ -68,14 +70,37 @@ export function Button({
   ...props 
 }: ButtonProps) {
   const isDisabled = disabled || loading;
-  
+  const isPrimary = variant === "primary";
+  const [isHovered, setIsHovered] = useState(false);
+
+  const primaryStyles = isPrimary ? {
+    background: "linear-gradient(135deg, var(--rh-pink-light), var(--rh-pink-dark))",
+    color: "#fff",
+    boxShadow: isHovered 
+      ? "0 0 22px rgba(246, 104, 121, 0.7), 0 14px 36px rgba(0, 0, 0, 0.85)"
+      : "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
+    transform: isHovered ? "translateY(-1px)" : "none",
+  } : {};
+
   return (
     <button
       {...props}
       disabled={isDisabled}
-      className={`btn ${baseClasses} ${variantClasses(variant)} ${
+      className={`${baseClasses} ${variantClasses(variant)} ${
         loading ? 'opacity-70 cursor-wait' : ''
       } ${isDisabled && !loading ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
+      style={{
+        ...primaryStyles,
+        ...props.style,
+      }}
+      onMouseEnter={(e) => {
+        if (isPrimary) setIsHovered(true);
+        props.onMouseEnter?.(e);
+      }}
+      onMouseLeave={(e) => {
+        if (isPrimary) setIsHovered(false);
+        props.onMouseLeave?.(e);
+      }}
     >
       {loading && <Spinner className="mr-2 h-4 w-4" />}
       {children}

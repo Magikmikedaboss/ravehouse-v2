@@ -106,9 +106,12 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
     switch (selectedFilter) {
       case "All nights":
         return true;
-      case "This month":
-        return item.date.includes("Dec 2025");
-      case "Warehouse":
+      case "This month": {
+        const now = new Date();
+        const currentMonth = now.toLocaleString('en-US', { month: 'short' });
+        const currentYear = now.getFullYear();
+        return item.date.includes(`${currentMonth} ${currentYear}`);
+      }      case "Warehouse":
         return item.event.toLowerCase().includes("warehouse") || item.type.toLowerCase().includes("warehouse");
       case "Rooftop":
         return item.event.toLowerCase().includes("rooftop") || item.type.toLowerCase().includes("rooftop");

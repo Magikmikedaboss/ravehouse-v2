@@ -138,7 +138,7 @@ export default function SiteHeader() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto hidden md:flex items-center gap-3">
           <div className="relative z-10 pointer-events-auto">
             <ThemeToggle />
           </div>

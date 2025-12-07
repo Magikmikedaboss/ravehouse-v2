@@ -23,11 +23,10 @@ const sanitizeSchema = {
     pre: ['className'],
   },
   // Remove potentially dangerous elements
-  tagNames: defaultSchema.tagNames?.filter(
+  tagNames: (defaultSchema.tagNames ?? []).filter(
     tag => !['script', 'style', 'iframe', 'object', 'embed'].includes(tag)
   ),
 };
-
 export default function BlogPostBody({ post }: Props) {
   return (
     <article className="space-y-4">
