@@ -158,11 +158,10 @@ export default function SiteHeader() {
           </Chip>
           <Link
             href="/tickets"
-            className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold text-[rgb(var(--rh-text-primary))] shadow-rh-soft"
+            className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold text-white shadow-rh-soft"
           >
             Get Tickets
-          </Link>
-        </div>
+          </Link>        </div>
 
         {/* Mobile menu button - POSITIONED ABSOLUTELY TO AVOID LAYOUT CONFLICTS */}
         <button

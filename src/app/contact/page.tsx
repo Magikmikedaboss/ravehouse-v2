@@ -31,10 +31,9 @@ const contactMethods = [
     type: "Discord",
     value: "Ravehouse Community",
     description: "Join our community server for real-time updates",
-    action: "#",
+    action: "", // Empty string to be handled in rendering logic
     icon: "💬",
-  },
-];
+  },];
 
 const locations = [
   {

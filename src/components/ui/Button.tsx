@@ -1,6 +1,6 @@
 // src/components/ui/Button.tsx
 "use client";
-import { ButtonHTMLAttributes, ReactNode, useState } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import Link from "next/link";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -28,7 +28,7 @@ function variantClasses(variant: Variant = "primary") {
     return "btn-ghost";
   }
   if (variant === "primary") {
-    return ""; // Primary styles now handled with inline styles
+    return "bg-gradient-to-br from-[rgb(var(--rh-pink-light))] to-[rgb(var(--rh-pink-dark))] text-white shadow-rh-glow hover:shadow-[0_0_22px_rgba(246,104,121,0.7),0_14px_36px_rgba(0,0,0,0.85)] hover:-translate-y-1";
   }
   return "";
 }
@@ -70,17 +70,6 @@ export function Button({
   ...props 
 }: ButtonProps) {
   const isDisabled = disabled || loading;
-  const isPrimary = variant === "primary";
-  const [isHovered, setIsHovered] = useState(false);
-
-  const primaryStyles = isPrimary ? {
-    background: "linear-gradient(135deg, rgb(var(--rh-pink-light)), rgb(var(--rh-pink-dark)))",
-    color: "#fff",
-    boxShadow: isHovered 
-      ? "0 0 22px rgba(246, 104, 121, 0.7), 0 14px 36px rgba(0, 0, 0, 0.85)"
-      : "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
-    transform: isHovered ? "translateY(-1px)" : "none",
-  } : {};
   return (
     <button
       {...props}
@@ -88,18 +77,6 @@ export function Button({
       className={`${baseClasses} ${variantClasses(variant)} ${
         loading ? 'opacity-70 cursor-wait' : ''
       } ${isDisabled && !loading ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
-      style={{
-        ...primaryStyles,
-        ...props.style,
-      }}
-      onMouseEnter={(e) => {
-        if (isPrimary) setIsHovered(true);
-        props.onMouseEnter?.(e);
-      }}
-      onMouseLeave={(e) => {
-        if (isPrimary) setIsHovered(false);
-        props.onMouseLeave?.(e);
-      }}
     >
       {loading && <Spinner className="mr-2 h-4 w-4" />}
       {children}

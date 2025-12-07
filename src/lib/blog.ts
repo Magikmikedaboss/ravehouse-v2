@@ -78,6 +78,11 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 
 export function getRecentPosts(limit = 4): BlogPost[] {
   return [...BLOG_POSTS]
-    .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))
+    .sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      if (isNaN(dateA) || isNaN(dateB)) return 0;
+      return dateB - dateA;
+    })
     .slice(0, limit);
 }

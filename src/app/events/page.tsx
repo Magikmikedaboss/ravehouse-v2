@@ -98,6 +98,8 @@ export default function EventsPage() {
               fill={true}
               style={{ objectFit: 'cover', objectPosition: 'center' }}
               priority={true}
+              fetchPriority="high"
+              sizes="100vw"
             />
             {/* DARKER gradient overlay for better text contrast */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

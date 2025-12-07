@@ -10,6 +10,26 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Optimize Tailwind CSS bundle size
+  corePlugins: {
+    preflight: true,
+  },
+  safelist: [
+    // Ensure critical classes are not purged
+    'bg-rh-pink-light',
+    'bg-rh-pink-dark',
+    'bg-rh-cyan',
+    'bg-rh-purple',
+    'bg-rh-orange',
+    'bg-rh-green',
+    'text-rh-pink-light',
+    'text-rh-cyan',
+    'text-rh-green',
+    'border-rh-pink-light',
+    'border-rh-cyan',
+    'shadow-rh-glow',
+    'hover:shadow-rh-glow',
+  ],
   theme: {
     extend: {
       colors: {

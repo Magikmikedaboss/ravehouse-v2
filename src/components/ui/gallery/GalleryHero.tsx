@@ -1,4 +1,5 @@
 // src/components/ui/gallery/GalleryHero.tsx
+import Image from "next/image";
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 
@@ -7,11 +8,14 @@ export default function GalleryHero() {
     <section className="grid gap-5 px-4 pt-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:px-6">
       {/* Left panel */}
       <Surface className="relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/gallery/medium-vecteezy_happy-people-partying-together-on-music-enjoying-night-out_42274992_medium.jpg')",
-          }}
+        <Image
+          src="/images/gallery/medium-vecteezy_happy-people-partying-together-on-music-enjoying-night-out_42274992_medium.jpg"
+          alt="People partying together enjoying night out"
+          fill
+          className="object-cover"
+          priority={true}
+          fetchPriority="high"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 40vw"
         />
         <div className="relative space-y-4 p-6 md:p-8">
           <div className="space-y-3">

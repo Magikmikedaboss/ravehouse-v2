@@ -16,6 +16,9 @@ export default function HomeHero() {
             alt="Warehouse crowd at Ravehouse Entertainment"
             fill
             className="object-cover"
+            priority={true}
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 40vw"
           />
           <div className="absolute inset-x-4 top-4 flex justify-between text-xs text-white/80">
             <Chip variant="ghost">Next up: Warehouse Eclipse</Chip>
