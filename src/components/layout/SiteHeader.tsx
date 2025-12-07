@@ -19,15 +19,22 @@ export default function SiteHeader() {
   const mobileThemeToggleRef = useRef<HTMLDivElement>(null);
 
   const isItemActive = useMemo(() => {
-    const normalizedPathname = pathname.replace(/\/$/, "");
+    // Centralize pathname normalization: default to "/" when falsy, strip query and trailing slash
+    const normalizePath = (path: string | null) => {
+      const cleanPath = (path || "/").split('?')[0];
+      return cleanPath === "/" ? "/" : cleanPath.replace(/\/$/, "");
+    };
+
+    const normalizedPathname = normalizePath(pathname);
+
     return (item: typeof NAV_ITEMS[0]) => {
       if (item.href) {
-        const normalizedHref = item.href.split('?')[0].replace(/\/$/, "");
+        const normalizedHref = normalizePath(item.href);
         return normalizedPathname === normalizedHref ||
           (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"));
       }
       return item.children?.some((child) => {
-        const childHref = child.href.split('?')[0].replace(/\/$/, "");
+        const childHref = normalizePath(child.href);
         return normalizedPathname === childHref ||
           normalizedPathname.startsWith(childHref + "/");
       }) || false;
@@ -188,6 +195,10 @@ export default function SiteHeader() {
                     {item.href ? (
                       <Link
                         href={item.href}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          setExpandedMobileItem(null);
+                        }}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
                           active
                             ? "bg-black dark:bg-white text-white dark:text-black"
@@ -224,6 +235,10 @@ export default function SiteHeader() {
                           <Link
                             key={child.href}
                             href={child.href}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setExpandedMobileItem(null);
+                            }}
                             className="block rounded-lg px-3 py-2 text-sm text-black/60 dark:text-white/60 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition"
                           >
                             {child.label}

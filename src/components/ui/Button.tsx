@@ -123,11 +123,10 @@ export function ButtonLink({
     <Link
       href={href}
       className={`btn ${baseClasses} ${variantClasses(variant)} ${
-        loading ? 'opacity-70 cursor-wait' : ''
+        loading ? 'opacity-70 cursor-wait pointer-events-none' : ''
       } ${className}`}
     >
       {loading && <Spinner className="mr-2 h-4 w-4" />}
       {children}
     </Link>
-  );
-}
+  );}

@@ -4,7 +4,7 @@ A modern Next.js web application for Ravehouse Entertainment, featuring undergro
 
 ## 🚀 Technologies Used
 
-- **Framework**: Next.js 16 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v3.4.18 with custom rave color palette
 - **UI Components**: Radix UI (accessible navigation)

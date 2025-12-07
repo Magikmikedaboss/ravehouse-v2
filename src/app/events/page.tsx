@@ -89,28 +89,29 @@ export default function EventsPage() {
       <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
         {/* Left hero surface */}
         <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft">
-          <div className="relative aspect-[16/9] w-full overflow-hidden">
+          {/* REMOVE aspect-[16/9], ADD min-h-[400px] */}
+          <div className="relative min-h-[400px] lg:min-h-[500px] w-full overflow-hidden">
             <img
               src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-            <div className="absolute left-4 right-4 top-4 flex justify-between text-[11px] text-white/80">
-              <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
+            <div className="absolute left-4 right-4 top-4 flex justify-between text-xxs text-white/80">
+              <Chip variant="cyan">
                 Upcoming raves · Las Vegas
               </Chip>
-              <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
+              <Chip variant="cyan">
                 Warehouse · Rooftop · Afterhours
               </Chip>
             </div>
 
             <div className="absolute bottom-6 left-6 right-6 space-y-3">
-              <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+              <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
                 Curated underground nights, every week in the city that never powers down.
               </p>
-              <h1 className="text-3xl font-semibold sm:text-4xl">
+              <h1 className="text-3xl font-semibold sm:text-4xl text-white">
                 DISCOVER YOUR NEXT UNDERGROUND NIGHT
               </h1>
               <p className="max-w-xl text-sm text-white/75">
@@ -125,14 +126,14 @@ export default function EventsPage() {
                   Browse full calendar
                 </ButtonLink>
               </div>
-              <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-white/60">
-                <Chip className="bg-rave-pink/20 border-transparent">
+              <div className="mt-2 flex flex-wrap gap-2 text-xxs text-white/60">
+                <Chip variant="pink">
                   Location drops 24h before doors
                 </Chip>
-                <Chip className="bg-rave-orange/20 border-transparent">
+                <Chip variant="orange">
                   No dress code · Just energy
                 </Chip>
-                <Chip className="bg-rave-purple/20 border-transparent">
+                <Chip variant="purple">
                   All genres: Techno, House, Bass
                 </Chip>
               </div>
@@ -199,7 +200,7 @@ export default function EventsPage() {
               className={`inline-flex items-center rounded-full border px-3 py-1 text-xs ${
                 i === 1
                   ? "border-white bg-white text-black"
-                  : "border-white/10 bg-white/10 text-white/90 hover:bg-white/10"
+                  : "border-white/10 bg-white/10 text-white/90 hover:bg-white/25 hover:text-white"
               }`}
               type="button"
             >
