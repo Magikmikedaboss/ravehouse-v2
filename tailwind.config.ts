@@ -1,6 +1,6 @@
 // tailwind.config.ts
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from 'tailwindcss-animate';
+import tailwindcssAnimated from 'tailwindcss-animated';
 
 const config: Config = {
   content: [
@@ -82,7 +82,7 @@ const config: Config = {
     },
   },
   plugins: [
-    tailwindcssAnimate,
+    tailwindcssAnimated,
   ],
 };
 

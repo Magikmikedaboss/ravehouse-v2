@@ -24,16 +24,15 @@ export default function BlogHero() {
             
             {/* ✅ COLORFUL BRAND CHIPS */}
             <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-              <Chip className="bg-rh-pink-light/20 border-rh-pink-light/40 text-white">
+              <Chip variant="pink">
                 Recaps &amp; photo dumps
               </Chip>
-              <Chip className="bg-rh-cyan/20 border-rh-cyan/40 text-white">
+              <Chip variant="cyan">
                 Guides for new heads
               </Chip>
-              <Chip className="bg-rh-orange/20 border-rh-orange/40 text-white">
+              <Chip variant="orange">
                 Rave gear &amp; essentials
-              </Chip>
-            </div>
+              </Chip>            </div>
           </div>
 
           <div className="space-y-1 text-xs text-white/70">
