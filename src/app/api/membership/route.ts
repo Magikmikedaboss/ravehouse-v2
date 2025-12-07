@@ -69,4 +69,5 @@ export async function POST(request: NextRequest) {
       status: 'not_implemented'
     },
     { status: 501 }
-  );}
+  );
+}

@@ -1,34 +1,12 @@
 // tailwind.config.ts
 import type { Config } from "tailwindcss";
-import tailwindcssAnimated from 'tailwindcss-animated';
 import tailwindcssTypography from '@tailwindcss/typography';
 
 const config: Config = {
-  darkMode: "class",
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  // Optimize Tailwind CSS bundle size
-  corePlugins: {
-    preflight: true,
-  },
-  safelist: [
-    // Ensure critical classes are not purged
-    'bg-rh-pink-light',
-    'bg-rh-pink-dark',
-    'bg-rh-cyan',
-    'bg-rh-purple',
-    'bg-rh-orange',
-    'bg-rh-green',
-    'text-rh-pink-light',
-    'text-rh-cyan',
-    'text-rh-green',
-    'border-rh-pink-light',
-    'border-rh-cyan',
-    'shadow-rh-glow',
-    'hover:shadow-rh-glow',
   ],
   theme: {
     extend: {
@@ -105,7 +83,6 @@ const config: Config = {
     },
   },
   plugins: [
-    tailwindcssAnimated,
     tailwindcssTypography,
   ],
 };

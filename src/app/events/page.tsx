@@ -86,13 +86,10 @@ const tonightColumn = [
 export default function EventsPage() {
   return (
     <div className="space-y-10 pb-10">
-      {/* TOP HERO ROW - TEMPORARILY REMOVED GRID TO TEST */}
+      {/* Hero section */}
       <section className="space-y-6">
-        {/* Left hero surface - TESTING WITHOUT GRID */}
         <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft bg-black w-full">
-          {/* Test with fixed height to see if grid was constraining */}
-          <div className="relative h-[600px] w-full overflow-hidden">
-            <Image
+          <div className="relative h-[600px] w-full overflow-hidden">            <Image
               src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
               fill={true}
@@ -118,7 +115,7 @@ export default function EventsPage() {
 
             {/* Bottom content - IMPROVED MOBILE TEXT SIZES */}
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 space-y-2 sm:space-y-3">
-              <p className="text-xs sm:text-xxs uppercase tracking-wider sm:tracking-[0.3em] text-white/70">
+              <p className="text-xxs sm:text-xs uppercase tracking-wider sm:tracking-[0.3em] text-white/70">
                 Curated underground nights, every week
               </p>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">

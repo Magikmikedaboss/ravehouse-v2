@@ -110,7 +110,7 @@ export default function SiteHeader() {
                         }`}>
                           {item.label}
                         </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95 z-50">
+                        <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-fade-in animate-zoom-in z-50">
                           <ul className="p-2">
                             {item.children.map((child) => (
                               <li key={child.href}>

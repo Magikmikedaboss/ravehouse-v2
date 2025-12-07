@@ -25,8 +25,11 @@ export async function POST(request: NextRequest) {
   // - Add to mailing list
   // - Return success/error
 
-  return NextResponse.json({
-    message: 'Newsletter signup coming in Phase 1',
-    status: 'pending'
-  });
+  return NextResponse.json(
+    {
+      message: 'Newsletter signup coming in Phase 1',
+      status: 'pending'
+    },
+    { status: 501 }
+  );
 }

@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
   // Optimize bundle analysis and chunking
   webpack: (config, { isServer }) => {
     if (!isServer) {
+      // Ensure splitChunks is enabled and is an object
+      if (!config.optimization.splitChunks) {
+        config.optimization.splitChunks = {};
+      }
+      if (!config.optimization.splitChunks.cacheGroups) {
+        config.optimization.splitChunks.cacheGroups = {};
+      }
+
       config.optimization.splitChunks.cacheGroups = {
         ...config.optimization.splitChunks.cacheGroups,
         framework: {
