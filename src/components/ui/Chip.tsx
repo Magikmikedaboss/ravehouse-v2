@@ -12,7 +12,8 @@ type ChipVariant =
   | "brand"
   | "dark"
   | "lightOverlay"
-  | "badge";
+  | "badge"
+  | "danger";
 
 type ChipProps = {
   children: ReactNode;
@@ -33,6 +34,7 @@ const variantClasses: Record<ChipVariant, string> = {
   dark: "bg-black/40 border-white/20 text-white",
   lightOverlay: "bg-white/80 border-black/20 text-black",
   badge: "bg-rh-pink-light text-black border-none text-[10px]",
+  danger: "bg-red-500/20 border-red-500/40 text-white",
 };
 
 export default function Chip({

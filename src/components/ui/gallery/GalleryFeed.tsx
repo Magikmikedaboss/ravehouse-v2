@@ -101,10 +101,27 @@ const galleryItems = [
   }
 ];
 
-export default function GalleryFeed() {
+export default function GalleryFeed({ selectedFilter }: { selectedFilter: string }) {
+  const filteredItems = galleryItems.filter((item) => {
+    switch (selectedFilter) {
+      case "All nights":
+        return true;
+      case "This month":
+        return item.date.includes("Dec 2025");
+      case "Warehouse":
+        return item.event.toLowerCase().includes("warehouse");
+      case "Rooftop":
+        return item.type.toLowerCase().includes("rooftop");
+      case "Afterhours":
+        return item.type.toLowerCase().includes("afterhours");
+      default:
+        return true;
+    }
+  });
+
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {galleryItems.map((item) => (
+      {filteredItems.map((item) => (
         <Surface key={item.id} className="overflow-hidden group cursor-pointer">
           <div className="relative h-48 w-full">
             {/* Placeholder gradient background */}

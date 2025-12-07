@@ -68,10 +68,10 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Chip className="bg-rh-pink-light/20 border-rh-pink-light/40">
+            <Chip variant="pink">
               24-48hr response
             </Chip>
-            <Chip className="bg-rh-cyan/20 border-rh-cyan/40">
+            <Chip variant="cyan">
               Vegas-based
             </Chip>
           </div>
@@ -132,10 +132,9 @@ export default function ContactPage() {
                 </div>
                 <p className="text-sm text-white/60">{location.notes}</p>
                 <div className="flex flex-wrap gap-2">
-                  <Chip className="bg-rh-purple/20 border-rh-purple/40 text-xs">
+                  <Chip variant="purple">
                     {location.city === "Las Vegas, NV" ? "Active" : "Expanding"}
-                  </Chip>
-                </div>
+                  </Chip>                </div>
               </div>
             </Surface>
           ))}
@@ -176,7 +175,7 @@ export default function ContactPage() {
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium text-rh-pink-light">702-RH-HELP</span>
-                <Chip className="bg-red-500/20 border-red-500/40 text-xs">
+                <Chip variant="danger">
                   Emergency only
                 </Chip>
               </div>
