@@ -111,13 +111,13 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
         const currentMonth = now.toLocaleString('en-US', { month: 'short' });
         const currentYear = now.getFullYear();
         return item.date.includes(`${currentMonth} ${currentYear}`);
-      }      case "Warehouse":
+      }
+      case "Warehouse":
         return item.event.toLowerCase().includes("warehouse") || item.type.toLowerCase().includes("warehouse");
       case "Rooftop":
         return item.event.toLowerCase().includes("rooftop") || item.type.toLowerCase().includes("rooftop");
       case "Afterhours":
-        return item.event.toLowerCase().includes("afterhours") || item.type.toLowerCase().includes("afterhours");
-      default:
+        return item.event.toLowerCase().includes("afterhours") || item.type.toLowerCase().includes("afterhours");      default:
         return true;
     }
   });

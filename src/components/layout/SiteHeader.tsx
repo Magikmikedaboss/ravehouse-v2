@@ -177,8 +177,8 @@ export default function SiteHeader() {
             <nav className="flex flex-col gap-2">
             {NAV_ITEMS.map((item) => {
               const active = isItemActive(item);
-              return (                  <div key={item.label}>
-                    {item.href ? (
+              return (
+                <div key={item.label}>                    {item.href ? (
                       <Link
                         href={item.href}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
@@ -188,8 +188,8 @@ export default function SiteHeader() {
                         }`}
                       >
                         {item.label}
-                      </Link>                    ) : (
-                      <button
+                      </Link>
+                    ) : (                      <button
                         type="button"
                         onClick={() => setExpandedMobileItem(
                           expandedMobileItem === item.label ? null : item.label
@@ -209,8 +209,8 @@ export default function SiteHeader() {
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
-                      </button>                    )}
-
+                      </button>
+                    )}
                     {/* Mobile submenu */}
                     {item.children && expandedMobileItem === item.label && (
                       <div className="ml-4 mt-1 space-y-1">

@@ -34,13 +34,14 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute left-3 right-3 top-3 flex items-center justify-between text-xxs">
                   <Chip variant="pink">
                     {post.category}
                   </Chip>
-                  <span className="text-white/70">{post.readTime}</span>                </div>
-                <div className="absolute left-3 right-3 bottom-3 space-y-1">
+                  <span className="text-white/70">{post.readTime}</span>
+                </div>                <div className="absolute left-3 right-3 bottom-3 space-y-1">
                   <h2 className="text-sm font-semibold text-white">
                     {post.title}
                   </h2>
@@ -78,7 +79,8 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                     Read story →
                   </span>
                 </div>
-              </div>            </Surface>
+              </div>
+            </Surface>
           </Link>
         ))}
       </div>
@@ -86,6 +88,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
       {filteredPosts.length === 0 && (
         <div className="text-center text-white/50 py-10">
           <p>No posts found in this category yet.</p>
-        </div>      )}    </div>
-  );
+        </div>
+      )}
+    </div>  );
 }
