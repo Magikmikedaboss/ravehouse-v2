@@ -136,7 +136,8 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
           console.warn(`Failed to parse date: ${item.date}`, error);
           return false;
         }
-      }      case "Warehouse":
+      }
+      case "Warehouse":
         return item.event.toLowerCase().includes("warehouse") || item.type.toLowerCase().includes("warehouse");
       case "Rooftop":
         return item.event.toLowerCase().includes("rooftop") || item.type.toLowerCase().includes("rooftop");
