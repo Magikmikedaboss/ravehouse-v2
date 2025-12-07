@@ -5,7 +5,7 @@ export default function GearHero() {
   return (
     <section className="px-4 pt-8 lg:px-6">
       <Surface className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-rh-pink-light/20 via-rh-pink-dark/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/20 via-rh-pink-dark/15 to-transparent" />
         <div className="relative grid gap-6 p-6 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1.1fr)] md:p-8">
           <div className="space-y-4">
             <p className="text-xxs uppercase tracking-[0.3em] text-white/60">

@@ -89,13 +89,13 @@ export default function EventsPage() {
       {/* Hero section */}
       <section className="space-y-6">
         <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft bg-black w-full">
-          {/* Responsive, capped height instead of fixed 600px */}
-          <div className="relative h-[clamp(360px,38vw,520px)] w-full overflow-hidden">
+          {/* More reasonable height - reduced max from 520px to 420px */}
+          <div className="relative h-[clamp(320px,32vw,420px)] w-full overflow-hidden">
             <Image
               src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
               fill
-              className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
+              className="absolute inset-0 h-full w-full object-contain object-center"
               priority
               fetchPriority="high"
               sizes="100vw"

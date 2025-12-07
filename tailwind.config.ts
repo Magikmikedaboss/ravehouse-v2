@@ -80,6 +80,10 @@ const config: Config = {
         'wider-lg': '0.25em',
         'wider-xl': '0.3em',
       },
+      backgroundImage: {
+        'linear-to-br': 'linear-gradient(to bottom right, var(--tw-gradient-stops))',
+        'linear-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [

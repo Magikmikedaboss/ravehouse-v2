@@ -17,11 +17,13 @@ export default function GalleryHero({
   // Format date for display (e.g., "Feb 1")
   const formatDate = (date: Date | string): string => {
     const d = typeof date === 'string' ? new Date(date) : date;
+    if (isNaN(d.getTime())) {
+      return 'TBD';
+    }
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   };
 
-  const formattedDate = formatDate(aftermovieDate);
-  return (
+  const formattedDate = formatDate(aftermovieDate);  return (
     <section className="grid gap-5 px-4 pt-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:px-6">
       {/* Left panel */}
       <Surface className="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] overflow-hidden">
