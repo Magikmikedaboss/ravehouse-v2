@@ -4,10 +4,28 @@ import Chip from "@/components/ui/Chip";
 import Image from "next/image";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import rehypeSanitize from 'rehype-sanitize';
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 
 type Props = {
   post: BlogPost;
+};
+
+// Strict sanitization schema for blog content
+const sanitizeSchema = {
+  ...defaultSchema,
+  attributes: {
+    ...defaultSchema.attributes,
+    // Allow basic attributes but restrict others
+    '*': ['className', 'id'],
+    a: ['href', 'target', 'rel'],
+    img: ['src', 'alt', 'title'],
+    code: ['className'],
+    pre: ['className'],
+  },
+  // Remove potentially dangerous elements
+  tagNames: defaultSchema.tagNames?.filter(
+    tag => !['script', 'style', 'iframe', 'object', 'embed'].includes(tag)
+  ),
 };
 
 export default function BlogPostBody({ post }: Props) {
@@ -57,7 +75,7 @@ export default function BlogPostBody({ post }: Props) {
         <div className="space-y-4 text-sm leading-relaxed text-white/80 prose prose-invert max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeSanitize]}
+            rehypePlugins={[[rehypeSanitize, sanitizeSchema]]}
             components={{
               h1: ({ children }) => (
                 <h1 className="text-xl font-semibold text-rh-pink-light mb-4 mt-6 first:mt-0">

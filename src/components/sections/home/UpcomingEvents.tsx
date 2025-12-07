@@ -69,7 +69,7 @@ export default function UpcomingEvents() {
         {upcomingEvents.map((event) => (
           <Surface key={event.id} className="overflow-hidden">
             <div className="relative h-40 w-full">
-              <Chip className="absolute left-3 top-3 bg-white/80 border-black/20 text-black">
+              <Chip variant="lightOverlay" className="absolute left-3 top-3">
                 {event.tag}
               </Chip>
               {/* Placeholder gradient – replace with real event image */}
