@@ -102,11 +102,11 @@ export default function EventsPage() {
             />
 
             {/* Main overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t(from-black/75,via-black/25,to-transparent)" />
             {/* Top scrim */}
-            <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-1/3 bg-linear-to-b(from-black/40,to-transparent)" />
             {/* Bottom scrim */}
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t(from-black/60,to-transparent)" />
           </div>
 
           {/* Content layer – natural flow, no absolute positioning */}
@@ -235,9 +235,9 @@ export default function EventsPage() {
             {upcomingEvents.map((event) => (
               <Surface key={event.id} className="overflow-hidden">
                 <div className="relative h-32 w-full">
-                  <div className="absolute inset-0 bg-linear-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
+                  <div className="absolute inset-0 bg-linear-to-br(from-rave-pink/40,via-rave-purple/40,to-black)" />
                   <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t(from-black/80,via-black/40,to-transparent)" />
                   <div className="absolute left-3 top-3 flex items-center gap-2 text-xxs">
                     <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                       {event.day} · {event.time}

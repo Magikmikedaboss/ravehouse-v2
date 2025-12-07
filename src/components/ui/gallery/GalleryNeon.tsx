@@ -90,7 +90,7 @@ export default function GalleryNeon() {
                 className="object-cover w-full h-auto group-hover:scale-105 transition-transform duration-500"
               />
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t from-black/70 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t(from-black/70,to-transparent)">
                 <h3 className="text-white text-lg font-semibold drop-shadow-lg">
                   {item.title}
                 </h3>

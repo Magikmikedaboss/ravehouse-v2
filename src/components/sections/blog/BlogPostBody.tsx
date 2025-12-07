@@ -39,7 +39,7 @@ export default function BlogPostBody({ post }: Props) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t(from-black/60,via-black/20,to-transparent)" />
           <div className="absolute left-4 right-4 bottom-4 space-y-2">
             <div className="flex flex-wrap items-center gap-2 text-xxs text-white/75">
               <Chip variant="ghost">
