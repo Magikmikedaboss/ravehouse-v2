@@ -66,6 +66,7 @@ export default function SiteHeader() {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileMenuOpen(false);
   }, [pathname]);
 
