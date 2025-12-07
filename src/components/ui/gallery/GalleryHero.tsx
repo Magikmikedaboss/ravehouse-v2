@@ -23,8 +23,9 @@ export default function GalleryHero({
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   };
 
-  const formattedDate = formatDate(aftermovieDate);  return (
-    <section className="grid gap-5 px-4 pt-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:px-6">
+  const formattedDate = formatDate(aftermovieDate);
+
+  return (    <section className="grid gap-5 px-4 pt-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:px-6">
       {/* Left panel */}
       <Surface className="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] overflow-hidden">
         <Image

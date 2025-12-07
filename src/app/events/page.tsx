@@ -88,55 +88,71 @@ export default function EventsPage() {
     <div className="space-y-10 pb-10">
       {/* Hero section */}
       <section className="space-y-6">
-        <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft bg-black w-full">
-          {/* More reasonable height - reduced max from 520px to 420px */}
-          <div className="relative h-[clamp(320px,32vw,420px)] w-full overflow-hidden">
+        <div className="relative w-full overflow-hidden rounded-rh-lg border border-white/10 bg-black shadow-rh-soft">
+          {/* Background image + overlays */}
+          <div className="pointer-events-none absolute inset-0">
             <Image
               src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
               fill
-              className="absolute inset-0 h-full w-full object-contain object-center"
+              className="h-full w-full object-cover object-[center_35%]"
               priority
               fetchPriority="high"
               sizes="100vw"
             />
 
-            {/* Main overlay: slightly simplified for smoother contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent pointer-events-none" />
-            {/* Top scrim so badges are always readable */}
-            <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
-            {/* Bottom scrim: tighten to bottom half only */}
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent pointer-events-none" />
+            {/* Main overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+            {/* Top scrim */}
+            <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent" />
+            {/* Bottom scrim */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+          </div>
 
-            {/* Top badges — allow full wrap on mobile, keep both visible */}
-            <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-2 text-xxs text-white/95">
+          {/* Content layer – natural flow, no absolute positioning */}
+          <div className="relative z-10 flex min-h-[360px] w-full flex-col justify-between px-4 py-4 sm:min-h-[clamp(360px,38vw,520px)] sm:px-6 sm:py-6">
+            {/* Top badges */}
+            <div className="flex flex-wrap gap-2 text-xxs text-white/95">
               <Chip variant="cyan">Upcoming raves · Las Vegas</Chip>
-              <Chip variant="cyan" className="flex">Warehouse · Rooftop · Afterhours</Chip>
+              <Chip variant="cyan" className="flex">
+                Warehouse · Rooftop · Afterhours
+              </Chip>
             </div>
 
             {/* Bottom content */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
-              <div className="max-w-[min(100%,720px)] space-y-2 sm:space-y-3">
-                <p className="text-xs sm:text-xxs uppercase tracking-wider sm:tracking-[0.3em] text-white/75">
-                  Curated underground nights, every week
-                </p>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
-                  DISCOVER YOUR NEXT<br className="hidden sm:inline" /> UNDERGROUND NIGHT
-                </h1>
-                <p className="text-base sm:text-sm text-white/90 drop-shadow-md">
-                  Lock in your spot at upcoming warehouses, rooftop takeovers and secret afterhours across Las Vegas.
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
-                  <ButtonLink href="/events?filter=weekend" className="text-sm sm:text-xs">See this weekend&apos;s raves</ButtonLink>
-                  <ButtonLink href="/events" variant="secondary" className="text-sm sm:text-xs">Browse full calendar</ButtonLink>
-                </div>
+            <div className="mt-6 max-w-[min(100%,720px)] space-y-3">
+              <p className="text-xxs uppercase tracking-wider-xl text-white/75">
+                Curated underground nights, every week
+              </p>
 
-                {/* Chips: always wrap; readable sizes on mobile */}
-                <div className="mt-2 flex flex-wrap gap-2 text-xs sm:text-xxs">
-                  <Chip variant="pink">Location drops 24h before</Chip>
-                  <Chip variant="orange">No dress code · Just energy</Chip>
-                  <Chip variant="purple">Techno, House, Bass</Chip>
-                </div>
+              <h1 className="text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl">
+                DISCOVER YOUR NEXT{" "}
+                <br className="hidden sm:inline" />
+                UNDERGROUND NIGHT
+              </h1>
+
+              <p className="text-sm text-white/90 drop-shadow-md">
+                Lock in your spot at upcoming warehouses, rooftop takeovers and
+                secret afterhours across Las Vegas.
+              </p>
+
+              <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
+                <ButtonLink href="/events?filter=weekend" className="text-sm sm:text-xs">
+                  See this weekend&apos;s raves
+                </ButtonLink>
+                <ButtonLink
+                  href="/events"
+                  variant="secondary"
+                  className="text-sm sm:text-xs"
+                >
+                  Browse full calendar
+                </ButtonLink>
+              </div>
+
+              <div className="mt-3 flex flex-wrap gap-2 text-xxs sm:text-xxs">
+                <Chip variant="pink">Location drops 24h before</Chip>
+                <Chip variant="orange">No dress code · Just energy</Chip>
+                <Chip variant="purple">Techno, House, Bass</Chip>
               </div>
             </div>
           </div>
