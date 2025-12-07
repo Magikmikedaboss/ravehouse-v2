@@ -22,7 +22,6 @@ export default function BlogHero() {
               Ravehouse nights across Las Vegas.
             </p>
             
-            {/* ✅ COLORFUL BRAND CHIPS */}
             <div className="mt-2 flex flex-wrap gap-2 text-xxs">
               <Chip variant="pink">
                 Recaps &amp; photo dumps
@@ -32,7 +31,8 @@ export default function BlogHero() {
               </Chip>
               <Chip variant="orange">
                 Rave gear &amp; essentials
-              </Chip>            </div>
+              </Chip>
+            </div>
           </div>
 
           <div className="space-y-1 text-xs text-white/70">

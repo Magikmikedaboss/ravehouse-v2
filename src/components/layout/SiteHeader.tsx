@@ -3,7 +3,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useEffect, useMemo } from "react";import Chip from "../ui/Chip";
+import { useState, useRef, useEffect, useMemo } from "react";
+import ReactDOM from "react-dom";
+import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import ThemeToggle from "../ui/ThemeToggle";
@@ -99,7 +101,7 @@ export default function SiteHeader() {
                       }`}>
                         {item.label}
                       </NavigationMenu.Trigger>
-                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95">
+                      <NavigationMenu.Content className="w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95">
                         <ul className="p-2">
                           {item.children.map((child) => (
                             <li key={child.href}>
@@ -134,11 +136,12 @@ export default function SiteHeader() {
               );
             })}
           </NavigationMenu.List>
+          <NavigationMenu.Viewport />
         </NavigationMenu.Root>
 
-          <div className="ml-auto hidden md:flex items-center gap-3">
+          <div className="ml-auto flex items-center gap-3">
             <ThemeToggle />
-            <Chip className="bg-rh-green/15 text-[12px] text-rh-green border-rh-green/30">
+            <Chip className="hidden sm:flex bg-rh-green/15 text-[12px] text-rh-green border-rh-green/30">
               Live this weekend
             </Chip>
             <Link
