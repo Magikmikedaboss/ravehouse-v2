@@ -86,7 +86,7 @@ export default function SiteHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <NavigationMenu.Root className="hidden md:flex relative">
+        <NavigationMenu.Root className="hidden md:flex">
           <NavigationMenu.List className="flex gap-1 rounded-full bg-black/5 dark:bg-white/5 p-1">
             {NAV_ITEMS.map((item) => {
               const active = isItemActive(item);
@@ -139,7 +139,9 @@ export default function SiteHeader() {
         </NavigationMenu.Root>
 
         <div className="ml-auto flex items-center gap-3">
-          <ThemeToggle />
+          <div className="relative z-10 pointer-events-auto">
+            <ThemeToggle />
+          </div>
           <Chip className="hidden sm:flex text-[12px]" variant="success">
             Live this weekend
           </Chip>
