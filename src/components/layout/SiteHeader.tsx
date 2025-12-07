@@ -83,7 +83,7 @@ export default function SiteHeader() {
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <div className="flex flex-col leading-tight">
-            <span className="text-lg font-black tracking-wider text-white bg-gradient-to-r from-rh-pink-light via-white to-rh-cyan bg-clip-text text-transparent">
+            <span className="text-lg font-black tracking-wider bg-gradient-to-r from-rh-pink-light via-white to-rh-cyan bg-clip-text text-transparent">
               RAVEHOUSE
             </span>
             <span className="text-[10px] font-bold tracking-[0.2em] text-rh-pink-light/80 uppercase">
