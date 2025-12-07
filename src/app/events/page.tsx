@@ -1,5 +1,6 @@
 // src/app/events/page.tsx
 
+import Image from "next/image";
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -85,63 +86,72 @@ const tonightColumn = [
 export default function EventsPage() {
   return (
     <div className="space-y-10 pb-10">
-      {/* TOP HERO ROW */}
-      <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
-        {/* Left hero surface */}
-        <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft">
-          {/* REMOVE aspect-[16/9], ADD min-h-[400px] */}
-          <div className="relative min-h-[400px] lg:min-h-[500px] w-full overflow-hidden">
-            <img
+      {/* TOP HERO ROW - TEMPORARILY REMOVED GRID TO TEST */}
+      <section className="space-y-6">
+        {/* Left hero surface - TESTING WITHOUT GRID */}
+        <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft bg-black w-full">
+          {/* Test with fixed height to see if grid was constraining */}
+          <div className="relative h-[600px] w-full overflow-hidden">
+            <Image
               src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
-              className="absolute inset-0 w-full h-full object-cover object-center"
+              fill={true}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              priority={true}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            {/* DARKER gradient overlay for better text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            {/* Extra dark scrim behind text area */}
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className="absolute left-4 right-4 top-4 flex justify-between text-xxs text-white/80">
+            {/* Top badges */}
+            <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-2 text-xxs text-white/90">
               <Chip variant="cyan">
                 Upcoming raves · Las Vegas
               </Chip>
-              <Chip variant="cyan">
+              <Chip variant="cyan" className="hidden sm:inline-flex">
                 Warehouse · Rooftop · Afterhours
               </Chip>
             </div>
 
-            <div className="absolute bottom-6 left-6 right-6 space-y-3">
-              <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
-                Curated underground nights, every week in the city that never powers down.
+            {/* Bottom content - IMPROVED MOBILE TEXT SIZES */}
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 space-y-2 sm:space-y-3">
+              <p className="text-xs sm:text-xxs uppercase tracking-wider sm:tracking-[0.3em] text-white/70">
+                Curated underground nights, every week
               </p>
-              <h1 className="text-3xl font-semibold sm:text-4xl text-white">
-                DISCOVER YOUR NEXT UNDERGROUND NIGHT
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
+                DISCOVER YOUR NEXT<br className="hidden sm:inline" /> UNDERGROUND NIGHT
               </h1>
-              <p className="max-w-xl text-sm text-white/75">
+              <p className="max-w-xl text-base sm:text-sm text-white/90 drop-shadow-md">
                 Lock in your spot at upcoming warehouses, rooftop takeovers and secret
                 afterhours across Las Vegas.
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
-                <ButtonLink href="/events" className="glow">
+              <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
+                <ButtonLink href="/events" className="text-sm sm:text-xs">
                   See this weekend&apos;s raves
                 </ButtonLink>
-                <ButtonLink href="/events" variant="secondary">
+                <ButtonLink href="/events" variant="secondary" className="text-sm sm:text-xs">
                   Browse full calendar
                 </ButtonLink>
               </div>
-              <div className="mt-2 flex flex-wrap gap-2 text-xxs text-white/60">
+              <div className="mt-2 flex flex-wrap gap-2 text-xs sm:text-xxs">
                 <Chip variant="pink">
-                  Location drops 24h before doors
+                  Location drops 24h before
                 </Chip>
-                <Chip variant="orange">
+                <Chip variant="orange" className="hidden sm:inline-flex">
                   No dress code · Just energy
                 </Chip>
-                <Chip variant="purple">
-                  All genres: Techno, House, Bass
+                <Chip variant="purple" className="hidden md:inline-flex">
+                  Techno, House, Bass
                 </Chip>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Right column highlights */}
+      {/* Right column highlights - MOVED BELOW HERO */}
+      <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className="space-y-4">
           <Surface className="p-5">
             <p className="text-xs text-white/60">This weekend in Vegas</p>

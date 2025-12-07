@@ -15,6 +15,14 @@ const MAX_REQUESTS = 5; // 5 requests per window
 
 export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; resetTime?: number }> {
   const now = Date.now();
+
+  // Lazy cleanup: remove expired entries before processing
+  for (const [key, entry] of rateLimitMap) {
+    if (now > entry.resetTime) {
+      rateLimitMap.delete(key);
+    }
+  }
+
   const entry = rateLimitMap.get(ip);
 
   if (!entry || now > entry.resetTime) {

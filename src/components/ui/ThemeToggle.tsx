@@ -16,10 +16,10 @@ export default function ThemeToggle() {
 
   return (
     <button
-      type="button"  // ← ADD THIS: Prevents form submission behavior
-      onClick={(e) => {  // ← ADD e parameter
-        e.stopPropagation();  // ← ADD THIS: Stops event bubbling
-        e.preventDefault();   // ← ADD THIS: Prevents default behavior
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
         toggleTheme();
       }}
       className="rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-2 transition hover:bg-black/10 dark:hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black pointer-events-auto relative z-10"
@@ -37,5 +37,4 @@ export default function ThemeToggle() {
         </svg>
       )}
     </button>
-  );
-}
+  );}

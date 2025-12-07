@@ -79,8 +79,8 @@ export default function GalleryHero() {
               className="mt-2 inline-flex items-center rounded-full bg-white/90 px-3 py-1.5 text-xxs font-semibold text-black hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Watch full aftermovie (soon)
-            </button>            </div>
-          </div>
+            </button>
+          </div>          </div>
 
           <div className="flex gap-2 border-t border-white/10 bg-black/70 px-3 py-2 text-xxs">
             {[1, 2, 3, 4].map((i) => (

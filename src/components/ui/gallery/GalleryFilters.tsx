@@ -16,6 +16,7 @@ export default function GalleryFilters({ selectedFilter, onFilterChange }: Galle
         {FILTERS.map((filter) => (
           <button
             key={filter}
+            type="button"
             onClick={() => onFilterChange(filter)}
             aria-pressed={selectedFilter === filter}
             aria-label={`Filter gallery by ${filter.toLowerCase()}`}
