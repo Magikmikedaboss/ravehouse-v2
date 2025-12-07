@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.excerpt,
       images: [
         {
-          url: post.heroImage || "/images/placeholder.jpg",
+          url: post.heroImage || "/images/gallery/medium-vecteezy_happy-people-partying-together-on-music-enjoying-night-out_42274992_medium.jpg",
           alt: post.title,
         },
       ],    },

@@ -43,7 +43,7 @@ export default function GalleryNeon() {
       
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-white shadow-rh-soft sm:text-3xl md:text-4xl">
+        <h1 className="text-2xl font-semibold text-white drop-shadow-lg sm:text-3xl md:text-4xl">
           Ravehouse Entertainment Gallery
         </h1>
         <p className="mt-2 text-sm text-neutral-300 md:text-base">
@@ -91,7 +91,7 @@ export default function GalleryNeon() {
               />
 
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                <h3 className="text-white text-lg font-semibold shadow-rh-soft">
+                <h3 className="text-white text-lg font-semibold drop-shadow-lg">
                   {item.title}
                 </h3>
                 <span className="text-pink-400 text-sm">{item.tag}</span>

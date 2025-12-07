@@ -3,8 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useEffect, useLayoutEffect, useMemo } from "react";
-import Chip from "../ui/Chip";
+import { useState, useRef, useEffect, useMemo } from "react";import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import ThemeToggle from "../ui/ThemeToggle";
@@ -21,12 +20,12 @@ export default function SiteHeader() {
     const normalizedPathname = pathname.replace(/\/$/, "");
     return (item: typeof NAV_ITEMS[0]) => {
       if (item.href) {
-        const normalizedHref = item.href.replace(/\/$/, "");
+        const normalizedHref = item.href.split('?')[0].replace(/\/$/, "");
         return normalizedPathname === normalizedHref ||
           (normalizedHref !== "/" && normalizedPathname.startsWith(normalizedHref + "/"));
       }
       return item.children?.some((child) => {
-        const childHref = child.href.replace(/\/$/, "");
+        const childHref = child.href.split('?')[0].replace(/\/$/, "");
         return normalizedPathname === childHref ||
           normalizedPathname.startsWith(childHref + "/");
       }) || false;
@@ -67,8 +66,10 @@ export default function SiteHeader() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [pathname]);  return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-black/80 backdrop-blur">
+  }, [pathname]);
+
+  return (
+    <header>
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-4 py-4 md:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -162,7 +163,9 @@ export default function SiteHeader() {
             ) : (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
-          </svg>        </button>      </div>
+          </svg>
+        </button>
+      </div>
       {/* Mobile nav */}
       {mobileMenuOpen && (
         <div ref={mobileMenuRef} className="border-t border-white/10 bg-black/95 backdrop-blur md:hidden">
