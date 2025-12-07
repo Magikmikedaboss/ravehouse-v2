@@ -88,11 +88,14 @@ export default function EventsPage() {
       {/* TOP HERO ROW */}
       <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
         {/* Left hero surface */}
-        <Surface className="overflow-hidden">
-          <div className="relative h-64 w-full sm:h-80">
-            <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/40 via-rave-purple/40 to-black" />            {/* TODO: replace with real hero image */}
-            <div className="absolute inset-0 bg-[url('/images/backgrounds/warehouse.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft">
+          <div className="relative aspect-[16/9] w-full overflow-hidden">
+            <img
+              src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
+              alt="People enjoying an outdoor decorated space"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
             <div className="absolute left-4 right-4 top-4 flex justify-between text-[11px] text-white/80">
               <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
@@ -108,7 +111,7 @@ export default function EventsPage() {
                 Curated underground nights, every week in the city that never powers down.
               </p>
               <h1 className="text-3xl font-semibold sm:text-4xl">
-                FIND YOUR NEXT RAVEHOUSE ENTERTAINMENT
+                DISCOVER YOUR NEXT UNDERGROUND NIGHT
               </h1>
               <p className="max-w-xl text-sm text-white/75">
                 Lock in your spot at upcoming warehouses, rooftop takeovers and secret
@@ -135,7 +138,7 @@ export default function EventsPage() {
               </div>
             </div>
           </div>
-        </Surface>
+        </div>
 
         {/* Right column highlights */}
         <div className="space-y-4">
