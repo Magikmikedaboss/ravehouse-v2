@@ -86,7 +86,7 @@ export default function SiteHeader() {
 
         {/* Desktop nav */}
         <NavigationMenu.Root className="hidden md:flex relative">
-          <NavigationMenu.List className="flex gap-1 rounded-full bg-black/5 p-1">
+          <NavigationMenu.List className="flex gap-1 rounded-full bg-black/5 dark:bg-white/5 p-1">
             {NAV_ITEMS.map((item) => {
               const active = isItemActive(item);
               return (
@@ -96,18 +96,18 @@ export default function SiteHeader() {
                       <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                         active
                           ? "bg-white text-black shadow"
-                          : "text-white/70 hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white"
+                          : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
                       }`}>
                         {item.label}
                       </NavigationMenu.Trigger>
-                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-white/10 bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95 z-50">
+                      <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-in fade-in-0 zoom-in-95 z-50">
                         <ul className="p-2">
                           {item.children.map((child) => (
                             <li key={child.href}>
                               <NavigationMenu.Link asChild>
                                 <Link
                                   href={child.href}
-                                  className="block px-3 py-2 text-xs text-white/70 hover:bg-white/10 hover:text-white transition rounded-md focus:bg-white/10 focus:text-white focus:outline-none"
+                                  className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none"
                                 >
                                   {child.label}
                                 </Link>
@@ -124,7 +124,7 @@ export default function SiteHeader() {
                         className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                           active
                             ? "bg-white text-black shadow"
-                            : "text-white/70 hover:bg-white/10 hover:text-white"
+                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
                         }`}
                       >
                         {item.label}
@@ -137,24 +137,24 @@ export default function SiteHeader() {
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
-          <div className="ml-auto flex items-center gap-3">
-            <ThemeToggle />
-            <Chip className="hidden sm:flex text-[12px]" variant="success">
-              Live this weekend
-            </Chip>
-            <Link
-              href="/tickets"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold shadow-rh-soft"
-            >
-              Get Tickets
-            </Link>
-          </div>
+        <div className="ml-auto flex items-center gap-3">
+          <ThemeToggle />
+          <Chip className="hidden sm:flex text-[12px]" variant="success">
+            Live this weekend
+          </Chip>
+          <Link
+            href="/tickets"
+            className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold shadow-rh-soft"
+          >
+            Get Tickets
+          </Link>
+        </div>
         {/* Mobile menu button */}
         <button
           ref={toggleButtonRef}
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white transition"
+          className="md:hidden rounded-lg p-2 text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition"
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
         >
@@ -169,7 +169,7 @@ export default function SiteHeader() {
       </div>
       {/* Mobile nav */}
       {mobileMenuOpen && (
-        <div ref={mobileMenuRef} className="border-t border-white/10 bg-black/95 backdrop-blur md:hidden">
+        <div ref={mobileMenuRef} className="border-t border-black/10 dark:border-white/10 bg-white/95 dark:bg-black/95 backdrop-blur md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="flex flex-col gap-2">
             {NAV_ITEMS.map((item) => {
@@ -180,19 +180,18 @@ export default function SiteHeader() {
                         href={item.href}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
                           active
-                            ? "bg-white text-black"
-                            : "text-white/70 hover:bg-white/10 hover:text-white"
+                            ? "bg-black dark:bg-white text-white dark:text-black"
+                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
                         }`}
                       >
                         {item.label}
-                      </Link>
-                    ) : (
+                      </Link>                    ) : (
                       <button
                         type="button"
                         onClick={() => setExpandedMobileItem(
                           expandedMobileItem === item.label ? null : item.label
                         )}
-                        className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition"
+                        className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition"
                         aria-expanded={expandedMobileItem === item.label}
                         aria-haspopup="true"
                       >
@@ -216,7 +215,7 @@ export default function SiteHeader() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/5 hover:text-white transition"
+                            className="block rounded-lg px-3 py-2 text-sm text-black/60 dark:text-white/60 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition"
                           >
                             {child.label}
                           </Link>
@@ -227,7 +226,13 @@ export default function SiteHeader() {
                 );
               })}
 
-              <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-4">
+              <div className="mt-4 flex flex-col gap-3 border-t border-black/10 dark:border-white/10 pt-4">
+                {/* Theme toggle for mobile */}
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-black/70 dark:text-white/70">Theme</span>
+                  <ThemeToggle />
+                </div>
+
                 <Chip className="self-start text-[12px]" variant="success">
                   Live this weekend
                 </Chip>

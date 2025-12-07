@@ -109,11 +109,11 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
       case "This month":
         return item.date.includes("Dec 2025");
       case "Warehouse":
-        return item.event.toLowerCase().includes("warehouse");
+        return item.event.toLowerCase().includes("warehouse") || item.type.toLowerCase().includes("warehouse");
       case "Rooftop":
-        return item.type.toLowerCase().includes("rooftop");
+        return item.event.toLowerCase().includes("rooftop") || item.type.toLowerCase().includes("rooftop");
       case "Afterhours":
-        return item.type.toLowerCase().includes("afterhours");
+        return item.event.toLowerCase().includes("afterhours") || item.type.toLowerCase().includes("afterhours");
       default:
         return true;
     }
