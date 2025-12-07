@@ -47,7 +47,7 @@ export default function VipPage() {
       {/* Hero */}
       <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
         <article className="surface overflow-hidden">
-          <div className="h-64 w-full bg-linear-to-br(from-rave-pink,via-rave-purple,to-rave-cyan)" />
+          <div className="h-64 w-full bg-gradient-to-br from-rave-pink via-rave-purple to-rave-cyan" />
           <div className="p-6 sm:p-8">
             <p className="text-xs uppercase tracking-[0.25em] text-white/60">
               For the ones closing the floor, not watching from the bar.
@@ -62,7 +62,7 @@ export default function VipPage() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="#apply"
-                className="rounded-full bg-linear-to-r(from-rave-pink,to-rave-orange) px-5 py-2.5 text-sm font-semibold shadow-glow"
+                className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold shadow-glow"
               >
                 Join VIP Waitlist
               </Link>
@@ -104,7 +104,7 @@ export default function VipPage() {
             <p className="mt-2 text-xs text-white/60">
               Strip rooftops, downtown lounges and afterhours dens in one network.
             </p>
-            <button className="mt-4 w-full rounded-full bg-linear-to-r(from-rave-cyan,to-rave-purple) px-4 py-2 text-xs font-semibold text-black">
+            <button className="mt-4 w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-black">
               See venue map
             </button>
           </div>
@@ -241,7 +241,7 @@ export default function VipPage() {
 
           <button
             type="submit"
-            className="mt-2 w-full rounded-full bg-linear-to-r(from-rave-pink,to-rave-orange) px-4 py-2 text-xs font-semibold text-black shadow-glow"
+            className="mt-2 w-full rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-4 py-2 text-xs font-semibold text-black shadow-glow"
           >
             Submit request
           </button>

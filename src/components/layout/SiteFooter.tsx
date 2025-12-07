@@ -18,9 +18,7 @@ export default function SiteFooter() {
             }}
           >
             RAVEHOUSE
-          </div>
-          <p className="text-white/60">Las Vegas underground party brand. No VIP ropes, just better nights.</p>
-        </div>
+          </div>        </div>
 
         <div className="flex flex-col gap-8 md:flex-row md:gap-12">
           <div className="space-y-3">

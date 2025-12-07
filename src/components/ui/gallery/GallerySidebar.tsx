@@ -38,7 +38,7 @@ export default function GallerySidebar() {
         <div className="space-y-1 text-xxs text-[rgb(var(--rh-text-secondary))]">
           <p>Face match is 80% complete.</p>
           <div className="h-2 rounded-full bg-black/10">
-            <div className="h-2 w-4/5 rounded-full bg-linear-to-r(from-rh-pink-light,to-rh-pink-dark)" />
+            <div className="h-2 w-4/5 rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark" />
           </div>
         </div>
 
@@ -61,7 +61,7 @@ export default function GallerySidebar() {
               backgroundImage: "url('/images/gallery/story-reels.jpg')",
             }}
           />
-          <div className="absolute inset-0 bg-linear-to-t(from-black/85,via-black/40,to-transparent)" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
           <div className="absolute left-3 right-3 top-3 flex flex-wrap gap-2 text-[10px]">
             <Chip variant="cyan">Techno marathon</Chip>
             <Chip variant="purple">

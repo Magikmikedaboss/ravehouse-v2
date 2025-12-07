@@ -26,11 +26,9 @@ function variantClasses(variant: Variant = "primary") {
   }
   if (variant === "ghost") {
     return "btn-ghost";
-  }
   if (variant === "primary") {
-    return "bg-linear-to-br(from-[rgb(var(--rh-pink-light))],to-[rgb(var(--rh-pink-dark))]) text-white shadow-rh-glow hover:shadow-[0_0_22px_rgba(246,104,121,0.7),0_14px_36px_rgba(0,0,0,0.85)] hover:-translate-y-1";
-  }
-  return "";
+    return "bg-gradient-to-br from-[rgb(var(--rh-pink-light))] to-[rgb(var(--rh-pink-dark))] text-white shadow-rh-glow hover:shadow-[0_0_22px_rgba(246,104,121,0.7),0_14px_36px_rgba(0,0,0,0.85)] hover:-translate-y-1";
+  }  }  return "";
 }
 
 // Simple spinner component

@@ -81,7 +81,7 @@ export default function GalleryHero({
       >
         <div className="relative rounded-[1.75rem] bg-black/60 shadow-rh-soft overflow-hidden">
           <div className="relative aspect-9/16 overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-br(from-rh-pink-light/30,via-rh-purple/20,to-black)" />
+            <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/30 via-rh-purple/20 to-black" />
 
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-xxs text-white/80">
               <div className="flex gap-2">
@@ -113,7 +113,7 @@ export default function GalleryHero({
                 key={i}
                 className="relative h-16 flex-1 overflow-hidden rounded-xl bg-white/5"
               >
-                <div className="absolute inset-0 bg-linear-to-br(from-rh-pink-light/40,via-rh-pink-dark/40,to-black)" />
+                <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/40 via-rh-pink-dark/40 to-black" />
                 <p className="absolute bottom-1 left-2 text-[10px] text-white/80">
                   {(() => {
                     const totalSeconds = i * 15;
