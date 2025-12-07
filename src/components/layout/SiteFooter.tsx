@@ -10,16 +10,17 @@ export default function SiteFooter() {
           <div 
             className="font-black text-lg tracking-wider"
             style={{
+              color: 'white',
               background: 'linear-gradient(to right, #ff6b9d, #ffffff, #00d4ff)',
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              color: 'white' // Fallback color for browsers that don't support background-clip
+              WebkitTextFillColor: 'transparent'
             }}
           >
             RAVEHOUSE
-          </div>        </div>
-
+          </div>
+          <p className="text-white/60">Las Vegas underground party brand. No VIP ropes, just better nights.</p>
+        </div>
         <div className="flex flex-col gap-8 md:flex-row md:gap-12">
           <div className="space-y-3">
             <div className="font-semibold text-white">Explore</div>
