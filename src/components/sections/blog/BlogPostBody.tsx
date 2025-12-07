@@ -16,9 +16,9 @@ const sanitizeSchema = {
   attributes: {
     ...defaultSchema.attributes,
     // Allow basic attributes but restrict others
-    '*': ['className', 'id'],
     a: ['href', 'target', 'rel'],
     img: ['src', 'alt', 'title'],
+    // Only allow className on code/pre for syntax highlighting - NO global className/id allowance
     code: ['className'],
     pre: ['className'],
   },

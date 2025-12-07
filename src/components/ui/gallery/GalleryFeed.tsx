@@ -110,18 +110,25 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
         const now = new Date();
         const currentMonth = now.toLocaleString('en-US', { month: 'short' });
         const currentYear = now.getFullYear();
-        return item.date.includes(`${currentMonth} ${currentYear}`);
+        // Parse the date field and compare month/year
+        const itemDate = new Date(item.date);
+        if (isNaN(itemDate.getTime())) {
+          // Fallback to string matching if date is not parseable
+          return item.date.includes(`${currentMonth} ${currentYear}`);
+        }
+        return itemDate.getMonth() === now.getMonth() && 
+               itemDate.getFullYear() === now.getFullYear();
       }
       case "Warehouse":
         return item.event.toLowerCase().includes("warehouse") || item.type.toLowerCase().includes("warehouse");
       case "Rooftop":
         return item.event.toLowerCase().includes("rooftop") || item.type.toLowerCase().includes("rooftop");
       case "Afterhours":
-        return item.event.toLowerCase().includes("afterhours") || item.type.toLowerCase().includes("afterhours");      default:
+        return item.event.toLowerCase().includes("afterhours") || item.type.toLowerCase().includes("afterhours");
+      default:
         return true;
     }
   });
-
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {filteredItems.map((item) => (

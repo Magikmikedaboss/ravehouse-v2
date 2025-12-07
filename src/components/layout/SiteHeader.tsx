@@ -15,6 +15,8 @@ export default function SiteHeader() {
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const desktopThemeToggleRef = useRef<HTMLDivElement>(null);
+  const mobileThemeToggleRef = useRef<HTMLDivElement>(null);
 
   // Helper function to determine if a nav item is active
   const isItemActive = useMemo(() => {
@@ -41,8 +43,10 @@ export default function SiteHeader() {
       const target = event.target as Node;
       const isInsideMenu = mobileMenuRef.current && mobileMenuRef.current.contains(target);
       const isInsideButton = toggleButtonRef.current && toggleButtonRef.current.contains(target);
+      const isInsideDesktopThemeToggle = desktopThemeToggleRef.current && desktopThemeToggleRef.current.contains(target);
+      const isInsideMobileThemeToggle = mobileThemeToggleRef.current && mobileThemeToggleRef.current.contains(target);
       
-      if (!isInsideMenu && !isInsideButton) {
+      if (!isInsideMenu && !isInsideButton && !isInsideDesktopThemeToggle && !isInsideMobileThemeToggle) {
         setMobileMenuOpen(false);
       }
     };
@@ -139,7 +143,7 @@ export default function SiteHeader() {
         </NavigationMenu.Root>
 
         <div className="ml-auto hidden md:flex items-center gap-3">
-          <div className="relative z-10 pointer-events-auto">
+          <div className="relative z-10 pointer-events-auto" ref={desktopThemeToggleRef}>
             <ThemeToggle />
           </div>
           <Chip className="hidden sm:flex text-[12px]" variant="success">
@@ -233,7 +237,9 @@ export default function SiteHeader() {
                 {/* Theme toggle for mobile */}
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-black/70 dark:text-white/70">Theme</span>
-                  <ThemeToggle />
+                  <div ref={mobileThemeToggleRef}>
+                    <ThemeToggle />
+                  </div>
                 </div>
 
                 <Chip className="self-start text-[12px]" variant="success">

@@ -74,14 +74,13 @@ export function Button({
   const [isHovered, setIsHovered] = useState(false);
 
   const primaryStyles = isPrimary ? {
-    background: "linear-gradient(135deg, var(--rh-pink-light), var(--rh-pink-dark))",
+    background: "linear-gradient(135deg, rgb(var(--rh-pink-light)), rgb(var(--rh-pink-dark)))",
     color: "#fff",
     boxShadow: isHovered 
       ? "0 0 22px rgba(246, 104, 121, 0.7), 0 14px 36px rgba(0, 0, 0, 0.85)"
       : "0 0 18px rgba(246, 104, 121, 0.45), 0 12px 30px rgba(0, 0, 0, 0.7)",
     transform: isHovered ? "translateY(-1px)" : "none",
   } : {};
-
   return (
     <button
       {...props}

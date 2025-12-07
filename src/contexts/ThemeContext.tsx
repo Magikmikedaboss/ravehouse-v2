@@ -19,18 +19,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   // Load theme from localStorage on mount
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
     try {
       const saved = localStorage.getItem("ravehouse-theme");
       if (saved === "dark" || saved === "light") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setTheme(saved);
       }
     } catch (error) {
       console.warn("Failed to read theme from localStorage:", error);
     }
+    setMounted(true);
   }, []);
-
   // Update document class and localStorage when theme changes
   useEffect(() => {
     if (!mounted) return;
