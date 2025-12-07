@@ -4,13 +4,14 @@ A modern Next.js web application for Ravehouse Entertainment, featuring undergro
 
 ## 🚀 Technologies Used
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS v3 with custom rave color palette
+- **Styling**: Tailwind CSS v3.4.18 with custom rave color palette
 - **UI Components**: Radix UI (accessible navigation)
 - **Content**: React Markdown with GitHub Flavored Markdown support
 - **Build Tool**: Turbopack (via Next.js)
 - **Deployment**: Ready for Vercel/Netlify
+- **Theme System**: Custom light/dark mode with localStorage persistence
 
 ## ✨ Features
 
@@ -25,6 +26,7 @@ A modern Next.js web application for Ravehouse Entertainment, featuring undergro
 - **ℹ️ About**: Team profiles, venue information, booking contacts
 - **🎨 Custom UI**: Chips with rave-themed colors, surface containers, glow effects
 - **📱 Responsive**: Mobile-first design optimized for all devices
+- **🌓 Theme System**: Light/dark mode toggle with localStorage persistence
 - **🔒 Security**: Proper sanitization, secure external links, TypeScript safety
 
 ## 📁 Project Structure
@@ -42,7 +44,8 @@ ravehouse-v2/
 │   │   │   ├── page.tsx        # Blog listing with recent posts
 │   │   │   └── [slug]/         # Dynamic blog post pages
 │   │   │       └── page.tsx    # Individual blog posts with SEO
-│   │   ├── contact/            # Contact page (placeholder)
+│   │   ├── contact/            # Contact page (fully implemented)
+│   │   │   └── page.tsx        # Contact methods, locations, response times
 │   │   ├── events/             # Events page (fully implemented)
 │   │   │   └── page.tsx        # Event listings with filters
 │   │   ├── gallery/            # Gallery page (fully implemented)
@@ -80,9 +83,11 @@ ravehouse-v2/
 │   │   └── ui/                 # Core UI components
 │   │       ├── Button.tsx      # ButtonLink component
 │   │       ├── Chip.tsx        # Colorful chip component
+│   │       ├── Input.tsx       # Form input component
 │   │       ├── NewsletterSignup.tsx # Newsletter form
 │   │       ├── SectionHeader.tsx # Section headers
 │   │       ├── Surface.tsx     # Container with blur effects
+│   │       ├── ThemeToggle.tsx # Light/dark mode toggle
 │   │       └── gallery/        # Gallery-specific components
 │   │           ├── GalleryHero.tsx     # Gallery header
 │   │           ├── GalleryFilters.tsx  # Filter controls
@@ -90,6 +95,8 @@ ravehouse-v2/
 │   │           ├── GallerySidebar.tsx  # Sidebar with info
 │   │           ├── GalleryBottomStrip.tsx # Bottom gallery strip
 │   │           └── GalleryNeon.tsx     # Neon gallery title
+│   ├── contexts/               # React contexts
+│   │   └── ThemeContext.tsx    # Theme state management
 │   └── lib/                    # Utilities & data
 │       ├── blog.ts             # Blog posts data & utilities
 │       └── navigation.ts       # Site navigation configuration
@@ -110,11 +117,12 @@ ravehouse-v2/
 ```
 ## 🎨 Styling & Design
 
-- **Theme**: Dark mode with custom gradient backgrounds (#1b0612 to #050309)
-- **Colors**: Custom Tailwind v3 colors (rave-pink, rave-orange, rave-cyan, rave-purple)
+- **Theme**: Light/dark mode with custom gradient backgrounds and color schemes
+- **Colors**: Custom Tailwind v3.4.18 colors (rave-pink, rave-orange, rave-cyan, rave-purple)
 - **Typography**: Sans-serif fonts with tight tracking
 - **Components**: Surface containers with blur effects, glows, and shadows
 - **Chips**: Colorful rave-themed chips replacing neutral backgrounds
+- **Theme Toggle**: Accessible light/dark mode switcher with localStorage persistence
 - **Responsive**: Mobile-first design with Tailwind breakpoints
 
 ## 🛠️ Development
@@ -153,6 +161,7 @@ npm run lint
 - `src/app/blog/page.tsx`: Blog listing with recent posts and categories
 - `src/app/blog/[slug]/page.tsx`: Dynamic blog post pages with SEO metadata
 - `src/app/about/page.tsx`: Team profiles, venue info, booking contacts
+- `src/app/contact/page.tsx`: Contact methods, locations, and response times
 - `src/app/events/page.tsx`: Event listings with genre filters and venue details
 - `src/app/gallery/page.tsx`: Photo gallery with filters, feed, and sidebar
 - `src/app/gear/page.tsx`: Rave gear recommendations with affiliate links
@@ -167,6 +176,8 @@ npm run lint
 - `Chip`: Colorful chip component with rave-themed backgrounds
 - `NewsletterSignup`: Email signup form with proper TypeScript typing
 - `ButtonLink`: Custom button component with variants
+- `Input`: Form input component with validation states
+- `ThemeToggle`: Accessible light/dark mode toggle with localStorage
 
 ### Blog Components
 - `BlogPostBody`: Markdown rendering with sanitization
@@ -195,6 +206,7 @@ npm run lint
 - `AfterglowGallery`: Gallery preview section
 
 ### Utilities
+- `src/contexts/ThemeContext.tsx`: Theme state management with localStorage persistence
 - `src/lib/blog.ts`: Blog posts data, categories, and utility functions
 - `src/lib/navigation.ts`: Site navigation configuration with submenu support
 
@@ -203,18 +215,22 @@ npm run lint
 Ready for deployment on Vercel, Netlify, or any Node.js host. The app uses static generation where possible and includes:
 
 - **Build Status**: ✅ All pages build successfully
-- **Routes**: 10 fully functional pages (/ /blog /about /events /gallery /gear /membership /tickets /vip /contact)
+- **Routes**: 11 fully functional pages (/ /blog /about /contact /events /gallery /gear /membership /tickets /vip)
 - **Blog System**: Static generation with SEO metadata for all posts
 - **Static Assets**: Image placeholders ready for real assets
-- **Performance**: Optimized with Next.js 15, Turbopack, and modern React 19
+- **Performance**: Optimized with Next.js 16, Turbopack, and modern React 19
 - **Security**: Proper sanitization, secure external links, TypeScript safety
 - **Accessibility**: Radix UI components, proper ARIA attributes
+- **Theme System**: Light/dark mode with localStorage persistence
 
 ## 🤝 Contributing
 
 This is a personal project for Ravehouse Entertainment. For AI-assisted development, refer to this README for context.
 
 ### Recent Updates
+- ✅ **Contact Page**: Fully implemented with contact methods, locations, and response times
+- ✅ **Theme System**: Light/dark mode toggle with localStorage persistence
+- ✅ **Mobile Optimization**: Responsive contact cards and improved mobile layouts
 - ✅ **Blog System**: Full markdown blog with static generation and SEO
 - ✅ **Membership Page**: Comprehensive membership tiers and FAQ
 - ✅ **Gear Recommendations**: Rave gear reviews with secure affiliate links
@@ -227,14 +243,15 @@ This is a personal project for Ravehouse Entertainment. For AI-assisted developm
 ## 🔧 Build Status
 
 ```bash
-✓ Next.js 15 with React 19.2.1
+✓ Next.js 16 with React 19.2.1
 ✓ TypeScript compilation successful
-✓ All 10 routes build without errors
+✓ All 11 routes build without errors
 ✓ Static generation working for blog posts
 ✓ Responsive design verified
 ✓ Linting passes with zero issues
 ✓ Security checks: sanitization, secure links, proper imports
 ✓ Accessibility: Radix UI components, ARIA attributes
+✓ Theme system: Light/dark mode fully functional
 ```
 
 ## 📄 License

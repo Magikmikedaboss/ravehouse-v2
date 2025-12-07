@@ -54,15 +54,15 @@ export default function ContactPage() {
     <div className="space-y-10 pb-10">
       {/* PAGE HEADER */}
       <section className="space-y-4">
-        <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
+        <p className="text-xxs uppercase tracking-[0.3em] text-[rgb(var(--rh-text-secondary))]">
           Get in touch
         </p>
         <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
           <div>
-            <h1 className="text-3xl font-semibold sm:text-4xl text-white">
+            <h1 className="text-3xl font-semibold sm:text-4xl text-[rgb(var(--rh-text-primary))]">
               Contact Ravehouse Entertainment
             </h1>
-            <p className="mt-2 max-w-xl text-sm text-white/75">
+            <p className="mt-2 max-w-xl text-sm text-[rgb(var(--rh-text-secondary))]">
               Reach out for bookings, partnerships, press inquiries, or just to say hello.
               We&apos;re always looking to connect with the underground scene.
             </p>
@@ -87,24 +87,24 @@ export default function ContactPage() {
 
         <div className="grid gap-4 md:grid-cols-2">
           {contactMethods.map((method) => (
-            <Surface key={method.type} className="p-6">
-              <div className="flex items-start gap-4">
-                <div className="text-xl sm:text-2xl">{method.icon}</div>
-                <div className="flex-1 space-y-2">
+            <Surface key={method.type} className="p-4 md:p-6">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
+                <div className="text-xl sm:text-2xl flex-shrink-0">{method.icon}</div>
+                <div className="flex-1 space-y-2 min-w-0">
                   <div>
-                    <h3 className="font-semibold text-white">{method.type}</h3>
-                    <p className="text-sm text-white/75">{method.description}</p>
+                    <h3 className="font-semibold text-[rgb(var(--rh-text-primary))]">{method.type}</h3>
+                    <p className="text-sm text-[rgb(var(--rh-text-secondary))]">{method.description}</p>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-rh-pink-light">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <span className="text-sm font-medium text-rh-pink-light break-all sm:break-normal">
                       {method.value}
                     </span>
                     {method.action.startsWith("mailto:") || method.action.startsWith("https://") ? (
-                      <ButtonLink href={method.action} className="text-xs">
+                      <ButtonLink href={method.action} className="text-xs self-start sm:self-auto">
                         Contact
                       </ButtonLink>
                     ) : (
-                      <Button disabled variant="secondary" className="text-xs">
+                      <Button disabled variant="secondary" className="text-xs self-start sm:self-auto">
                         Coming soon
                       </Button>
                     )}                  </div>
@@ -124,13 +124,13 @@ export default function ContactPage() {
 
         <div className="grid gap-4 md:grid-cols-2">
           {locations.map((location) => (
-            <Surface key={location.city} className="p-6">
+            <Surface key={location.city} className="p-4 md:p-6">
               <div className="space-y-3">
                 <div>
-                  <h3 className="text-lg font-semibold text-white">{location.city}</h3>
-                  <p className="text-sm text-white/75">{location.focus}</p>
+                  <h3 className="text-lg font-semibold text-[rgb(var(--rh-text-primary))]">{location.city}</h3>
+                  <p className="text-sm text-[rgb(var(--rh-text-secondary))]">{location.focus}</p>
                 </div>
-                <p className="text-sm text-white/60">{location.notes}</p>
+                <p className="text-sm text-[rgb(var(--rh-text-secondary))]">{location.notes}</p>
                 <div className="flex flex-wrap gap-2">
                   <Chip variant="purple">
                     {location.city === "Las Vegas, NV" ? "Active" : "Expanding"}
@@ -148,29 +148,29 @@ export default function ContactPage() {
           description="When to expect replies"
         />
 
-        <Surface className="p-6">
-          <div className="grid gap-6 md:grid-cols-2">
+        <Surface className="p-4 md:p-6">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
             <div className="space-y-4">
-              <h3 className="font-semibold text-white">Email responses</h3>
+              <h3 className="font-semibold text-[rgb(var(--rh-text-primary))]">Email responses</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-white/75">Business hours (PST)</span>
-                  <span className="text-white">24-48 hours</span>
+                  <span className="text-[rgb(var(--rh-text-secondary))]">Business hours (PST)</span>
+                  <span className="text-[rgb(var(--rh-text-primary))]">24-48 hours</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white/75">Weekends</span>
-                  <span className="text-white">48-72 hours</span>
+                  <span className="text-[rgb(var(--rh-text-secondary))]">Weekends</span>
+                  <span className="text-[rgb(var(--rh-text-primary))]">48-72 hours</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white/75">Event periods</span>
-                  <span className="text-white">72+ hours</span>
+                  <span className="text-[rgb(var(--rh-text-secondary))]">Event periods</span>
+                  <span className="text-[rgb(var(--rh-text-primary))]">72+ hours</span>
                 </div>
               </div>
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-semibold text-white">Emergency contact</h3>
-              <p className="text-sm text-white/75">
+              <h3 className="font-semibold text-[rgb(var(--rh-text-primary))]">Emergency contact</h3>
+              <p className="text-sm text-[rgb(var(--rh-text-secondary))]">
                 For urgent venue or safety issues during events, call our emergency line.
               </p>
               <div className="flex items-center gap-2">

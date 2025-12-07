@@ -101,6 +101,21 @@ const galleryItems = [
   }
 ];
 
+// Helper function to parse "MMM YYYY" format to Date object
+function parseMMMYYYY(dateString: string): Date {
+  const [monthStr, yearStr] = dateString.split(' ');
+  const year = parseInt(yearStr, 10);
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const month = monthNames.indexOf(monthStr);
+  
+  if (month === -1 || isNaN(year)) {
+    throw new Error(`Invalid date format: ${dateString}`);
+  }
+  
+  // Create date at the start of the month in UTC to avoid timezone issues
+  return new Date(Date.UTC(year, month, 1));
+}
+
 export default function GalleryFeed({ selectedFilter }: { selectedFilter: string }) {
   const filteredItems = galleryItems.filter((item) => {
     switch (selectedFilter) {
@@ -108,10 +123,19 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
         return true;
       case "This month": {
         const now = new Date();
-        const currentMonth = now.toLocaleString('en-US', { month: 'short' });
-        const currentYear = now.getFullYear();
-        // Direct string matching since date format is "MMM YYYY"
-        return item.date === `${currentMonth} ${currentYear}`;
+        const currentYear = now.getUTCFullYear();
+        const currentMonth = now.getUTCMonth();
+        
+        try {
+          const itemDate = parseMMMYYYY(item.date);
+          const itemYear = itemDate.getUTCFullYear();
+          const itemMonth = itemDate.getUTCMonth();
+          
+          return itemYear === currentYear && itemMonth === currentMonth;
+        } catch (error) {
+          console.warn(`Failed to parse date: ${item.date}`, error);
+          return false;
+        }
       }      case "Warehouse":
         return item.event.toLowerCase().includes("warehouse") || item.type.toLowerCase().includes("warehouse");
       case "Rooftop":

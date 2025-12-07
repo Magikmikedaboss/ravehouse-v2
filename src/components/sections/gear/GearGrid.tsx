@@ -122,7 +122,7 @@ export default function GearGrid() {
                   View →
                 </Link>
               ) : (
-                <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px]">
+                <span className="rounded-full bg-white/5 px-2 py-0.5 text-xxs">
                   Brand &amp; link coming soon
                 </span>
               )}

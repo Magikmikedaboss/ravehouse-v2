@@ -37,6 +37,7 @@ const config: Config = {
             light: "rgb(var(--rh-purple-light) / <alpha-value>)",
           },
           green: "rgb(var(--rh-green) / <alpha-value>)",
+          red: "rgb(var(--rh-red) / <alpha-value>)",
         },
         rave: {
           pink: "rgb(var(--rh-pink-light) / <alpha-value>)",
