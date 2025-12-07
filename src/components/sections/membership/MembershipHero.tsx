@@ -10,7 +10,7 @@ export default function MembershipHero() {
         <div className="relative grid gap-6 p-6 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.1fr)] md:p-8">
           {/* Left: copy */}
           <div className="space-y-4">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+            <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
               Membership · Ravehouse
             </p>
             <h1 className="text-3xl font-semibold sm:text-4xl">
@@ -71,7 +71,7 @@ export default function MembershipHero() {
               to new formats, secret locations, and test events.
             </p>
 
-            <div className="space-y-1 text-[11px]">
+            <div className="space-y-1 text-xxs">
               <p className="text-white/55">Coming soon:</p>
               <ul className="list-disc pl-4 space-y-1 text-white/65">
                 <li>Digital membership card &amp; wristband sync</li>

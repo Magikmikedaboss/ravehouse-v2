@@ -52,10 +52,10 @@ export default function NewsletterSignup() {
         </Button>      </div>
       {status === "success" && (
         <div aria-live="polite" aria-atomic="true">
-          <p className="text-[11px] text-rh-green">Thanks! Check your inbox.</p>
+          <p className="text-xxs text-rh-green">Thanks! Check your inbox.</p>
         </div>
       )}
-      <p className="text-[11px] text-white/50">
+      <p className="text-xxs text-white/50">
         No spam. Just events, recaps and the occasional mix.
       </p>
     </form>  );

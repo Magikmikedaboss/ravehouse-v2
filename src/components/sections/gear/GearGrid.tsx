@@ -56,7 +56,7 @@ export default function GearGrid() {
     <section className="space-y-4 px-4 pb-14 pt-6 lg:px-6">
       <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.2em] text-white/60">
+          <p className="text-xxs uppercase tracking-[0.2em] text-white/60">
             Curated picks
           </p>
           <h2 className="text-xl font-semibold text-white sm:text-2xl">
@@ -80,7 +80,7 @@ export default function GearGrid() {
                 </h3>
               </div>
               {item.badge && (
-                <Chip className="bg-rh-pink-light text-black border-none text-[10px]">
+                <Chip variant="badge">
                   {item.badge}
                 </Chip>
               )}
@@ -90,7 +90,7 @@ export default function GearGrid() {
               {item.blurb}
             </p>
 
-            <div className="mt-3 flex items-center justify-between text-[11px] text-white/60">
+            <div className="mt-3 flex items-center justify-between text-xxs text-white/60">
               {item.link ? (
                 <Link
                   href={item.link}

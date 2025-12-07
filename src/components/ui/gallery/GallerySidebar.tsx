@@ -67,9 +67,9 @@ export default function GallerySidebar() {
             <Chip variant="purple">
               House on the Strip
             </Chip>          </div>
-          <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-[11px] text-white/80">
+          <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-xxs text-white/80">
             <p>Export with Ravehouse Entertainment watermark or clean.</p>
-            <button disabled className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed">
+            <button disabled className="rounded-full bg-white px-3 py-1 text-xxs font-semibold text-black disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed">
               Export all
             </button>
           </div>        </div>
@@ -97,7 +97,7 @@ export default function GallerySidebar() {
           </div>
         </div>
 
-        <button disabled className="w-full rounded-full bg-black/10 px-3 py-1.5 text-[11px] text-white/80 hover:bg-black/15 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed">
+        <button disabled className="w-full rounded-full bg-black/10 px-3 py-1.5 text-xxs text-white/80 hover:bg-black/15 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed">
           Apply as house photographer
         </button>
       </Surface>

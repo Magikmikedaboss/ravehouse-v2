@@ -8,7 +8,7 @@ export default function GearHero() {
         <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/20 via-rh-pink-dark/15 to-transparent" />
         <div className="relative grid gap-6 p-6 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1.1fr)] md:p-8">
           <div className="space-y-4">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+            <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
               The Circuit · Gear
             </p>
             <h1 className="text-3xl font-semibold sm:text-4xl">
@@ -19,7 +19,7 @@ export default function GearHero() {
               comfort and glow that actually holds up in warehouses, rooftops
               and 3AM alley reloads.
             </p>
-            <div className="flex flex-wrap gap-2 text-[11px]">
+            <div className="flex flex-wrap gap-2 text-xxs">
               <Chip className="bg-white/10 border-transparent">
                 Hydration &amp; safety
               </Chip>

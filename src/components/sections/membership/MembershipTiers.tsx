@@ -47,7 +47,7 @@ export default function MembershipTiers() {
     <section id="tiers" className="space-y-4">
       <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.2em] text-white/60">
+          <p className="text-xxs uppercase tracking-[0.2em] text-white/60">
             Membership tiers
           </p>
           <h2 className="text-xl font-semibold text-white sm:text-2xl">
@@ -58,7 +58,7 @@ export default function MembershipTiers() {
             members will lock in early rates and perks.
           </p>
         </div>
-        <p className="text-[11px] text-white/55">
+        <p className="text-xxs text-white/55">
           All tiers are planned as monthly with options to upgrade, downgrade,
           or pause.
         </p>
@@ -80,7 +80,7 @@ export default function MembershipTiers() {
                   {tier.name}
                 </h3>
                 {tier.highlighted && (
-                  <Chip className="bg-rh-pink-light text-black border-none text-[11px]">
+                  <Chip className="bg-rh-pink-light text-black border-none text-xxs">
                     Most popular
                   </Chip>
                 )}

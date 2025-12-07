@@ -70,7 +70,7 @@ export default async function BlogPostPage({ params }: Props) {
                   >
                     {r.title}
                   </Link>
-                  <p className="text-[11px] text-white/50">
+                  <p className="text-xxs text-white/50">
                     {r.category} · {r.readTime}
                   </p>
                 </li>

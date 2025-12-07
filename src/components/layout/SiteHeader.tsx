@@ -7,6 +7,7 @@ import { useState, useRef, useEffect, useLayoutEffect, useMemo } from "react";
 import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import ThemeToggle from "../ui/ThemeToggle";
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -139,6 +140,7 @@ export default function SiteHeader() {
         </NavigationMenu.Root>
 
           <div className="ml-auto hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <Chip className="bg-rh-green/15 text-[12px] text-rh-green border-rh-green/30">
               Live this weekend
             </Chip>

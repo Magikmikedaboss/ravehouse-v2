@@ -35,7 +35,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute left-3 right-3 top-3 flex items-center justify-between text-[11px]">
+                <div className="absolute left-3 right-3 top-3 flex items-center justify-between text-xxs">
                   <Chip variant="pink">
                     {post.category}
                   </Chip>
@@ -44,7 +44,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                   <h2 className="text-sm font-semibold text-white">
                     {post.title}
                   </h2>
-                  <p className="line-clamp-1 text-[11px] text-white/70">
+                  <p className="line-clamp-1 text-xxs text-white/70">
                     {post.excerpt}
                   </p>
                 </div>
@@ -52,7 +52,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
               {/* Meta */}
               <div className="flex flex-1 flex-col justify-between p-4">
                 <div className="space-y-2">
-                  <p className="text-[11px] text-white/50">
+                  <p className="text-xxs text-white/50">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
@@ -63,7 +63,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                     {post.excerpt}
                   </p>
                 </div>
-                <div className="mt-3 flex items-center justify-between text-[11px] text-white/60">
+                <div className="mt-3 flex items-center justify-between text-xxs text-white/60">
                   <div className="flex flex-wrap gap-1">
                     {post.tags.slice(0, 3).map((tag) => (
                       <span

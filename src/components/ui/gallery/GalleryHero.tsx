@@ -15,7 +15,7 @@ export default function GalleryHero() {
         />
         <div className="relative space-y-4 p-6 md:p-8">
           <div className="space-y-3">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+            <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
               The Afterglow
             </p>
             <h1 className="text-3xl font-semibold sm:text-4xl text-white">
@@ -59,7 +59,7 @@ export default function GalleryHero() {
           <div className="relative aspect-[9/16] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/30 via-rh-purple/20 to-black" />
 
-            <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-[11px] text-white/80">
+            <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-xxs text-white/80">
               <div className="flex gap-2">
                 <Chip variant="orange">
                   Aftermovie
@@ -82,7 +82,7 @@ export default function GalleryHero() {
             </button>            </div>
           </div>
 
-          <div className="flex gap-2 border-t border-white/10 bg-black/70 px-3 py-2 text-[11px]">
+          <div className="flex gap-2 border-t border-white/10 bg-black/70 px-3 py-2 text-xxs">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}

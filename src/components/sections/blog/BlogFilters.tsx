@@ -36,7 +36,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
   return (
     <div className="flex flex-wrap items-center justify-between gap-3">
       {/* Using 11px for secondary text/labels - may affect readability for some users but appropriate for compact filter buttons */}
-      <div className="flex flex-wrap gap-2 text-[11px]">
+      <div className="flex flex-wrap gap-2 text-xxs">
         {BLOG_CATEGORIES.map((category) => (
           <button
             key={category}
@@ -47,7 +47,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
             className={`rounded-full border px-3 py-1 transition ${
               active === category
                 ? "border-white bg-white text-black"
-                : "border-white/15 bg-white/10 text-white/90 hover:bg-white/10"
+                : "border-white/15 bg-white/10 text-white/90"
             }`}
           >
             {category}
@@ -55,7 +55,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
         ))}      </div>
 
       {/* Secondary controls use smaller text for compact layout */}
-      <div className="flex items-center gap-2 text-[11px] text-white/60">
+      <div className="flex items-center gap-2 text-xxs text-white/60">
         <button
           type="button"
           aria-pressed={currentView === "grid"}
@@ -64,7 +64,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
           className={`rounded-full border px-3 py-1 transition ${
             currentView === "grid"
               ? "border-white bg-white text-black"
-              : "border-white/15 bg-white/10 text-white/90 hover:bg-white/10"
+              : "border-white/15 bg-white/10 text-white/90"
           }`}
         >
           Grid
@@ -77,7 +77,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
           className={`rounded-full border px-3 py-1 transition ${
             currentView === "stack"
               ? "border-white bg-white text-black"
-              : "border-white/15 bg-white/10 text-white/90 hover:bg-white/10"
+              : "border-white/15 bg-white/10 text-white/90"
           }`}
         >
           Stack

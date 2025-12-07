@@ -11,7 +11,7 @@ export default function BlogHero() {
         
         <div className="relative flex flex-col gap-5 p-6 md:flex-row md:items-end md:justify-between md:p-8">
           <div className="space-y-3">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+            <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
               The Circuit
             </p>
             <h1 className="text-3xl font-semibold sm:text-4xl text-white">
@@ -23,7 +23,7 @@ export default function BlogHero() {
             </p>
             
             {/* ✅ COLORFUL BRAND CHIPS */}
-            <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
+            <div className="mt-2 flex flex-wrap gap-2 text-xxs">
               <Chip variant="pink">
                 Recaps &amp; photo dumps
               </Chip>

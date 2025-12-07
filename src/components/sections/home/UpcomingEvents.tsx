@@ -76,16 +76,15 @@ export default function UpcomingEvents() {
               <div className="h-full w-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400" />
             </div>
             <div className="p-4">
-              <p className="text-[11px] text-black/50">
+              <p className="text-xxs text-black/50">
                 {event.date} · {event.time}
-              </p>
-              <h3 className="mt-1 text-sm font-semibold text-black">{event.title}</h3>
+              </p>              <h3 className="mt-1 text-sm font-semibold text-black">{event.title}</h3>
               <p className="mt-1 text-xs text-black/65">{event.venue}</p>
               <div className="mt-3 flex items-center justify-between text-xs">
                 <span className="text-black/75">{event.price}</span>
                 <Link
                   href={`/events/${event.id}`}
-                  className="rounded-full bg-black px-3 py-1 text-[11px] font-semibold text-white"
+                  className="rounded-full bg-black px-3 py-1 text-xxs font-semibold text-white"
                 >
                   View Event
                 </Link>

@@ -54,7 +54,7 @@ export default function ContactPage() {
     <div className="space-y-10 pb-10">
       {/* PAGE HEADER */}
       <section className="space-y-4">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">
+        <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
           Get in touch
         </p>
         <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">

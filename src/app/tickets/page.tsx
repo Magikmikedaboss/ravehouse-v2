@@ -107,8 +107,8 @@ export default function TicketsPage() {
                 >
                   {/* Ticket info */}
                   <div className="space-y-2">
-                    <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-white/60">
-                      <Chip className="bg-rave-pink/20 border-rave-pink/40 text-black">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xxs text-white/60">
+                      <Chip className="bg-rave-pink/20 border-rave-pink/40 text-white">
                         {ticket.when}
                       </Chip>
                       <Chip
@@ -189,7 +189,7 @@ export default function TicketsPage() {
                           />
                         ))}
                       </div>
-                      <p className="mt-2 text-xxs text-black/60">
+                      <p className="mt-2 text-xxs text-white/60">
                         Door staff will scan either code. Keep this open in line.
                       </p>
                     </div>
@@ -255,7 +255,7 @@ export default function TicketsPage() {
                 <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
                   Local
                 </button>
-                <button className="flex-1 rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-3 py-1 text-center text-black font-semibold">
+                <button className="flex-1 rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-3 py-1 text-center text-white font-semibold">
                   Glow
                 </button>
                 <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
@@ -330,7 +330,7 @@ export default function TicketsPage() {
                     We&apos;ll nudge you 20 minutes before your entry window.
                   </p>
                 </div>
-                <button className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black">
+                <button className="rounded-full bg-white px-3 py-1 text-xxs font-semibold text-black">
                   Enable
                 </button>
               </div>
