@@ -7,8 +7,8 @@ export default function GalleryBottomStrip() {
     <Surface className="mt-4 overflow-hidden">
       <div className="relative h-64 w-full">
         {/* Checkerboard placeholder for multi-cam grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,#2b1a29_25%,transparent_25%,transparent_50%,#2b1a29_50%,#2b1a29_75%,transparent_75%,transparent)] bg-[length:24px_24px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,#2b1a29_25%,transparent_25%,transparent_50%,#2b1a29_50%,#2b1a29_75%,transparent_75%,transparent)] bg-size-[24px_24px]" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
 
         <div className="absolute left-4 right-4 top-3 flex items-center gap-2 text-xxs">
           <Chip variant="orange">Aftermovie</Chip>

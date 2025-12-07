@@ -99,9 +99,9 @@ export default function EventsPage() {
               sizes="100vw"
             />
             {/* DARKER gradient overlay for better text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
             {/* Extra dark scrim behind text area */}
-            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/60 to-transparent" />
 
             {/* Top badges */}
             <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-2 text-xxs text-white/90">
@@ -225,9 +225,9 @@ export default function EventsPage() {
             {upcomingEvents.map((event) => (
               <Surface key={event.id} className="overflow-hidden">
                 <div className="relative h-32 w-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
+                  <div className="absolute inset-0 bg-linear-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
                   <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute left-3 top-3 flex items-center gap-2 text-[11px]">
                     <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                       {event.day} · {event.time}

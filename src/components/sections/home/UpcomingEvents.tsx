@@ -73,7 +73,7 @@ export default function UpcomingEvents() {
                 {event.tag}
               </Chip>
               {/* Placeholder gradient – replace with real event image */}
-              <div className="h-full w-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400" />
+              <div className="h-full w-full bg-linear-to-br from-gray-200 via-gray-300 to-gray-400" />
             </div>
             <div className="p-4">
               <p className="text-xxs text-[rgb(var(--rh-text-secondary))]">

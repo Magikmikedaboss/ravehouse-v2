@@ -88,7 +88,7 @@ export default function ContactPage() {
           {contactMethods.map((method) => (
             <Surface key={method.type} className="p-4 md:p-6">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
-                <div className="text-xl sm:text-2xl flex-shrink-0">{method.icon}</div>
+                <div className="text-xl sm:text-2xl shrink-0">{method.icon}</div>
                 <div className="flex-1 space-y-2 min-w-0">
                   <div>
                     <h3 className="font-semibold text-[rgb(var(--rh-text-primary))]">{method.type}</h3>

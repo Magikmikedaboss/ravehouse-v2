@@ -83,7 +83,7 @@ export default function SiteHeader() {
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <div className="flex flex-col leading-tight">
-            <span className="text-lg font-black tracking-wider text-white bg-gradient-to-r from-rh-pink-light via-white to-rh-cyan bg-clip-text text-transparent">
+            <span className="text-lg font-black tracking-wider text-white bg-linear-to-r from-rh-pink-light via-white to-rh-cyan bg-clip-text text-transparent">
               RAVEHOUSE
             </span>
             <span className="text-[10px] font-bold tracking-[0.2em] text-rh-pink-light/80 uppercase">
@@ -157,7 +157,7 @@ export default function SiteHeader() {
           </Chip>
           <Link
             href="/tickets"
-            className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold text-white shadow-rh-soft"
+            className="inline-flex items-center rounded-full bg-linear-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold text-white shadow-rh-soft"
           >
             Get Tickets
           </Link>        </div>
@@ -262,7 +262,7 @@ export default function SiteHeader() {
                 </Chip>
                 <Link
                   href="/tickets"
-                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-sm font-semibold text-white shadow-rh-soft"
+                  className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-sm font-semibold text-white shadow-rh-soft"
                 >
                   Get Tickets
                 </Link>

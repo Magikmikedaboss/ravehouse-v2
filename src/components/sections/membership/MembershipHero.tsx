@@ -6,7 +6,7 @@ export default function MembershipHero() {
   return (
     <section className="px-4 pt-8 lg:px-6">
       <Surface className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/25 via-rh-pink-shell/15 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-br from-rh-pink-light/25 via-rh-pink-shell/15 to-transparent" />
         <div className="relative grid gap-6 p-6 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.1fr)] md:p-8">
           {/* Left: copy */}
           <div className="space-y-4">

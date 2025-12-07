@@ -3,7 +3,24 @@ import Image from "next/image";
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 
-export default function GalleryHero() {
+interface GalleryHeroProps {
+  duration?: string;
+  location?: string;
+  aftermovieDate?: Date | string;
+}
+
+export default function GalleryHero({
+  duration = "0:58",
+  location = "Warehouse District",
+  aftermovieDate = new Date("2025-02-01")
+}: GalleryHeroProps) {
+  // Format date for display (e.g., "Feb 1")
+  const formatDate = (date: Date | string): string => {
+    const d = typeof date === 'string' ? new Date(date) : date;
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  };
+
+  const formattedDate = formatDate(aftermovieDate);
   return (
     <section className="grid gap-5 px-4 pt-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:px-6">
       {/* Left panel */}
@@ -60,8 +77,8 @@ export default function GalleryHero() {
         className="relative overflow-hidden bg-black/40 p-3 md:p-4"
       >
         <div className="relative rounded-[1.75rem] bg-black/60 shadow-rh-soft overflow-hidden">
-          <div className="relative aspect-[9/16] overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/30 via-rh-purple/20 to-black" />
+          <div className="relative aspect-9/16 overflow-hidden">
+            <div className="absolute inset-0 bg-linear-to-br from-rh-pink-light/30 via-rh-purple/20 to-black" />
 
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-xxs text-white/80">
               <div className="flex gap-2">
@@ -69,14 +86,14 @@ export default function GalleryHero() {
                   Aftermovie
                 </Chip>
                 <Chip variant="cyan">
-                  Feb 1
+                  {formattedDate}
                 </Chip>
               </div>
             </div>
 
             <div className="absolute left-4 right-4 bottom-16 space-y-2">
               <p className="text-xxs text-white/75">
-                🔊 Sound On · 0:58 · Warehouse District
+                🔊 Sound On · {duration} · {location}
               </p>
               <button
                 disabled
@@ -93,7 +110,7 @@ export default function GalleryHero() {
                 key={i}
                 className="relative h-16 flex-1 overflow-hidden rounded-xl bg-white/5"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/40 via-rh-pink-dark/40 to-black" />
+                <div className="absolute inset-0 bg-linear-to-br from-rh-pink-light/40 via-rh-pink-dark/40 to-black" />
                 <p className="absolute bottom-1 left-2 text-[10px] text-white/80">
                   {(() => {
                     const totalSeconds = i * 15;

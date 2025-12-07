@@ -178,7 +178,7 @@ export default function TicketsPage() {
                       <p className="text-xxs text-white/50">
                         Venue drop: {index === 0 ? "10:00PM" : "Skyline Tower · Strip"}
                       </p>
-                      <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rh-pink/30 via-rh-purple/30 to-black/80 flex items-center justify-center">
+                      <div className="mt-2 h-20 rounded-xl bg-linear-to-br from-rh-pink/30 via-rh-purple/30 to-black/80 flex items-center justify-center">
                         {Array.from({ length: 18 }).map((_, idx) => (
                           <div
                             key={idx}
@@ -255,7 +255,7 @@ export default function TicketsPage() {
                 <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
                   Local
                 </button>
-                <button className="flex-1 rounded-full bg-gradient-to-r from-rh-pink to-rh-orange px-3 py-1 text-center text-white font-semibold">
+                <button className="flex-1 rounded-full bg-linear-to-r from-rh-pink to-rh-orange px-3 py-1 text-center text-white font-semibold">
                   Glow
                 </button>
                 <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
