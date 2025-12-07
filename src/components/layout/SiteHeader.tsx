@@ -105,7 +105,7 @@ export default function SiteHeader() {
                       <>
                         <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                           active
-                            ? "bg-white text-black shadow"
+                            ? "bg-black dark:bg-white text-white dark:text-black shadow"
                             : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
                         }`}>
                           {item.label}
@@ -133,7 +133,7 @@ export default function SiteHeader() {
                           href={item.href}
                           className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                             active
-                              ? "bg-white text-black shadow"
+                              ? "bg-black dark:bg-white text-white dark:text-black shadow"
                               : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
                           }`}
                         >

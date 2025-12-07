@@ -240,7 +240,13 @@ body {
   }
 
   /* Enhanced focus states */
-  *:focus-visible {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
     outline: 2px solid rgb(var(--rh-cyan));
     outline-offset: 2px;
   }

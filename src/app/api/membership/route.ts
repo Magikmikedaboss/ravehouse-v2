@@ -2,9 +2,23 @@
 // FUTURE: handle Stripe/intents
 
 import { NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit } from '@/lib/rateLimit';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function POST(request: NextRequest) {
+  // Rate limiting
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+             request.headers.get('x-real-ip') ||
+             'unknown';
+
+  const rateLimitResult = await checkRateLimit(ip);
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { error: 'Too many requests' },
+      { status: 429 }
+    );
+  }
+
   // TODO: Phase 2 - Implement secure membership payment processing
   //
   // 1. AUTHENTICATION & AUTHORIZATION
@@ -50,8 +64,10 @@ export async function POST(request: NextRequest) {
   //    - Input sanitization against XSS
   //    - Secure handling of payment tokens
 
-  return NextResponse.json({
-    message: 'Membership processing coming in Phase 2',
-    status: 'pending'
-  });
-}
+  return NextResponse.json(
+    {
+      message: 'Membership processing coming in Phase 2',
+      status: 'not_implemented'
+    },
+    { status: 501 }
+  );}
