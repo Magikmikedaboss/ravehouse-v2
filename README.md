@@ -7,7 +7,7 @@ A modern Next.js web application for Ravehouse Entertainment, featuring undergro
 - **Framework**: Next.js 15 (App Router)
 - **Runtime**: React 19.2.1
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS v3.4.18 with custom rave color palette
+- **Styling**: Tailwind CSS v4.1.17 with custom rave color palette
 - **UI Components**: Radix UI (accessible navigation)
 - **Content**: React Markdown with GitHub Flavored Markdown support
 - **Build Tool**: Turbopack (via Next.js)
@@ -119,7 +119,7 @@ ravehouse-v2/
 ## 🎨 Styling & Design
 
 - **Theme**: Light/dark mode with custom gradient backgrounds and color schemes
-- **Colors**: Custom Tailwind v3.4.18 colors (rave-pink, rave-orange, rave-cyan, rave-purple)
+- **Colors**: Custom Tailwind v4.1.17 colors (rave-pink, rave-orange, rave-cyan, rave-purple)
 - **Typography**: Sans-serif fonts with tight tracking
 - **Components**: Surface containers with blur effects, glows, and shadows
 - **Chips**: Colorful rave-themed chips replacing neutral backgrounds

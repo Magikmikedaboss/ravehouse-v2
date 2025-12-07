@@ -89,60 +89,54 @@ export default function EventsPage() {
       {/* Hero section */}
       <section className="space-y-6">
         <div className="relative overflow-hidden rounded-rh-lg border border-white/10 shadow-rh-soft bg-black w-full">
-          <div className="relative h-[600px] w-full overflow-hidden">            <Image
+          {/* Responsive, capped height instead of fixed 600px */}
+          <div className="relative h-[clamp(360px,38vw,520px)] w-full overflow-hidden">
+            <Image
               src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
-              fill={true}
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-              priority={true}
+              fill
+              className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
+              priority
               fetchPriority="high"
               sizes="100vw"
             />
-            {/* DARKER gradient overlay for better text contrast */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
-            {/* Extra dark scrim behind text area */}
-            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/60 to-transparent" />
 
-            {/* Top badges */}
-            <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-2 text-xxs text-white/90">
-              <Chip variant="cyan">
-                Upcoming raves · Las Vegas
-              </Chip>
-              <Chip variant="cyan" className="hidden sm:inline-flex">
-                Warehouse · Rooftop · Afterhours
-              </Chip>
+            {/* Main overlay: slightly simplified for smoother contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent pointer-events-none" />
+            {/* Top scrim so badges are always readable */}
+            <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
+            {/* Bottom scrim: tighten to bottom half only */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent pointer-events-none" />
+
+            {/* Top badges — allow full wrap on mobile, keep both visible */}
+            <div className="absolute left-4 right-4 top-4 flex flex-wrap gap-2 text-xxs text-white/95">
+              <Chip variant="cyan">Upcoming raves · Las Vegas</Chip>
+              <Chip variant="cyan" className="flex">Warehouse · Rooftop · Afterhours</Chip>
             </div>
 
-            {/* Bottom content - IMPROVED MOBILE TEXT SIZES */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 space-y-2 sm:space-y-3">
-              <p className="text-xxs sm:text-xs uppercase tracking-wider sm:tracking-[0.3em] text-white/70">
-                Curated underground nights, every week
-              </p>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
-                DISCOVER YOUR NEXT<br className="hidden sm:inline" /> UNDERGROUND NIGHT
-              </h1>
-              <p className="max-w-xl text-base sm:text-sm text-white/90 drop-shadow-md">
-                Lock in your spot at upcoming warehouses, rooftop takeovers and secret
-                afterhours across Las Vegas.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
-                <ButtonLink href="/events" className="text-sm sm:text-xs">
-                  See this weekend&apos;s raves
-                </ButtonLink>
-                <ButtonLink href="/events" variant="secondary" className="text-sm sm:text-xs">
-                  Browse full calendar
-                </ButtonLink>
-              </div>
-              <div className="mt-2 flex flex-wrap gap-2 text-xs sm:text-xxs">
-                <Chip variant="pink">
-                  Location drops 24h before
-                </Chip>
-                <Chip variant="orange" className="hidden sm:inline-flex">
-                  No dress code · Just energy
-                </Chip>
-                <Chip variant="purple" className="hidden md:inline-flex">
-                  Techno, House, Bass
-                </Chip>
+            {/* Bottom content */}
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+              <div className="max-w-[min(100%,720px)] space-y-2 sm:space-y-3">
+                <p className="text-xs sm:text-xxs uppercase tracking-wider sm:tracking-[0.3em] text-white/75">
+                  Curated underground nights, every week
+                </p>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
+                  DISCOVER YOUR NEXT<br className="hidden sm:inline" /> UNDERGROUND NIGHT
+                </h1>
+                <p className="text-base sm:text-sm text-white/90 drop-shadow-md">
+                  Lock in your spot at upcoming warehouses, rooftop takeovers and secret afterhours across Las Vegas.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
+                  <ButtonLink href="/events?filter=weekend" className="text-sm sm:text-xs">See this weekend&apos;s raves</ButtonLink>
+                  <ButtonLink href="/events" variant="secondary" className="text-sm sm:text-xs">Browse full calendar</ButtonLink>
+                </div>
+
+                {/* Chips: always wrap; readable sizes on mobile */}
+                <div className="mt-2 flex flex-wrap gap-2 text-xs sm:text-xxs">
+                  <Chip variant="pink">Location drops 24h before</Chip>
+                  <Chip variant="orange">No dress code · Just energy</Chip>
+                  <Chip variant="purple">Techno, House, Bass</Chip>
+                </div>
               </div>
             </div>
           </div>
@@ -202,7 +196,7 @@ export default function EventsPage() {
         />
 
         {/* Filter chips */}
-        <div className="flex flex-wrap gap-2 text-[11px]">
+        <div className="flex flex-wrap gap-2 text-xxs">
           {filters.map((filter, i) => (
             <button
               key={filter}
@@ -228,7 +222,7 @@ export default function EventsPage() {
                   <div className="absolute inset-0 bg-linear-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
                   <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
-                  <div className="absolute left-3 top-3 flex items-center gap-2 text-[11px]">
+                  <div className="absolute left-3 top-3 flex items-center gap-2 text-xxs">
                     <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                       {event.day} · {event.time}
                     </Chip>
@@ -240,7 +234,7 @@ export default function EventsPage() {
                 <div className="p-4 space-y-2">
                   <h3 className="text-sm font-semibold">{event.title}</h3>
                   <p className="text-xs text-white/65">{event.area}</p>
-                  <div className="flex flex-wrap gap-1 text-[11px] text-white/65">
+                  <div className="flex flex-wrap gap-1 text-xxs text-white/65">
                     {event.genres.map((g) => (
                       <Chip
                         key={g}
@@ -255,12 +249,12 @@ export default function EventsPage() {
                     <ButtonLink
                       href={`/events/${event.id}`}
                       variant="secondary"
-                      className="px-3 py-1 text-[11px]"
+                      className="px-3 py-1 text-xxs"
                     >
                       {event.badge === "Sold out" ? "Join waitlist" : "View event"}
                     </ButtonLink>
                   </div>
-                  <p className="text-[11px] text-white/55 mt-1">{event.status}</p>
+                  <p className="text-xxs text-white/55 mt-1">{event.status}</p>
                 </div>
               </Surface>
             ))}

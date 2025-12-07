@@ -8,6 +8,6 @@ export default function MembershipFAQ() {
       {/* TODO: Display FAQ accordion */}
       <div className="text-center text-[rgb(var(--rh-text-secondary))] py-10">
         <p className="text-sm md:text-base">🚧 Membership FAQ coming in Phase 2 implementation</p>
-      </div>    </section>
-  );
+      </div>
+    </section>  );
 }

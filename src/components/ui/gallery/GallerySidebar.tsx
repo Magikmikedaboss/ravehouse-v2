@@ -38,7 +38,7 @@ export default function GallerySidebar() {
         <div className="space-y-1 text-xxs text-[rgb(var(--rh-text-secondary))]">
           <p>Face match is 80% complete.</p>
           <div className="h-2 rounded-full bg-black/10">
-            <div className="h-2 w-4/5 rounded-full bg-linear-to-r from-rh-pink-light to-rh-pink-dark" />
+            <div className="h-2 w-4/5 rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark" />
           </div>
         </div>
 
