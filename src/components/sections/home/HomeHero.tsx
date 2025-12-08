@@ -9,41 +9,40 @@ export default function HomeHero() {
     <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
       {/* Main hero card */}
       <Surface className="overflow-hidden">
-        <div className="relative h-80 w-full sm:h-[420px]">
+        <div className="relative h-[clamp(360px,38vw,520px)] w-full">
           {/* TODO: swap with your real hero image */}
           <Image
             src="/images/events/vecteezy_crowded-dance-floor-illuminated-by-disco-balls-and-colorful_71852730.jpeg"
             alt="Warehouse crowd at Ravehouse Entertainment"
             fill
-            className="object-cover"
-            priority={true}
+            className="object-cover object-[center_35%]"
+            priority
             fetchPriority="high"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 40vw"
+            sizes="100vw"
           />
-          <div className="absolute inset-x-4 top-4 flex justify-between text-xs text-white/80">
+          {/* top chips — allow wrap; no justify-between */}
+          <div className="absolute left-4 right-4 top-4 z-10 flex flex-wrap gap-2">
             <Chip variant="pink" size="sm">Next up: Warehouse Eclipse</Chip>
             <Chip variant="cyan" size="sm">Las Vegas, NV · Secret warehouse</Chip>
           </div>
-          {/* overlay behind content */}
+          {/* overlays behind content for contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-          {/* content lifted above overlay */}
-          <div className="relative z-10">
-            <div className="p-6 sm:p-8">
-              <p className="text-xxs uppercase tracking-wider-xl text-white/70">
-                Underground parties for the nocturnal.
-              </p>
-              <h1 className="mt-2 text-3xl font-semibold sm:text-4xl text-white">
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent" />
+          {/* content above overlays */}
+          <div className="relative z-10 p-6 sm:p-8">
+            <p className="text-xxs uppercase tracking-wider-xl text-white/70">
+              Underground parties for the nocturnal.
+            </p>
+              <h1 className="mt-2 text-3xl font-semibold sm:text-4xl text-white drop-shadow-lg">
                 RAVEHOUSE ENTERTAINMENT
               </h1>
-              <p className="mt-4 max-w-xl text-sm text-white/80">
+              <p className="mt-4 max-w-xl text-sm text-white/90 drop-shadow-md">
                 Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
                 across Las Vegas. No fluff, just sweat and strobes.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <ButtonLink href="/events">See Upcoming Raves</ButtonLink>
-                <ButtonLink href="/tickets" variant="secondary">
-                  Join Guestlist
-                </ButtonLink>
+                <ButtonLink href="/tickets" variant="secondary">Join Guestlist</ButtonLink>
               </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Chip variant="orange" size="sm">This Friday · 2AM – Sunrise</Chip>
@@ -90,10 +89,10 @@ export default function HomeHero() {
         <Surface className="p-5">
           <p className="text-xs text-white/60">This week at Ravehouse Entertainment</p>
           <h2 className="mt-1 text-lg font-semibold text-white">
-            2 events · Rooftop &amp; Warehouse · Vegas Strip
+            2 events · Rooftop &amp; Warehouse · <span className="text-brand-pink">Vegas Strip</span>
           </h2>
           <p className="mt-2 text-xs text-white/60">
-            Tap into: <span className="font-medium text-white">House · Techno · Bass</span>
+            Tap into: <span className="font-medium text-white"><span className="text-brand-cyan">House</span> · <span className="text-brand-purple">Techno</span> · <span className="text-brand-orange">Bass</span></span>
           </p>
           <ButtonLink
             href="/events"

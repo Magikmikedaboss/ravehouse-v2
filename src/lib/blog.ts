@@ -81,7 +81,9 @@ export function getRecentPosts(limit = 4): BlogPost[] {
     .sort((a, b) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
-      if (isNaN(dateA) || isNaN(dateB)) return 0;
+      if (isNaN(dateA) && isNaN(dateB)) return 0;
+      if (isNaN(dateA)) return 1;  // push invalid dates to end
+      if (isNaN(dateB)) return -1;
       return dateB - dateA;
     })
     .slice(0, limit);

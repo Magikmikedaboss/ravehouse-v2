@@ -52,20 +52,15 @@ export default function TicketsPage() {
               you&apos;ve unlocked with Ravehouse Entertainment. Show this screen at the door, keep
               brightness high for scan.
             </p>
-            <div className="mt-3 flex flex-wrap gap-2 text-xxs">
-              <Chip variant="cyan">Las Vegas · PT</Chip>
-              <Chip variant="orange">
-                Show this screen at the door
-              </Chip>
-              <Chip variant="purple">
-                Keep brightness high for scan
-              </Chip>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Chip variant="cyan"   size="sm">Las Vegas · PT</Chip>
+              <Chip variant="orange" size="sm">Show this screen at the door</Chip>
+              <Chip variant="purple" size="sm">Keep brightness high for scan</Chip>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-xs">
-            <Chip variant="pink">
-              2 active tickets tonight
-            </Chip>            <ButtonLink href="/tickets" variant="secondary" className="px-4 py-2">
+          <div className="flex flex-wrap items-center gap-3">
+            <Chip variant="pink" size="sm">2 active tickets tonight</Chip>
+            <ButtonLink href="/tickets" variant="secondary" className="px-3 py-1 text-xxs">
               Export as PDF wallet
             </ButtonLink>
           </div>
@@ -76,13 +71,13 @@ export default function TicketsPage() {
       <section className="space-y-4">
         <div className="flex items-center justify-between text-xs text-white/70">
           <div className="flex gap-2">
-            <button className="rounded-full bg-black text-white px-3 py-1 font-medium">
+            <button className="rounded-full bg-black text-white px-2.5 py-1 font-medium">
               Upcoming
             </button>
-            <button className="rounded-full border border-black/15 bg-black/10 px-3 py-1">
+            <button className="rounded-full border border-black/15 bg-black/10 px-2.5 py-1">
               Past nights
             </button>
-            <button className="rounded-full border border-black/15 bg-black/10 px-3 py-1">
+            <button className="rounded-full border border-black/15 bg-black/10 px-2.5 py-1">
               Transfers
             </button>
           </div>
@@ -252,12 +247,12 @@ export default function TicketsPage() {
               </p>
 
               <div className="flex gap-2 text-xxs">
-                <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
+                <button className="flex-1 rounded-full bg-white/5 px-2.5 py-1 text-center text-white/75">
                   Local
                 </button>
-                <button className="flex-1 rounded-full bg-gradient-to-r from-rh-pink to-rh-orange px-3 py-1 text-center text-white font-semibold">                  Glow
+                <button className="flex-1 rounded-full bg-gradient-to-r from-rh-pink to-rh-orange px-2.5 py-1 text-center text-white font-semibold">                  Glow
                 </button>
-                <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
+                <button className="flex-1 rounded-full bg-white/5 px-2.5 py-1 text-center text-white/75">
                   Afterhours
                 </button>
               </div>
@@ -297,10 +292,10 @@ export default function TicketsPage() {
               </div>
 
               <div className="flex flex-wrap gap-2 text-xxs">
-                <button className="rounded-full bg-white/10 px-3 py-1 text-white/80">
+                <button className="rounded-full bg-white/10 px-2.5 py-1 text-white/80">
                   Apply skip-line to Eclipse
                 </button>
-                <button className="rounded-full bg-white/10 px-3 py-1 text-white/80">
+                <button className="rounded-full bg-white/10 px-2.5 py-1 text-white/80">
                   Save perks for afterhours
                 </button>
               </div>
@@ -329,7 +324,7 @@ export default function TicketsPage() {
                     We&apos;ll nudge you 20 minutes before your entry window.
                   </p>
                 </div>
-                <button className="rounded-full bg-white px-3 py-1 text-xxs font-semibold text-black">
+                <button className="rounded-full bg-white px-2.5 py-1 text-xxs font-semibold text-black">
                   Enable
                 </button>
               </div>

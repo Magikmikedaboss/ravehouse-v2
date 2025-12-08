@@ -10,7 +10,14 @@ export async function POST(request: NextRequest) {
   // Rate limiting
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
              request.headers.get('x-real-ip') ||
-             'unknown';
+             null;
+
+  if (!ip) {
+    return NextResponse.json(
+      { error: 'Unable to identify request origin' },
+      { status: 400 }
+    );
+  }
 
   const rateLimitResult = await checkRateLimit(ip);
   if (!rateLimitResult.allowed) {
@@ -19,7 +26,6 @@ export async function POST(request: NextRequest) {
       { status: 429 }
     );
   }
-
   // TODO: Phase 2 - Implement secure membership payment processing
   //
   // 1. AUTHENTICATION & AUTHORIZATION

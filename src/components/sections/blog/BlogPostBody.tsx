@@ -54,8 +54,8 @@ export default function BlogPostBody({ post }: Props) {
                   })}
                 </span>
                 <span className="text-white"> · {post.readTime}</span>
-              </div>            </div>
-            <h1 className="text-2xl font-semibold sm:text-3xl text-white">
+              </div>
+            </div>            <h1 className="text-2xl font-semibold sm:text-3xl text-white">
               {post.title}
             </h1>
           </div>

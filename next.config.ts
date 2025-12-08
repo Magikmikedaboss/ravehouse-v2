@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
         framework: {
           chunks: 'all',
           name: 'framework',
-          test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
+          test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
           priority: 40,
           enforce: true,
         },

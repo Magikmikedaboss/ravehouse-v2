@@ -2,32 +2,22 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
 
-type ChipSize = "sm" | "md";
+type ChipSize = "xs" | "sm" | "md";
 type ChipVariant =
-  | "default"
-  | "neutral"
-  | "pink"
-  | "cyan"
-  | "orange"
-  | "purple"
-  | "green"
-  | "lightOverlay"
-  | "badge"
-  | "success"
-  | "brand"
-  | "dark"
-  | "danger";
+  | "default" | "neutral" | "pink" | "cyan" | "orange" | "purple" | "green"
+  | "lightOverlay" | "badge" | "brand" | "success" | "dark" | "danger";
 
 type ChipProps = {
   children: ReactNode;
   variant?: ChipVariant;
-  size?: ChipSize;          // ← new
+  size?: ChipSize;
   className?: string;
 };
 
 const sizeClasses: Record<ChipSize, string> = {
-  sm: "px-2.5 py-1 text-xxs",
-  md: "px-3.5 py-1.5 text-xs",
+  xs: "px-2 py-0.5 text-xxs",        // extra-compact
+  sm: "px-2.5 py-1 text-xxs",        // tightened small
+  md: "px-3 py-1.5 text-xs",         // medium
 };
 
 const base = "inline-flex items-center rounded-full border font-medium transition";
@@ -51,11 +41,18 @@ const variantArbitrary: Record<ChipVariant, string> = {
 export default function Chip({
   children,
   variant = "default",
-  size = "sm",              // ← default size
+  size = "sm",
   className = "",
 }: ChipProps) {
   return (
-    <span className={clsx(base, sizeClasses[size], variantArbitrary[variant], className)}>
+    <span
+      className={clsx(
+        base,
+        variantArbitrary[variant],
+        className,           // keep caller extras (e.g., absolute positioning)
+        sizeClasses[size]    // ensure sizing wins for consistency
+      )}
+    >
       {children}
     </span>
   );
