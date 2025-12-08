@@ -6,9 +6,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { checkRateLimit, startRateLimitCleanup } from '@/lib/rateLimit';
 
+// Initialize rate limit cleanup on module load
+startRateLimitCleanup();
+
 export async function POST(request: NextRequest) {
-  // Start rate limit cleanup if not already started
-  startRateLimitCleanup();
   // Rate limiting
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
              request.headers.get('x-real-ip') ||
@@ -20,7 +21,9 @@ export async function POST(request: NextRequest) {
       { error: 'Unable to process request' },
       { status: 400 }
     );
-  }  const rateLimitResult = await checkRateLimit(ip);
+  }
+
+  const rateLimitResult = await checkRateLimit(ip);
   if (!rateLimitResult.allowed) {
     return NextResponse.json(
       { error: 'Too many requests' },
