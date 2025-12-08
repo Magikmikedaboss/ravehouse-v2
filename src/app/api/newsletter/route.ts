@@ -12,6 +12,9 @@ export async function POST(request: NextRequest) {
              request.headers.get('x-real-ip') ||
              'unknown';
 
+  if (ip === 'unknown') {
+    console.warn('Newsletter API: Unable to determine client IP');
+  }
   const rateLimitResult = await checkRateLimit(ip);
   if (!rateLimitResult.allowed) {
     return NextResponse.json(

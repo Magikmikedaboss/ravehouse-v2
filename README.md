@@ -36,7 +36,7 @@ A modern Next.js web application for Ravehouse Entertainment, featuring undergro
 ravehouse-v2/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── globals.css         # Global styles & Tailwind v3 theme
+│   │   ├── globals.css         # Global styles & Tailwind v4.1.17 theme
 │   │   ├── layout.tsx          # Root layout with metadata & navigation
 │   │   ├── page.tsx            # Homepage composition
 │   │   ├── about/              # About page (fully implemented)

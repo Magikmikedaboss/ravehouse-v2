@@ -1,6 +1,7 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
+/* biome-ignore: @theme is a Tailwind v4 feature not recognized by Biome v2.1.2 */
 /* Tailwind v4 color tokens (enable bg-rh-*/text-rh-*/border-rh-*) */
 @theme {
   /* Core brand (RGB channel values) */

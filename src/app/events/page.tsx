@@ -137,13 +137,13 @@ export default function EventsPage() {
               </p>
 
               <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
-                <ButtonLink href="/events?filter=weekend" className="text-sm sm:text-xs">
+                <ButtonLink href="/events?filter=weekend" className="text-xs sm:text-sm">
                   See this weekend&apos;s raves
                 </ButtonLink>
                 <ButtonLink
                   href="/events"
                   variant="secondary"
-                  className="text-sm sm:text-xs"
+                  className="text-xs sm:text-sm"
                 >
                   Browse full calendar
                 </ButtonLink>

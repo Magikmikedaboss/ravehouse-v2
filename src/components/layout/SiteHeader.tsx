@@ -152,7 +152,7 @@ export default function SiteHeader() {
           <div className="relative z-10" ref={desktopThemeToggleRef}>
             <ThemeToggle />
           </div>
-          <Chip className="hidden sm:flex text-xs" variant="success">
+          <Chip className="hidden sm:flex text-xxs" variant="success">
             Live this weekend
           </Chip>
           <Link
@@ -257,7 +257,7 @@ export default function SiteHeader() {
                   </div>
                 </div>
 
-                <Chip className="self-start text-[12px]" variant="success">
+                <Chip className="self-start text-xxs" variant="success">
                   Live this weekend
                 </Chip>
                 <Link

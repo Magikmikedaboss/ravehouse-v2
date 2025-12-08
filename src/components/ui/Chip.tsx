@@ -24,7 +24,7 @@ type ChipProps = {
 };
 
 const base =
-  "inline-flex items-center rounded-full px-3 py-1 text-xxs font-medium border transition";
+  "inline-flex items-center rounded-full px-2 py-0.5 text-xxs font-medium border transition";
 
 const variantArbitrary: Record<ChipVariant, string> = {
   // Uses arbitrary values with your CSS vars – no dependency on named color utilities

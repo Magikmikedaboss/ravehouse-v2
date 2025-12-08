@@ -24,7 +24,10 @@ setInterval(() => {
 }, 5 * 60 * 1000); // 5 minutes
 
 export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; resetTime?: number }> {
-  const now = Date.now();
+  if (!ip || ip === 'unknown') {
+    return { allowed: false };
+  }
+  const now = Date.now();  const now = Date.now();
 
   const entry = rateLimitMap.get(ip);
 

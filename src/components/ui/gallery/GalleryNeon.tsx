@@ -91,9 +91,9 @@ export default function GalleryNeon() {
               />
 
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                <h3 className="text-white text-lg font-semibold drop-shadow-lg">                  {item.title}
-                </h3>
-                <span className="text-pink-400 text-sm">{item.tag}</span>
+                <h3 className="text-white text-lg font-semibold drop-shadow-lg">
+                  {item.title}
+                </h3>                <span className="text-pink-400 text-sm">{item.tag}</span>
               </div>
             </div>
           </div>
