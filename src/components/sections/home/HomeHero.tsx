@@ -10,7 +10,6 @@ export default function HomeHero() {
       {/* Main hero card */}
       <Surface className="overflow-hidden">
         <div className="relative h-[clamp(360px,38vw,520px)] w-full">
-          {/* TODO: swap with your real hero image */}
           <Image
             src="/images/events/vecteezy_crowded-dance-floor-illuminated-by-disco-balls-and-colorful_71852730.jpeg"
             alt="Warehouse crowd at Ravehouse Entertainment"
@@ -20,35 +19,36 @@ export default function HomeHero() {
             fetchPriority="high"
             sizes="100vw"
           />
+          {/* overlays behind content for contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent" />
+
           {/* top chips — allow wrap; no justify-between */}
           <div className="absolute left-4 right-4 top-4 z-10 flex flex-wrap gap-2">
             <Chip variant="pink" size="sm">Next up: Warehouse Eclipse</Chip>
             <Chip variant="cyan" size="sm">Las Vegas, NV · Secret warehouse</Chip>
           </div>
-          {/* overlays behind content for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent" />
+
           {/* content above overlays */}
           <div className="relative z-10 p-6 sm:p-8">
             <p className="text-xxs uppercase tracking-wider-xl text-white/70">
               Underground parties for the nocturnal.
             </p>
-              <h1 className="mt-2 text-3xl font-semibold sm:text-4xl text-white drop-shadow-lg">
-                RAVEHOUSE ENTERTAINMENT
-              </h1>
-              <p className="mt-4 max-w-xl text-sm text-white/90 drop-shadow-md">
-                Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
-                across Las Vegas. No fluff, just sweat and strobes.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href="/events">See Upcoming Raves</ButtonLink>
-                <ButtonLink href="/tickets" variant="secondary">Join Guestlist</ButtonLink>
-              </div>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <Chip variant="orange" size="sm">This Friday · 2AM – Sunrise</Chip>
-                <Chip variant="purple" size="sm">Location drops day-of only</Chip>
-                <Chip variant="green" size="sm">21+ · Techno, house, bass</Chip>
-              </div>
+            <h1 className="mt-2 text-3xl font-semibold sm:text-4xl text-white drop-shadow-lg">
+              RAVEHOUSE ENTERTAINMENT
+            </h1>
+            <p className="mt-4 max-w-xl text-sm text-white/90 drop-shadow-md">
+              Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
+              across Las Vegas. No fluff, just sweat and strobes.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href="/events">See Upcoming Raves</ButtonLink>
+              <ButtonLink href="/tickets" variant="secondary">Join Guestlist</ButtonLink>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Chip variant="orange" size="sm">This Friday · 2AM – Sunrise</Chip>
+              <Chip variant="purple" size="sm">Location drops day-of only</Chip>
+              <Chip variant="green"  size="sm">21+ · Techno, house, bass</Chip>
             </div>
           </div>
         </div>
