@@ -300,3 +300,11 @@ body {
     outline: none;
   }
 }
+
+@layer utilities {
+  .text-brand-pink   { color: rgb(var(--rh-pink-light)); }
+  .text-brand-cyan   { color: rgb(var(--rh-cyan)); }
+  .text-brand-orange { color: rgb(var(--rh-orange)); }
+  .text-brand-purple { color: rgb(var(--rh-purple)); }
+  .text-brand-green  { color: rgb(var(--rh-green)); }
+}

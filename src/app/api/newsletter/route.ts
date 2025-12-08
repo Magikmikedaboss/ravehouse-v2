@@ -4,18 +4,23 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-import { checkRateLimit } from '@/lib/rateLimit';
+import { checkRateLimit, startRateLimitCleanup } from '@/lib/rateLimit';
 
 export async function POST(request: NextRequest) {
+  // Start rate limit cleanup if not already started
+  startRateLimitCleanup();
   // Rate limiting
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
              request.headers.get('x-real-ip') ||
              'unknown';
 
   if (ip === 'unknown') {
-    console.warn('Newsletter API: Unable to determine client IP');
-  }
-  const rateLimitResult = await checkRateLimit(ip);
+    console.warn('Newsletter API: Unable to determine client IP, rejecting request');
+    return NextResponse.json(
+      { error: 'Unable to process request' },
+      { status: 400 }
+    );
+  }  const rateLimitResult = await checkRateLimit(ip);
   if (!rateLimitResult.allowed) {
     return NextResponse.json(
       { error: 'Too many requests' },

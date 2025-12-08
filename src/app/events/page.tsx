@@ -237,9 +237,9 @@ export default function EventsPage() {
                 <div className="relative h-32 w-full">
                   <div className="absolute inset-0 bg-gradient-to-br from-rave-pink/40 via-rave-purple/40 to-black" />
                   <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />                  <div className="absolute left-3 top-3 flex items-center gap-2 text-xxs">
-                    <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
-                      {event.day} · {event.time}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute left-3 top-3 flex items-center gap-2 text-xxs">
+                    <Chip className="bg-rave-cyan/30 border-rave-cyan/50">                      {event.day} · {event.time}
                     </Chip>
                     <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
                       {event.badge}

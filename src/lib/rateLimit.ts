@@ -9,43 +9,80 @@ interface RateLimitEntry {
 
 const rateLimitMap = new Map<string, RateLimitEntry>();
 
+// Per-IP locks to prevent race conditions
+const locks = new Map<string, Promise<void>>();
+
 // Rate limit configuration
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5; // 5 requests per window
 
-// Background cleanup job - runs every 5 minutes
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, entry] of rateLimitMap) {
-    if (now > entry.resetTime) {
-      rateLimitMap.delete(key);
+// Background cleanup job - lazy initialized
+let cleanupIntervalId: NodeJS.Timeout | null = null;
+
+export function startRateLimitCleanup() {
+  if (cleanupIntervalId !== null) return; // Already started
+  
+  cleanupIntervalId = setInterval(() => {
+    const now = Date.now();
+    for (const [key, entry] of rateLimitMap) {
+      if (now > entry.resetTime) {
+        rateLimitMap.delete(key);
+      }
     }
+  }, 5 * 60 * 1000); // 5 minutes
+}
+
+export function stopRateLimitCleanup() {
+  if (cleanupIntervalId !== null) {
+    clearInterval(cleanupIntervalId);
+    cleanupIntervalId = null;
   }
-}, 5 * 60 * 1000); // 5 minutes
+}
 
 export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; resetTime?: number }> {
   if (!ip || ip === 'unknown') {
     return { allowed: false };
   }
-  const now = Date.now();
 
-  const entry = rateLimitMap.get(ip);
+  // Wait for any pending operation on this IP
+  const prevLock = locks.get(ip);
+  if (prevLock) {
+    await prevLock;
+  }
 
-  if (!entry || now > entry.resetTime) {
-    // First request or window expired, create new entry
-    rateLimitMap.set(ip, {
-      count: 1,
-      resetTime: now + WINDOW_MS
-    });
+  // Create a new lock for this operation
+  let resolveLock: (() => void) | undefined;
+  const newLock = new Promise<void>(resolve => {
+    resolveLock = resolve;
+  });
+  locks.set(ip, newLock);
+
+  try {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+
+    if (!entry || now > entry.resetTime) {
+      // First request or window expired, create new entry
+      rateLimitMap.set(ip, {
+        count: 1,
+        resetTime: now + WINDOW_MS
+      });
+      return { allowed: true };
+    }
+
+    if (entry.count >= MAX_REQUESTS) {
+      // Rate limit exceeded
+      return { allowed: false, resetTime: entry.resetTime };
+    }
+
+    // Increment counter
+    entry.count++;
     return { allowed: true };
+  } finally {
+    // Release the lock
+    if (resolveLock) {
+      resolveLock();
+    }
+    locks.delete(ip);
   }
-
-  if (entry.count >= MAX_REQUESTS) {
-    // Rate limit exceeded
-    return { allowed: false, resetTime: entry.resetTime };
-  }
-
-  // Increment counter
-  entry.count++;
-  return { allowed: true };
 }

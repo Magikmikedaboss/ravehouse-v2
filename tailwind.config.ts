@@ -11,49 +11,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        rh: {
-          pink: {
-            shell: "#883e43",
-            dark: "#ee3246",
-            light: "#f66879",
-          },
-          gray: {
-            tin: "#c5c5c6",
-            dark: "#9a9a9d",
-            pewter: "#424242",
-          },
-          cyan: {
-            DEFAULT: "#00ced1",
-            light: "#40e0d0",
-          },
-          orange: {
-            DEFAULT: "#ff4500",
-            light: "#ffa500",
-          },
-          purple: {
-            DEFAULT: "#8a2be2",
-            light: "#9932cc",
-          },
-          green: "#32cd32",
-          red: "#dc2626",
-        },
-        rave: {
-          pink: "#f66879",
-          cyan: "#00ced1",
-          orange: "#ff4500",
-          purple: "#8a2be2",
-          green: "#32cd32",
-        },
-        bg: {
-          page: "#0f0506",
-          card: "#140c0e",
-        },
-        "rh-cyan-light": "rgb(var(--rh-cyan-light) / <alpha-value>)",
-        "rh-orange-light": "rgb(var(--rh-orange-light) / <alpha-value>)",
-        "rh-pink-light": "rgb(var(--rh-pink-light) / <alpha-value>)",
-        "rh-pink-dark": "rgb(var(--rh-pink-dark) / <alpha-value>)",
-        "rh-purple-light": "rgb(var(--rh-purple-light) / <alpha-value>)",      },
       borderRadius: {
         "rh-lg": "var(--rh-radius-lg)",
         "rh-md": "var(--rh-radius-md)",

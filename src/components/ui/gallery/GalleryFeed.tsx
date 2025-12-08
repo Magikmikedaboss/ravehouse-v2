@@ -147,6 +147,29 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
         return true;
     }
   });
+  
+  if (filteredItems.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-12 text-center">
+        <div className="text-rh-pink-light mb-4">
+          <svg className="w-12 h-12 mx-auto opacity-50" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+          </svg>
+        </div>
+        <h3 className="text-lg font-semibold text-white mb-2">No items found</h3>
+        <p className="text-white/70 text-sm mb-4">
+          No gallery items match the &quot;{selectedFilter}&quot; filter.
+        </p>
+        <button
+          onClick={() => window.location.reload()} // Simple reset - in a real app, you'd lift state up
+          className="px-4 py-2 bg-rh-pink-light/20 border border-rh-pink-light/40 text-white rounded-full text-sm hover:bg-rh-pink-light/30 transition-colors"
+        >
+          Reset filters
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {filteredItems.map((item) => (
