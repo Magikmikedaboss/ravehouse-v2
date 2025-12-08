@@ -44,11 +44,11 @@ export default function HomeHero() {
                 <ButtonLink href="/events">See Upcoming Raves</ButtonLink>
                 <ButtonLink href="/tickets" variant="secondary">Join Guestlist</ButtonLink>
               </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <Chip variant="orange" size="sm">This Friday · 2AM – Sunrise</Chip>
-                  <Chip variant="purple" size="sm">Location drops day-of only</Chip>
-                  <Chip variant="green" size="sm">21+ · Techno, house, bass</Chip>
-                </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Chip variant="orange" size="sm">This Friday · 2AM – Sunrise</Chip>
+                <Chip variant="purple" size="sm">Location drops day-of only</Chip>
+                <Chip variant="green" size="sm">21+ · Techno, house, bass</Chip>
+              </div>
             </div>
           </div>
         </div>
