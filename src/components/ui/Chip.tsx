@@ -1,4 +1,6 @@
+"use client";
 import { ReactNode } from "react";
+import clsx from "clsx";
 
 type ChipVariant =
   | "default"
@@ -21,30 +23,34 @@ type ChipProps = {
   className?: string;
 };
 
-const variantClasses: Record<ChipVariant, string> = {
-  default: "bg-white/10 border-white/10 text-white/90",
-  pink: "bg-rh-pink-light/20 border-rh-pink-light/40 text-white",
-  cyan: "bg-rh-cyan/20 border-rh-cyan/40 text-white",
-  orange: "bg-rh-orange/20 border-rh-orange/40 text-white",
-  purple: "bg-rh-purple/20 border-rh-purple/40 text-white",
-  neutral: "bg-white/10 border-transparent text-white/80",
-  ghost: "bg-black/60 border-white/20 text-white",
-  success: "bg-rh-green/15 border-rh-green/30 text-rh-green",
-  brand: "bg-gradient-to-r from-rh-pink-light/20 to-rh-cyan/20 border-rh-pink-light/30 text-white",
-  dark: "bg-black/40 border-white/20 text-white",
-  lightOverlay: "bg-white/80 border-black/20 text-black",
-  badge: "bg-rh-pink-light text-black border-none text-xxs",
-  danger: "bg-rh-red/20 border-rh-red/40 text-white",
+const base =
+  "inline-flex items-center rounded-full px-3 py-1 text-xxs font-medium border transition";
+
+const variantArbitrary: Record<ChipVariant, string> = {
+  // Uses arbitrary values with your CSS vars – no dependency on named color utilities
+  pink: "bg-[rgb(var(--rh-pink-light)/0.20)] border-[rgb(var(--rh-pink-light)/0.40)] text-white",
+  cyan: "bg-[rgb(var(--rh-cyan)/0.20)] border-[rgb(var(--rh-cyan)/0.40)] text-white",
+  orange: "bg-[rgb(var(--rh-orange)/0.20)] border-[rgb(var(--rh-orange)/0.40)] text-white",
+  purple: "bg-[rgb(var(--rh-purple)/0.20)] border-[rgb(var(--rh-purple)/0.40)] text-white",
+  success: "bg-[rgb(var(--rh-green)/0.20)] border-[rgb(var(--rh-green)/0.40)] text-white",
+  brand:
+    "bg-[rgb(var(--rh-pink-dark)/0.20)] border-[rgb(var(--rh-pink-dark)/0.40)] text-white",
+  neutral: "bg-white/10 border-white/20 text-white/90",
+  ghost: "bg-white/5 border-white/10 text-white/80 hover:bg-white/10",
+  dark: "bg-black/40 border-white/10 text-white",
+  lightOverlay: "bg-white/15 border-white/25 text-white",
+  badge: "bg-white/90 border-transparent text-black",
+  danger: "bg-red-500/15 border-red-500/35 text-red-200",
+  default: "bg-white/10 border-white/20 text-white",
 };
+
 export default function Chip({
   children,
   variant = "default",
-  className = ""
+  className = "",
 }: ChipProps) {
   return (
-    <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${variantClasses[variant]} ${className}`}
-    >
+    <span className={clsx(base, variantArbitrary[variant], className)}>
       {children}
     </span>
   );
