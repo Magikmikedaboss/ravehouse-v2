@@ -42,7 +42,7 @@ export default function BlogPostBody({ post }: Props) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="absolute left-4 right-4 bottom-4 space-y-2">
             <div className="flex flex-wrap items-center gap-2 text-xxs text-white/75">
-              <Chip variant="ghost">
+              <Chip variant="neutral" size="sm">
                 {post.category}
               </Chip>
               <div className="rounded bg-white/20 px-2 py-1">

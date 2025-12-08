@@ -4,6 +4,12 @@ import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import SectionHeader from "@/components/ui/SectionHeader";
 
+const tagToVariant = (tag: string): "pink" | "orange" | "cyan" => {
+  if (/free/i.test(tag)) return "cyan";
+  if (/low|limited/i.test(tag)) return "orange";
+  return "pink";
+};
+
 const upcomingEvents = [
   {
     id: "warehouse-eclipse",
@@ -49,7 +55,7 @@ export default function UpcomingEvents() {
         }
       />
 
-      <div className="flex flex-wrap gap-2 text-[11px]">
+      <div className="flex flex-wrap gap-2 text-xxs">
         {filters.map((f) => (
           <button
             key={f}
@@ -69,7 +75,7 @@ export default function UpcomingEvents() {
         {upcomingEvents.map((event) => (
           <Surface key={event.id} className="overflow-hidden">
             <div className="relative h-40 w-full">
-              <Chip variant="lightOverlay" className="absolute left-3 top-3">
+              <Chip variant={tagToVariant(event.tag)} className="absolute left-3 top-3" size="sm">
                 {event.tag}
               </Chip>
               {/* Placeholder gradient – replace with real event image */}
@@ -81,6 +87,11 @@ export default function UpcomingEvents() {
               </p>
               <h3 className="mt-1 text-sm font-semibold text-[rgb(var(--rh-text-primary))]">{event.title}</h3>
               <p className="mt-1 text-xs text-[rgb(var(--rh-text-secondary))]">{event.venue}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Chip variant="neutral" size="sm">Techno</Chip>
+                <Chip variant="neutral" size="sm">Warehouse</Chip>
+                <Chip variant="neutral" size="sm">Secret lineup</Chip>
+              </div>
               <div className="mt-3 flex items-center justify-between text-xs">
                 <span className="text-[rgb(var(--rh-text-secondary))]">{event.price}</span>
                 <Link

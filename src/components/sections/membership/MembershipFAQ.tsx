@@ -10,4 +10,5 @@ export default function MembershipFAQ() {
         <p className="text-sm md:text-base">🚧 Membership FAQ coming in Phase 2 implementation</p>
       </div>
     </section>
-  );}
+  );
+}

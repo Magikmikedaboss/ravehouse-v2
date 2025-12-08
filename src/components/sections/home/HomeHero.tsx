@@ -21,8 +21,8 @@ export default function HomeHero() {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 40vw"
           />
           <div className="absolute inset-x-4 top-4 flex justify-between text-xs text-white/80">
-            <Chip variant="ghost">Next up: Warehouse Eclipse</Chip>
-            <Chip variant="ghost">Las Vegas, NV · Secret warehouse</Chip>
+            <Chip variant="pink" size="sm">Next up: Warehouse Eclipse</Chip>
+            <Chip variant="cyan" size="sm">Las Vegas, NV · Secret warehouse</Chip>
           </div>
         </div>
 
@@ -43,10 +43,10 @@ export default function HomeHero() {
               Join Guestlist
             </ButtonLink>
           </div>
-            <div className="mt-3 flex flex-wrap gap-2 text-xxs">
-              <Chip variant="ghost">This Friday · 2AM – Sunrise</Chip>
-              <Chip variant="ghost">Location drops day-of only</Chip>
-              <Chip variant="ghost">21+ · Techno, house, bass</Chip>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Chip variant="orange" size="sm">This Friday · 2AM – Sunrise</Chip>
+              <Chip variant="purple" size="sm">Location drops day-of only</Chip>
+              <Chip variant="green" size="sm">21+ · Techno, house, bass</Chip>
             </div>
         </div>
       </Surface>
@@ -61,10 +61,10 @@ export default function HomeHero() {
               <p className="mt-1 text-xs text-white/70">
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
-              <div className="mt-2 flex flex-wrap gap-2 text-xxs">
-                <Chip variant="neutral">Techno</Chip>
-                <Chip variant="neutral">Warehouse</Chip>
-                <Chip variant="neutral">Secret lineup</Chip>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <Chip variant="neutral" size="sm">Techno</Chip>
+                <Chip variant="neutral" size="sm">Warehouse</Chip>
+                <Chip variant="neutral" size="sm">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">

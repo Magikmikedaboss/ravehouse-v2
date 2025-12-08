@@ -39,7 +39,7 @@ export default function TicketsPage() {
     <div className="space-y-10 pb-10">
       {/* PAGE HEADER */}
       <section className="space-y-4">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
+        <p className="text-xxs uppercase tracking-[0.3em] text-white/50">
           My access
         </p>
         <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
@@ -151,7 +151,8 @@ export default function TicketsPage() {
                       {ticket.tags.map((t) => (
                         <Chip
                           key={t}
-                          className="bg-white/10 border-white/15 text-[11px] text-white"
+                          className="bg-white/10 border-white/15 text-white"
+                          size="sm"
                         >
                           {t}
                         </Chip>
@@ -164,7 +165,7 @@ export default function TicketsPage() {
                           key={action}
                           href="#"
                           variant={i === 0 ? "secondary" : "primary"}
-                          className="px-3 py-1 text-[11px]"
+                          className="px-3 py-1 text-xxs"
                         >
                           {action}
                         </ButtonLink>
@@ -295,7 +296,7 @@ export default function TicketsPage() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 text-[11px]">
+              <div className="flex flex-wrap gap-2 text-xxs">
                 <button className="rounded-full bg-white/10 px-3 py-1 text-white/80">
                   Apply skip-line to Eclipse
                 </button>
@@ -319,7 +320,7 @@ export default function TicketsPage() {
                   Add all
                 </ButtonLink>
               </div>
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2 text-[11px] text-white/70">
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2 text-xxs text-white/70">
                 <div>
                   <p className="font-medium text-white">
                     Turn on &quot;Door alert&quot; notifications?

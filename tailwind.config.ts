@@ -3,6 +3,7 @@ import type { Config } from "tailwindcss";
 import tailwindcssTypography from '@tailwindcss/typography';
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -82,6 +83,20 @@ const config: Config = {
       backgroundImage: {
         'linear-to-br': 'linear-gradient(to bottom right, var(--tw-gradient-stops))',
         'linear-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'zoom-in': {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 0.2s ease-out',
+        'zoom-in': 'zoom-in 0.2s ease-out',
       },
     },
   },

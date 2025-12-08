@@ -91,7 +91,7 @@ export default function AboutPage() {
         <Surface className="overflow-hidden">
           <div className="relative h-64 w-full sm:h-80">
             <div className="absolute inset-0 bg-[url('/images/backgrounds/crew-warehouse.jpg')] bg-cover bg-center opacity-60" />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-black/80" />            <div className="absolute left-6 right-6 top-6 flex flex-wrap items-center justify-between gap-2 text-[11px] text-white/80">
+            <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-black/80" />            <div className="absolute left-6 right-6 top-6 flex flex-wrap items-center justify-between gap-2 text-xxs text-white/80">
               <Chip className="bg-rave-pink/20 border-rave-pink/40">
                 Built by ravers, for ravers.
               </Chip>
