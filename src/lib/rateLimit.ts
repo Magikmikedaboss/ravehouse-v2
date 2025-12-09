@@ -11,10 +11,7 @@ const prisma = globalForPrisma.prisma ?? new PrismaClient({
   accelerateUrl: process.env.DATABASE_URL
 });
 
-if (process.env.NODE_ENV !== 'production') {
-  globalForPrisma.prisma = prisma;
-}
-
+globalForPrisma.prisma = prisma;
 // Rate limit configuration
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5; // 5 requests per window
@@ -31,12 +28,17 @@ export interface RateLimitResult {
  * Uses atomic transactions to prevent race conditions in multi-instance deployments
  */
 export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
+  // Handle missing or unknown IPs as fallback case (fail-open with shared bucket)
+  let rateLimitKey = ip;
+  
   if (!ip || ip === 'unknown') {
-    return { 
-      allowed: false, 
-      remaining: 0,
-      retryAfter: Math.ceil(WINDOW_MS / 1000)
-    };
+    rateLimitKey = 'fallback:unknown';
+    console.warn('Rate limit check with missing/unknown IP', {
+      originalIp: ip,
+      fallbackKey: rateLimitKey,
+      timestamp: new Date().toISOString(),
+      context: 'Using shared fallback bucket for rate limiting'
+    });
   }
 
   const now = Date.now();
@@ -47,19 +49,19 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
     const result = await prisma.$transaction(async (tx) => {
       // Try to find existing rate limit entry
       const existingEntry = await tx.rateLimit.findUnique({
-        where: { ip }
+        where: { ip: rateLimitKey }
       });
 
       if (!existingEntry || now > Number(existingEntry.resetTime)) {
         // No entry exists or window has expired - create/reset
         await tx.rateLimit.upsert({
-          where: { ip },
+          where: { ip: rateLimitKey },
           update: {
             count: 1,
             resetTime: BigInt(resetTime)
           },
           create: {
-            ip,
+            ip: rateLimitKey,
             count: 1,
             resetTime: BigInt(resetTime)
           }
@@ -89,7 +91,7 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
       // Increment counter
       const newCount = existingEntry.count + 1;
       await tx.rateLimit.update({
-        where: { ip },
+        where: { ip: rateLimitKey },
         data: { count: newCount }
       });
 

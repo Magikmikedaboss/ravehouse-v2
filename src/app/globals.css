@@ -424,7 +424,7 @@ body {
 }
 
 .prose a:hover {
-  color: rgb(var(--rh-pink));
+  color: rgb(var(--rh-pink-dark));
 }
 
 .prose code {
@@ -454,14 +454,14 @@ body {
 
 /* Dark mode styles */
 .prose-invert {
-  --rh-text-primary: var(--rh-text-light);
-  --rh-text-secondary: var(--rh-text-muted-light);
-  --rh-border-subtle: var(--rh-border-light);
+  --rh-text-primary: 255 255 255;
+  --rh-text-secondary: 215 215 216;
+  --rh-border-subtle: 215 215 216;
 }
 
 /* Light mode styles */
 :root:not(.dark) .prose {
-  --rh-text-primary: var(--rh-text-dark);
-  --rh-text-secondary: var(--rh-text-muted-dark);
-  --rh-border-subtle: var(--rh-border-dark);
+  --rh-text-primary: 0 0 0;
+  --rh-text-secondary: 136 62 67;
+  --rh-border-subtle: 136 62 67;
 }

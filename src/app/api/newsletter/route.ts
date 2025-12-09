@@ -13,13 +13,14 @@ export async function POST(request: NextRequest) {
   // Rate limiting
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
              request.headers.get('x-real-ip') ||
-             'unknown';
+             null;
 
-  if (ip === 'unknown') {
-    console.warn('Newsletter API: Unable to determine client IP, using fallback');
-    // Proceed with 'unknown' as the rate limit key
-  }
-  const rateLimitResult = await checkRateLimit(ip);
+  if (!ip) {
+    return NextResponse.json(
+      { error: 'Unable to identify request origin' },
+      { status: 400 }
+    );
+  }  const rateLimitResult = await checkRateLimit(ip);
   if (!rateLimitResult.allowed) {
     return NextResponse.json(
       { error: 'Too many requests' },
