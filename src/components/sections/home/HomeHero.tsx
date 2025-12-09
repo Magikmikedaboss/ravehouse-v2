@@ -29,8 +29,8 @@ export default function HomeHero() {
             <Chip variant="cyan" size="sm">Las Vegas, NV · Secret warehouse</Chip>
           </div>
 
-          {/* content above overlays */}
-          <div className="relative z-10 p-6 sm:p-8">
+          {/* content above overlays; add top padding on mobile to avoid chip overlap */}
+          <div className="relative z-10 p-6 pt-16 sm:pt-0 sm:p-8">
             <p className="text-xxs uppercase tracking-wider-xl text-white/70">
               Underground parties for the nocturnal.
             </p>

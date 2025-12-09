@@ -15,9 +15,9 @@ type ChipProps = {
 };
 
 const sizeClasses: Record<ChipSize, string> = {
-  xs: "px-2 py-0.5 text-xxs",        // extra-compact
-  sm: "px-2.5 py-1 text-xxs",        // tightened small
-  md: "px-3 py-1.5 text-xs",         // medium
+  xs: "px-2   py-0.5 text-xxs", // 11px
+  sm: "px-3   py-1   text-xs",  // 12px
+  md: "px-3.5 py-1.5 text-sm",  // 14px
 };
 
 const base = "inline-flex items-center rounded-full border font-medium transition";
@@ -38,21 +38,21 @@ const variantArbitrary: Record<ChipVariant, string> = {
   danger:       "bg-red-500/15 border-red-500/35 text-red-200",
 };
 
+// (Optional) prevent local size utilities from overriding chip sizing
+function stripSizeTokens(extra?: string) {
+  if (!extra) return "";
+  return extra.replace(/\b(?:p(?:x|y)?|text|leading)-[^\s]+/g, "").trim();
+}
+
 export default function Chip({
   children,
   variant = "default",
   size = "sm",
   className = "",
 }: ChipProps) {
+  const safeExtras = stripSizeTokens(className);
   return (
-    <span
-      className={clsx(
-        base,
-        variantArbitrary[variant],
-        className,           // keep caller extras (e.g., absolute positioning)
-        sizeClasses[size]    // ensure sizing wins for consistency
-      )}
-    >
+    <span className={clsx(base, variantArbitrary[variant], safeExtras, sizeClasses[size])}>
       {children}
     </span>
   );

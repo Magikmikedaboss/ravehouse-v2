@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 /* biome-ignore: @theme is a Tailwind v4 feature not recognized by Biome v2.1.2 */
-/* Tailwind v4 color tokens (enable bg-rh-*/text-rh-*/border-rh-*) */
+/* Tailwind v4 color tokens: enable brand utilities without using nested comment markers */
 @theme {
   /* Core brand (RGB channel values) */
   --color-rh-pink-light: 246 104 121;
@@ -18,11 +18,6 @@
   --color-rh-text-primary: 255 255 255;
   --color-rh-text-secondary: 215 215 216;
 
-  /* Aliases (so existing rave-* classes work) */
-  --color-rave-pink: var(--color-rh-pink-light);
-  --color-rave-cyan: var(--color-rh-cyan);
-  --color-rave-orange: var(--color-rh-orange);
-  --color-rave-purple: var(--color-rh-purple);
 }
 
 @layer base {
@@ -302,6 +297,10 @@ body {
 }
 
 @layer utilities {
+  /* Tiny font-size utilities for consistent chip sizing */
+  .text-10 { font-size: 10px; }
+  .text-11 { font-size: 11px; }
+  .text-12 { font-size: 12px; }
   .text-brand-pink   { color: rgb(var(--rh-pink-light)); }
   .text-brand-cyan   { color: rgb(var(--rh-cyan)); }
   .text-brand-orange { color: rgb(var(--rh-orange)); }
