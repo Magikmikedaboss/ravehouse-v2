@@ -69,9 +69,9 @@ export default function GalleryHero({
           </div>
 
           <div className="flex flex-wrap gap-2 text-xxs text-white/70">
-            <Chip variant="orange">High-res downloads</Chip>
-            <Chip variant="cyan">Photo dumps & recaps</Chip>
-            <Chip variant="purple">Polaroid prints</Chip>
+            <Chip variant="orange" size="sm">High-res downloads</Chip>
+            <Chip variant="cyan" size="sm">Photo dumps & recaps</Chip>
+            <Chip variant="purple" size="sm">Polaroid prints</Chip>
           </div>
         </div>
       </Surface>
@@ -86,10 +86,10 @@ export default function GalleryHero({
 
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-xxs text-white/80">
               <div className="flex gap-2">
-                <Chip variant="orange">
+                <Chip variant="orange" size="sm">
                   Aftermovie
                 </Chip>
-                <Chip variant="cyan">
+                <Chip variant="cyan" size="sm">
                   {formattedDate}
                 </Chip>
               </div>

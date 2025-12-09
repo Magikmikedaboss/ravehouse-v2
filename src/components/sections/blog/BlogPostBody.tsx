@@ -65,7 +65,7 @@ export default function BlogPostBody({ post }: Props) {
       <Surface className="p-5 space-y-4">
         <div className="flex flex-wrap gap-2 text-xs">
           {post.tags.map((tag) => (
-            <Chip key={tag} variant="dark">
+            <Chip key={tag} variant="dark" size="sm">
               #{tag}
             </Chip>
           ))}

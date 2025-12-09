@@ -11,26 +11,26 @@ export default function GallerySidebar() {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-xs text-[rgb(var(--rh-text-secondary))]">Your night in pixels</p>
-            <h3 className="mt-1 text-sm font-semibold text-[rgb(var(--rh-text-primary))]/90">
+            <h3 className="mt-1 text-sm font-semibold text-[rgb(var(--rh-text-primary)/.9)]">
               We auto-cut every set so you might be in from last night.
             </h3>
           </div>
-          <Chip variant="pink">
+          <Chip variant="pink" size="sm">
             Warehouse Eclipse
           </Chip>
         </div>
 
         <div className="grid grid-cols-3 gap-3 text-center text-xs">
           <div>
-            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary))]/90 sm:text-xl md:text-2xl">47</p>
+            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary)/.9)] sm:text-xl md:text-2xl">47</p>
             <p className="text-[rgb(var(--rh-text-secondary))]">Photos found</p>
           </div>
           <div>
-            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary))]/90 sm:text-xl md:text-2xl">6</p>
+            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary)/.9)] sm:text-xl md:text-2xl">6</p>
             <p className="text-[rgb(var(--rh-text-secondary))]">Clips with you</p>
           </div>
           <div>
-            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary))]/90 sm:text-xl md:text-2xl">3</p>
+            <p className="text-lg font-semibold text-[rgb(var(--rh-text-primary)/.9)] sm:text-xl md:text-2xl">3</p>
             <p className="text-[rgb(var(--rh-text-secondary))]">Polaroids scanned</p>
           </div>
         </div>
@@ -63,10 +63,11 @@ export default function GallerySidebar() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
           <div className="absolute left-3 right-3 top-3 flex flex-wrap gap-2 text-[10px]">
-            <Chip variant="cyan">Techno marathon</Chip>
-            <Chip variant="purple">
+            <Chip variant="cyan" size="sm">Techno marathon</Chip>
+            <Chip variant="purple" size="sm">
               House on the Strip
-            </Chip>          </div>
+            </Chip>
+          </div>
           <div className="absolute left-3 right-3 bottom-3 flex items-center justify-between text-xxs text-white/80">
             <p>Export with Ravehouse Entertainment watermark or clean.</p>
             <button disabled className="rounded-full bg-white px-3 py-1 text-xxs font-semibold text-black disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed">

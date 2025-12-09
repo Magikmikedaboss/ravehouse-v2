@@ -41,7 +41,20 @@ const variantArbitrary: Record<ChipVariant, string> = {
 // (Optional) prevent local size utilities from overriding chip sizing
 function stripSizeTokens(extra?: string) {
   if (!extra) return "";
-  return extra.replace(/\b(?:p(?:x|y)?|text|leading)-[^\s]+/g, "").trim();
+  // Remove only size-related utilities: padding (p, px, py), text font-size tokens, and leading line-height tokens.
+  // Preserve non-size text utilities like text-white, text-center, text-opacity-*, etc.
+  const sizeTokenRegex = new RegExp(
+    [
+      // padding shorthands
+      "\\b(?:p|px|py)-[^\\s]+",
+      // text sizes: specific scale keys and arbitrary values in brackets
+      "\\btext-(?:xxs|xs|sm|base|lg|xl|[2-9]xl|\\[[^\\]]+\\])",
+      // leading line-height scale keys and arbitrary values
+      "\\bleading-(?:none|tight|snug|normal|relaxed|loose|\\[[^\\]]+\\])",
+    ].join("|"),
+    "g"
+  );
+  return extra.replace(sizeTokenRegex, "").replace(/\s{2,}/g, " ").trim();
 }
 
 export default function Chip({

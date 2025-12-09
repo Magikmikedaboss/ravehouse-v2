@@ -80,7 +80,7 @@ export default function MembershipTiers() {
                   {tier.name}
                 </h3>
                 {tier.highlighted && (
-                  <Chip className="bg-rh-pink-light text-black border-none" size="sm">
+                  <Chip variant="pink" size="sm">
                     Most popular
                   </Chip>
                 )}

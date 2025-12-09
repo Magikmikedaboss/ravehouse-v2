@@ -92,10 +92,10 @@ export default function AboutPage() {
           <div className="relative h-64 w-full sm:h-80">
             <div className="absolute inset-0 bg-[url('/images/backgrounds/crew-warehouse.jpg')] bg-cover bg-center opacity-60" />
             <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-black/80" />            <div className="absolute left-6 right-6 top-6 flex flex-wrap items-center justify-between gap-2 text-xxs text-white/80">
-              <Chip className="bg-rave-pink/20 border-rave-pink/40">
+              <Chip variant="pink">
                 Built by ravers, for ravers.
               </Chip>
-              <Chip className="bg-rave-cyan/20 border-rave-cyan/40">
+              <Chip variant="cyan">
                 DJs · Producers · Visuals · Hosts
               </Chip>
             </div>
@@ -120,10 +120,10 @@ export default function AboutPage() {
                 </ButtonLink>
               </div>
               <div className="mt-2 flex flex-wrap gap-2 text-xxs text-white/60">
-                <Chip variant="orange">
+                <Chip variant="orange" size="sm">
                   Las Vegas · Warehouses, rooftops, afterhours
                 </Chip>
-                <Chip variant="purple">
+                <Chip variant="purple" size="sm">
                   Since 2019 · 120+ events
                 </Chip>
               </div>
@@ -193,7 +193,7 @@ export default function AboutPage() {
                     <p className="text-sm font-semibold">{person.name}</p>
                     <p className="text-xxs text-white/60">{person.role}</p>
                   </div>
-                  <Chip variant="pink">                    {person.tag}
+                  <Chip variant="pink" size="sm">                    {person.tag}
                   </Chip>
                 </div>
                 <p className="text-xs text-white/70">{person.blurb}</p>

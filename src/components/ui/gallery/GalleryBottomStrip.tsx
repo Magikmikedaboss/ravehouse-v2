@@ -25,6 +25,6 @@ export default function GalleryBottomStrip() {
           </button>
         </div>
       </div>
-    </Surface>
-  );
+      </Surface>
+    );
 }

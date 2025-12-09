@@ -192,8 +192,7 @@ export default function GalleryFeed({ selectedFilter }: { selectedFilter: string
             <div className="absolute bottom-3 left-3 right-3">
               <p className="text-xs text-white/90 font-medium">{item.event} · {item.date}</p>
               <p className="text-xs text-white/70 mt-1">{item.description}</p>
-            </div>          </div>
-        </Surface>
+            </div>          </div>        </Surface>
       ))}
     </div>
   );

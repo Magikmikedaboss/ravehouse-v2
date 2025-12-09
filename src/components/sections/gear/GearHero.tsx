@@ -20,13 +20,13 @@ export default function GearHero() {
               and 3AM alley reloads.
             </p>
             <div className="flex flex-wrap gap-2 text-xxs">
-              <Chip variant="neutral">
+              <Chip variant="neutral" size="sm">
                 Hydration &amp; safety
               </Chip>
-              <Chip variant="neutral">
+              <Chip variant="neutral" size="sm">
                 Outfit &amp; comfort
               </Chip>
-              <Chip variant="neutral">
+              <Chip variant="neutral" size="sm">
                 LED &amp; visuals
               </Chip>
             </div>          </div>

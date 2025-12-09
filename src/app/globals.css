@@ -1,23 +1,27 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
-/* biome-ignore: @theme is a Tailwind v4 feature not recognized by Biome v2.1.2 */
-/* Tailwind v4 color tokens: enable brand utilities without using nested comment markers */
+/* Tailwind v4 color tokens (enable bg-rh-, text-rh-, border-rh- utilities) */
 @theme {
   /* Core brand (RGB channel values) */
   --color-rh-pink-light: 246 104 121;
-  --color-rh-pink-dark: 238 50 70;
+  --color-rh-pink-dark:  238 50 70;
   --color-rh-pink-shell: 136 62 67;
 
-  --color-rh-cyan: 0 206 209;
+  --color-rh-cyan:   0 206 209;
   --color-rh-orange: 255 69 0;
   --color-rh-purple: 138 43 226;
-  --color-rh-green: 50 205 50;
+  --color-rh-green:  50 205 50;
 
-  /* Text and surface if you want named utilities too */
-  --color-rh-text-primary: 255 255 255;
+  /* Optional named text tokens (if you use text-rh-text-primary utilities) */
+  --color-rh-text-primary:   255 255 255;
   --color-rh-text-secondary: 215 215 216;
 
+  /* Aliases (if you still use rave-* utilities) — use numeric values, not var() */
+  --color-rave-pink:   246 104 121;
+  --color-rave-cyan:   0 206 209;
+  --color-rave-orange: 255 69 0;
+  --color-rave-purple: 138 43 226;
 }
 
 @layer base {

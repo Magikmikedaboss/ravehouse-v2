@@ -22,13 +22,13 @@ export default function BlogHero() {
             </p>
             
             <div className="mt-2 flex flex-wrap gap-2 text-xxs">
-              <Chip variant="pink">
+              <Chip variant="pink" size="sm">
                 Recaps &amp; photo dumps
               </Chip>
-              <Chip variant="cyan">
+              <Chip variant="cyan" size="sm">
                 Guides for new heads
               </Chip>
-              <Chip variant="orange">
+              <Chip variant="orange" size="sm">
                 Rave gear &amp; essentials
               </Chip>
             </div>

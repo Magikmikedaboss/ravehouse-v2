@@ -113,52 +113,40 @@ export default function EventsPage() {
           <div className="relative z-10 flex min-h-[360px] w-full flex-col justify-between px-4 py-4 sm:min-h-[clamp(360px,38vw,520px)] sm:px-6 sm:py-6">
             {/* Top badges */}
             <div className="flex flex-wrap gap-2 text-xxs text-white/95">
-              <Chip variant="cyan">Upcoming raves · Las Vegas</Chip>
-              <Chip variant="cyan" className="flex">
-                Warehouse · Rooftop · Afterhours
-              </Chip>
+              <Chip variant="cyan" size="sm">Upcoming raves · Las Vegas</Chip>
+              <Chip variant="cyan" size="sm" className="flex">Warehouse · Rooftop · Afterhours</Chip>
+            </div>
+            {/* Heading and blurb */}
+            <h1 className="text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl">
+              Upcoming raves across Las Vegas
+            </h1>
+            <p className="text-sm text-white/90 drop-shadow-md">
+              Secret afterhours, rooftops and warehouse nights all week.
+            </p>
+
+            {/* Buttons */}
+            <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
+              <ButtonLink href="/events?filter=weekend" className="text-xs sm:text-sm">
+                See this weekend&apos;s raves
+              </ButtonLink>
+              <ButtonLink
+                href="/events"
+                variant="secondary"
+                className="text-xs sm:text-sm"
+              >
+                Browse full calendar
+              </ButtonLink>
             </div>
 
-            {/* Bottom content */}
-            <div className="mt-6 max-w-[min(100%,720px)] space-y-3">
-              <p className="text-xxs uppercase tracking-wider-xl text-white/75">
-                Curated underground nights, every week
-              </p>
-
-              <h1 className="text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl">
-                DISCOVER YOUR NEXT{" "}
-                <br className="hidden sm:inline" />
-                UNDERGROUND NIGHT
-              </h1>
-
-              <p className="text-sm text-white/90 drop-shadow-md">
-                Lock in your spot at upcoming warehouses, rooftop takeovers and
-                secret afterhours across Las Vegas.
-              </p>
-
-              <div className="mt-3 flex flex-wrap gap-2 sm:gap-3">
-                <ButtonLink href="/events?filter=weekend" className="text-xs sm:text-sm">
-                  See this weekend&apos;s raves
-                </ButtonLink>
-                <ButtonLink
-                  href="/events"
-                  variant="secondary"
-                  className="text-xs sm:text-sm"
-                >
-                  Browse full calendar
-                </ButtonLink>
-              </div>
-
-              <div className="mt-3 flex flex-wrap gap-2 text-xxs sm:text-xxs">
-                <Chip variant="pink">Location drops 24h before</Chip>
-                <Chip variant="orange">No dress code · Just energy</Chip>
-                <Chip variant="purple">Techno, House, Bass</Chip>
-              </div>
+            {/* Info chips */}
+            <div className="mt-3 flex flex-wrap gap-2 text-xxs sm:text-xxs">
+              <Chip variant="pink" size="sm">Location drops 24h before</Chip>
+              <Chip variant="orange" size="sm">No dress code · Just energy</Chip>
+              <Chip variant="purple" size="sm">Techno, House, Bass</Chip>
             </div>
           </div>
         </div>
       </section>
-
       {/* Right column highlights - MOVED BELOW HERO */}
       <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className="space-y-4">
@@ -239,9 +227,9 @@ export default function EventsPage() {
                   <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute left-3 top-3 flex items-center gap-2 text-xxs">
-                    <Chip className="bg-rave-cyan/30 border-rave-cyan/50">                      {event.day} · {event.time}
+                    <Chip variant="cyan" size="sm">                      {event.day} · {event.time}
                     </Chip>
-                    <Chip className="bg-rave-cyan/30 border-rave-cyan/50">
+                    <Chip variant="cyan" size="sm">
                       {event.badge}
                     </Chip>
                   </div>
@@ -254,6 +242,7 @@ export default function EventsPage() {
                       <Chip
                         key={g}
                         variant="purple"
+                        size="sm"
                       >
                         {g}
                       </Chip>
@@ -292,7 +281,7 @@ export default function EventsPage() {
                       <p className="font-medium text-white">{item.title}</p>
                       <p className="text-xxs text-white/65">{item.slot}</p>
                     </div>
-                    <Chip variant="success">
+                    <Chip variant="success" size="sm">
                       {item.status}
                     </Chip>
                   </div>

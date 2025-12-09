@@ -103,7 +103,7 @@ export default function TicketsPage() {
                   {/* Ticket info */}
                   <div className="space-y-2">
                     <div className="flex flex-wrap items-center justify-between gap-2 text-xxs text-white/60">
-                      <Chip className="bg-rave-pink/20 border-rave-pink/40 text-white">
+                      <Chip variant="pink">
                         {ticket.when}
                       </Chip>
                       <Chip

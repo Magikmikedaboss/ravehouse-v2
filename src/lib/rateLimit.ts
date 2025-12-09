@@ -44,19 +44,16 @@ export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; re
     return { allowed: false };
   }
 
-  // Wait for any pending operation on this IP
-  const prevLock = locks.get(ip);
-  if (prevLock) {
-    await prevLock;
+  // Acquire lock atomically using a loop
+  while (locks.has(ip)) {
+    await locks.get(ip);
   }
-
-  // Create a new lock for this operation
-  let resolveLock: (() => void) | undefined;
+  
+  let resolveLock!: () => void;
   const newLock = new Promise<void>(resolve => {
     resolveLock = resolve;
   });
   locks.set(ip, newLock);
-
   try {
     const now = Date.now();
     const entry = rateLimitMap.get(ip);

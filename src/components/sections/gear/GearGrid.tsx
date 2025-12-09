@@ -101,7 +101,7 @@ export default function GearGrid() {
                 </h3>
               </div>
               {item.badge && (
-                <Chip variant="badge">
+                <Chip variant="badge" size="sm">
                   {item.badge}
                 </Chip>
               )}
