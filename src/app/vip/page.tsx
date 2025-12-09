@@ -1,5 +1,8 @@
 // src/app/vip/page.tsx
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import Chip from "@/components/ui/Chip";
 
 const vipPlans = [
@@ -42,6 +45,15 @@ const vipPlans = [
 ];
 
 export default function VipPage() {
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const chipOptions = [
+    { label: "Vegas local", variant: "pink" as const },
+    { label: "Visiting for a weekend", variant: "cyan" as const },
+    { label: "Birthday / celebration", variant: "orange" as const },
+    { label: "Corporate / brand group", variant: "purple" as const }
+  ];
+
   return (
     <div className="space-y-10 pb-10">
       {/* Hero */}
@@ -220,22 +232,28 @@ export default function VipPage() {
               placeholder="Tell us about your night – date, crew size, budget, favorite vibes."
             />
             <div className="flex flex-wrap gap-2">
-              {[
-                { label: "Vegas local", variant: "pink" as const },
-                { label: "Visiting for a weekend", variant: "cyan" as const },
-                { label: "Birthday / celebration", variant: "orange" as const },
-                { label: "Corporate / brand group", variant: "purple" as const }
-              ].map((item) => (
-                <button
-                  key={item.label}
-                  type="button"
-                  className="cursor-pointer"
-                >
-                  <Chip variant={item.variant} size="sm">
-                    {item.label}
-                  </Chip>
-                </button>
-              ))}
+              {chipOptions.map((item) => {
+                const isSelected = selectedOption === item.label;
+                return (
+                  <button
+                    key={item.label}
+                    type="button"
+                    onClick={() => setSelectedOption(isSelected ? null : item.label)}
+                    aria-pressed={isSelected}
+                    className={`cursor-pointer transition-transform hover:scale-105 ${
+                      isSelected ? 'ring-2 ring-white/30 ring-offset-2 ring-offset-black' : ''
+                    }`}
+                  >
+                    <Chip 
+                      variant={isSelected ? "neutral" : item.variant} 
+                      size="sm"
+                      className={isSelected ? 'bg-white/20 border-white/40' : ''}
+                    >
+                      {item.label}
+                    </Chip>
+                  </button>
+                );
+              })}
             </div>
           </div>
 

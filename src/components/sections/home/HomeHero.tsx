@@ -8,7 +8,7 @@ export default function HomeHero() {
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
       {/* Main hero card */}
-      <div className="relative overflow-hidden rounded-[var(--rh-radius-lg)] bg-[rgb(var(--rh-bg-card))] border border-[rgb(var(--rh-border-subtle))]/20 shadow-rh-soft backdrop-blur dark:bg-black/60 dark:border-white/10">
+      <Surface className="relative overflow-hidden">
         {/* Background image - responsive height */}
         <div className="relative h-[400px] sm:h-[480px] w-full">
           <Image
@@ -38,13 +38,13 @@ export default function HomeHero() {
             
             {/* Main content */}
             <div className="flex-1 flex flex-col justify-center sm:absolute sm:left-4 sm:right-4 sm:top-1/2 sm:-translate-y-1/2 lg:left-8 lg:right-8">
-              <p className="text-xs uppercase tracking-widest text-[rgb(var(--rh-text-primary))]/70 font-medium mb-3 sm:mb-4">
+              <p className="text-xs uppercase tracking-widest text-white/70 font-medium mb-3 sm:mb-4">
                 Underground parties for the nocturnal.
               </p>
-              <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-[rgb(var(--rh-text-primary))] leading-tight mb-4 sm:mb-6">
+              <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-white leading-tight mb-4 sm:mb-6">
                 RAVEHOUSE<br />ENTERTAINMENT
               </h1>
-              <p className="max-w-lg text-sm text-[rgb(var(--rh-text-primary))]/90 leading-relaxed mb-6 sm:mb-8">
+              <p className="max-w-lg text-sm text-white/90 leading-relaxed mb-6 sm:mb-8">
                 Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
                 across Las Vegas. No fluff, just sweat and strobes.
               </p>
@@ -66,7 +66,7 @@ export default function HomeHero() {
             
           </div>
         </div>
-      </div>
+      </Surface>
 
       {/* Right side event highlight cards */}
       <div className="space-y-4">
@@ -79,9 +79,9 @@ export default function HomeHero() {
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
-                <Chip variant="neutral" size="sm">Techno</Chip>
-                <Chip variant="neutral" size="sm">Warehouse</Chip>
-                <Chip variant="neutral" size="sm">Secret lineup</Chip>
+                <Chip variant="pink" size="sm">Techno</Chip>
+                <Chip variant="cyan" size="sm">Warehouse</Chip>
+                <Chip variant="orange" size="sm">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">
