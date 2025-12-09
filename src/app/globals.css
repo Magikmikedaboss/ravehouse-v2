@@ -337,3 +337,131 @@ body {
   .text-brand-purple { color: rgb(var(--rh-purple)); }
   .text-brand-green  { color: rgb(var(--rh-green)); }
 }
+
+/* Custom prose styles to replace @tailwindcss/typography */
+.prose {
+  max-width: 65ch;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose h1 {
+  color: rgb(var(--rh-text-primary));
+  font-weight: 800;
+  font-size: 2.25em;
+  margin-top: 0;
+  margin-bottom: 0.8888889em;
+  line-height: 1.1111111;
+}
+
+.prose h2 {
+  color: rgb(var(--rh-text-primary));
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+}
+
+.prose h3 {
+  color: rgb(var(--rh-text-primary));
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+}
+
+.prose h4 {
+  color: rgb(var(--rh-text-primary));
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+.prose ul {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose blockquote {
+  font-weight: 500;
+  font-style: italic;
+  color: rgb(var(--rh-text-secondary));
+  border-left-width: 0.25rem;
+  border-left-color: rgb(var(--rh-border-subtle));
+  quotes: '\201C''\201D''\2018''\2019';
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-left: 1em;
+}
+
+.prose strong {
+  color: rgb(var(--rh-text-primary));
+  font-weight: 600;
+}
+
+.prose a {
+  color: rgb(var(--rh-pink-light));
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prose a:hover {
+  color: rgb(var(--rh-pink));
+}
+
+.prose code {
+  color: rgb(var(--rh-text-primary));
+  font-weight: 600;
+  font-size: 0.875em;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.prose pre {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.375rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-top: 1.7142857em;
+  margin-bottom: 1.7142857em;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 400;
+}
+
+/* Dark mode styles */
+.prose-invert {
+  --rh-text-primary: var(--rh-text-light);
+  --rh-text-secondary: var(--rh-text-muted-light);
+  --rh-border-subtle: var(--rh-border-light);
+}
+
+/* Light mode styles */
+:root:not(.dark) .prose {
+  --rh-text-primary: var(--rh-text-dark);
+  --rh-text-secondary: var(--rh-text-muted-dark);
+  --rh-border-subtle: var(--rh-border-dark);
+}

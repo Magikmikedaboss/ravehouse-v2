@@ -32,13 +32,23 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   // In Next.js 15, searchParams is a Promise
   const params = await searchParams;
   
-  // Handle both ?category and ?tag for flexibility
-  const initialCategory = params.category || params.tag || "All";
+  // Safely normalize query parameters (handle string[] case)
+  const normalizeParam = (value: string | string[] | undefined): string | undefined => {
+    if (Array.isArray(value)) {
+      return value[0]; // Take first value if array
+    }
+    return value;
+  };
+  
+  // Prefer category over tag, then fallback to "All"
+  const category = normalizeParam(params.category);
+  const tag = normalizeParam(params.tag);
+  const initialCategory = category || tag || "All";
   
   return (
     <div className="space-y-8 pb-12">
       <BlogHero />
-      <BlogPageClient initialCategory={initialCategory as string} />
+      <BlogPageClient initialCategory={initialCategory} />
     </div>
   );
 }

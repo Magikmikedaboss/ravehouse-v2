@@ -14,19 +14,28 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Initialize theme immediately on client
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("ravehouse-theme");
+        const initialTheme = (saved === "dark" || saved === "light") ? saved : "dark";
+        // Apply immediately to prevent FOUC
+        document.documentElement.classList.remove("dark", "light");
+        document.documentElement.classList.add(initialTheme);
+        return initialTheme;
+      } catch (error) {
+        console.warn("Failed to read theme from localStorage:", error);
+        document.documentElement.classList.add("dark");
+        return "dark";
+      }
+    }
+    return "dark";
+  });
   const [mounted, setMounted] = useState(false);
 
-  // Load theme from localStorage on mount
+  // Mark as mounted
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("ravehouse-theme");
-      if (saved === "dark" || saved === "light") {
-        setTheme(saved);
-      }
-    } catch (error) {
-      console.warn("Failed to read theme from localStorage:", error);
-    }
     setMounted(true);
   }, []);
   // Update document class and localStorage when theme changes
