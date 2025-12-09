@@ -107,11 +107,8 @@ export default function TicketsPage() {
                         {ticket.when}
                       </Chip>
                       <Chip
-                        className={
-                          index === 0
-                            ? "bg-rh-green/15 border-rh-green/30 text-rh-green"
-                            : "bg-rave-cyan/20 border-none text-rave-cyan/80"
-                        }
+                        variant={index === 0 ? "success" : "cyan"}
+                        size="sm"
                       >
                         {index === 0 ? "Checked in early" : "Upcoming · Not scanned"}
                       </Chip>

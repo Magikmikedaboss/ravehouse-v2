@@ -44,16 +44,22 @@ export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; re
     return { allowed: false };
   }
 
-  // Acquire lock atomically using a loop
-  while (locks.has(ip)) {
-    await locks.get(ip);
-  }
-  
+  // Acquire lock with atomic check-and-set to avoid TOCTOU
   let resolveLock!: () => void;
-  const newLock = new Promise<void>(resolve => {
+  const newLock = new Promise<void>((resolve) => {
     resolveLock = resolve;
   });
-  locks.set(ip, newLock);
+  // Loop until we can set our lock without awaiting between check and set
+  for (;;) {
+    const existing = locks.get(ip);
+    if (existing) {
+      await existing; // wait for current holder to finish, then retry
+      continue;
+    }
+    // No existing lock; set ours atomically and break
+    locks.set(ip, newLock);
+    break;
+  }
   try {
     const now = Date.now();
     const entry = rateLimitMap.get(ip);

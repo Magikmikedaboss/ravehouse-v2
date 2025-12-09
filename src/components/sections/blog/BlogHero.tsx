@@ -7,7 +7,7 @@ export default function BlogHero() {
   return (
     <section className="px-4 pt-8 lg:px-6">
       <Surface className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/20 via-rh-purple/10 to-transparent" />        
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--rh-pink-light))]/20 via-[rgb(var(--rh-purple))]/10 to-transparent" />        
         <div className="relative flex flex-col gap-5 p-6 md:flex-row md:items-end md:justify-between md:p-8">
           <div className="space-y-3">
             <p className="text-xxs uppercase tracking-[0.3em] text-white/60">

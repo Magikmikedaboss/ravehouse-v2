@@ -8,10 +8,12 @@
   --color-rh-pink-dark:  238 50 70;
   --color-rh-pink-shell: 136 62 67;
 
-  --color-rh-cyan:   0 206 209;
-  --color-rh-orange: 255 69 0;
-  --color-rh-purple: 138 43 226;
-  --color-rh-green:  50 205 50;
+  --color-rh-cyan:        0 206 209;
+  --color-rh-cyan-light:  64 224 208;
+  --color-rh-orange:      255 69 0;
+  --color-rh-orange-light: 255 165 0;
+  --color-rh-purple:      138 43 226;
+  --color-rh-green:       50 205 50;
 
   /* Optional named text tokens (if you use text-rh-text-primary utilities) */
   --color-rh-text-primary:   255 255 255;
@@ -73,11 +75,12 @@
   .light {
     --rh-bg-page: 255 250 252;
     --rh-bg-card: 255 245 248;
-    --rh-bg-surface: 255 250 252;
+    --rh-bg-surface: 255 255 255;
     --rh-text-primary: 0 0 0;
     --rh-text-secondary: 136 62 67;
-    --rh-border: 136 62 67;
-    --rh-border-subtle: 246 104 121;
+    --rh-border: 0 0 0;
+    --rh-border-subtle: 136 62 67;
+
     color-scheme: light;
   }
 }
@@ -99,12 +102,8 @@ body {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Inter", sans-serif;
-  background:
-    radial-gradient(circle at 0% 0%, rgba(246, 104, 121, 0.3) 0%, transparent 45%),
-    radial-gradient(circle at 100% 100%, rgba(136, 62, 67, 0.3) 0%, transparent 55%),
-    radial-gradient(circle at 100% 0%, #000 0%, transparent 60%),
-    rgb(15, 5, 8);
-  color: rgb(215, 215, 216);
+  background: rgb(var(--rh-bg-page));
+  color: rgb(var(--rh-text-secondary));
 }
 
 /* Light mode body background */
@@ -149,7 +148,23 @@ body {
     box-shadow:
       0 18px 45px rgba(0, 0, 0, 0.75),
       0 0 0 1px rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
+  }
+
+  /* Graceful fallback when backdrop-filter isn't supported */
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .surface {
+      /* Slightly more opaque background to mimic separation without blur */
+      background:
+        radial-gradient(circle at 0 0, rgba(246, 104, 121, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(136, 62, 67, 0.18), transparent 60%),
+        rgba(10, 5, 8, 0.95);
+      /* Reduce shadow intensity to avoid muddy visuals on non-blur browsers */
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(0, 0, 0, 0.55);
+    }
   }
 
   /* Buttons */
@@ -211,25 +226,30 @@ body {
     outline: none;
   }
 
-  .btn-ghost {
+  /* Default dark theme button ghost */
+  .btn-ghost,
+  .dark .btn-ghost {
     background: rgba(10, 8, 10, 0.8);
     border-color: rgba(var(--rh-border-subtle), 0.3);
     color: rgb(var(--rh-tin));
   }
 
-  .btn-ghost:hover {
+  .btn-ghost:hover,
+  .dark .btn-ghost:hover {
     border-color: rgb(var(--rh-pink-light));
     color: rgb(var(--rh-pink-light));
   }
 
-  .btn-ghost:focus-visible {
+  .btn-ghost:focus-visible,
+  .dark .btn-ghost:focus-visible {
     outline: 2px solid rgb(var(--rh-cyan));
     outline-offset: 2px;
     border-color: rgba(var(--rh-border-subtle), 0.5);
     box-shadow: 0 0 0 4px rgba(var(--rh-cyan), 0.3);
   }
 
-  .btn-ghost:focus:not(:focus-visible) {
+  .btn-ghost:focus:not(:focus-visible),
+  .dark .btn-ghost:focus:not(:focus-visible) {
     outline: none;
   }
 
@@ -305,9 +325,9 @@ body {
   .text-10 { font-size: 10px; }
   .text-11 { font-size: 11px; }
   .text-12 { font-size: 12px; }
-  .text-brand-pink   { color: rgb(var(--rh-pink-light)); }
-  .text-brand-cyan   { color: rgb(var(--rh-cyan)); }
-  .text-brand-orange { color: rgb(var(--rh-orange)); }
-  .text-brand-purple { color: rgb(var(--rh-purple)); }
-  .text-brand-green  { color: rgb(var(--rh-green)); }
+  
+  /* Essential v4 utilities */
+  .text-xxs { font-size: 0.688rem; line-height: 1rem; }
+  .rounded-rh-lg { border-radius: var(--rh-radius-lg); }
+  .rounded-rh-md { border-radius: var(--rh-radius-md); }
 }

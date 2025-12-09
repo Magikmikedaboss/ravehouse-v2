@@ -155,7 +155,7 @@ export default function VipPage() {
               <div className="flex items-baseline justify-between gap-2">
                 <div>
                   <h3 className="text-sm font-semibold">{plan.name}</h3>
-                  <p className="mt-1 text-xs text-rave-cyan/80">{plan.tag}</p>
+                  <p className="mt-1 text-xs text-rh-cyan/80">{plan.tag}</p>
                 </div>
                 <div className="text-xs text-white/70">{plan.price}</div>
               </div>
@@ -226,10 +226,10 @@ export default function VipPage() {
                     key={chip}
                     type="button"
                     className={`chip text-xxs ${
-                      index === 0 ? "bg-rave-pink/15 border-rave-pink/30" :
-                      index === 1 ? "bg-rave-cyan/15 border-rave-cyan/30" :
-                      index === 2 ? "bg-rave-orange/15 border-rave-orange/30" :
-                      "bg-rave-purple/15 border-rave-purple/30"
+                      index === 0 ? "bg-rh-pink-light/15 border-rh-pink-light/30" :
+                      index === 1 ? "bg-rh-cyan/15 border-rh-cyan/30" :
+                      index === 2 ? "bg-rh-orange/15 border-rh-orange/30" :
+                      "bg-rh-purple/15 border-rh-purple/30"
                     }`}
                   >
                     {chip}

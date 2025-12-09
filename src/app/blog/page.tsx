@@ -1,59 +1,34 @@
 // src/app/blog/page.tsx
 
-"use client";
-
-import { useState } from "react";
+import { Metadata } from "next";
 import BlogHero from "@/components/sections/blog/BlogHero";
-import BlogFilters from "@/components/sections/blog/BlogFilters";
-import BlogList from "@/components/sections/blog/BlogList";
-import NewsletterSignup from "@/components/ui/NewsletterSignup";
-import Surface from "@/components/ui/Surface";
+import BlogPageClient from "@/components/sections/blog/BlogPageClient";
+
+export const metadata: Metadata = {
+  title: "Blog | Ravehouse Entertainment",
+  description: "Underground rave culture, warehouse guides, gear reviews, and the latest from Las Vegas's nocturnal scene. Stay ahead of the drop with exclusive insights.",
+  keywords: [
+    "underground raves",
+    "warehouse parties",
+    "rave culture",
+    "las vegas nightlife",
+    "techno",
+    "house music",
+    "rave gear",
+    "warehouse guides"
+  ],
+  openGraph: {
+    title: "Blog | Ravehouse Entertainment",
+    description: "Underground rave culture, warehouse guides, and the latest from Las Vegas's nocturnal scene.",
+    type: "website",
+  },
+};
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [view, setView] = useState<"grid" | "stack">("grid");
-
   return (
     <div className="space-y-8 pb-12">
       <BlogHero />
-
-      <section className="space-y-5 px-4 lg:px-6">
-        <BlogFilters
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          view={view}
-          onViewChange={setView}
-        />
-
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.1fr)]">
-          {/* Left: main list */}
-          <BlogList selectedCategory={selectedCategory} view={view} />
-
-          {/* Right: sidebar */}
-          <div className="space-y-4">
-            <Surface className="p-4">
-              <h3 className="text-sm font-semibold text-white">
-                Stay ahead of the drop
-              </h3>
-              <p className="mt-1 text-xs text-white/70">
-                Get first word on warehouse nights, ticket drops, and new
-                photo galleries.
-              </p>
-              <div className="mt-3">
-                <NewsletterSignup />
-              </div>
-            </Surface>
-
-            <Surface className="p-4">
-              <p className="text-xs text-white/60">Tags coming soon</p>
-              <p className="mt-1 text-xs text-white/70">
-                We&apos;ll surface posts by genre, venue type, and vibe
-                (warehouse, rooftop, afterhours, etc.).
-              </p>
-            </Surface>
-          </div>
-        </div>
-      </section>
+      <BlogPageClient />
     </div>
   );
 }

@@ -67,12 +67,9 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                 <div className="mt-3 flex items-center justify-between text-xxs text-white/60">
                   <div className="flex flex-wrap gap-1">
                     {post.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-white/10 px-2 py-0.5"
-                      >
+                      <Chip key={tag} variant="neutral" size="sm">
                         {tag}
-                      </span>
+                      </Chip>
                     ))}
                   </div>
                   <span className="text-white/70 group-hover:text-white">

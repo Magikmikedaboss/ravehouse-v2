@@ -227,13 +227,13 @@ export default function EventsPage() {
                   <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute left-3 top-3 flex items-center gap-2 text-xxs">
-                    <Chip variant="cyan" size="sm">                      {event.day} · {event.time}
+                    <Chip variant="cyan" size="sm">
+                      {event.day} · {event.time}
                     </Chip>
                     <Chip variant="cyan" size="sm">
                       {event.badge}
                     </Chip>
-                  </div>
-                </div>
+                  </div>                </div>
                 <div className="p-4 space-y-2">
                   <h3 className="text-sm font-semibold">{event.title}</h3>
                   <p className="text-xs text-white/65">{event.area}</p>
