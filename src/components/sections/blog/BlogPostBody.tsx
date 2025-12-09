@@ -33,7 +33,7 @@ export default function BlogPostBody({ post }: Props) {
       <Surface className="overflow-hidden">
         <div className="relative h-56 w-full sm:h-72">
           <Image
-            src={post.heroImage || "/images/placeholder.jpg"}
+            src={post.heroImage || "/images/events/vecteezy_crowded-dance-floor-illuminated-by-disco-balls-and-colorful_71852730.jpeg"}
             alt={post.title}
             fill
             className="object-cover"

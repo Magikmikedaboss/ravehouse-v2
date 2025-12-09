@@ -8,7 +8,7 @@ export default function HomeHero() {
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
       {/* Main hero card */}
-      <div className="relative overflow-hidden rounded-rh-lg bg-[rgb(var(--rh-bg-card))] border border-[rgb(var(--rh-border-subtle))]/20 shadow-rh-soft backdrop-blur dark:bg-black/60 dark:border-white/10">
+      <div className="relative overflow-hidden rounded-[var(--rh-radius-lg)] bg-[rgb(var(--rh-bg-card))] border border-[rgb(var(--rh-border-subtle))]/20 shadow-rh-soft backdrop-blur dark:bg-black/60 dark:border-white/10">
         {/* Background image - responsive height */}
         <div className="relative h-[400px] sm:h-[480px] w-full">
           <Image

@@ -24,11 +24,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+interface BlogPageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  // In Next.js 15, searchParams is a Promise
+  const params = await searchParams;
+  
+  // Handle both ?category and ?tag for flexibility
+  const initialCategory = params.category || params.tag || "All";
+  
   return (
     <div className="space-y-8 pb-12">
       <BlogHero />
-      <BlogPageClient />
+      <BlogPageClient initialCategory={initialCategory as string} />
     </div>
   );
 }

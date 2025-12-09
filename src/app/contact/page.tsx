@@ -173,8 +173,9 @@ export default function ContactPage() {
                 For urgent venue or safety issues during events, call our emergency line.
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-rh-pink-light">702-RH-HELP</span>
-                <Chip variant="danger" size="sm">
+                <a href="tel:+17024754357" className="text-sm font-medium text-rh-pink-light hover:underline">
+                  702-RH-HELP (702-475-4357)
+                </a>                <Chip variant="danger" size="sm">
                   Emergency only
                 </Chip>
               </div>

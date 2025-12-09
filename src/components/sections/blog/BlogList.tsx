@@ -29,7 +29,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
               {/* Image */}
               <div className="relative h-40 w-full overflow-hidden">
                 <Image
-                  src={post.heroImage || "/images/placeholder.svg"}
+                  src={post.heroImage || "/images/events/vecteezy_crowded-dance-floor-illuminated-by-disco-balls-and-colorful_71852730.jpeg"}
                   alt={post.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

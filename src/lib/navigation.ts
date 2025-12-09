@@ -22,7 +22,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "The Circuit",
     children: [
       { label: "Blog", href: "/blog" },
-      { label: "Guides", href: "/blog?tag=guides" },
+      { label: "Guides", href: "/blog?category=Guides" },
       { label: "Rave Gear", href: "/gear" },
       { label: "Membership", href: "/membership" },
     ],

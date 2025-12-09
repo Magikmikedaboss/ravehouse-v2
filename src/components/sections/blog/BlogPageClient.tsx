@@ -8,8 +8,12 @@ import BlogList from "@/components/sections/blog/BlogList";
 import NewsletterSignup from "@/components/ui/NewsletterSignup";
 import Surface from "@/components/ui/Surface";
 
-export default function BlogPageClient() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+interface BlogPageClientProps {
+  initialCategory?: string;
+}
+
+export default function BlogPageClient({ initialCategory = "All" }: BlogPageClientProps) {
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [view, setView] = useState<"grid" | "stack">("grid");
 
   return (

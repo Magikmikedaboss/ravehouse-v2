@@ -220,22 +220,22 @@ export default function VipPage() {
               placeholder="Tell us about your night – date, crew size, budget, favorite vibes."
             />
             <div className="flex flex-wrap gap-2">
-              {["Vegas local", "Visiting for a weekend", "Birthday / celebration", "Corporate / brand group"].map(
-                (chip, index) => (
-                  <button
-                    key={chip}
-                    type="button"
-                    className={`chip text-xxs ${
-                      index === 0 ? "bg-rh-pink-light/15 border-rh-pink-light/30" :
-                      index === 1 ? "bg-rh-cyan/15 border-rh-cyan/30" :
-                      index === 2 ? "bg-rh-orange/15 border-rh-orange/30" :
-                      "bg-rh-purple/15 border-rh-purple/30"
-                    }`}
-                  >
-                    {chip}
-                  </button>
-                ),
-              )}
+              {[
+                { label: "Vegas local", variant: "pink" as const },
+                { label: "Visiting for a weekend", variant: "cyan" as const },
+                { label: "Birthday / celebration", variant: "orange" as const },
+                { label: "Corporate / brand group", variant: "purple" as const }
+              ].map((item) => (
+                <button
+                  key={item.label}
+                  type="button"
+                  className="cursor-pointer"
+                >
+                  <Chip variant={item.variant} size="sm">
+                    {item.label}
+                  </Chip>
+                </button>
+              ))}
             </div>
           </div>
 

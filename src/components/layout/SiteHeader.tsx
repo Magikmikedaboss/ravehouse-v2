@@ -7,6 +7,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import ThemeToggle from "../ui/ThemeToggle";
 
 export default function SiteHeader() {
@@ -101,31 +102,35 @@ export default function SiteHeader() {
                 return (
                   <NavigationMenu.Item key={item.label}>
                     {item.children ? (
-                      <>
-                        <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
-                          active
-                            ? "bg-black dark:bg-white text-white dark:text-black shadow"
-                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
-                        }`}>
-                          {item.label}
-                        </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-fade-in animate-zoom-in z-50">
-                          <ul className="p-2">
+                      <DropdownMenu.Root>
+                        <DropdownMenu.Trigger asChild>
+                          <button className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                            active
+                              ? "bg-black dark:bg-white text-white dark:text-black shadow"
+                              : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
+                          }`}>
+                            {item.label}
+                          </button>
+                        </DropdownMenu.Trigger>
+                        <DropdownMenu.Portal>
+                          <DropdownMenu.Content 
+                            className="w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-fade-in animate-zoom-in z-50 p-2"
+                            sideOffset={8}
+                            collisionPadding={16}
+                          >
                             {item.children.map((child) => (
-                              <li key={child.href}>
-                                <NavigationMenu.Link asChild>
-                                  <Link
-                                    href={child.href}
-                                    className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none"
-                                  >
-                                    {child.label}
-                                  </Link>
-                                </NavigationMenu.Link>
-                              </li>
+                              <DropdownMenu.Item key={child.href} asChild>
+                                <Link
+                                  href={child.href}
+                                  className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none cursor-default"
+                                >
+                                  {child.label}
+                                </Link>
+                              </DropdownMenu.Item>
                             ))}
-                          </ul>
-                        </NavigationMenu.Content>
-                      </>
+                          </DropdownMenu.Content>
+                        </DropdownMenu.Portal>
+                      </DropdownMenu.Root>
                     ) : item.href ? (
                       <NavigationMenu.Link asChild>
                         <Link

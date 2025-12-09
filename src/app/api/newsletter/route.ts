@@ -16,13 +16,9 @@ export async function POST(request: NextRequest) {
              'unknown';
 
   if (ip === 'unknown') {
-    console.warn('Newsletter API: Unable to determine client IP, rejecting request');
-    return NextResponse.json(
-      { error: 'Unable to process request' },
-      { status: 400 }
-    );
+    console.warn('Newsletter API: Unable to determine client IP, using fallback');
+    // Proceed with 'unknown' as the rate limit key
   }
-
   const rateLimitResult = await checkRateLimit(ip);
   if (!rateLimitResult.allowed) {
     return NextResponse.json(

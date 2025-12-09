@@ -39,21 +39,49 @@ export function stopRateLimitCleanup() {
   }
 }
 
+// Auto-start cleanup on module load
+if (typeof window === 'undefined') {
+  // Only run in Node.js environment (server-side)
+  startRateLimitCleanup();
+}
 export async function checkRateLimit(ip: string): Promise<{ allowed: boolean; resetTime?: number }> {
   if (!ip || ip === 'unknown') {
     return { allowed: false };
   }
+
+  const LOCK_TIMEOUT_MS = 5000; // 5 seconds timeout for lock acquisition
+  const lockAcquiredAt = Date.now();
 
   // Acquire lock with atomic check-and-set to avoid TOCTOU
   let resolveLock!: () => void;
   const newLock = new Promise<void>((resolve) => {
     resolveLock = resolve;
   });
+  
   // Loop until we can set our lock without awaiting between check and set
   for (;;) {
     const existing = locks.get(ip);
     if (existing) {
-      await existing; // wait for current holder to finish, then retry
+      // Check if lock acquisition has timed out
+      if (Date.now() - lockAcquiredAt > LOCK_TIMEOUT_MS) {
+        // Delete the stuck lock and break to proceed
+        locks.delete(ip);
+        locks.set(ip, newLock);
+        break;
+      }
+      
+      // Wait for current holder to finish with timeout awareness
+      try {
+        await Promise.race([
+          existing,
+          new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Lock wait timeout')), LOCK_TIMEOUT_MS)
+          )
+        ]);
+      } catch {
+        // Timeout occurred, delete stuck lock and continue
+        locks.delete(ip);
+      }
       continue;
     }
     // No existing lock; set ours atomically and break

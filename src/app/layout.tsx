@@ -61,6 +61,18 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            try {
+              var t = localStorage.getItem('ravehouse-theme') || 'dark';
+              var d = document.documentElement;
+              d.classList.remove('dark','light');
+              d.classList.add(t);
+            } catch (e) {}
+          `,
+        }}
+      />
       <body className="antialiased">
         <ThemeProvider>
           <SiteShell>{children}</SiteShell>

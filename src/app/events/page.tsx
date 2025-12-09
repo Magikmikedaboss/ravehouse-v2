@@ -88,7 +88,7 @@ export default function EventsPage() {
     <div className="space-y-10 pb-10">
       {/* Hero section */}
       <section className="space-y-6">
-        <div className="relative w-full overflow-hidden rounded-rh-lg border border-white/10 bg-black shadow-rh-soft">
+        <div className="relative w-full overflow-hidden rounded-[var(--rh-radius-lg)] border border-white/10 bg-black shadow-rh-soft">
           {/* Background image + overlays */}
           <div className="pointer-events-none absolute inset-0">
             <Image
