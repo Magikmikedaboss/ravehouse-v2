@@ -7,9 +7,7 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-const prisma = globalForPrisma.prisma ?? new PrismaClient({
-  accelerateUrl: process.env.DATABASE_URL
-});
+const prisma = globalForPrisma.prisma ?? new PrismaClient();
 
 globalForPrisma.prisma = prisma;
 // Rate limit configuration
@@ -27,22 +25,55 @@ export interface RateLimitResult {
  * Check rate limit for an IP address using database-backed storage
  * Uses atomic transactions to prevent race conditions in multi-instance deployments
  */
-export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
-  // Handle missing or unknown IPs as fallback case (fail-open with shared bucket)
+export async function checkRateLimit(
+  ip: string, 
+  fingerprint?: { userAgent?: string; acceptLanguage?: string; sessionId?: string }
+): Promise<RateLimitResult> {
+  // Handle missing or unknown IPs with more granular fallback keys
   let rateLimitKey = ip;
+  let isUsingFallback = false;
   
   if (!ip || ip === 'unknown') {
-    rateLimitKey = 'fallback:unknown';
+    isUsingFallback = true;
+    
+    // Create a composite fallback key from available fingerprinting data
+    const fallbackComponents: string[] = ['fallback'];
+    
+    if (fingerprint?.userAgent) {
+      // Hash user agent to avoid storing raw data
+      const uaHash = Buffer.from(fingerprint.userAgent).toString('base64').slice(0, 8);
+      fallbackComponents.push(`ua:${uaHash}`);
+    }
+    
+    if (fingerprint?.acceptLanguage) {
+      fallbackComponents.push(`lang:${fingerprint.acceptLanguage.slice(0, 5)}`);
+    }
+    
+    if (fingerprint?.sessionId) {
+      fallbackComponents.push(`sess:${fingerprint.sessionId.slice(0, 8)}`);
+    }
+    
+    // If no fingerprinting data available, use a very restrictive shared bucket
+    if (fallbackComponents.length === 1) {
+      fallbackComponents.push('anonymous');
+    }
+    
+    rateLimitKey = fallbackComponents.join(':');
+    
     console.warn('Rate limit check with missing/unknown IP', {
       originalIp: ip,
       fallbackKey: rateLimitKey,
+      fingerprintComponents: fallbackComponents.slice(1), // Don't log 'fallback' prefix
       timestamp: new Date().toISOString(),
-      context: 'Using shared fallback bucket for rate limiting'
+      context: 'Using composite fallback bucket for rate limiting'
     });
   }
 
   const now = Date.now();
   const resetTime = now + WINDOW_MS;
+  
+  // Use more restrictive limits for fallback buckets to prevent abuse
+  const maxRequests = isUsingFallback ? Math.max(1, Math.floor(MAX_REQUESTS / 2)) : MAX_REQUESTS;
 
   try {
     // Use a transaction to atomically check and update the rate limit
@@ -69,13 +100,13 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
 
         return {
           allowed: true,
-          remaining: MAX_REQUESTS - 1,
+          remaining: maxRequests - 1,
           resetTime
         };
       }
 
       // Entry exists and window is still active
-      if (existingEntry.count >= MAX_REQUESTS) {
+      if (existingEntry.count >= maxRequests) {
         // Rate limit exceeded
         const remaining = 0;
         const retryAfter = Math.ceil((Number(existingEntry.resetTime) - now) / 1000);
@@ -97,7 +128,7 @@ export async function checkRateLimit(ip: string): Promise<RateLimitResult> {
 
       return {
         allowed: true,
-        remaining: MAX_REQUESTS - newCount,
+        remaining: maxRequests - newCount,
         resetTime: Number(existingEntry.resetTime)
       };
     });

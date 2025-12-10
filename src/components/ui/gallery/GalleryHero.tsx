@@ -56,7 +56,7 @@ export default function GalleryHero({
           <div className="flex flex-wrap gap-2">
             <a
               href="#gallery-feed"
-              className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-rh-medium shadow-rh-pink-light/40 transition hover:brightness-105"
+              className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-rh-medium shadow-rh-pink transition hover:brightness-105"
             >
               Browse full gallery
             </a>

@@ -95,11 +95,19 @@ export function ButtonLink({
   loading = false,
   href,
 }: ButtonLinkProps) {
+  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+    if (loading) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
   return (
     <Link
       href={href}
       aria-disabled={loading}
       tabIndex={loading ? -1 : undefined}
+      onClick={handleClick}
       className={`btn ${baseClasses} ${variantClasses(variant)} ${
         loading ? 'opacity-70 cursor-wait pointer-events-none' : ''
       } ${className}`}

@@ -85,6 +85,34 @@
   }
 }
 
+@layer utilities {
+  /* Shadow utilities */
+  .shadow-rh-soft {
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+  }
+  
+  .shadow-rh-medium {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  }
+  
+  .shadow-rh-hard {
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+  }
+  
+  .shadow-rh-glow {
+    box-shadow: 0 0 24px rgba(246, 104, 121, 0.6);
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 24px rgba(246, 104, 121, 0.6);
+  }
+
+  /* Additional shadow utilities for better depth */
+  .shadow-rh-pink {
+    box-shadow: 0 8px 24px rgba(246, 104, 121, 0.4);
+  }
+}
+
 /* Reset-ish basics */
 *,
 *::before,
@@ -265,19 +293,6 @@ body {
   }
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
-  }
-
-  /* Accessibility utilities */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
   }
 
   /* Enhanced focus states */
