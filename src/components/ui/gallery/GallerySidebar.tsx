@@ -11,8 +11,7 @@ export default function GallerySidebar() {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-xs text-[rgb(var(--rh-text-secondary))]">Your night in pixels</p>
-            <h3 className="mt-1 text-sm font-semibold text-[rgb(var(--rh-text-primary)/.9)]">
-              We auto-cut every set so you might be in from last night.
+            <h3 className="mt-1 text-sm font-semibold text-[rgb(var(--rh-text-primary))]/90">              We auto-cut every set so you might be in from last night.
             </h3>
           </div>
           <Chip variant="pink" size="sm">

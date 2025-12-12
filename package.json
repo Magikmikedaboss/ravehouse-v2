@@ -9,11 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@prisma/client": "^7.1.0",
+    "@prisma/client": "^5.22.0",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "clsx": "^2.1.1",
     "next": "15.5.7",
+    "prisma": "^5.22.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-markdown": "^10.1.0",
@@ -28,7 +29,6 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "15.5.7",
     "postcss": "^8.4.47",
-    "prisma": "^7.1.0",
     "tailwindcss": "^4.1.17",
     "typescript": "^5"
   }

@@ -20,8 +20,9 @@ export async function POST(request: NextRequest) {
       { error: 'Unable to identify request origin' },
       { status: 400 }
     );
-  }  const rateLimitResult = await checkRateLimit(ip);
-  if (!rateLimitResult.allowed) {
+  }
+
+  const rateLimitResult = await checkRateLimit(ip);  if (!rateLimitResult.allowed) {
     return NextResponse.json(
       { error: 'Too many requests' },
       { status: 429 }

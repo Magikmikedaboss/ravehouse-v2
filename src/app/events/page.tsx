@@ -233,8 +233,8 @@ export default function EventsPage() {
                     <Chip variant="cyan" size="sm">
                       {event.badge}
                     </Chip>
-                  </div>                </div>
-                <div className="p-4 space-y-2">
+                  </div>
+                </div>                <div className="p-4 space-y-2">
                   <h3 className="text-sm font-semibold">{event.title}</h3>
                   <p className="text-xs text-white/65">{event.area}</p>
                   <div className="flex flex-wrap gap-1 text-xxs text-white/65">

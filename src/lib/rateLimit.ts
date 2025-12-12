@@ -1,15 +1,6 @@
 // src/lib/rateLimit.ts
 // Database-backed rate limiter for multi-instance deployments
-import { PrismaClient } from '.prisma/client/default';
-
-// Create a global Prisma instance to avoid connection exhaustion
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined;
-};
-
-const prisma = globalForPrisma.prisma ?? new PrismaClient();
-
-globalForPrisma.prisma = prisma;
+import { prisma } from './prisma';
 // Rate limit configuration
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5; // 5 requests per window
@@ -61,13 +52,10 @@ export async function checkRateLimit(
     rateLimitKey = fallbackComponents.join(':');
     
     console.warn('Rate limit check with missing/unknown IP', {
-      originalIp: ip,
-      fallbackKey: rateLimitKey,
-      fingerprintComponents: fallbackComponents.slice(1), // Don't log 'fallback' prefix
+      fallbackUsed: true,
+      componentCount: fallbackComponents.length - 1, // Exclude 'fallback' prefix from count
       timestamp: new Date().toISOString(),
-      context: 'Using composite fallback bucket for rate limiting'
-    });
-  }
+    });  }
 
   const now = Date.now();
   const resetTime = now + WINDOW_MS;
