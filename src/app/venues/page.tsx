@@ -4,13 +4,13 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import Chip from "@/components/ui/Chip";
-import { VENUES, VENUE_FILTERS, intensityLabel } from "@/lib/venues";
+import { VENUES, VENUE_FILTERS, intensityLabel, type Venue } from "@/lib/venues";
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
 
-function getCategories(v: any): string[] {
+function getCategories(v: Venue): string[] {
   const cats = v.categories ?? v.category ?? [];
   return Array.isArray(cats) ? cats : [cats].filter(Boolean);
 }
@@ -25,7 +25,7 @@ export default function VenuesPage() {
   const list = useMemo(() => {
     const query = q.trim().toLowerCase();
 
-    return VENUES.filter((v: any) => {
+    return VENUES.filter((v: Venue) => {
       const categories = getCategories(v);
 
       const matchesFilter =
@@ -53,7 +53,7 @@ export default function VenuesPage() {
   const activeVenue = useMemo(() => {
     const fallback = list[0] ?? null;
     if (!activeSlug) return fallback;
-    return list.find((v: any) => v.slug === activeSlug) ?? fallback;
+    return list.find((v: Venue) => v.slug === activeSlug) ?? fallback;
   }, [activeSlug, list]);
 
   // Ensure we always have something selected for the preview
@@ -246,7 +246,7 @@ export default function VenuesPage() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {list.map((v: any) => {
+          {list.map((v: Venue) => {
             const categories = getCategories(v);
             const isActive = activeVenue?.slug === v.slug;
 
@@ -257,8 +257,9 @@ export default function VenuesPage() {
                   isActive ? "ring-2 ring-white/20" : ""
                 }`}
                 onMouseEnter={() => setActiveSlug(v.slug)}
-              >
-                <div className="flex items-start justify-between gap-3">
+                onFocus={() => setActiveSlug(v.slug)}
+                tabIndex={0}
+              >                <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="text-sm font-semibold">{v.name}</h3>
                     <p className="mt-1 text-xxs text-white/55">{v.area}</p>
@@ -330,7 +331,7 @@ export default function VenuesPage() {
             Want this to feel even more &quot;Ravehouse&quot;?
           </h3>
           <p className="mt-2 text-xs text-white/60">
-            Next upgrade: add venue images as blurred card backdrops + a "mode dial" (Chill/Rave)
+            Next upgrade: add venue images as blurred card backdrops + a &quot;mode dial&quot; (Chill/Rave)
             that changes the atlas styling and recommendations.
           </p>
         </div>

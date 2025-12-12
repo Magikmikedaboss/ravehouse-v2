@@ -41,9 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           alt: post.title,
         },
       ],
-    },  };
+    },
+  };
 }
-
 export default async function BlogPostPage({ params }: Props) {
   const resolved = await params;
   const post = getPostBySlug(resolved.slug);

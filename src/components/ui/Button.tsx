@@ -95,8 +95,15 @@ export function ButtonLink({
   loading = false,
   href,
 }: ButtonLinkProps) {
-  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+  const handleClick = (e: React.MouseEvent) => {
     if (loading) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (loading && (e.key === "Enter" || e.key === " " || e.key === "Spacebar" || e.keyCode === 13 || e.keyCode === 32)) {
       e.preventDefault();
       e.stopPropagation();
     }
@@ -106,8 +113,9 @@ export function ButtonLink({
     <Link
       href={href}
       aria-disabled={loading}
-      tabIndex={loading ? -1 : undefined}
+      tabIndex={loading ? -1 : 0}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={`btn ${baseClasses} ${variantClasses(variant)} ${
         loading ? 'opacity-70 cursor-wait pointer-events-none' : ''
       } ${className}`}

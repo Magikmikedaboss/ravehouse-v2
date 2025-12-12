@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
   webpack: (config, { isServer, dev, nextRuntime }) => {
     // Only apply custom splitChunks when using Webpack (not Turbopack)
     // Turbopack handles chunking differently and may ignore these optimizations
-    const isTurbopack = process.env.TURBOPACK || nextRuntime === 'edge';
+    const isTurbopack = process.env.TURBOPACK === '1';
     
     if (!isServer && !isTurbopack) {
       // Ensure splitChunks is enabled and is an object

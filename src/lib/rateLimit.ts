@@ -66,64 +66,48 @@ export async function checkRateLimit(
   const maxRequests = isUsingFallback ? Math.max(1, Math.floor(MAX_REQUESTS / 2)) : MAX_REQUESTS;
 
   try {
-    // Use a transaction to atomically check and update the rate limit
-    const result = await prisma.$transaction(async (tx) => {
-      // Try to find existing rate limit entry
-      const existingEntry = await tx.rateLimit.findUnique({
-        where: { ip: rateLimitKey }
-      });
+    // Use a single atomic SQL operation to handle both insert and update cases
+    // This prevents race conditions between concurrent requests
+    const result = await prisma.$queryRaw<{ count: number; reset_time: string }[]>`
+      INSERT INTO "RateLimit" (ip, count, "resetTime")
+      VALUES (${rateLimitKey}, 1, ${BigInt(resetTime)})
+      ON CONFLICT (ip) DO UPDATE SET
+        count = CASE 
+          WHEN ${BigInt(now)} > "RateLimit"."resetTime" THEN 1
+          ELSE "RateLimit".count + 1
+        END,
+        "resetTime" = CASE 
+          WHEN ${BigInt(now)} > "RateLimit"."resetTime" THEN ${BigInt(resetTime)}
+          ELSE "RateLimit"."resetTime"
+        END
+      RETURNING count, "resetTime"::text as reset_time;
+    `;
 
-      if (!existingEntry || now > Number(existingEntry.resetTime)) {
-        // No entry exists or window has expired - create/reset
-        await tx.rateLimit.upsert({
-          where: { ip: rateLimitKey },
-          update: {
-            count: 1,
-            resetTime: BigInt(resetTime)
-          },
-          create: {
-            ip: rateLimitKey,
-            count: 1,
-            resetTime: BigInt(resetTime)
-          }
-        });
+    const entry = result[0];
+    if (!entry) {
+      throw new Error('Failed to get rate limit entry from database');
+    }
 
-        return {
-          allowed: true,
-          remaining: maxRequests - 1,
-          resetTime
-        };
-      }
+    const currentCount = entry.count;
+    const currentResetTime = Number(entry.reset_time);
 
-      // Entry exists and window is still active
-      if (existingEntry.count >= maxRequests) {
-        // Rate limit exceeded
-        const remaining = 0;
-        const retryAfter = Math.ceil((Number(existingEntry.resetTime) - now) / 1000);
-        
-        return {
-          allowed: false,
-          remaining,
-          resetTime: Number(existingEntry.resetTime),
-          retryAfter: Math.max(1, retryAfter) // Ensure at least 1 second
-        };
-      }
-
-      // Increment counter
-      const newCount = existingEntry.count + 1;
-      await tx.rateLimit.update({
-        where: { ip: rateLimitKey },
-        data: { count: newCount }
-      });
-
+    // Check if rate limit is exceeded
+    if (currentCount > maxRequests) {
+      const retryAfter = Math.ceil((currentResetTime - now) / 1000);
+      
       return {
-        allowed: true,
-        remaining: maxRequests - newCount,
-        resetTime: Number(existingEntry.resetTime)
+        allowed: false,
+        remaining: 0,
+        resetTime: currentResetTime,
+        retryAfter: Math.max(1, retryAfter)
       };
-    });
+    }
 
-    return result;
+    return {
+      allowed: true,
+      remaining: maxRequests - currentCount,
+      resetTime: currentResetTime
+    };
   } catch (error) {
     console.error('Rate limit check failed:', error);
     // Fail open - allow request but with minimal remaining

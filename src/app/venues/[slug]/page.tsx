@@ -65,7 +65,7 @@ export default function VenueDetailPage({
     ? venue.bestFor
     : [venue.bestFor].filter(Boolean);
 
-  const intensity = clamp(Number(venue.intensity ?? 3), 1, 5);
+  const intensity = clamp(Number(venue.intensity ?? 3), 1, 5) as 1 | 2 | 3 | 4 | 5;
   const intensityPct = (intensity / 5) * 100;
 
   const vibeMeta: VibeMeta | null =
@@ -122,7 +122,7 @@ export default function VenueDetailPage({
               </Chip>
             ))}
             <Chip variant="cyan" size="sm">
-              {intensityLabel(intensity as any)}
+              {intensityLabel(intensity)}
             </Chip>
             <Chip variant="neutral" size="sm">
               {venue.priceHint}
@@ -132,9 +132,8 @@ export default function VenueDetailPage({
           <div className="mt-5 flex flex-wrap gap-3">
             <Link
               href={`/events?venue=${encoded}`}
-              className="rounded-full bg-gradient-to-r from-rh-cyan to-rh-purple px-5 py-2.5 text-sm font-semibold text-white shadow-rh-medium"
-            >
-              See events here
+              className="rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-5 py-2.5 text-sm font-semibold text-white shadow-rh-medium"
+            >              See events here
             </Link>
             <Link
               href={`/contact?subject=Stay%20near%20${encoded}`}
@@ -161,7 +160,7 @@ export default function VenueDetailPage({
         <div className="surface p-5 shadow-rh-soft">
           <p className="text-xxs uppercase tracking-[0.25em] text-white/50">Intensity</p>
           <div className="mt-2 flex items-center justify-between">
-            <p className="text-sm font-semibold">{intensityLabel(intensity as any)}</p>
+            <p className="text-sm font-semibold">{intensityLabel(intensity)}</p>
             <p className="text-xs text-white/60">{intensity}/5</p>
           </div>
           <div className="mt-3 h-2 w-full rounded-full bg-white/10">
@@ -194,7 +193,7 @@ export default function VenueDetailPage({
           <p className="text-xxs uppercase tracking-[0.25em] text-white/50">Price vibe</p>
           <p className="mt-2 text-sm font-semibold">{venue.priceHint}</p>
           <p className="mt-2 text-xs text-white/60">
-            We'll add real-world ranges later (tickets, drinks, tables, rideshare).
+            We&apos;ll add real-world ranges later (tickets, drinks, tables, rideshare).
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Chip variant="cyan" size="sm">Plan-ready</Chip>

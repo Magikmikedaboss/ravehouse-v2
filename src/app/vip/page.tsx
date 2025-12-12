@@ -65,11 +65,12 @@ export default function VipPage() {
       };
 
       // TODO: Replace with actual API endpoint
-      console.log('VIP application data:', data);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('VIP application data:', data);
+      }
       
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise(resolve => setTimeout(resolve, 1000));      
       setSubmitStatus('success');
     } catch (error) {
       console.error('VIP application error:', error);
@@ -247,7 +248,7 @@ export default function VipPage() {
 
           {submitStatus === 'success' && (
             <div className="rounded-lg bg-green-500/20 border border-green-500/40 p-3 text-xs text-green-200">
-              Application submitted successfully! We'll be in touch soon.
+              Application submitted successfully! We&apos;ll be in touch soon.
             </div>
           )}
           
