@@ -25,13 +25,15 @@ export function extractClientIp(request: NextRequest): string {
       return vercelRealIp.trim();
     }
     
-    // Check for other Vercel IP headers
+    // Check for other Vercel IP headers for validation (these indicate Vercel processing is active)
     const vercelIpCountry = request.headers.get('x-vercel-ip-country');
     const vercelIpRegion = request.headers.get('x-vercel-ip-region');
-    // Note: These don't contain the actual IP, but indicate Vercel's IP processing is active
+    // Note: These headers don't contain the actual IP but confirm Vercel's IP processing
     
     // If we're on Vercel but don't have the expected headers, something may be wrong
-    console.warn('Running on Vercel but no Vercel IP headers found');
+    if (!vercelForwardedFor && !vercelRealIp && !vercelIpCountry && !vercelIpRegion) {
+      console.warn('Running on Vercel but no Vercel IP headers found');
+    }
   }
   
   // Fallback to standard headers for non-Vercel deployments with trusted proxy configs
