@@ -41,8 +41,8 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
                     {post.category}
                   </Chip>
                   <span className="text-white/70">{post.readTime}</span>
-                </div>                <div className="absolute left-3 right-3 bottom-3 space-y-1">
-                  <h2 className="text-sm font-semibold text-white">
+                </div>
+                <div className="absolute left-3 right-3 bottom-3 space-y-1">                  <h2 className="text-sm font-semibold text-white">
                     {post.title}
                   </h2>
                   <p className="line-clamp-1 text-xxs text-white/70">

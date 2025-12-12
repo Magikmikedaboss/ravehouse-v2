@@ -7,7 +7,6 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import Chip from "../ui/Chip";
 import { NAV_ITEMS } from "../../lib/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import ThemeToggle from "../ui/ThemeToggle";
 
 export default function SiteHeader() {
@@ -101,8 +100,8 @@ export default function SiteHeader() {
                 return (
                   <NavigationMenu.Item key={item.label}>
                     {item.children ? (
-                      <DropdownMenu.Root>
-                        <DropdownMenu.Trigger asChild>
+                      <NavigationMenu.Sub>
+                        <NavigationMenu.Trigger asChild>
                           <button className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                             active
                               ? "bg-black dark:bg-white text-white dark:text-black shadow"
@@ -110,26 +109,24 @@ export default function SiteHeader() {
                           }`}>
                             {item.label}
                           </button>
-                        </DropdownMenu.Trigger>
-                        <DropdownMenu.Portal>
-                          <DropdownMenu.Content 
-                            className="w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-fade-in animate-zoom-in z-50 p-2"
-                            sideOffset={8}
-                            collisionPadding={16}
-                          >
+                        </NavigationMenu.Trigger>
+                        <NavigationMenu.Content className="w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-fade-in animate-zoom-in z-50 p-2">
+                          <NavigationMenu.List>
                             {item.children.map((child) => (
-                              <DropdownMenu.Item key={child.href} asChild>
-                                <Link
-                                  href={child.href}
-                                  className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none cursor-default"
-                                >
-                                  {child.label}
-                                </Link>
-                              </DropdownMenu.Item>
+                              <NavigationMenu.Item key={child.href}>
+                                <NavigationMenu.Link asChild>
+                                  <Link
+                                    href={child.href}
+                                    className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none cursor-default"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                </NavigationMenu.Link>
+                              </NavigationMenu.Item>
                             ))}
-                          </DropdownMenu.Content>
-                        </DropdownMenu.Portal>
-                      </DropdownMenu.Root>
+                          </NavigationMenu.List>
+                        </NavigationMenu.Content>
+                      </NavigationMenu.Sub>
                     ) : item.href ? (
                       <NavigationMenu.Link asChild>
                         <Link
@@ -156,10 +153,9 @@ export default function SiteHeader() {
           <div className="relative z-10" ref={desktopThemeToggleRef}>
             <ThemeToggle />
           </div>
-          <Chip className="hidden sm:flex" variant="success" size="sm">
+          <Chip variant="success" size="sm">
             Live this weekend
-          </Chip>
-          <Link
+          </Chip>          <Link
             href="/tickets"
             className="inline-flex items-center rounded-full bg-gradient-to-r from-rh-pink-light to-rh-pink-dark px-4 py-2 text-xs font-semibold text-white shadow-rh-soft"
           >

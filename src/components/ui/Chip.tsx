@@ -12,6 +12,7 @@ type ChipProps = {
   variant?: ChipVariant;
   size?: ChipSize;
   className?: string;
+  selected?: boolean;
 };
 
 const sizeClasses: Record<ChipSize, string> = {
@@ -62,10 +63,15 @@ export default function Chip({
   variant = "default",
   size = "sm",
   className = "",
+  selected = false,
 }: ChipProps) {
   const safeExtras = stripSizeTokens(className);
+  
+  // Handle selected state with proper specificity
+  const selectedStyles = selected ? "bg-white/20 border-white/40" : "";
+  
   return (
-    <span className={clsx(base, variantArbitrary[variant], safeExtras, sizeClasses[size])}>
+    <span className={clsx(base, variantArbitrary[variant], safeExtras, sizeClasses[size], selectedStyles)}>
       {children}
     </span>
   );

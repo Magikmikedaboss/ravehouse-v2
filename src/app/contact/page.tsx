@@ -98,7 +98,7 @@ export default function ContactPage() {
                     <span className="text-sm font-medium text-rh-pink-light break-all sm:break-normal">
                       {method.value}
                     </span>
-                    {method.action.startsWith("mailto:") || method.action.startsWith("https://") ? (
+                    {method.action && (method.action.startsWith("mailto:") || method.action.startsWith("http")) ? (
                       <ButtonLink href={method.action} className="text-xs self-start sm:self-auto">
                         Contact
                       </ButtonLink>
@@ -106,8 +106,7 @@ export default function ContactPage() {
                       <Button disabled variant="secondary" className="text-xs self-start sm:self-auto">
                         Coming soon
                       </Button>
-                    )}                  </div>
-                </div>
+                    )}                  </div>                </div>
               </div>
             </Surface>
           ))}

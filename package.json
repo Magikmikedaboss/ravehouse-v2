@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
+    "build:analyze": "ANALYZE=true npm run build",
+    "analyze": "npx @next/bundle-analyzer",
     "start": "next start",
     "lint": "eslint"
   },

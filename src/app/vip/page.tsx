@@ -245,15 +245,20 @@ export default function VipPage() {
                     }`}
                   >
                     <Chip 
-                      variant={isSelected ? "neutral" : item.variant} 
+                      variant={item.variant} 
                       size="sm"
-                      className={isSelected ? 'bg-white/20 border-white/40' : ''}
+                      selected={isSelected}
                     >
                       {item.label}
                     </Chip>
                   </button>
                 );
               })}
+              <input
+                type="hidden"
+                name="selectedOption"
+                value={selectedOption ?? ''}
+              />
             </div>
           </div>
 

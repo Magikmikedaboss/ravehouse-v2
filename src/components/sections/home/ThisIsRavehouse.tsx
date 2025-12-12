@@ -39,9 +39,10 @@ export default function ThisIsRavehouse() {
         <Surface className="flex flex-col justify-between p-4">
           <div>
             <p className="text-xs text-[rgb(var(--rh-text-secondary))]">Booking &amp; collabs</p>
-            <p className="mt-2 text-sm text-[rgb(var(--rh-text-primary)/.9)]">              Bring Ravehouse Entertainment to your warehouse, festival afterparty or brand experience.
-            </p>          </div>
-          <ButtonLink
+            <p className="mt-2 text-sm text-[rgb(var(--rh-text-primary))]/90">
+              Bring Ravehouse Entertainment to your warehouse, festival afterparty or brand experience.
+            </p>
+          </div>          <ButtonLink
             href="/contact"
             variant="secondary"
             className="mt-4 w-full justify-center"
