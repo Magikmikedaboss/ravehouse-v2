@@ -2,11 +2,56 @@
 // FUTURE: handle Stripe/intents
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { extractClientIp } from '@/lib/ipExtraction';
 
+// Zod schema for request body validation
+const membershipRequestSchema = z.object({
+  membershipTier: z.enum(['standard', 'vip', 'founder']),
+  paymentMethodId: z.string().min(1, 'Payment method ID is required'),
+  billingDetails: z.object({
+    name: z.string().min(1, 'Name is required'),
+    email: z.string().email('Valid email is required'),
+    address: z.object({
+      line1: z.string().min(1, 'Address line 1 is required'),
+      city: z.string().min(1, 'City is required'),
+      state: z.string().min(1, 'State is required'),
+      postal_code: z.string().min(1, 'Postal code is required'),
+      country: z.string().min(2, 'Country is required')
+    })
+  }),
+  promoCode: z.string().optional()
+});
+
 export async function POST(request: NextRequest) {
-  // Rate limiting
+  // Parse and validate request body before rate limiting
+  let requestBody;
+  try {
+    requestBody = await request.json();
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Invalid JSON in request body' },
+      { status: 400 }
+    );
+  }
+
+  // Validate request body with Zod
+  const validationResult = membershipRequestSchema.safeParse(requestBody);
+  if (!validationResult.success) {
+    return NextResponse.json(
+      { 
+        error: 'Validation failed',
+        details: validationResult.error.issues.map((issue: any) => ({
+          field: issue.path.join('.'),
+          message: issue.message
+        }))
+      },
+      { status: 400 }
+    );
+  }
+
+  // Rate limiting (only after successful validation)
   const ip = extractClientIp(request);
 
   const rateLimitResult = await checkRateLimit(ip);

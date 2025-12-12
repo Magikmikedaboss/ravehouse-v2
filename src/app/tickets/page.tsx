@@ -69,19 +69,19 @@ export default function TicketsPage() {
 
       {/* MAIN BODY */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between text-xs text-white/70">
+        <div className="flex items-center justify-between text-xs text-secondary">
           <div className="flex gap-2">
-            <button className="rounded-full bg-black text-white px-2.5 py-1 font-medium">
+            <button className="rounded-full bg-primary text-[rgb(var(--rh-bg-page))] px-2.5 py-1 font-medium">
               Upcoming
             </button>
-            <button className="rounded-full border border-black/15 bg-black/10 px-2.5 py-1">
+            <button className="rounded-full border border-subtle bg-surface/10 px-2.5 py-1 text-secondary hover:bg-surface/20 hover:text-primary">
               Past nights
             </button>
-            <button className="rounded-full border border-black/15 bg-black/10 px-2.5 py-1">
+            <button className="rounded-full border border-subtle bg-surface/10 px-2.5 py-1 text-secondary hover:bg-surface/20 hover:text-primary">
               Transfers
             </button>
           </div>
-          <button className="text-white/60 hover:text-white">
+          <button className="text-secondary hover:text-primary">
             Show all as stack
           </button>
         </div>

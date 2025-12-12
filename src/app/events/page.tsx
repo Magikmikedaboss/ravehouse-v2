@@ -1,8 +1,9 @@
 // src/app/events/page.tsx
 
+"use client";
+
 import Image from "next/image";
-import { useState } from "react";
-import Surface from "@/components/ui/Surface";
+import { useState } from "react";import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { ButtonLink } from "@/components/ui/Button";
@@ -85,14 +86,21 @@ function generateICSContent(events: typeof upcomingEvents): string {
   ].join('\r\n');
 }
 
-// Helper functions for date handling
 function getEventDate(day: string, time: string): Date {
   const now = new Date();
   const dayMap: Record<string, number> = { 'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6 };
-  const targetDay = dayMap[day];
+  // Extract day abbreviation from formats like "Next Thu"
+  const dayMatch = day.match(/\b(Sun|Mon|Tue|Wed|Thu|Fri|Sat)\b/);
+  const targetDay = dayMatch ? dayMap[dayMatch[1]] : undefined;
+  if (targetDay === undefined) {
+    // Fallback: return next week if day format is unrecognized
+    const fallback = new Date(now);
+    fallback.setDate(now.getDate() + 7);
+    return fallback;
+  }
   const currentDay = now.getDay();
   let daysToAdd = (targetDay - currentDay + 7) % 7;
-  if (daysToAdd === 0) daysToAdd = 7; // Next week if same day
+  if (daysToAdd === 0) daysToAdd = 7; // Next week if same day  if (daysToAdd === 0) daysToAdd = 7; // Next week if same day
   
   const eventDate = new Date(now);
   eventDate.setDate(now.getDate() + daysToAdd);
@@ -146,7 +154,16 @@ function getEventEndDate(startDate: Date, time: string): Date {
 }
 
 function formatICSDate(date: Date): string {
-  return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  // Format using local time components to preserve the intended calendar day/time
+  // ICS format: YYYYMMDDTHHMMSS (without timezone designation means local time)
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  
+  return `${year}${month}${day}T${hours}${minutes}${seconds}`;
 }
 
 const filters = [
@@ -234,8 +251,8 @@ export default function EventsPage() {
         <div className="relative w-full overflow-hidden rounded-[var(--rh-radius-lg)] border border-subtle bg-surface shadow-rh-soft">
           {/* Background image + overlays */}
           <div className="pointer-events-none absolute inset-0">
-                </div>
-                <div className="p-4 space-y-2">              src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
+            <Image
+              src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
               fill
               className="h-full w-full object-cover object-[center_35%]"
@@ -381,8 +398,8 @@ export default function EventsPage() {
                   </div>
                 </div>                <div className="p-4 space-y-2">
                   <h3 className="text-sm font-semibold">{event.title}</h3>
-                  <p className="text-xs text-white/65">{event.area}</p>
-                  <div className="flex flex-wrap gap-1 text-xxs text-white/65">
+                  <p className="text-xs text-secondary">{event.area}</p>
+                  <div className="flex flex-wrap gap-1 text-xxs text-secondary">
                     {event.genres.map((g) => (
                       <Chip
                         key={g}
@@ -394,7 +411,7 @@ export default function EventsPage() {
                     ))}
                   </div>
                   <div className="mt-2 flex items-center justify-between text-xs">
-                    <span className="text-white/75">{event.price}</span>
+                    <span className="text-secondary">{event.price}</span>
                     <ButtonLink
                       href={`/events/${event.id}`}
                       variant="secondary"
@@ -403,7 +420,7 @@ export default function EventsPage() {
                       {event.badge === "Sold out" ? "Join waitlist" : "View event"}
                     </ButtonLink>
                   </div>
-                  <p className="text-xxs text-white/55 mt-1">{event.status}</p>
+                  <p className="text-xxs text-secondary mt-1">{event.status}</p>
                 </div>
               </Surface>
             ))}
@@ -412,7 +429,7 @@ export default function EventsPage() {
           {/* Right info column */}
           <div className="space-y-4">
             <Surface className="p-4">
-              <p className="text-xs text-white/60">Next up tonight</p>
+              <p className="text-xs text-secondary">Next up tonight</p>
               <h3 className="mt-1 text-sm font-semibold">
                 Doors times, last entry and neighborhood at a glance.
               </h3>
@@ -424,7 +441,7 @@ export default function EventsPage() {
                   >
                     <div>
                       <p className="font-medium text-primary">{item.title}</p>
-                      <p className="text-xxs text-white/65">{item.slot}</p>
+                      <p className="text-xxs text-secondary">{item.slot}</p>
                     </div>
                     <Chip variant="success" size="sm">
                       {item.status}
@@ -435,11 +452,11 @@ export default function EventsPage() {
             </Surface>
 
             <Surface className="p-4">
-              <p className="text-xs text-white/60">Ravehouse Entertainment calendar drops</p>
+              <p className="text-xs text-secondary">Ravehouse Entertainment calendar drops</p>
               <h3 className="mt-1 text-sm font-semibold">
                 Be first in when new warehouses, rooftops or special guests are announced.
               </h3>
-              <ul className="mt-2 space-y-1 text-xs text-white/70">
+              <ul className="mt-2 space-y-1 text-xs text-secondary">
                 <li>• Early RSVPs for secret sets</li>
                 <li>• Last-minute codes before events sell out</li>
                 <li>• No spam, just lineups.</li>
@@ -460,7 +477,7 @@ export default function EventsPage() {
             </Surface>
 
             <Surface className="p-4">
-              <p className="text-xs text-white/60">Looking for VIP?</p>
+              <p className="text-xs text-secondary">Looking for VIP?</p>
               <h3 className="mt-1 text-sm font-semibold">
                 Skip the line and lock in booths across our warehouses and partner venues with VIP access.
               </h3>

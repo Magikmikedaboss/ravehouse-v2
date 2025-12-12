@@ -128,9 +128,9 @@ class RaveHouseAutomator:
                 
             except Exception as e:
                 self.logger.exception(f"Batch {i+1} failed after all retries: {e}")
-                continue        self.logger.info(f"Analysis complete. Total estimated cost: ${total_estimated_cost:.4f}, API calls: {total_api_calls}")
+                continue
         
-        # Return both results and usage data
+        self.logger.info(f"Analysis complete. Total estimated cost: ${total_estimated_cost:.4f}, API calls: {total_api_calls}")        # Return both results and usage data
         return {
             "results": improvements,
             "api_calls": total_api_calls,

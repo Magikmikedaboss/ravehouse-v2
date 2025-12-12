@@ -32,10 +32,10 @@ export default function BlogPageClient({ initialCategory = "All" }: BlogPageClie
         {/* Right: sidebar */}
         <div className="space-y-4">
           <Surface className="p-4">
-            <h3 className="text-sm font-semibold text-white">
+            <h3 className="text-sm font-semibold text-primary">
               Stay ahead of the drop
             </h3>
-            <p className="mt-1 text-xs text-white/70">
+            <p className="mt-1 text-xs text-secondary">
               Get first word on warehouse nights, ticket drops, and new
               photo galleries.
             </p>
@@ -45,8 +45,8 @@ export default function BlogPageClient({ initialCategory = "All" }: BlogPageClie
           </Surface>
 
           <Surface className="p-4">
-            <p className="text-xs text-white/60">Tags coming soon</p>
-            <p className="mt-1 text-xs text-white/70">
+            <p className="text-xs text-secondary">Tags coming soon</p>
+            <p className="mt-1 text-xs text-secondary">
               We&apos;ll surface posts by genre, venue type, and vibe
               (warehouse, rooftop, afterhours, etc.).
             </p>

@@ -48,8 +48,8 @@ export default function GallerySidebar() {
 
       {/* Story-sized reels */}
       <Surface className="p-4 space-y-3">
-        <p className="text-xs text-white/70">Story-sized reels</p>
-        <h3 className="text-sm font-semibold text-white/90">
+        <p className="text-xs text-[rgb(var(--rh-text-secondary))]">Story-sized reels</p>
+        <h3 className="text-sm font-semibold text-[rgb(var(--rh-text-primary))]/90">
           Clips trimmed to 15s, ready to drop on socials.
         </h3>
 
@@ -77,27 +77,27 @@ export default function GallerySidebar() {
 
       {/* Photographer wall */}
       <Surface className="p-4 space-y-3">
-        <p className="text-xs text-white/70">Photographer wall</p>
-        <h3 className="text-sm font-semibold text-white/90">
+        <p className="text-xs text-[rgb(var(--rh-text-secondary))]">Photographer wall</p>
+        <h3 className="text-sm font-semibold text-[rgb(var(--rh-text-primary))]/90">
           Support the lenses that capture your best nights.
         </h3>
 
-        <div className="space-y-2 text-xs text-white/80">
+        <div className="space-y-2 text-xs text-[rgb(var(--rh-text-primary))]/80">
           <div className="flex items-center justify-between">
             <span>@nightnado</span>
-            <span className="text-white/70">27 sets</span>
+            <span className="text-[rgb(var(--rh-text-secondary))]">27 sets</span>
           </div>
           <div className="flex items-center justify-between">
             <span>@laserfiends</span>
-            <span className="text-white/70">14 sets</span>
+            <span className="text-[rgb(var(--rh-text-secondary))]">14 sets</span>
           </div>
           <div className="flex items-center justify-between">
             <span>@filmgrain</span>
-            <span className="text-white/70">9 sets</span>
+            <span className="text-[rgb(var(--rh-text-secondary))]">9 sets</span>
           </div>
         </div>
 
-        <button disabled className="w-full rounded-full bg-black/10 px-3 py-1.5 text-xxs text-white/80 hover:bg-black/15 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed">
+        <button disabled className="w-full rounded-full bg-black/10 px-3 py-1.5 text-xxs text-[rgb(var(--rh-text-primary))]/80 hover:bg-black/15 disabled:bg-neutral-800 disabled:text-neutral-500 disabled:cursor-not-allowed">
           Apply as house photographer
         </button>
       </Surface>

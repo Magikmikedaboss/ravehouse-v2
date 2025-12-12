@@ -131,9 +131,7 @@ export async function checkRateLimit(
     
     rateLimitKey = fallbackComponents.join(':');
     
-    console.warn('Rate limit check with missing/unknown IP', {
-      fallbackUsed: true,
-      componentCount: fallbackComponents.length - 1, // Exclude 'fallback' prefix from count
+    console.warn('Rate limit check using fallback key; IP missing', {
       timestamp: new Date().toISOString(),
     });  }
 
@@ -187,6 +185,8 @@ export async function checkRateLimit(
       resetTime: currentResetTime
     };
   } catch (error) {
+    // Note: Memory fallback has potential race conditions in concurrent environments
+    // but provides degraded protection rather than no protection
     console.error('Rate limit check failed, using in-memory fallback:', error);
     
     // Clean up expired entries before using fallback

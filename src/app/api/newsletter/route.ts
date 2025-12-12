@@ -6,7 +6,32 @@ import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { extractClientIp } from '@/lib/ipExtraction';
 
+import { z } from 'zod';
+
+const newsletterSchema = z.object({
+  email: z.string().email('Invalid email address'),
+});
+
 export async function POST(request: NextRequest) {
+  // Validate input first
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: 'Invalid request body' },
+      { status: 400 }
+    );
+  }
+
+  const validation = newsletterSchema.safeParse(body);
+  if (!validation.success) {
+    return NextResponse.json(
+      { error: 'Invalid email', details: validation.error.flatten() },
+      { status: 400 }
+    );
+  }
+
   // Rate limiting
   const ip = extractClientIp(request);
 
@@ -25,7 +50,6 @@ export async function POST(request: NextRequest) {
       }
     );
   }
-
   // TODO: Implement newsletter signup
   // - Validate email
   // - Add to mailing list

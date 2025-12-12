@@ -57,13 +57,13 @@ export default function GalleryHero({
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgb(var(--rh-bg-page))]/20 to-[rgb(var(--rh-bg-page))]/60 pointer-events-none" />
         <div className="relative space-y-4 p-6 md:p-8">
           <div className="space-y-3">
-            <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
+            <p className="text-xxs uppercase tracking-[0.3em] text-secondary">
               The Afterglow
             </p>
             <h1 className="text-3xl font-semibold sm:text-4xl text-primary">
               Every night, captured.
             </h1>
-            <p className="max-w-xl text-sm text-white/75">
+            <p className="max-w-xl text-sm text-secondary">
               High-res exports, story-ready reels, and Polaroid-style prints
               from every Ravehouse night. Tag your crew, download your favorites,
               and relive the energy.
@@ -86,7 +86,7 @@ export default function GalleryHero({
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-2 text-xxs text-white/70">
+          <div className="flex flex-wrap gap-2 text-xxs text-secondary">
             <Chip variant="orange" size="sm">High-res downloads</Chip>
             <Chip variant="cyan" size="sm">Photo dumps & recaps</Chip>
             <Chip variant="purple" size="sm">Polaroid prints</Chip>

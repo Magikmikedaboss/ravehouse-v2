@@ -4,7 +4,7 @@ import NewsletterSignup from "../ui/NewsletterSignup";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-black/95 backdrop-blur">
+    <footer className="border-t border-[rgb(var(--rh-border))] bg-[rgb(var(--rh-bg-card))]/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 text-sm md:flex-row md:items-start md:justify-between md:px-6 lg:px-8">
         <div className="space-y-2">
           <div 
@@ -19,9 +19,8 @@ export default function SiteFooter() {
           >
             RAVEHOUSE
           </div>
-          <p className="text-white/60">Las Vegas underground party brand. No VIP ropes, just better nights.</p>
-        </div>
-        <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+          <p className="text-[rgb(var(--rh-text-secondary))]">Las Vegas underground party brand. No VIP ropes, just better nights.</p>
+        </div>        <div className="flex flex-col gap-8 md:flex-row md:gap-12">
           <div className="space-y-3">
             <div className="font-semibold text-white">Explore</div>
             <div className="flex flex-col gap-2 text-white/70">

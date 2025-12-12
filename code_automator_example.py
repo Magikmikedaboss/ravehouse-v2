@@ -61,7 +61,7 @@ class CodeAutomator:
             print(f"JSON parse error for {file_path}: {e}")
             return None
     
-    def apply_improvement(self, file_path, improvement):
+    def apply_improvement(self, _file_path, improvement):
         """Apply a single improvement to the file"""
         if improvement.get('code'):
             print(f"✨ Applying {improvement['type']}: {improvement['description']}")

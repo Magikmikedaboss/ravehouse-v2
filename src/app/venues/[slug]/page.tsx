@@ -336,16 +336,6 @@ export default function VenueDetailPage({
           </Link>
         </div>
       </div>
-
-      {/* Local keyframes for scanner */}
-      <style jsx>{`
-        @keyframes scan {
-          0% { transform: translateY(0); opacity: 0.0; }
-          10% { opacity: 0.35; }
-          50% { opacity: 0.18; }
-          100% { transform: translateY(340px); opacity: 0.0; }
-        }
-      `}</style>
     </div>
   );
 }

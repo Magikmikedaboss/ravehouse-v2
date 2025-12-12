@@ -67,13 +67,13 @@ export default function GearGrid() {
     <section className="space-y-4 px-4 pb-14 pt-6 lg:px-6">
       <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-xxs uppercase tracking-[0.2em] text-white/60">
+          <p className="text-xxs uppercase tracking-[0.2em] text-secondary">
             Curated picks
           </p>
-          <h2 className="text-xl font-semibold text-white sm:text-2xl">
+          <h2 className="text-xl font-semibold text-primary sm:text-2xl">
             Built for warehouses, rooftops and afterhours.
           </h2>
-          <p className="mt-1 text-xs text-white/70 max-w-xl">
+          <p className="mt-1 text-xs text-secondary max-w-xl">
             Essential gear tested in real underground settings. Each item chosen for durability, function, and style.
           </p>
         </div>      </div>
@@ -93,10 +93,10 @@ export default function GearGrid() {
             )}
             <div className="flex items-start justify-between gap-3">
               <div className="space-y-1">
-                <p className="text-xs uppercase tracking-[0.15em] text-white/60">
+                <p className="text-xs uppercase tracking-[0.15em] text-[rgb(var(--rh-text-secondary))]">
                   {item.category}
                 </p>
-                <h3 className="text-sm font-semibold text-white">
+                <h3 className="text-sm font-semibold text-[rgb(var(--rh-text-primary))]">
                   {item.name}
                 </h3>
               </div>
@@ -107,15 +107,15 @@ export default function GearGrid() {
               )}
             </div>
 
-            <p className="mt-2 flex-1 text-xs text-white/75">
+            <p className="mt-2 flex-1 text-xs text-[rgb(var(--rh-text-secondary))]">
               {item.blurb}
             </p>
 
-            <div className="mt-3 flex items-center justify-between text-xxs text-white/60">
+            <div className="mt-3 flex items-center justify-between text-xxs text-[rgb(var(--rh-text-secondary))]">
               {item.link ? (
                 <Link
                   href={item.link}
-                  className="text-white hover:underline"
+                  className="text-[rgb(var(--rh-text-primary))] hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -126,7 +126,8 @@ export default function GearGrid() {
                   Brand &amp; link coming soon
                 </span>
               )}
-            </div>          </Surface>
+            </div>
+          </Surface>
         ))}
       </div>
     </section>

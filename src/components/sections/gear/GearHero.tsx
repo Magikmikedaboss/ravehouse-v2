@@ -8,13 +8,13 @@ export default function GearHero() {
         <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/20 via-rh-pink-dark/15 to-transparent pointer-events-none" />
         <div className="relative grid gap-6 p-6 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1.1fr)] md:p-8">
           <div className="space-y-4">
-            <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
+            <p className="text-xxs uppercase tracking-[0.3em] text-[rgb(var(--rh-text-secondary))]">
               The Circuit · Gear
             </p>
             <h1 className="text-3xl font-semibold sm:text-4xl">
               Rave gear that survives the night.
             </h1>
-            <p className="max-w-xl text-sm text-white/75">
+            <p className="max-w-xl text-sm text-[rgb(var(--rh-text-secondary))]">
               No random dropshipping junk—just the hydration, protection,
               comfort and glow that actually holds up in warehouses, rooftops
               and 3AM alley reloads.
@@ -31,14 +31,14 @@ export default function GearHero() {
               </Chip>
             </div>
           </div>
-          <div className="space-y-3 text-xs text-white/70">
+          <div className="space-y-3 text-xs text-[rgb(var(--rh-text-secondary))]">
             <p>
               Most items below will eventually link out with affiliate
               partnerships or direct stock. Right now this layout is about
               curating what matters so the store feels like a recommendation
               engine, not a random mall.
             </p>
-            <p className="text-white/50">
+            <p className="text-[rgb(var(--rh-text-secondary))]">
               We&apos;ll clearly label sponsored picks and always test anything
               we stamp Ravehouse on.
             </p>
