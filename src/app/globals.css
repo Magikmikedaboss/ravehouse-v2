@@ -64,6 +64,7 @@
     --rh-text-secondary: 215 215 216;
     --rh-border: 255 255 255;
     --rh-border-subtle: 215 215 216;
+    --rh-fill-subtle: 0 0 0; /* Subtle fill for progress bars, etc */
 
     --rh-radius-lg: 1.5rem;
     --rh-radius-md: 1rem;
@@ -80,6 +81,7 @@
     --rh-text-secondary: 136 62 67;
     --rh-border: 0 0 0;
     --rh-border-subtle: 136 62 67;
+    --rh-fill-subtle: 255 255 255; /* Subtle fill for progress bars, etc */
 
     color-scheme: light;
   }

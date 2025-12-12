@@ -1,6 +1,8 @@
 // src/lib/rateLimit.ts
 // Database-backed rate limiter for multi-instance deployments
 import { prisma } from './prisma';
+import crypto from 'crypto';
+
 // Rate limit configuration
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5; // 5 requests per window
@@ -32,7 +34,7 @@ export async function checkRateLimit(
     
     if (fingerprint?.userAgent) {
       // Hash user agent to avoid storing raw data
-      const uaHash = Buffer.from(fingerprint.userAgent).toString('base64').slice(0, 8);
+      const uaHash = crypto.createHash('sha256').update(fingerprint.userAgent, 'utf8').digest('hex').slice(0, 8);
       fallbackComponents.push(`ua:${uaHash}`);
     }
     

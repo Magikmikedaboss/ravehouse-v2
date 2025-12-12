@@ -17,7 +17,8 @@ export default function SiteHeader() {
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
   const desktopThemeToggleRef = useRef<HTMLDivElement | null>(null);
-  const mobileThemeToggleRef = useRef<HTMLDivElement | null>(null);  const isItemActive = useMemo(() => {
+  const mobileThemeToggleRef = useRef<HTMLDivElement | null>(null);
+  const isItemActive = useMemo(() => {
     // Centralize pathname normalization: default to "/" when falsy, strip query and trailing slash
     const normalizePath = (path: string | null) => {
       const cleanPath = (path || "/").split('?')[0];

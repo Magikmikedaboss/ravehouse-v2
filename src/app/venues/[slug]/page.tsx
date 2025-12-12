@@ -116,8 +116,8 @@ export default async function VenueDetailPage({
         <div className="surface p-5 shadow-rh-soft">
           <h2 className="text-sm font-semibold">Best for</h2>
           <ul className="mt-3 space-y-2 text-xs text-white/70">
-            {bestForArray.map((x) => (
-              <li key={x}>• {x}</li>
+            {bestForArray.map((x, i) => (
+              <li key={`${x}-${i}`}>• {x}</li>
             ))}
           </ul>
         </div>
@@ -128,8 +128,7 @@ export default async function VenueDetailPage({
             <ul className="mt-3 space-y-2 text-xs text-white/70">
               {venue.proTips.map((x) => (
                 <li key={x}>• {x}</li>
-              ))}
-            </ul>
+              ))}            </ul>
           ) : (
             <p className="mt-3 text-xs text-white/50">
               Pro tips coming soon. Join VIP for insider venue notes.

@@ -12,11 +12,28 @@ interface GalleryHeroProps {
 export default function GalleryHero({
   duration = "0:58",
   location = "Warehouse District",
-  aftermovieDate = new Date("2025-02-01")
-}: GalleryHeroProps) {
-  // Format date for display (e.g., "Feb 1")
+  aftermovieDate = new Date("2026-02-01")
+}: GalleryHeroProps) {  // Format date for display (e.g., "Feb 1")
   const formatDate = (date: Date | string): string => {
-    const d = typeof date === 'string' ? new Date(date) : date;
+    let d: Date;
+    
+    if (typeof date === 'string') {
+      // Check if it's a YYYY-MM-DD format string
+      const dateMatch = date.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (dateMatch) {
+        // Parse as local date to avoid UTC timezone shifts
+        const year = parseInt(dateMatch[1], 10);
+        const month = parseInt(dateMatch[2], 10) - 1; // month is 0-indexed
+        const day = parseInt(dateMatch[3], 10);
+        d = new Date(year, month, day);
+      } else {
+        // For other string formats, use default Date parsing
+        d = new Date(date);
+      }
+    } else {
+      d = date;
+    }
+    
     if (isNaN(d.getTime())) {
       return 'TBD';
     }
@@ -61,6 +78,7 @@ export default function GalleryHero({
               Browse full gallery
             </a>
             <button
+              type="button"
               disabled
               className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
             >

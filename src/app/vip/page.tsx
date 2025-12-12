@@ -167,7 +167,7 @@ export default function VipPage() {
               <div className="flex items-baseline justify-between gap-2">
                 <div>
                   <h3 className="text-sm font-semibold">{plan.name}</h3>
-                  <p className="mt-1 text-xs" style={{color: 'rgb(0, 206, 209, 0.8)'}}>{plan.tag}</p>
+                  <p className="mt-1 text-xs text-rave-cyan/80">{plan.tag}</p>
                 </div>
                 <div className="text-xs text-white/70">{plan.price}</div>
               </div>
