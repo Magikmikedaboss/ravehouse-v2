@@ -75,13 +75,13 @@ export default function VenuesPage() {
         </div>
 
         <div className="p-6 sm:p-8">
-          <p className="text-xs uppercase tracking-[0.25em] text-white/60">
+          <p className="text-xs uppercase tracking-[0.25em] text-secondary">
             The Ravehouse Atlas
           </p>
-          <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-semibold sm:text-4xl text-primary">
             Venues & Hotspots
           </h1>
-          <p className="mt-3 max-w-2xl text-sm text-white/70">
+          <p className="mt-3 max-w-2xl text-sm text-secondary">
             A curated map of Las Vegas energy: rooftops, immersive rooms, cult dives,
             and the after-hours dens that keep the city awake.
           </p>
@@ -89,19 +89,19 @@ export default function VenuesPage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/vip"
-              className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold text-white shadow-rh-glow"
+              className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold text-primary shadow-rh-glow"
             >
               Get VIP access
             </Link>
             <Link
               href="/events"
-              className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white/90 shadow-rh-soft"
+              className="rounded-full border border-subtle bg-card/20 px-5 py-2.5 text-sm font-semibold text-primary shadow-rh-soft"
             >
               See upcoming events
             </Link>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2 text-xxs text-white/50">
+          <div className="mt-4 flex flex-wrap gap-2 text-xxs text-muted">
             <Chip variant="cyan">Hover to preview</Chip>
             <Chip variant="purple">Tourist-friendly + local-coded</Chip>
             <Chip variant="pink">Travel hooks ready</Chip>
@@ -115,7 +115,7 @@ export default function VenuesPage() {
         <div className="surface p-5 shadow-rh-soft">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-semibold">Choose your night</h2>
-            <span className="text-xxs text-white/50">{list.length} venues</span>
+            <span className="text-xxs text-muted">{list.length} venues</span>
           </div>
 
           <div className="mt-3 flex flex-wrap gap-2">
@@ -128,13 +128,13 @@ export default function VenuesPage() {
                   onClick={() => setActiveFilter(f.value)}
                   aria-pressed={on}
                   className={`transition-transform hover:scale-105 ${
-                    on ? "ring-2 ring-white/30 ring-offset-2 ring-offset-black rounded-full" : ""
+                    on ? "ring-2 ring-accent/30 ring-offset-2 ring-offset-page rounded-full" : ""
                   }`}
                 >
                   <Chip
                     variant={on ? "neutral" : "cyan"}
                     size="sm"
-                    className={on ? "bg-white/20 border-white/40" : ""}
+                    className={on ? "bg-card/40 border-subtle" : ""}
                   >
                     {f.label}
                   </Chip>
@@ -151,31 +151,31 @@ export default function VenuesPage() {
               id="venue-search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none placeholder:text-white/30"
+              className="w-full rounded-[var(--rh-radius-lg)] border border-subtle bg-card/40 px-3 py-2 text-xs text-primary outline-none placeholder:text-muted"
               placeholder="Search: rooftop, immersive, after-hours, downtown…"
             />
           </div>
 
-          <p className="mt-3 text-xxs text-white/45">
+          <p className="mt-3 text-xxs text-muted">
             Pro tip: Hover a card to load its dossier in the preview panel.
           </p>
         </div>
 
         {/* Preview panel */}
         <aside className="surface p-5 shadow-rh-soft">
-          <p className="text-xs text-white/50">Atlas preview</p>
+          <p className="text-xs text-muted">Atlas preview</p>
 
           {activeVenue ? (
             <>
               <div className="mt-2 flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-lg font-semibold">{activeVenue.name}</h3>
-                  <p className="mt-1 text-xxs text-white/55">{activeVenue.area}</p>
+                  <h3 className="text-lg font-semibold text-primary">{activeVenue.name}</h3>
+                  <p className="mt-1 text-xxs text-muted">{activeVenue.area}</p>
                 </div>
-                <div className="text-xxs text-white/60">{activeVenue.priceHint}</div>
+                <div className="text-xxs text-secondary">{activeVenue.priceHint}</div>
               </div>
 
-              <p className="mt-3 text-xs text-white/70">{activeVenue.short}</p>
+              <p className="mt-3 text-xs text-secondary">{activeVenue.short}</p>
 
               <div className="mt-3 flex flex-wrap gap-2">
                 {getCategories(activeVenue).slice(0, 3).map((c: string) => (
@@ -190,11 +190,11 @@ export default function VenuesPage() {
 
               {/* Intensity meter */}
               <div className="mt-4">
-                <div className="flex items-center justify-between text-xxs text-white/55">
+                <div className="flex items-center justify-between text-xxs text-muted">
                   <span>Intensity</span>
                   <span>{clamp(Number(activeVenue.intensity ?? 3), 1, 5)}/5</span>
                 </div>
-                <div className="mt-2 h-2 w-full rounded-full bg-white/10">
+                <div className="mt-2 h-2 w-full rounded-full bg-card/20">
                   <div
                     className="h-2 rounded-full bg-gradient-to-r from-rave-cyan to-rave-pink"
                     style={{
@@ -207,7 +207,7 @@ export default function VenuesPage() {
               <div className="mt-4 grid gap-2">
                 <Link
                   href={`/venues/${activeVenue.slug}`}
-                  className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-white shadow-rh-medium text-center"
+                  className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-primary shadow-rh-medium text-center"
                 >
                   Open venue page
                 </Link>
@@ -215,25 +215,25 @@ export default function VenuesPage() {
                 <div className="grid grid-cols-2 gap-2">
                   <Link
                     href={`/events?venue=${encodeURIComponent(activeVenue.name)}`}
-                    className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xxs font-semibold text-white/90 shadow-rh-soft text-center"
+                    className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
                   >
                     Events here
                   </Link>
                   <Link
                     href={`/contact?subject=Stay%20near%20${encodeURIComponent(activeVenue.name)}`}
-                    className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xxs font-semibold text-white/90 shadow-rh-soft text-center"
+                    className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
                   >
                     Stay nearby
                   </Link>
                 </div>
               </div>
 
-              <p className="mt-3 text-xxs text-white/45">
+              <p className="mt-3 text-xxs text-muted">
                 Next: we can add venue hero photos here as a blurred background preview.
               </p>
             </>
           ) : (
-            <p className="mt-3 text-xs text-white/60">No venues match your filters.</p>
+            <p className="mt-3 text-xs text-secondary">No venues match your filters.</p>
           )}
         </aside>
       </section>
@@ -241,8 +241,8 @@ export default function VenuesPage() {
       {/* Venue grid */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Hotspots</h2>
-          <span className="text-xs text-white/50">Curated, not cluttered</span>
+          <h2 className="text-lg font-semibold text-primary">Hotspots</h2>
+          <span className="text-xs text-muted">Curated, not cluttered</span>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -254,7 +254,7 @@ export default function VenuesPage() {
               <article
                 key={v.slug}
                 className={`surface flex flex-col p-5 shadow-rh-soft transition-transform hover:-translate-y-0.5 ${
-                  isActive ? "ring-2 ring-white/20" : ""
+                  isActive ? "ring-2 ring-accent/30" : ""
                 }`}
                 onMouseEnter={() => setActiveSlug(v.slug)}
                 onFocus={() => setActiveSlug(v.slug)}
@@ -266,15 +266,15 @@ export default function VenuesPage() {
                 }}
                 tabIndex={0}              >                <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-sm font-semibold">{v.name}</h3>
-                    <p className="mt-1 text-xxs text-white/55">{v.area}</p>
+                    <h3 className="text-sm font-semibold text-primary">{v.name}</h3>
+                    <p className="mt-1 text-xxs text-muted">{v.area}</p>
                   </div>
-                  <div className="text-xxs text-white/60">{v.priceHint}</div>
+                  <div className="text-xxs text-secondary">{v.priceHint}</div>
                 </div>
 
-                <p className="mt-3 text-xs text-white/70">{v.short}</p>
+                <p className="mt-3 text-xs text-secondary">{v.short}</p>
 
-                <div className="mt-3 flex flex-wrap gap-2 text-xxs text-white/50">
+                <div className="mt-3 flex flex-wrap gap-2 text-xxs text-muted">
                   {categories.slice(0, 3).map((c: string) => (
                     <Chip key={c} variant="purple" size="sm">
                       {c}
@@ -285,26 +285,26 @@ export default function VenuesPage() {
                   </Chip>
                 </div>
 
-                <div className="mt-3 flex flex-wrap gap-2 text-xxs text-white/50">
+                <div className="mt-3 flex flex-wrap gap-2 text-xxs text-muted">
                   {(v.vibeTags ?? []).slice(0, 6).map((t: string) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/10 bg-white/5 px-2 py-1"
+                      className="rounded-full border border-subtle bg-card/20 px-2 py-1"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <p className="mt-3 text-xxs text-white/55">
-                  <span className="text-white/70 font-semibold">Best for:</span>{" "}
+                <p className="mt-3 text-xxs text-muted">
+                  <span className="text-secondary font-semibold">Best for:</span>{" "}
                   {Array.isArray(v.bestFor) ? v.bestFor.join(", ") : v.bestFor}
                 </p>
 
                 <div className="mt-4 grid gap-2">
                   <Link
                     href={`/venues/${v.slug}`}
-                    className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-white shadow-rh-medium text-center"
+                    className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-primary shadow-rh-medium text-center"
                   >
                     Open venue page
                   </Link>
@@ -312,14 +312,14 @@ export default function VenuesPage() {
                   <div className="grid grid-cols-2 gap-2">
                     <Link
                       href={`/events?venue=${encodeURIComponent(v.name)}`}
-                      className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xxs font-semibold text-white/90 shadow-rh-soft text-center"
+                      className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
                     >
                       Events here
                     </Link>
 
                     <Link
                       href={`/contact?subject=Stay%20near%20${encodeURIComponent(v.name)}`}
-                      className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xxs font-semibold text-white/90 shadow-rh-soft text-center"
+                      className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
                     >
                       Stay nearby
                     </Link>
@@ -331,11 +331,11 @@ export default function VenuesPage() {
         </div>
 
         {/* Footer note */}
-        <div className="surface p-5 text-xs text-white/70 shadow-rh-soft">
-          <h3 className="text-sm font-semibold">
+        <div className="surface p-5 text-xs text-secondary shadow-rh-soft">
+          <h3 className="text-sm font-semibold text-primary">
             Want this to feel even more &quot;Ravehouse&quot;?
           </h3>
-          <p className="mt-2 text-xs text-white/60">
+          <p className="mt-2 text-xs text-secondary">
             Next upgrade: add venue images as blurred card backdrops + a &quot;mode dial&quot; (Chill/Rave)
             that changes the atlas styling and recommendations.
           </p>

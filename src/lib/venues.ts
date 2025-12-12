@@ -261,14 +261,14 @@ export function intensityLabel(n: Venue["intensity"]) {
 export function gradientClass(g: Venue["heroGradient"]) {
   switch (g) {
     case "pink":
-      return "from-rave-pink via-rave-purple to-rave-cyan";
+      return "from-rh-pink via-rh-purple to-rh-cyan";
     case "cyan":
-      return "from-rave-cyan via-rave-purple to-rave-pink";
+      return "from-rh-cyan via-rh-purple to-rh-pink";
     case "purple":
-      return "from-rave-purple via-rave-pink to-rave-cyan";
+      return "from-rh-purple via-rh-pink to-rh-cyan";
     case "orange":
-      return "from-rave-orange via-rave-pink to-rave-purple";
+      return "from-rh-orange via-rh-pink to-rh-purple";
     default:
-      return "from-rave-cyan via-rave-purple to-rave-pink";
+      return "from-rh-cyan via-rh-purple to-rh-pink";
   }
 }

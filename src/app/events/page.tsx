@@ -88,7 +88,7 @@ export default function EventsPage() {
     <div className="space-y-10 pb-10">
       {/* Hero section */}
       <section className="space-y-6">
-        <div className="relative w-full overflow-hidden rounded-[var(--rh-radius-lg)] border border-white/10 bg-black shadow-rh-soft">
+        <div className="relative w-full overflow-hidden rounded-[var(--rh-radius-lg)] border border-subtle bg-surface shadow-rh-soft">
           {/* Background image + overlays */}
           <div className="pointer-events-none absolute inset-0">
             <Image
@@ -166,7 +166,7 @@ export default function EventsPage() {
                 Sun · Basement 305 afterhours
               </Chip>
             </div>
-            <p className="mt-2 text-xs text-white/65">
+            <p className="mt-2 text-xs text-secondary">
               Most events sell out before doors. RSVP or grab tickets early.
             </p>
           </Surface>
@@ -176,7 +176,7 @@ export default function EventsPage() {
             <h2 className="mt-1 text-sm font-semibold">
               Unlock locals-only lines, discounts and VIP upgrades when you create a free profile.
             </h2>
-            <ul className="mt-2 space-y-1 text-xs text-white/70">
+            <ul className="mt-2 space-y-1 text-xs text-secondary">
               <li>• Save favorite events</li>
               <li>• Track past nights</li>
               <li>• Early RSVP windows</li>
@@ -206,8 +206,8 @@ export default function EventsPage() {
               key={filter}
               className={`inline-flex items-center rounded-full border px-3 py-1 text-xs ${
                 i === 1
-                  ? "border-white bg-white text-black"
-                  : "border-white/10 bg-white/10 text-white/90 hover:bg-white/25 hover:text-white"
+                  ? "border-primary bg-primary text-page"
+                  : "border-subtle bg-surface/10 text-secondary hover:bg-surface/25 hover:text-primary"
               }`}
               type="button"
             >

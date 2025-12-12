@@ -6,12 +6,84 @@ import crypto from 'crypto';
 // Rate limit configuration
 const WINDOW_MS = 60 * 1000; // 1 minute
 const MAX_REQUESTS = 5; // 5 requests per window
+const MEMORY_CLEANUP_INTERVAL = 60 * 1000; // Clean memory store every minute
+const MAX_MEMORY_ENTRIES = 1000; // Max entries in memory store before LRU eviction
+
+// In-memory fallback store for when database is unavailable
+const memoryStore = new Map<string, { count: number; resetTime: number; lastAccess: number }>();
+let memoryCleanupInterval: NodeJS.Timeout | null = null;
+let cleanupInitialized = false;
+
+/**
+ * Initialize cleanup handlers lazily to prevent issues in serverless/edge environments
+ * and avoid duplicate handlers during hot reloads
+ */
+function initializeCleanup(): void {
+  if (cleanupInitialized || typeof window !== 'undefined') {
+    return; // Already initialized or not in Node.js environment
+  }
+  
+  cleanupInitialized = true;
+  
+  // Start periodic cleanup
+  memoryCleanupInterval = setInterval(cleanupMemoryStore, MEMORY_CLEANUP_INTERVAL);
+  
+  // Clean up interval on process exit
+  process.on('SIGTERM', () => {
+    if (memoryCleanupInterval) {
+      clearInterval(memoryCleanupInterval);
+      memoryCleanupInterval = null;
+    }
+  });
+  
+  process.on('SIGINT', () => {
+    if (memoryCleanupInterval) {
+      clearInterval(memoryCleanupInterval);
+      memoryCleanupInterval = null;
+    }
+  });
+}
 
 export interface RateLimitResult {
   allowed: boolean;
   remaining: number;
   resetTime?: number;
   retryAfter?: number; // seconds until next request allowed
+}
+
+/**
+ * Clean up expired entries from memory store and enforce size limits
+ */
+function cleanupMemoryStore(): void {
+  const now = Date.now();
+  let removedCount = 0;
+  
+  // Remove expired entries
+  for (const [key, entry] of memoryStore.entries()) {
+    if (now > entry.resetTime) {
+      memoryStore.delete(key);
+      removedCount++;
+    }
+  }
+  
+  // Enforce maximum size with LRU eviction
+  if (memoryStore.size > MAX_MEMORY_ENTRIES) {
+    // Convert to array and sort by lastAccess (oldest first)
+    const entries = Array.from(memoryStore.entries()).sort(
+      (a, b) => a[1].lastAccess - b[1].lastAccess
+    );
+    
+    // Remove oldest entries until we're under the limit
+    const entriesToRemove = memoryStore.size - MAX_MEMORY_ENTRIES;
+    for (let i = 0; i < entriesToRemove; i++) {
+      memoryStore.delete(entries[i][0]);
+      removedCount++;
+    }
+  }
+  
+  if (removedCount > 0) {
+    console.log(`Rate limit memory store cleanup: removed ${removedCount} entries, ${memoryStore.size} remaining`);
+  }
 }
 
 /**
@@ -22,6 +94,13 @@ export async function checkRateLimit(
   ip: string, 
   fingerprint?: { userAgent?: string; acceptLanguage?: string; sessionId?: string }
 ): Promise<RateLimitResult> {
+export async function checkRateLimit(
+  ip: string,
+  fingerprint?: { userAgent?: string; acceptLanguage?: string; sessionId?: string }
+): Promise<RateLimitResult> {
+  // Initialize cleanup handlers lazily on first invocation
+  initializeCleanup();
+  
   // Handle missing or unknown IPs with more granular fallback keys
   let rateLimitKey = ip;
   let isUsingFallback = false;
@@ -34,22 +113,21 @@ export async function checkRateLimit(
     
     if (fingerprint?.userAgent) {
       // Hash user agent to avoid storing raw data
-      const uaHash = crypto.createHash('sha256').update(fingerprint.userAgent, 'utf8').digest('hex').slice(0, 8);
+      const uaHash = crypto.createHash('sha256').update(fingerprint.userAgent, 'utf8').digest('hex').slice(0, 16);
       fallbackComponents.push(`ua:${uaHash}`);
     }
     
     if (fingerprint?.acceptLanguage) {
       // Normalize and hash acceptLanguage to avoid PII and key explosion
       const normalizedLang = fingerprint.acceptLanguage.toLowerCase().split(/[,;-]/)[0].slice(0, 5);
-      const langHash = crypto.createHash('sha256').update(normalizedLang, 'utf8').digest('hex').slice(0, 8);
+      const langHash = crypto.createHash('sha256').update(normalizedLang, 'utf8').digest('hex').slice(0, 16);
       fallbackComponents.push(`lang:${langHash}`);
     }
     
     if (fingerprint?.sessionId) {
       // Hash sessionId to avoid storing raw session data
-      const sessHash = crypto.createHash('sha256').update(fingerprint.sessionId, 'utf8').digest('hex').slice(0, 8);
-      fallbackComponents.push(`sess:${sessHash}`);
-    }
+      const sessHash = crypto.createHash('sha256').update(fingerprint.sessionId, 'utf8').digest('hex').slice(0, 16);
+      fallbackComponents.push(`sess:${sessHash}`);    }
     
     // If no fingerprinting data available, use a very restrictive shared bucket
     if (fallbackComponents.length === 1) {
@@ -114,12 +192,44 @@ export async function checkRateLimit(
       resetTime: currentResetTime
     };
   } catch (error) {
-    console.error('Rate limit check failed:', error);
-    // Fail open - allow request but with minimal remaining
+    console.error('Rate limit check failed, using in-memory fallback:', error);
+    } catch (error) {
+      console.error('Rate limit check failed, using in-memory fallback:', error);
+    }    cleanupMemoryStore();
+    
+    // Use in-memory fallback to avoid disabling rate limits
+    const memoryEntry = memoryStore.get(rateLimitKey);
+    
+    // If no entry exists or resetTime has passed, create/reset entry
+    if (!memoryEntry || now > memoryEntry.resetTime) {
+      memoryStore.set(rateLimitKey, { count: 1, resetTime, lastAccess: now });
+      return {
+        allowed: true,
+        remaining: maxRequests - 1,
+        resetTime
+      };
+    }
+    
+    // Update last access time and increment existing entry
+    memoryEntry.lastAccess = now;
+    memoryEntry.count++;
+    
+    // Check if rate limit exceeded
+    if (memoryEntry.count > maxRequests) {
+      const retryAfter = Math.ceil((memoryEntry.resetTime - now) / 1000);
+      return {
+        allowed: false,
+        remaining: 0,
+        resetTime: memoryEntry.resetTime,
+        retryAfter: Math.max(1, retryAfter)
+      };
+    }
+    
+    // Request allowed
     return {
       allowed: true,
-      remaining: 1,
-      resetTime: now + WINDOW_MS
+      remaining: maxRequests - memoryEntry.count,
+      resetTime: memoryEntry.resetTime
     };
   }
 }

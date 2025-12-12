@@ -14,7 +14,7 @@ export default function ThemeToggle() {
         e.preventDefault();
         toggleTheme();
       }}
-      className="rounded-full border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-2 transition hover:bg-black/10 dark:hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black pointer-events-auto relative z-10"
+      className="rounded-full border border-subtle bg-surface/50 p-2 transition hover:bg-surface/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-2 focus-visible:ring-offset-page pointer-events-auto relative z-10"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (

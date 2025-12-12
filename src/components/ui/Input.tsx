@@ -15,10 +15,9 @@ export function Input({ label, error, className = "", id, ...props }: InputProps
   return (
     <div className="space-y-1">
       {label && (
-        <label htmlFor={inputId} className="block text-xs font-medium text-[rgb(var(--rh-text-primary)_/_0.8)]">
+        <label htmlFor={inputId} className="block text-xs font-medium text-[rgb(var(--rh-text-primary))]/80">
           {label}
-        </label>
-      )}
+        </label>      )}
       <input
         id={inputId}
         aria-invalid={error ? "true" : "false"}

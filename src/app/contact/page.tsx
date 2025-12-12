@@ -173,7 +173,7 @@ export default function ContactPage() {
               </p>
               <div className="flex items-center gap-2">
                 <a href="tel:+17024754357" className="text-sm font-medium text-rh-pink-light hover:underline">
-                  702-RH-HELP (702-475-4357)
+                  702-IRL-HELP (702-475-4357)
                 </a>                <Chip variant="danger" size="sm">
                   Emergency only
                 </Chip>

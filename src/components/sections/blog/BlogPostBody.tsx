@@ -22,6 +22,12 @@ const sanitizeSchema = {
     code: ['className'],
     pre: ['className'],
   },
+  // Whitelist safe URL protocols and reject dangerous ones
+  allowedSchemes: ['http', 'https', 'mailto', 'tel'],
+  allowedSchemesByTag: {
+    a: ['http', 'https', 'mailto', 'tel'],
+    img: ['http', 'https'],
+  },
   // Remove potentially dangerous elements
   tagNames: (defaultSchema.tagNames ?? []).filter(
     tag => !['script', 'style', 'iframe', 'object', 'embed'].includes(tag)
@@ -71,7 +77,7 @@ export default function BlogPostBody({ post }: Props) {
           ))}
         </div>
 
-        <div className="space-y-4 text-sm leading-relaxed text-white/80 prose prose-invert max-w-none">
+        <div className="space-y-4 text-sm leading-relaxed text-secondary prose max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[[rehypeSanitize, sanitizeSchema]]}

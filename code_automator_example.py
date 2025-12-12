@@ -123,9 +123,10 @@ class CodeAutomator:
             
             print(f"📝 Generated docs: {docs_path}")
             
-        except Exception as e:
+        except openai.APIError as e:
             print(f"Doc generation error: {e}")
-    
+        except IOError as e:
+            print(f"File write error for {docs_path}: {e}")    
     def run_continuous_improvements(self, hours=2):
         """Run automation for specified hours"""
         start_time = time.time()

@@ -65,7 +65,10 @@ export function extractClientIp(request: NextRequest): string {
     if (vercelForwardedFor) {
       const trimmedIp = vercelForwardedFor.split(',')[0]?.trim();
       if (trimmedIp && trimmedIp.length > 0) {
-        return trimmedIp;
+        const normalizedIp = normalizeIp(trimmedIp);
+        if (normalizedIp) {
+          return normalizedIp;
+        }
       }
     }
     
@@ -73,7 +76,10 @@ export function extractClientIp(request: NextRequest): string {
     if (vercelRealIp) {
       const trimmedIp = vercelRealIp.trim();
       if (trimmedIp && trimmedIp.length > 0) {
-        return trimmedIp;
+        const normalizedIp = normalizeIp(trimmedIp);
+        if (normalizedIp) {
+          return normalizedIp;
+        }
       }
     }
     

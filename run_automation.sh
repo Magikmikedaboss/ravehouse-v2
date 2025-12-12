@@ -24,12 +24,18 @@ fi
 # Install required Python packages if needed
 if ! python -c "import openai" 2>/dev/null; then
     echo "📦 Installing required packages..."
-    pip install openai
+    pip install openai==1.54.0 || {
+        echo "❌ ERROR: Failed to install required packages." >&2
+        exit 1
+    }
 fi
 
 # Run the automation script
 echo "🤖 Running automated code improvements..."
-python ravehouse_automator.py
+python ravehouse_automator.py || {
+    echo "❌ Automation script failed" >&2
+    exit 1
+}
 
 # Optional: Run additional checks
 echo ""
@@ -37,25 +43,29 @@ echo "🔍 Running additional checks..."
 
 # Check for TypeScript errors
 echo "Checking TypeScript..."
-npx tsc --noEmit
+npx tsc --noEmit || {
+    echo "❌ TypeScript errors found" >&2
+    exit 1
+}
 
 # Run ESLint
 echo "Running ESLint..."
-npx eslint src/ --fix
+npx eslint src/ --fix || {
+    echo "⚠️  ESLint issues found (some may be auto-fixed)" >&2
+}
 
 # Check for security vulnerabilities
 echo "Checking for vulnerabilities..."
-npm audit
+npm audit || {
+    echo "⚠️  Security vulnerabilities found" >&2
+}
 
 echo ""
 echo "✅ Automation complete!"
 echo ""
 echo "📊 Summary:"
 echo "- Code analysis completed"
-echo "- Accessibility improvements suggested"
-echo "- Performance optimizations identified" 
-echo "- SEO metadata updated"
-echo "- TypeScript/ESLint checks passed"
+echo "- Check output above for details"
 echo ""
 echo "💡 Next steps:"
 echo "- Review suggested improvements"
