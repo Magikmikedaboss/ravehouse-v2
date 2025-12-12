@@ -53,8 +53,30 @@ $tscFailed = $LASTEXITCODE -ne 0
 
 # Run ESLint
 Write-Host "Running ESLint..." -ForegroundColor Gray
+
+# Check git status before ESLint to compare after
+$gitStatusBefore = ""
+try {
+    $gitStatusBefore = & git status --porcelain 2>$null
+} catch {
+    # Git not available or not a git repo, skip change detection
+}
+
 npx eslint src/ --fix
 $eslintFailed = $LASTEXITCODE -ne 0
+
+# Check if ESLint made any modifications
+$eslintModified = $false
+if ($gitStatusBefore -ne $null) {
+    try {
+        $gitStatusAfter = & git status --porcelain 2>$null
+        if ($gitStatusBefore -ne $gitStatusAfter) {
+            $eslintModified = $true
+        }
+    } catch {
+        # If git fails, assume no changes detected
+    }
+}
 
 # Check for security vulnerabilities
 Write-Host "Checking for vulnerabilities..." -ForegroundColor Gray
@@ -62,16 +84,29 @@ npm audit
 $auditFailed = $LASTEXITCODE -ne 0
 
 Write-Host ""
-if ($tscFailed -or $eslintFailed -or $auditFailed) {
-    Write-Host "⚠️ Automation complete with warnings!" -ForegroundColor Yellow
+if ($tscFailed -or $eslintFailed -or $auditFailed -or $eslintModified) {
+    if ($eslintModified -and -not $eslintFailed) {
+        Write-Host "⚠️ Automation complete with file modifications!" -ForegroundColor Yellow
+    } else {
+        Write-Host "⚠️ Automation complete with warnings!" -ForegroundColor Yellow
+    }
     Write-Host ""
     Write-Host "📊 Summary:" -ForegroundColor Cyan
     Write-Host "- Code analysis completed" -ForegroundColor White
     if ($tscFailed) { Write-Host "- TypeScript errors found" -ForegroundColor Red }
     if ($eslintFailed) { Write-Host "- ESLint issues found" -ForegroundColor Red }
+    if ($eslintModified -and -not $eslintFailed) { 
+        Write-Host "- ESLint automatically fixed code issues" -ForegroundColor Yellow 
+        Write-Host "  Files have been modified and need review/commit" -ForegroundColor Yellow
+    }
     if ($auditFailed) { Write-Host "- Security vulnerabilities found" -ForegroundColor Red }
     Write-Host ""
-    Write-Host "💡 Please fix the issues above before proceeding" -ForegroundColor Yellow
+    if ($eslintModified -and -not $eslintFailed -and -not $tscFailed -and -not $auditFailed) {
+        Write-Host "💡 ESLint made automatic fixes - please review changes and commit" -ForegroundColor Yellow
+        Write-Host "Run 'git diff' to see what was modified" -ForegroundColor Cyan
+    } else {
+        Write-Host "💡 Please fix the issues above before proceeding" -ForegroundColor Yellow
+    }
     exit 1
 } else {
     Write-Host "✅ Automation complete!" -ForegroundColor Green

@@ -49,12 +49,13 @@ class CodeAutomator:
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1
             )
-            
             return json.loads(response.choices[0].message.content)
-        except Exception as e:
+        except openai.APIError as e:
             print(f"API Error for {file_path}: {e}")
             return None
-    
+        except json.JSONDecodeError as e:
+            print(f"JSON parse error for {file_path}: {e}")
+            return None    
     def apply_improvement(self, file_path, improvement):
         """Apply a single improvement to the file"""
         if improvement.get('code'):

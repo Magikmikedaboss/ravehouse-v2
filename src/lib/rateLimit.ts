@@ -1,7 +1,7 @@
 // src/lib/rateLimit.ts
 // Database-backed rate limiter for multi-instance deployments
 import { prisma } from './prisma';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 // Rate limit configuration
 const WINDOW_MS = 60 * 1000; // 1 minute
@@ -59,7 +59,8 @@ function cleanupMemoryStore(): void {
   let removedCount = 0;
   
   // Remove expired entries
-  for (const [key, entry] of memoryStore.entries()) {
+  const entries = Array.from(memoryStore.entries());
+  for (const [key, entry] of entries) {
     if (now > entry.resetTime) {
       memoryStore.delete(key);
       removedCount++;
@@ -90,10 +91,6 @@ function cleanupMemoryStore(): void {
  * Check rate limit for an IP address using database-backed storage
  * Uses atomic transactions to prevent race conditions in multi-instance deployments
  */
-export async function checkRateLimit(
-  ip: string, 
-  fingerprint?: { userAgent?: string; acceptLanguage?: string; sessionId?: string }
-): Promise<RateLimitResult> {
 export async function checkRateLimit(
   ip: string,
   fingerprint?: { userAgent?: string; acceptLanguage?: string; sessionId?: string }
@@ -193,9 +190,9 @@ export async function checkRateLimit(
     };
   } catch (error) {
     console.error('Rate limit check failed, using in-memory fallback:', error);
-    } catch (error) {
-      console.error('Rate limit check failed, using in-memory fallback:', error);
-    }    cleanupMemoryStore();
+    
+    // Clean up expired entries before using fallback
+    cleanupMemoryStore();
     
     // Use in-memory fallback to avoid disabling rate limits
     const memoryEntry = memoryStore.get(rateLimitKey);

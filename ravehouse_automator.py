@@ -11,7 +11,7 @@ import shutil
 import subprocess
 import asyncio
 from pathlib import Path
-from typing import List, Dict, Optional, NamedTuple
+from typing import List, Dict, Optional, NamedTuple, Union
 from dataclasses import dataclass, field
 from datetime import datetime
 import logging
@@ -35,7 +35,7 @@ class RunConfiguration:
     enable_optimization: bool = True
     enable_seo: bool = True
     enable_performance: bool = True
-    cost_per_1k_tokens: float = 0.03  # GPT-4 pricing estimate
+    cost_per_1k_tokens: float = 0.002  # GPT-3.5-turbo pricing estimate
     max_retries: int = 1
     
     # Accessibility analysis specific config
@@ -84,7 +84,7 @@ class RaveHouseAutomator:
         self.config = config or RunConfiguration()
         self.logger = logging.getLogger(__name__)
         
-    def analyze_accessibility(self) -> List[Dict]:
+    def analyze_accessibility(self) -> Dict[str, Union[List[Dict], int, float]]:
         """Scan components for accessibility improvements with rate limiting and batching"""
         components = list(Path("src/components").rglob("*.tsx"))
         
@@ -127,11 +127,16 @@ class RaveHouseAutomator:
                 self.logger.info(f"Batch {i+1}/{len(batches)} completed in {batch_duration:.1f}s, estimated cost: ${batch_cost:.4f}")
                 
             except Exception as e:
-                self.logger.error(f"Batch {i+1} failed after all retries: {e}")
-                continue
+                self.logger.exception(f"Batch {i+1} failed after all retries: {e}")
+                continue        self.logger.info(f"Analysis complete. Total estimated cost: ${total_estimated_cost:.4f}, API calls: {total_api_calls}")
         
-        self.logger.info(f"Analysis complete. Total estimated cost: ${total_estimated_cost:.4f}, API calls: {total_api_calls}")
-        return improvements
+        # Return both results and usage data
+        return {
+            "results": improvements,
+            "api_calls": total_api_calls,
+            "cost": total_estimated_cost,
+            "tokens": total_api_calls * 1000  # Estimate tokens based on API calls
+        }
     
     def _create_batches(self, components: List[Path], batch_size: int) -> List[List[Path]]:
         """Split components into batches"""
@@ -198,17 +203,16 @@ IMPORTANT: Return only valid JSON array, no additional text."""
             
         except openai.RateLimitError as e:
             self.logger.warning(f"Rate limit hit, waiting 60 seconds: {e}")
+        except openai.RateLimitError as e:
+            self.logger.warning(f"Rate limit hit, waiting 60 seconds: {e}")
             time.sleep(60)
             raise
         except openai.APIError as e:
-            self.logger.error(f"OpenAI API error: {e}")
+            self.logger.exception(f"OpenAI API error: {e}")
             raise
         except Exception as e:
-            self.logger.error(f"Unexpected error in batch analysis: {e}")
-            raise
-    
-    def _combine_batch_content(self, batch: List[Path]) -> str:
-        """Combine multiple files into a single prompt with size limits"""
+            self.logger.exception(f"Unexpected error in batch analysis: {e}")
+            raise        """Combine multiple files into a single prompt with size limits"""
         combined = []
         total_chars = 0
         
@@ -308,7 +312,7 @@ IMPORTANT: Return only valid JSON array, no additional text."""
         
         return (total_tokens / 1000) * self.config.cost_per_1k_tokens
     
-    def optimize_event_components(self):
+    def optimize_event_components(self) -> Optional[Dict[str, Union[int, float]]]:
         """Specifically optimize event-related components"""
         event_files = [
             "src/components/sections/home",
@@ -317,8 +321,21 @@ IMPORTANT: Return only valid JSON array, no additional text."""
             "src/app/vip"
         ]
         
+        api_calls = 0
+        estimated_cost = 0.0
+        
         for path in event_files:
             self.optimize_directory(Path(path))
+            # For now, placeholder usage tracking
+            api_calls += 1
+            estimated_cost += 0.01
+            
+        # Return usage data
+        return {
+            "api_calls": api_calls,
+            "cost": estimated_cost,
+            "tokens": api_calls * 500  # Estimate tokens per optimization
+        }
     
     def optimize_directory(self, dir_path: Path):
         """Optimize all components in a directory"""
@@ -366,13 +383,24 @@ IMPORTANT: Return only valid JSON array, no additional text."""
         except Exception as e:
             print(f"Error optimizing {file_path}: {e}")
     
-    def generate_seo_metadata(self):
+    def generate_seo_metadata(self) -> Optional[Dict[str, Union[int, float]]]:
         """Auto-generate SEO metadata for event pages"""
         pages = list(Path("src/app").rglob("page.tsx"))
+        
+        api_calls = 0
+        estimated_cost = 0.0
         
         for page in pages:
             if page.parent.name in ["events", "tickets", "vip", "gallery"]:
                 self.create_seo_for_page(page)
+                api_calls += 1
+                estimated_cost += 0.005  # SEO generation cost estimate
+                
+        return {
+            "api_calls": api_calls,
+            "cost": estimated_cost,
+            "tokens": api_calls * 300
+        }
     
     def _validate_typescript_metadata(self, content: str) -> tuple[bool, str]:
         """Validate TypeScript metadata content for safety"""
@@ -424,12 +452,13 @@ IMPORTANT: Return only valid JSON array, no additional text."""
         """Run lightweight TypeScript syntax check if tsc is available"""
         try:
             # Validate temp_path is in expected temp directory
-            if not str(temp_path).startswith(tempfile.gettempdir()):
+            resolved_temp = temp_path.resolve()
+            if not str(resolved_temp).startswith(tempfile.gettempdir()):
                 return False, "Invalid temp file path"
             
             # Try TypeScript compiler if available
             result = subprocess.run(
-                ['npx', 'tsc', '--noEmit', '--skipLibCheck', str(temp_path)],
+                ['npx', 'tsc', '--noEmit', '--skipLibCheck', str(resolved_temp)],
                 capture_output=True,
                 text=True,
                 timeout=30,
@@ -580,7 +609,7 @@ IMPORTANT: Return only valid JSON array, no additional text."""
             print(f"❌ SEO generation error for {page_path}: {e}")
             logging.exception(f"Detailed error for {page_path}")
     
-    def monitor_performance(self):
+    def monitor_performance(self) -> Optional[Dict[str, Union[int, float]]]:
         """Analyze bundle size and suggest optimizations"""
         prompt = """
         Analyze this Next.js project structure for performance opportunities:
@@ -609,8 +638,19 @@ IMPORTANT: Return only valid JSON array, no additional text."""
             print("🚀 Performance Optimization Suggestions:")
             print(suggestions)
             
+            return {
+                "api_calls": 1,
+                "cost": 0.03,  # GPT-4 API call cost estimate
+                "tokens": 1500  # Estimated tokens for performance analysis
+            }
+            
         except Exception as e:
             print(f"Performance analysis error: {e}")
+            return {
+                "api_calls": 0,
+                "cost": 0.0,
+                "tokens": 0
+            }
     
     def _estimate_task_cost(self, task_name: str, config: RunConfiguration) -> TaskResult:
         """Estimate API calls and cost for a task"""
@@ -646,7 +686,16 @@ IMPORTANT: Return only valid JSON array, no additional text."""
                     break
                     
                 print(f"Executing {task_name} (attempt {attempt + 1}/{config.max_retries + 1})")
-                task_result = task_func()
+                
+                # Execute task function and capture usage if returned
+                usage = task_func()
+                
+                # Accumulate API usage if task returned usage data
+                if usage and isinstance(usage, dict):
+                    result.api_calls += usage.get("api_calls", 0)
+                    result.actual_cost += usage.get("cost", 0.0)
+                    result.estimated_tokens += usage.get("tokens", 0)
+                
                 result.status = TaskStatus.SUCCESS
                 if attempt > 0:
                     result.status = TaskStatus.RETRIED
