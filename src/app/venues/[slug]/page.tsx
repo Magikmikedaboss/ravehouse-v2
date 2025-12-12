@@ -67,13 +67,6 @@ export default function VenueDetailPage({
     if (Array.isArray(venue.category)) {
       return venue.category.filter(Boolean);
     }
-    if (venue.category) {
-      // Handle single category or comma-separated string
-      const categoryValue = typeof venue.category === 'string' 
-        ? venue.category.split(',').map(c => c.trim()).filter(Boolean)
-        : [venue.category];
-      return categoryValue.filter(Boolean);
-    }
     return [];
   })();
   
@@ -224,9 +217,8 @@ export default function VenueDetailPage({
           <h2 className="text-sm font-semibold">Vibe tags</h2>
           <p className="text-xxs text-white/50">Tap a tag for details</p>
         </div>
-
         <div className="mt-3 flex flex-wrap gap-2">
-          {venue.vibeTags.map((t: string) => {
+          {(venue.vibeTags ?? []).map((t: string) => {
             const on = activeTag === t;
             return (
               <button
@@ -250,7 +242,6 @@ export default function VenueDetailPage({
             );
           })}
         </div>
-
         {vibeMeta ? (
           <div className="mt-4 rounded-xl border border-white/10 bg-black/30 p-4">
             <p className="text-xxs uppercase tracking-[0.25em] text-white/50">

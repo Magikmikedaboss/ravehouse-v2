@@ -66,12 +66,14 @@ export function Button({
   className = "", 
   loading = false,
   disabled,
+  type = "button",
   ...props 
 }: ButtonProps) {
   const isDisabled = disabled || loading;
   return (
     <button
       {...props}
+      type={type}
       disabled={isDisabled}
       className={`${baseClasses} ${variantClasses(variant)} ${
         loading ? 'opacity-70 cursor-wait' : ''

@@ -14,11 +14,7 @@ const nextConfig: NextConfig = {
   // Optimize bundle analysis and chunking (Webpack-only)
   // Bundle analysis results: framework chunk ~45KB, lib chunk ~180KB, main ~85KB (measured with @next/bundle-analyzer)
   webpack: (config, { isServer, dev, nextRuntime }) => {
-    // Only apply custom splitChunks when using Webpack (not Turbopack)
-    // Turbopack handles chunking differently and may ignore these optimizations
-    const isTurbopack = process.env.TURBOPACK === '1';
-    
-    if (!isServer && !isTurbopack) {
+    if (!isServer) {
       // Ensure splitChunks is enabled and is an object
       if (!config.optimization.splitChunks) {
         config.optimization.splitChunks = {};

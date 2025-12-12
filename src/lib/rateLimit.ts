@@ -39,11 +39,16 @@ export async function checkRateLimit(
     }
     
     if (fingerprint?.acceptLanguage) {
-      fallbackComponents.push(`lang:${fingerprint.acceptLanguage.slice(0, 5)}`);
+      // Normalize and hash acceptLanguage to avoid PII and key explosion
+      const normalizedLang = fingerprint.acceptLanguage.toLowerCase().split(/[,;-]/)[0].slice(0, 5);
+      const langHash = crypto.createHash('sha256').update(normalizedLang, 'utf8').digest('hex').slice(0, 8);
+      fallbackComponents.push(`lang:${langHash}`);
     }
     
     if (fingerprint?.sessionId) {
-      fallbackComponents.push(`sess:${fingerprint.sessionId.slice(0, 8)}`);
+      // Hash sessionId to avoid storing raw session data
+      const sessHash = crypto.createHash('sha256').update(fingerprint.sessionId, 'utf8').digest('hex').slice(0, 8);
+      fallbackComponents.push(`sess:${sessHash}`);
     }
     
     // If no fingerprinting data available, use a very restrictive shared bucket
@@ -80,7 +85,7 @@ export async function checkRateLimit(
           WHEN ${BigInt(now)} > "RateLimit"."resetTime" THEN ${BigInt(resetTime)}
           ELSE "RateLimit"."resetTime"
         END
-      RETURNING count, "resetTime"::text as reset_time;
+      RETURNING count, CAST("resetTime" AS TEXT) as reset_time;
     `;
 
     const entry = result[0];

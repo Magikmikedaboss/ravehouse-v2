@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
-    "build:analyze": "ANALYZE=true npm run build",
-    "analyze": "npx @next/bundle-analyzer",
+    "build:analyze": "cross-env ANALYZE=true npm run build",
+    "analyze": "npx @next/bundle-analyzer@16.0.10",
     "start": "next start",
     "lint": "eslint"
   },
@@ -16,7 +16,6 @@
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "clsx": "^2.1.1",
     "next": "15.5.8",
-    "prisma": "^5.22.0",
     "react": "^19.2.2",
     "react-dom": "^19.2.2",
     "react-markdown": "^10.1.0",
@@ -28,9 +27,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-next": "15.5.8",
     "postcss": "^8.4.47",
+    "prisma": "^5.22.0",
     "tailwindcss": "^4.1.17",
     "typescript": "^5"
   }
