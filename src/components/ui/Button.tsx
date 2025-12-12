@@ -1,6 +1,7 @@
 // src/components/ui/Button.tsx
 "use client";
 import { ButtonHTMLAttributes, ReactNode } from "react";
+import type { MouseEvent, KeyboardEvent } from "react";
 import Link from "next/link";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -97,14 +98,14 @@ export function ButtonLink({
   loading = false,
   href,
 }: ButtonLinkProps) {
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: MouseEvent) => {
     if (loading) {
       e.preventDefault();
       e.stopPropagation();
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (loading && (e.key === "Enter" || e.key === " " || e.key === "Spacebar" || e.keyCode === 13 || e.keyCode === 32)) {
       e.preventDefault();
       e.stopPropagation();
