@@ -3,29 +3,27 @@
 // POST /api/newsletter – join list
 
 import { NextRequest, NextResponse } from 'next/server';
-
-import { checkRateLimit, startRateLimitCleanup } from '@/lib/rateLimit';
-
-// Initialize rate limit cleanup on module load
-startRateLimitCleanup();
+import { checkRateLimit } from '@/lib/rateLimit';
 
 export async function POST(request: NextRequest) {
   // Rate limiting
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
              request.headers.get('x-real-ip') ||
-             null;
+             'unknown';
 
-  if (!ip) {
+  const rateLimitResult = await checkRateLimit(ip);
+  if (!rateLimitResult.allowed) {
     return NextResponse.json(
-      { error: 'Unable to identify request origin' },
-      { status: 400 }
-    );
-  }
-
-  const rateLimitResult = await checkRateLimit(ip);  if (!rateLimitResult.allowed) {
-    return NextResponse.json(
-      { error: 'Too many requests' },
-      { status: 429 }
+      { 
+        error: 'Too many requests',
+        retryAfter: rateLimitResult.retryAfter 
+      },
+      { 
+        status: 429,
+        headers: {
+          'Retry-After': rateLimitResult.retryAfter?.toString() || '60'
+        }
+      }
     );
   }
 
