@@ -106,12 +106,11 @@ export function ButtonLink({
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (loading && (e.key === "Enter" || e.key === " " || e.key === "Spacebar" || e.keyCode === 13 || e.keyCode === 32)) {
+    if (loading && (e.key === "Enter" || e.key === " ")) {
       e.preventDefault();
       e.stopPropagation();
     }
   };
-
   return (
     <Link
       href={href}

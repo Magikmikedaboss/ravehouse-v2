@@ -77,8 +77,8 @@ export default function VipPage() {
         console.error('VIP application error:', error);
       }
       // TODO: Report to error tracking service in production
-      setSubmitStatus('error');    } finally {
-      setIsSubmitting(false);
+      setSubmitStatus('error');
+    } finally {      setIsSubmitting(false);
     }
   };
 

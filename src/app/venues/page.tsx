@@ -258,8 +258,13 @@ export default function VenuesPage() {
                 }`}
                 onMouseEnter={() => setActiveSlug(v.slug)}
                 onFocus={() => setActiveSlug(v.slug)}
-                tabIndex={0}
-              >                <div className="flex items-start justify-between gap-3">
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveSlug(v.slug);
+                  }
+                }}
+                tabIndex={0}              >                <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="text-sm font-semibold">{v.name}</h3>
                     <p className="mt-1 text-xxs text-white/55">{v.area}</p>
