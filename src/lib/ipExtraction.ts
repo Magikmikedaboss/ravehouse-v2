@@ -14,15 +14,15 @@ function normalizeIp(candidate: string): string | null {
   let ip = candidate;
   
   // Handle IPv4 with port
-  if (ip.includes(':') && !ip.includes('::')) {
+  const colonCount = (ip.match(/:/g) || []).length;
+  if (colonCount === 1) {
     const lastColonIndex = ip.lastIndexOf(':');
     const afterColon = ip.slice(lastColonIndex + 1);
     // Check if after colon is a port number (digits only)
     if (/^\d+$/.test(afterColon)) {
       ip = ip.slice(0, lastColonIndex);
     }
-  }
-  
+  }  
   // Handle IPv6 with port [::1]:8080
   if (ip.startsWith('[') && ip.includes(']:')) {
     const bracketIndex = ip.lastIndexOf(']:');

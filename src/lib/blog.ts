@@ -27,10 +27,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Warehouse Eclipse: 3AM Lasers & Concrete Echoes",
     excerpt:
       "Four hundred heads, one warehouse, and a closing set that felt like sunrise in slow motion.",
-    date: "2025-01-22",
+    date: "2025-12-10",
     category: "Recaps",
     readTime: "7 min read",
-    heroImage: "/images/blog/warehouse-eclipse.jpg",
+    heroImage: "/images/placeholder.svg",
     tags: ["Warehouse", "Techno", "Las Vegas"],
     content: [
       "Last Friday's Warehouse Eclipse was everything we love about underground shows: no VIP ropes, no bottle parades, just a wall of sound and people losing it in every direction.",
@@ -43,10 +43,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Top Rave Gear Essentials for 2025 (Vegas Underground Edition)",
     excerpt:
       "From hydration packs to subtle earplugs and LED add-ons, here's what survives a proper warehouse.",
-    date: "2025-01-20",
+    date: "2025-12-08",
     category: "Gear",
     readTime: "5 min read",
-    heroImage: "/images/blog/rave-gear-2025.jpg",
+    heroImage: "/images/placeholder.svg",
     tags: ["Gear", "Tips", "New ravers"],
     content: [
       "Vegas underground shows aren't just about looking good—you also want to survive the night and remember it.",
@@ -59,10 +59,10 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "How to Find Underground Raves in Las Vegas (Without Being Weird)",
     excerpt:
       "If your feed is all big-room clubs, but your heart wants concrete floors and unknown names, this one's for you.",
-    date: "2025-01-15",
+    date: "2025-12-05",
     category: "Guides",
     readTime: "8 min read",
-    heroImage: "/images/blog/find-underground-vegas.jpg",
+    heroImage: "/images/placeholder.svg",
     tags: ["Guides", "Vegas", "Community"],
     content: [
       "Finding the real stuff in Vegas means looking beyond the Strip and leaning on people, not billboards.",

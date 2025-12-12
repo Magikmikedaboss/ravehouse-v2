@@ -112,15 +112,15 @@ export default function EventsPage() {
           {/* Content layer – natural flow, no absolute positioning */}
           <div className="relative z-10 flex min-h-[360px] w-full flex-col justify-between px-4 py-4 sm:min-h-[clamp(360px,38vw,520px)] sm:px-6 sm:py-6">
             {/* Top badges */}
-            <div className="flex flex-wrap gap-2 text-xxs text-white/95">
+            <div className="flex flex-wrap gap-2 text-xxs text-secondary">
               <Chip variant="cyan" size="sm">Upcoming raves · Las Vegas</Chip>
               <Chip variant="cyan" size="sm" className="flex">Warehouse · Rooftop · Afterhours</Chip>
             </div>
             {/* Heading and blurb */}
-            <h1 className="text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold text-primary drop-shadow-lg sm:text-4xl md:text-5xl">
               Upcoming raves across Las Vegas
             </h1>
-            <p className="text-sm text-white/90 drop-shadow-md">
+            <p className="text-sm text-secondary drop-shadow-md">
               Secret afterhours, rooftops and warehouse nights all week.
             </p>
 
@@ -151,7 +151,7 @@ export default function EventsPage() {
       <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className="space-y-4">
           <Surface className="p-5">
-            <p className="text-xs text-white/60">This weekend in Vegas</p>
+            <p className="text-xs text-secondary">This weekend in Vegas</p>
             <h2 className="mt-1 text-sm font-semibold">
               Three nights, three different stories. Pick your vibe or run the full trilogy.
             </h2>
@@ -172,7 +172,7 @@ export default function EventsPage() {
           </Surface>
 
           <Surface className="p-5">
-            <p className="text-xs text-white/60">Vegas local?</p>
+            <p className="text-xs text-secondary">Vegas local?</p>
             <h2 className="mt-1 text-sm font-semibold">
               Unlock locals-only lines, discounts and VIP upgrades when you create a free profile.
             </h2>
@@ -196,7 +196,7 @@ export default function EventsPage() {
         <SectionHeader
           eyebrow="Upcoming events"
           title="Dial in by date, genre or neighborhood. All times in PT."
-          endSlot={<span className="text-xs text-white/60">Export calendar</span>}
+          endSlot={<span className="text-xs text-secondary">Export calendar</span>}
         />
 
         {/* Filter chips */}

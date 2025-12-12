@@ -74,13 +74,13 @@
 
   /* Light Theme */
   .light {
-    --rh-bg-page: 255 250 252;
-    --rh-bg-card: 255 245 248;
+    --rh-bg-page: 248 250 252;      /* very light gray */
+    --rh-bg-card: 255 255 255;      /* white cards for contrast */
     --rh-bg-surface: 255 255 255;
-    --rh-text-primary: 0 0 0;
-    --rh-text-secondary: 136 62 67;
+    --rh-text-primary: 15 23 42;    /* slate-900 */
+    --rh-text-secondary: 71 85 105; /* slate-600 */
     --rh-border: 0 0 0;
-    --rh-border-subtle: 136 62 67;
+    --rh-border-subtle: 203 213 225; /* slate-300 */
     --rh-fill-subtle: 255 255 255; /* Subtle fill for progress bars, etc */
 
     color-scheme: light;
@@ -135,6 +135,26 @@
   .shadow-rh-purple-glow {
     box-shadow: 0 0 30px rgba(138, 43, 226, 0.7);
   }
+
+  /* Theme-aware alias utilities */
+  .text-primary   { color: rgb(var(--rh-text-primary)); }
+  .text-secondary { color: rgb(var(--rh-text-secondary)); }
+  .bg-page        { background-color: rgb(var(--rh-bg-page)); }
+  .bg-card        { background-color: rgb(var(--rh-bg-card)); }
+  .border-subtle  { border-color: rgb(var(--rh-border-subtle)); }
+
+  /* Optional brand text accents */
+  .text-brand-pink   { color: rgb(var(--rh-pink-light)); }
+  .text-brand-cyan   { color: rgb(var(--rh-cyan)); }
+  .text-brand-orange { color: rgb(var(--rh-orange)); }
+  .text-brand-purple { color: rgb(var(--rh-purple)); }
+  .text-brand-green  { color: rgb(var(--rh-green)); }
+
+  /* Font-size utilities for consistent sizing */
+  .text-10 { font-size: 10px; }
+  .text-11 { font-size: 11px; }
+  .text-12 { font-size: 12px; }
+  .text-xxs { font-size: 0.688rem; line-height: 1rem; }
 }
 
 /* Reset-ish basics */
@@ -155,14 +175,14 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Inter", sans-serif;
   background: rgb(var(--rh-bg-page));
-  color: rgb(var(--rh-text-secondary));
+  color: rgb(var(--rh-text-primary));
 }
 
 /* Light mode body background */
 .light body {
   background:
-    radial-gradient(circle at 0% 0%, rgba(246, 104, 121, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 100% 100%, rgba(136, 62, 67, 0.15) 0%, transparent 55%),
+    radial-gradient(circle at 0% 0%, rgba(246, 104, 121, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(136, 62, 67, 0.05) 0%, transparent 55%),
     rgb(var(--rh-bg-page));
   color: rgb(var(--rh-text-primary));
 }
@@ -357,24 +377,6 @@ body {
   .skip-link:focus:not(:focus-visible) {
     outline: none;
   }
-}
-
-@layer utilities {
-  /* Tiny font-size utilities for consistent chip sizing */
-  .text-10 { font-size: 10px; }
-  .text-11 { font-size: 11px; }
-  .text-12 { font-size: 12px; }
-  
-  /* Essential v4 utilities */
-  .text-xxs { font-size: 0.688rem; line-height: 1rem; }
-}
-
-@layer utilities {
-  .text-brand-pink   { color: rgb(var(--rh-pink-light)); }
-  .text-brand-cyan   { color: rgb(var(--rh-cyan)); }
-  .text-brand-orange { color: rgb(var(--rh-orange)); }
-  .text-brand-purple { color: rgb(var(--rh-purple)); }
-  .text-brand-green  { color: rgb(var(--rh-green)); }
 }
 
 /* Custom prose styles to replace @tailwindcss/typography */
