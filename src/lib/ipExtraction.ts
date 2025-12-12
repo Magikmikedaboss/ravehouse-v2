@@ -17,12 +17,18 @@ export function extractClientIp(request: NextRequest): string {
     // Prioritize Vercel's proprietary headers (sanitized and trusted)
     const vercelForwardedFor = request.headers.get('x-vercel-forwarded-for');
     if (vercelForwardedFor) {
-      return vercelForwardedFor.split(',')[0]?.trim();
+      const trimmedIp = vercelForwardedFor.split(',')[0]?.trim();
+      if (trimmedIp && trimmedIp.length > 0) {
+        return trimmedIp;
+      }
     }
     
     const vercelRealIp = request.headers.get('x-real-ip');
     if (vercelRealIp) {
-      return vercelRealIp.trim();
+      const trimmedIp = vercelRealIp.trim();
+      if (trimmedIp && trimmedIp.length > 0) {
+        return trimmedIp;
+      }
     }
     
     // Check for other Vercel IP headers for validation (these indicate Vercel processing is active)
@@ -40,12 +46,18 @@ export function extractClientIp(request: NextRequest): string {
   // WARNING: These can be spoofed by clients and should only be used with verified trusted proxies
   const forwardedFor = request.headers.get('x-forwarded-for');
   if (forwardedFor) {
-    return forwardedFor.split(',')[0]?.trim();
+    const trimmedIp = forwardedFor.split(',')[0]?.trim();
+    if (trimmedIp && trimmedIp.length > 0) {
+      return trimmedIp;
+    }
   }
   
   const realIp = request.headers.get('x-real-ip');
   if (realIp) {
-    return realIp.trim();
+    const trimmedIp = realIp.trim();
+    if (trimmedIp && trimmedIp.length > 0) {
+      return trimmedIp;
+    }
   }
   
   return 'unknown';

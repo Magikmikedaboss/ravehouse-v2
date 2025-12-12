@@ -29,8 +29,8 @@ export default function GearHero() {
               <Chip variant="neutral" size="sm">
                 LED &amp; visuals
               </Chip>
-            </div>          </div>
-
+            </div>
+          </div>
           <div className="space-y-3 text-xs text-white/70">
             <p>
               Most items below will eventually link out with affiliate

@@ -17,7 +17,7 @@ type HomeHeroProps = {
   upcomingEvent?: UpcomingEvent;
 };
 
-export default function HomeHero({ upcomingEvent }: HomeHeroProps = {}) {
+export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
       {/* Main hero card */}

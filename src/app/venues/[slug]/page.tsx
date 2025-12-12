@@ -234,7 +234,7 @@ export default function VenueDetailPage({
                 <Chip
                   variant={on ? "neutral" : "cyan"}
                   size="sm"
-                  className={on ? "bg-white/20 border-white/40" : ""}
+                  selected={on}
                 >
                   {t}
                 </Chip>
