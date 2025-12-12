@@ -9,7 +9,7 @@ type Props = {
 
 export default function SiteShell({ children }: Props) {
   return (
-    <div className="min-h-screen text-[rgb(var(--rh-text-primary))]">
+    <div className="min-h-screen bg-page text-[rgb(var(--rh-text-primary))]">
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>

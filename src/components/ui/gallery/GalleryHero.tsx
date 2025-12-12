@@ -54,13 +54,13 @@ export default function GalleryHero({
           fetchPriority="high"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 40vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgb(var(--rh-bg-page))]/20 to-[rgb(var(--rh-bg-page))]/60 pointer-events-none" />
         <div className="relative space-y-4 p-6 md:p-8">
           <div className="space-y-3">
             <p className="text-xxs uppercase tracking-[0.3em] text-white/60">
               The Afterglow
             </p>
-            <h1 className="text-3xl font-semibold sm:text-4xl text-white">
+            <h1 className="text-3xl font-semibold sm:text-4xl text-primary">
               Every night, captured.
             </h1>
             <p className="max-w-xl text-sm text-white/75">
@@ -96,11 +96,11 @@ export default function GalleryHero({
 
       {/* Right panel - Aftermovie preview */}
       <Surface
-        className="relative overflow-hidden bg-black/40 p-3 md:p-4"
+        className="relative overflow-hidden bg-surface/40 p-3 md:p-4"
       >
-        <div className="relative rounded-[1.75rem] bg-black/60 shadow-rh-soft overflow-hidden">
+        <div className="relative rounded-[1.75rem] bg-surface/60 shadow-rh-soft overflow-hidden">
           <div className="relative aspect-[9/16] overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/30 via-rh-purple/20 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/30 via-rh-purple/20 to-[rgb(var(--rh-bg-page))]" />
 
             <div className="absolute left-4 right-4 top-4 flex items-center justify-between text-xxs text-white/80">
               <div className="flex gap-2">

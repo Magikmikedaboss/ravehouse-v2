@@ -24,7 +24,8 @@ fi
 # Install required Python packages if needed
 if ! python -c "import openai" 2>/dev/null; then
     echo "📦 Installing required packages..."
-    pip install openai==1.54.0 || {
+    # Note: OpenAI v2.x has breaking changes from v1.x, ensure automation script is compatible
+    pip install openai==2.9.0 || {
         echo "❌ ERROR: Failed to install required packages." >&2
         exit 1
     }
@@ -32,6 +33,14 @@ fi
 
 # Run the automation script
 echo "🤖 Running automated code improvements..."
+
+# Check if the automation script exists before trying to run it
+if [[ ! -f "ravehouse_automator.py" ]]; then
+    echo "❌ ERROR: ravehouse_automator.py not found" >&2
+    echo "   Please ensure the automation script exists in the current directory" >&2
+    exit 1
+fi
+
 python ravehouse_automator.py || {
     echo "❌ Automation script failed" >&2
     exit 1
@@ -50,8 +59,8 @@ npx tsc --noEmit || {
 
 # Run ESLint
 echo "Running ESLint..."
-npx eslint src/ --fix || {
-    echo "⚠️  ESLint issues found (some may be auto-fixed)" >&2
+npx eslint src/ || {
+    echo "⚠️  ESLint issues found" >&2
 }
 
 # Check for security vulnerabilities

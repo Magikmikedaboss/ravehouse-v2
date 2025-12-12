@@ -203,16 +203,16 @@ IMPORTANT: Return only valid JSON array, no additional text."""
             
         except openai.RateLimitError as e:
             self.logger.warning(f"Rate limit hit, waiting 60 seconds: {e}")
-        except openai.RateLimitError as e:
-            self.logger.warning(f"Rate limit hit, waiting 60 seconds: {e}")
             time.sleep(60)
             raise
         except openai.APIError as e:
             self.logger.exception(f"OpenAI API error: {e}")
             raise
         except Exception as e:
-            self.logger.exception(f"Unexpected error in batch analysis: {e}")
-            raise        """Combine multiple files into a single prompt with size limits"""
+            raise
+    
+    def _combine_batch_content(self, batch: List[Path]) -> str:
+        """Combine multiple files into a single prompt with size limits"""
         combined = []
         total_chars = 0
         
@@ -241,8 +241,7 @@ IMPORTANT: Return only valid JSON array, no additional text."""
                 self.logger.warning(f"Could not read {component}: {e}")
                 continue
         
-        return "".join(combined)
-    
+        return "".join(combined)    
     def _validate_and_parse_response(self, response_content: str) -> List[Dict]:
         """Validate API response structure and parse JSON safely"""
         try:

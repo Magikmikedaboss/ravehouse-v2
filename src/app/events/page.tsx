@@ -1,10 +1,153 @@
 // src/app/events/page.tsx
 
 import Image from "next/image";
+import { useState } from "react";
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { ButtonLink } from "@/components/ui/Button";
+
+// Calendar Export Component
+function CalendarExportButton() {
+  const [isExporting, setIsExporting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleCalendarExport = async () => {
+    setIsExporting(true);
+    setError(null);
+    
+    try {
+      // Generate ICS calendar data for upcoming events
+      const icsContent = generateICSContent(upcomingEvents);
+      
+      // Create and download the .ics file
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'ravehouse-events.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
+    } catch (err) {
+      setError('Failed to export calendar. Please try again.');
+      console.error('Calendar export error:', err);
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleCalendarExport}
+      disabled={isExporting}
+      className="text-xs text-secondary hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2 rounded px-1 py-0.5"
+      aria-label={isExporting ? "Exporting calendar..." : "Export events to calendar"}
+    >
+      {isExporting ? "Exporting..." : "Export calendar"}
+      {error && (
+        <span className="block text-red-400 text-xxs mt-1">{error}</span>
+      )}
+    </button>
+  );
+}
+
+// Helper function to generate ICS calendar content
+function generateICSContent(events: typeof upcomingEvents): string {
+  const now = new Date();
+  const icsEvents = events.map(event => {
+    // For demo purposes, create event dates based on the day property
+    const eventDate = getEventDate(event.day, event.time);
+    const endDate = getEventEndDate(eventDate, event.time);
+    
+    return [
+      'BEGIN:VEVENT',
+      `UID:${event.id}@ravehouse.com`,
+      `DTSTART:${formatICSDate(eventDate)}`,
+      `DTEND:${formatICSDate(endDate)}`,
+      `SUMMARY:${event.title}`,
+      `DESCRIPTION:${event.status}\\n${event.price}`,
+      'LOCATION:Las Vegas, NV',
+      `DTSTAMP:${formatICSDate(now)}`,
+      'END:VEVENT'
+    ].join('\r\n');
+  }).join('\r\n');
+
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Ravehouse Entertainment//Events Calendar//EN',
+    'CALSCALE:GREGORIAN',
+    icsEvents,
+    'END:VCALENDAR'
+  ].join('\r\n');
+}
+
+// Helper functions for date handling
+function getEventDate(day: string, time: string): Date {
+  const now = new Date();
+  const dayMap: Record<string, number> = { 'Sun': 0, 'Mon': 1, 'Tue': 2, 'Wed': 3, 'Thu': 4, 'Fri': 5, 'Sat': 6 };
+  const targetDay = dayMap[day];
+  const currentDay = now.getDay();
+  let daysToAdd = (targetDay - currentDay + 7) % 7;
+  if (daysToAdd === 0) daysToAdd = 7; // Next week if same day
+  
+  const eventDate = new Date(now);
+  eventDate.setDate(now.getDate() + daysToAdd);
+  
+  // Parse time (assumes format like "11:00PM")
+  const timeMatch = time.match(/(\d{1,2}):(\d{2})(AM|PM)/);
+  if (timeMatch) {
+    let hours = parseInt(timeMatch[1]);
+    const minutes = parseInt(timeMatch[2]);
+    const period = timeMatch[3];
+    
+    if (period === 'PM' && hours !== 12) hours += 12;
+    if (period === 'AM' && hours === 12) hours = 0;
+    
+    eventDate.setHours(hours, minutes, 0, 0);
+  }
+  
+  return eventDate;
+}
+
+function getEventEndDate(startDate: Date, time: string): Date {
+  const endDate = new Date(startDate);
+  // For events spanning midnight, add time based on duration hint
+  if (time.includes('–') || time.includes('-')) {
+    const timeParts = time.split(/[–-]/);
+    if (timeParts.length > 1) {
+      const endTimeStr = timeParts[1].trim();
+      const endTimeMatch = endTimeStr.match(/(\d{1,2}):(\d{2})(AM|PM)/);
+      if (endTimeMatch) {
+        let hours = parseInt(endTimeMatch[1]);
+        const minutes = parseInt(endTimeMatch[2]);
+        const period = endTimeMatch[3];
+        
+        if (period === 'PM' && hours !== 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+        
+        // If end time is earlier than start time, it's next day
+        if (hours < startDate.getHours() || (hours === startDate.getHours() && minutes < startDate.getMinutes())) {
+          endDate.setDate(endDate.getDate() + 1);
+        }
+        
+        endDate.setHours(hours, minutes, 0, 0);
+      }
+    }
+  } else {
+    // Default to 4 hours if no end time specified
+    endDate.setHours(endDate.getHours() + 4);
+  }
+  
+  return endDate;
+}
+
+function formatICSDate(date: Date): string {
+  return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+}
 
 const filters = [
   "All",
@@ -91,8 +234,8 @@ export default function EventsPage() {
         <div className="relative w-full overflow-hidden rounded-[var(--rh-radius-lg)] border border-subtle bg-surface shadow-rh-soft">
           {/* Background image + overlays */}
           <div className="pointer-events-none absolute inset-0">
-            <Image
-              src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
+                </div>
+                <div className="p-4 space-y-2">              src="/images/gallery/vecteezy_decorated-place-cloudy-weather-group-of-young-people-in_15294272.jpg"
               alt="People enjoying an outdoor decorated space"
               fill
               className="h-full w-full object-cover object-[center_35%]"
@@ -102,11 +245,11 @@ export default function EventsPage() {
             />
 
             {/* Main overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--rh-bg-page))]/75 via-[rgb(var(--rh-bg-page))]/25 to-transparent" />
             {/* Top scrim */}
-            <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[rgb(var(--rh-bg-page))]/40 to-transparent" />
             {/* Bottom scrim */}
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[rgb(var(--rh-bg-page))]/60 to-transparent" />
           </div>
 
           {/* Content layer – natural flow, no absolute positioning */}
@@ -196,7 +339,9 @@ export default function EventsPage() {
         <SectionHeader
           eyebrow="Upcoming events"
           title="Dial in by date, genre or neighborhood. All times in PT."
-          endSlot={<span className="text-xs text-secondary">Export calendar</span>}
+          endSlot={
+            <CalendarExportButton />
+          }
         />
 
         {/* Filter chips */}
@@ -223,9 +368,9 @@ export default function EventsPage() {
             {upcomingEvents.map((event) => (
               <Surface key={event.id} className="overflow-hidden">
                 <div className="relative h-32 w-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/40 via-rh-purple/40 to-black" />
-                  <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center mix-blend-overlay opacity-70" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-rh-pink-light/40 via-rh-purple/40 to-[rgb(var(--rh-bg-page))]" />
+                  <div className="absolute inset-0 bg-[url('/images/events/placeholder.jpg')] bg-cover bg-center opacity-50 dark:mix-blend-overlay mix-blend-normal" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--rh-bg-page))]/80 via-[rgb(var(--rh-bg-page))]/40 to-transparent" />
                   <div className="absolute left-3 top-3 flex items-center gap-2 text-xxs">
                     <Chip variant="cyan" size="sm">
                       {event.day} · {event.time}
@@ -275,10 +420,10 @@ export default function EventsPage() {
                 {tonightColumn.map((item) => (
                   <div
                     key={item.title}
-                    className="flex items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2"
+                    className="flex items-center justify-between gap-3 rounded-2xl bg-surface/5 px-3 py-2"
                   >
                     <div>
-                      <p className="font-medium text-white">{item.title}</p>
+                      <p className="font-medium text-primary">{item.title}</p>
                       <p className="text-xxs text-white/65">{item.slot}</p>
                     </div>
                     <Chip variant="success" size="sm">
@@ -302,12 +447,12 @@ export default function EventsPage() {
               <form className="mt-3 flex gap-2">
                 <input
                   type="email"
-                  className="flex-1 rounded-full border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none placeholder:text-white/30"
+                  className="flex-1 rounded-full border border-primary/10 bg-surface/40 px-3 py-2 text-xs outline-none placeholder:text-secondary"
                   placeholder="Enter email for event drops"
                 />
                 <button
                   type="submit"
-                  className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-black"
+                  className="rounded-full bg-card border border-primary/20 px-4 py-2 text-xs font-semibold text-primary"
                 >
                   Notify me
                 </button>

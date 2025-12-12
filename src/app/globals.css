@@ -192,6 +192,7 @@ body {
     "Inter", sans-serif;
   background: rgb(var(--rh-bg-page));
   color: rgb(var(--rh-text-primary));
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Light mode body background */

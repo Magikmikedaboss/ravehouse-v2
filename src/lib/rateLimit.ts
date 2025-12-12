@@ -28,15 +28,15 @@ function initializeCleanup(): void {
   // Start periodic cleanup
   memoryCleanupInterval = setInterval(cleanupMemoryStore, MEMORY_CLEANUP_INTERVAL);
   
-  // Clean up interval on process exit
-  process.on('SIGTERM', () => {
+  // Clean up interval on process exit - use process.once to prevent accumulation during hot reloads
+  process.once('SIGTERM', () => {
     if (memoryCleanupInterval) {
       clearInterval(memoryCleanupInterval);
       memoryCleanupInterval = null;
     }
   });
   
-  process.on('SIGINT', () => {
+  process.once('SIGINT', () => {
     if (memoryCleanupInterval) {
       clearInterval(memoryCleanupInterval);
       memoryCleanupInterval = null;
@@ -115,12 +115,10 @@ export async function checkRateLimit(
     }
     
     if (fingerprint?.acceptLanguage) {
-      // Normalize and hash acceptLanguage to avoid PII and key explosion
-      const normalizedLang = fingerprint.acceptLanguage.toLowerCase().split(/[,;-]/)[0].slice(0, 5);
-      const langHash = crypto.createHash('sha256').update(normalizedLang, 'utf8').digest('hex').slice(0, 16);
+      // Hash the full Accept-Language header to avoid parsing complexity
+      const langHash = crypto.createHash('sha256').update(fingerprint.acceptLanguage.toLowerCase(), 'utf8').digest('hex').slice(0, 16);
       fallbackComponents.push(`lang:${langHash}`);
-    }
-    
+    }    
     if (fingerprint?.sessionId) {
       // Hash sessionId to avoid storing raw session data
       const sessHash = crypto.createHash('sha256').update(fingerprint.sessionId, 'utf8').digest('hex').slice(0, 16);

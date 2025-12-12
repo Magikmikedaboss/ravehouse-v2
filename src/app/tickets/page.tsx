@@ -166,7 +166,7 @@ export default function TicketsPage() {
                   </div>
 
                   {/* Right mini card: barcode + meta */}
-                  <div className="flex flex-col justify-between rounded-2xl bg-black/40 p-3 text-xs">
+                  <div className="flex flex-col justify-between rounded-2xl bg-surface/40 p-3 text-xs">
                     <div>
                       <p className="text-xxs text-white/50">
                         Venue drop: {index === 0 ? "10:00PM" : "Skyline Tower · Strip"}

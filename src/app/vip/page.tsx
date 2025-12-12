@@ -140,7 +140,7 @@ export default function VipPage() {
               <span>From $480 / table</span>
               <span className="text-white/60">VIP tables left: 3 / 12</span>
             </div>
-            <button className="mt-4 w-full rounded-full bg-white px-4 py-2 text-xs font-semibold text-black shadow-rh-soft">
+            <button className="mt-4 w-full rounded-full bg-card border border-primary/20 px-4 py-2 text-xs font-semibold text-primary shadow-rh-soft">
               Reserve table
             </button>
           </div>
@@ -225,7 +225,7 @@ export default function VipPage() {
           <h2 className="text-lg font-semibold">How VIP nights work</h2>
           <ol className="space-y-3 text-sm text-white/70">
             <li>
-              <span className="font-semibold text-white">1. Tell us how you rave.</span>{" "}
+              <span className="font-semibold text-primary">1. Tell us how you rave.</span>{" "}
               Share your crew size, favorite sounds and if you&apos;re a Vegas local or
               visiting.
             </li>

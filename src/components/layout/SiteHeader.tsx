@@ -97,7 +97,7 @@ export default function SiteHeader() {
         {/* Desktop nav - EXPLICITLY HIDDEN ON MOBILE */}
         <div className="hidden md:block">
           <NavigationMenu.Root>
-            <NavigationMenu.List className="flex gap-1 rounded-full bg-black/5 dark:bg-white/5 p-1">
+            <NavigationMenu.List className="flex gap-1 rounded-full bg-surface/5 p-1">
               {NAV_ITEMS.map((item) => {
                 const active = isItemActive(item);
                 return (
@@ -106,7 +106,7 @@ export default function SiteHeader() {
                       <>
                         <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                           active
-                            ? "bg-black dark:bg-white text-white dark:text-black shadow"
+                            ? "bg-white dark:bg-black text-black dark:text-white shadow"
                             : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
                         }`}>
                           {item.label}
@@ -132,7 +132,7 @@ export default function SiteHeader() {
                           href={item.href}
                           className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                             active
-                              ? "bg-black dark:bg-white text-white dark:text-black shadow"
+                              ? "bg-white dark:bg-black text-black dark:text-white shadow"
                               : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
                           }`}
                         >
@@ -183,7 +183,7 @@ export default function SiteHeader() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div ref={mobileMenuRef} className="border-t border-black/10 dark:border-white/10 bg-white/95 dark:bg-black/95 backdrop-blur md:hidden">
+        <div ref={mobileMenuRef} className="border-t border-subtle/20 bg-card/95 backdrop-blur md:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <nav className="flex flex-col gap-2">
               {NAV_ITEMS.map((item) => {
@@ -199,7 +199,7 @@ export default function SiteHeader() {
                         }}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
                           active
-                            ? "bg-black dark:bg-white text-white dark:text-black"
+                            ? "bg-white dark:bg-black text-black dark:text-white"
                             : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
                         }`}
                       >

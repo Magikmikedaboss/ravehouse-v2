@@ -34,7 +34,7 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
             sizes="100vw"
           />
           {/* Gradient overlay - responsive to theme */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent dark:from-black/70 dark:via-black/20 dark:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--rh-bg-page))]/70 via-[rgb(var(--rh-bg-page))]/20 to-transparent" />
         </div>
 
         {/* Mobile: stacked layout | Desktop: absolute positioning */}
@@ -54,7 +54,7 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
               <p className="text-xs uppercase tracking-widest text-white/70 font-medium mb-3 sm:mb-4">
                 Underground parties for the nocturnal.
               </p>
-              <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-white leading-tight mb-4 sm:mb-6">
+              <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-primary leading-tight mb-4 sm:mb-6">
                 RAVEHOUSE<br />ENTERTAINMENT
               </h1>
               <p className="max-w-lg text-sm text-white/90 leading-relaxed mb-6 sm:mb-8">
@@ -98,7 +98,7 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
               </div>
             </div>
             <div className="text-right text-sm">
-              <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
+              <div className="rounded-full bg-surface/10 px-3 py-1 text-xs text-secondary">
                 Spots left: <span className="font-semibold text-blue-400">
                   {upcomingEvent ? `${upcomingEvent.spotsLeft} / ${upcomingEvent.capacity}` : '84 / 400'}
                 </span>

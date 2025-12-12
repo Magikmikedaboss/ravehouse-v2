@@ -67,10 +67,10 @@ $eslintFailed = $LASTEXITCODE -ne 0
 
 # Check if ESLint made any modifications
 $eslintModified = $false
-if ($gitStatusBefore -ne $null) {
+if (-not [string]::IsNullOrEmpty($gitStatusBefore)) {
     try {
         $gitStatusAfter = & git status --porcelain 2>$null
-        if ($gitStatusBefore -ne $gitStatusAfter) {
+        if ($LASTEXITCODE -eq 0 -and $gitStatusBefore -ne $gitStatusAfter) {
             $eslintModified = $true
         }
     } catch {
@@ -119,7 +119,7 @@ if ($tscFailed -or $eslintFailed -or $auditFailed -or $eslintModified) {
     Write-Host "💡 Next steps:" -ForegroundColor Yellow
     Write-Host "- Review suggested improvements" -ForegroundColor White
     Write-Host "- Test changes in development" -ForegroundColor White
-    Write-Host "- Deploy updates to staging" -ForegroundColor White}
-
+    Write-Host "- Deploy updates to staging" -ForegroundColor White
+}
 # Pause to see results
 Read-Host "Press Enter to continue..."

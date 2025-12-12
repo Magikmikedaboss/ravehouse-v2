@@ -264,8 +264,9 @@ export default function VenuesPage() {
                     setActiveSlug(v.slug);
                   }
                 }}
-                tabIndex={0}              >                <div className="flex items-start justify-between gap-3">
-                  <div>
+                tabIndex={0}
+              >
+                <div className="flex items-start justify-between gap-3">                  <div>
                     <h3 className="text-sm font-semibold text-primary">{v.name}</h3>
                     <p className="mt-1 text-xxs text-muted">{v.area}</p>
                   </div>

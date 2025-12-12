@@ -67,9 +67,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             __html: `
               try {
                 const saved = localStorage.getItem('ravehouse-theme');
-                const theme = (saved === 'dark' || saved === 'light') ? saved : 'dark';
+                // Check system preference if no saved theme
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = saved || (systemPrefersDark ? 'dark' : 'light');
                 document.documentElement.classList.remove('dark', 'light');
                 document.documentElement.classList.add(theme);
+                // Force a style recalculation
+                document.documentElement.style.display = 'none';
+                document.documentElement.offsetHeight; // trigger reflow
+                document.documentElement.style.display = '';
               } catch (e) {
                 document.documentElement.classList.add('dark');
               }

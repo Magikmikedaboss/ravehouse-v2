@@ -22,8 +22,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setMounted(true);
     // Read the actual theme from the document class (set by blocking script)
-    const currentTheme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
-    setTheme(currentTheme);
+    const hasLight = document.documentElement.classList.contains('light');
+    const hasDark = document.documentElement.classList.contains('dark');
+    
+    if (hasLight) {
+      setTheme('light');
+    } else if (hasDark) {
+      setTheme('dark');
+    } else {
+      // Fallback: check system preference
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const defaultTheme = systemPrefersDark ? 'dark' : 'light';
+      setTheme(defaultTheme);
+      document.documentElement.classList.add(defaultTheme);
+    }
   }, []);
   // Update document class and localStorage when theme changes
   useEffect(() => {
