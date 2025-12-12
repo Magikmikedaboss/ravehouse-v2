@@ -73,9 +73,11 @@ export default function VipPage() {
       await new Promise(resolve => setTimeout(resolve, 1000));      
       setSubmitStatus('success');
     } catch (error) {
-      console.error('VIP application error:', error);
-      setSubmitStatus('error');
-    } finally {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('VIP application error:', error);
+      }
+      // TODO: Report to error tracking service in production
+      setSubmitStatus('error');    } finally {
       setIsSubmitting(false);
     }
   };

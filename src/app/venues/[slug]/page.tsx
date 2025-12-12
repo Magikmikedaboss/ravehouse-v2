@@ -59,8 +59,24 @@ export default function VenueDetailPage({
 
   const encoded = encodeURIComponent(venue.name);
 
-  // Support either `categories` or `category` (so this file never breaks)
-  const categories = venue.categories ?? venue.category ?? [];
+  // Normalize categories to always be an array, handling various data shapes
+  const categories = (() => {
+    if (Array.isArray(venue.categories)) {
+      return venue.categories.filter(Boolean);
+    }
+    if (Array.isArray(venue.category)) {
+      return venue.category.filter(Boolean);
+    }
+    if (venue.category) {
+      // Handle single category or comma-separated string
+      const categoryValue = typeof venue.category === 'string' 
+        ? venue.category.split(',').map(c => c.trim()).filter(Boolean)
+        : [venue.category];
+      return categoryValue.filter(Boolean);
+    }
+    return [];
+  })();
+  
   const bestForArray = Array.isArray(venue.bestFor)
     ? venue.bestFor
     : [venue.bestFor].filter(Boolean);
