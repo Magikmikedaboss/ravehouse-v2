@@ -4,7 +4,20 @@ import { ButtonLink } from "@/components/ui/Button";
 import Chip from "@/components/ui/Chip";
 import Surface from "@/components/ui/Surface";
 
-export default function HomeHero() {
+type UpcomingEvent = {
+  spotsLeft: number;
+  capacity: number;
+  price: string;
+  title?: string;
+  venue?: string;
+  date?: string;
+};
+
+type HomeHeroProps = {
+  upcomingEvent?: UpcomingEvent;
+};
+
+export default function HomeHero({ upcomingEvent }: HomeHeroProps = {}) {
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
       {/* Main hero card */}
@@ -86,9 +99,13 @@ export default function HomeHero() {
             </div>
             <div className="text-right text-sm">
               <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
-                Spots left: <span className="font-semibold text-blue-400">84 / 400</span>
+                Spots left: <span className="font-semibold text-blue-400">
+                  {upcomingEvent ? `${upcomingEvent.spotsLeft} / ${upcomingEvent.capacity}` : '84 / 400'}
+                </span>
               </div>
-              <div className="mt-3 font-semibold text-white">$45 GA</div>
+              <div className="mt-3 font-semibold text-white">
+                {upcomingEvent?.price || '$45 GA'}
+              </div>
             </div>
           </div>
           <ButtonLink

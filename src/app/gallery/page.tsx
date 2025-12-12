@@ -15,7 +15,6 @@ export default function GalleryPage() {
 
   const handleFilterChange = (filter: string) => {
     setSelectedFilter(filter);
-    // Future: Filter gallery items based on selected filter
   };
 
   return (

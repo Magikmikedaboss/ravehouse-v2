@@ -46,6 +46,38 @@ const vipPlans = [
 
 export default function VipPage() {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        instagram: formData.get('instagram'),
+        details: formData.get('details'),
+        selectedOption: selectedOption
+      };
+
+      // TODO: Replace with actual API endpoint
+      console.log('VIP application data:', data);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setSubmitStatus('success');
+    } catch (error) {
+      console.error('VIP application error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const chipOptions = [
     { label: "Vegas local", variant: "pink" as const },
@@ -207,26 +239,45 @@ export default function VipPage() {
           </ol>
         </div>
 
-        <form className="surface space-y-4 p-5 shadow-rh-medium">
+        <form className="surface space-y-4 p-5 shadow-rh-medium" onSubmit={handleSubmit}>
           <h3 className="text-sm font-semibold">Apply for VIP access</h3>
           <p className="text-xs text-white/70">
             Drop your details and our team will text you back within 24 hours with options.
           </p>
 
+          {submitStatus === 'success' && (
+            <div className="rounded-lg bg-green-500/20 border border-green-500/40 p-3 text-xs text-green-200">
+              Application submitted successfully! We'll be in touch soon.
+            </div>
+          )}
+          
+          {submitStatus === 'error' && (
+            <div className="rounded-lg bg-red-500/20 border border-red-500/40 p-3 text-xs text-red-200">
+              Something went wrong. Please try again.
+            </div>
+          )}
+
           <div className="space-y-3 text-xs">
             <input
+              name="name"
+              required
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Full name"
             />
             <input
+              name="phone"
+              type="tel"
+              required
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Phone number for confirmations"
             />
             <input
+              name="instagram"
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Instagram / handle (optional)"
             />
             <textarea
+              name="details"
               rows={3}
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Tell us about your night – date, crew size, budget, favorite vibes."
@@ -264,9 +315,10 @@ export default function VipPage() {
 
           <button
             type="submit"
-            className="mt-2 w-full rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-4 py-2 text-xs font-semibold text-black shadow-rh-glow"
+            disabled={isSubmitting}
+            className="mt-2 w-full rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-4 py-2 text-xs font-semibold text-black shadow-rh-glow disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit request
+            {isSubmitting ? 'Submitting...' : 'Submit request'}
           </button>
 
           <p className="text-xxs text-white/45">

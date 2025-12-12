@@ -52,6 +52,7 @@ export default function SiteHeader() {
       
       if (!isInsideMenu && !isInsideButton && !isInsideDesktopThemeToggle && !isInsideMobileThemeToggle) {
         setMobileMenuOpen(false);
+        setExpandedMobileItem(null); // Reset expanded submenu when closing mobile menu
       }
     };
 
@@ -65,6 +66,7 @@ export default function SiteHeader() {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMobileMenuOpen(false);
+        setExpandedMobileItem(null); // Reset expanded submenu when escaping
       }
     };
 
@@ -74,6 +76,7 @@ export default function SiteHeader() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setExpandedMobileItem(null); // Reset expanded submenu when navigating to a new page
   }, [pathname]);
 
   return (
@@ -100,33 +103,29 @@ export default function SiteHeader() {
                 return (
                   <NavigationMenu.Item key={item.label}>
                     {item.children ? (
-                      <NavigationMenu.Sub>
-                        <NavigationMenu.Trigger asChild>
-                          <button className={`rounded-full px-3 py-1 text-xs font-medium transition ${
-                            active
-                              ? "bg-black dark:bg-white text-white dark:text-black shadow"
-                              : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
-                          }`}>
-                            {item.label}
-                          </button>
+                      <>
+                        <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                          active
+                            ? "bg-black dark:bg-white text-white dark:text-black shadow"
+                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
+                        }`}>
+                          {item.label}
                         </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium animate-fade-in animate-zoom-in z-50 p-2">
-                          <NavigationMenu.List>
+                        <NavigationMenu.Content className="absolute top-full left-0 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium z-50 p-2 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52">
+                          <div className="space-y-1">
                             {item.children.map((child) => (
-                              <NavigationMenu.Item key={child.href}>
-                                <NavigationMenu.Link asChild>
-                                  <Link
-                                    href={child.href}
-                                    className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none cursor-default"
-                                  >
-                                    {child.label}
-                                  </Link>
-                                </NavigationMenu.Link>
-                              </NavigationMenu.Item>
+                              <NavigationMenu.Link key={child.href} asChild>
+                                <Link
+                                  href={child.href}
+                                  className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none"
+                                >
+                                  {child.label}
+                                </Link>
+                              </NavigationMenu.Link>
                             ))}
-                          </NavigationMenu.List>
+                          </div>
                         </NavigationMenu.Content>
-                      </NavigationMenu.Sub>
+                      </>
                     ) : item.href ? (
                       <NavigationMenu.Link asChild>
                         <Link
@@ -145,6 +144,7 @@ export default function SiteHeader() {
                 );
               })}
             </NavigationMenu.List>
+            <NavigationMenu.Viewport className="absolute top-full left-0 flex justify-center" />
           </NavigationMenu.Root>
         </div>
 

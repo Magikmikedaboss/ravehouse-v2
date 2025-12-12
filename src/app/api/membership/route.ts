@@ -3,12 +3,11 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimit } from '@/lib/rateLimit';
+import { extractClientIp } from '@/lib/ipExtraction';
 
 export async function POST(request: NextRequest) {
   // Rate limiting
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-             request.headers.get('x-real-ip') ||
-             'unknown';
+  const ip = extractClientIp(request);
 
   const rateLimitResult = await checkRateLimit(ip);
   if (!rateLimitResult.allowed) {

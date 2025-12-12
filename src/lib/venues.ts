@@ -12,6 +12,7 @@ export type Venue = {
   slug: string;
   name: string;
   category: VenueCategory[];
+  categories?: VenueCategory[]; // Support both field names for backward compatibility
   area: string;
   addressHint?: string;
   vibeTags: string[];

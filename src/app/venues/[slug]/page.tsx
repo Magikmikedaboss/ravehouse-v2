@@ -60,10 +60,10 @@ export default function VenueDetailPage({
   const encoded = encodeURIComponent(venue.name);
 
   // Support either `categories` or `category` (so this file never breaks)
-  const categories = (venue as any).categories ?? (venue as any).category ?? [];
-  const bestForArray = Array.isArray((venue as any).bestFor)
-    ? (venue as any).bestFor
-    : [(venue as any).bestFor].filter(Boolean);
+  const categories = venue.categories ?? venue.category ?? [];
+  const bestForArray = Array.isArray(venue.bestFor)
+    ? venue.bestFor
+    : [venue.bestFor].filter(Boolean);
 
   const intensity = clamp(Number(venue.intensity ?? 3), 1, 5);
   const intensityPct = (intensity / 5) * 100;

@@ -144,7 +144,11 @@ export default function VenuesPage() {
           </div>
 
           <div className="mt-4">
+            <label htmlFor="venue-search" className="sr-only">
+              Search venues
+            </label>
             <input
+              id="venue-search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-xs outline-none placeholder:text-white/30"
