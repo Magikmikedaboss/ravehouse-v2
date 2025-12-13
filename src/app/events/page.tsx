@@ -3,8 +3,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";import Surface from "@/components/ui/Surface";
-import Chip from "@/components/ui/Chip";
+import { useState } from "react";
+import Surface from "@/components/ui/Surface";import Chip from "@/components/ui/Chip";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -100,11 +100,10 @@ function getEventDate(day: string, time: string): Date {
   }
   const currentDay = now.getDay();
   let daysToAdd = (targetDay - currentDay + 7) % 7;
-  if (daysToAdd === 0) daysToAdd = 7; // Next week if same day  if (daysToAdd === 0) daysToAdd = 7; // Next week if same day
+  if (daysToAdd === 0) daysToAdd = 7; // Next week if same day
   
   const eventDate = new Date(now);
-  eventDate.setDate(now.getDate() + daysToAdd);
-  
+  eventDate.setDate(now.getDate() + daysToAdd);  
   // Parse time (assumes format like "11:00PM")
   const timeMatch = time.match(/(\d{1,2}):(\d{2})(AM|PM)/);
   if (timeMatch) {

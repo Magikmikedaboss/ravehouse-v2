@@ -61,9 +61,6 @@ export default function VenueDetailPage({
 
   // Normalize categories to always be an array, handling various data shapes
   const categories = (() => {
-    if (Array.isArray(venue.categories)) {
-      return venue.categories.filter(Boolean);
-    }
     if (Array.isArray(venue.category)) {
       return venue.category.filter(Boolean);
     }

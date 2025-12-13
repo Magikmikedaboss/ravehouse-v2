@@ -346,7 +346,7 @@ IMPORTANT: Return only valid JSON array, no additional text."""
     
     def optimize_component(self, file_path: Path):
         """Optimize a single component with event-specific focus"""
-        with open(file_path, 'r') as f:
+        with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
         prompt = f"""
@@ -380,10 +380,10 @@ IMPORTANT: Return only valid JSON array, no additional text."""
             print()
             
         except Exception as e:
-            print(f"Error optimizing {file_path}: {e}")
+                print(f"Error optimizing {file_path}: {e}")
     
-    def generate_seo_metadata(self) -> Optional[Dict[str, Union[int, float]]]:
-        """Auto-generate SEO metadata for event pages"""
+        def generate_seo_metadata(self) -> Optional[Dict[str, Union[int, float]]]:
+            """Auto-generate SEO metadata for event pages"""
         pages = list(Path("src/app").rglob("page.tsx"))
         
         api_calls = 0

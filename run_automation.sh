@@ -59,7 +59,7 @@ npx tsc --noEmit || {
 
 # Run ESLint
 echo "Running ESLint..."
-npx eslint src/ || {
+npx eslint src/ --fix || {
     echo "⚠️  ESLint issues found" >&2
 }
 

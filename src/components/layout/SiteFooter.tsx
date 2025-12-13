@@ -20,7 +20,8 @@ export default function SiteFooter() {
             RAVEHOUSE
           </div>
           <p className="text-[rgb(var(--rh-text-secondary))]">Las Vegas underground party brand. No VIP ropes, just better nights.</p>
-        </div>        <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+        </div>
+        <div className="flex flex-col gap-8 md:flex-row md:gap-12">
           <div className="space-y-3">
             <div className="font-semibold text-white">Explore</div>
             <div className="flex flex-col gap-2 text-white/70">

@@ -15,7 +15,7 @@ try {
     python -c "import openai" 2>$null
     if ($LASTEXITCODE -ne 0) {
         Write-Host "📦 Installing required packages..." -ForegroundColor Yellow
-        pip install openai
+        pip install openai==2.9.0
         if ($LASTEXITCODE -ne 0) {
             Write-Host "❌ Error: Failed to install required packages" -ForegroundColor Red
             exit 1
@@ -23,9 +23,8 @@ try {
     }
 } catch {
     Write-Host "📦 Installing required packages..." -ForegroundColor Yellow
-    pip install openai
-}
-# Run the automation script
+    pip install openai==2.9.0
+}# Run the automation script
 Write-Host "🤖 Running automated code improvements..." -ForegroundColor Green
 
 # Check if the Python automation script exists

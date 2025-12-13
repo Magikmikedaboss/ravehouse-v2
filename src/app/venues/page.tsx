@@ -11,7 +11,7 @@ function clamp(n: number, min: number, max: number) {
 }
 
 function getCategories(v: Venue): string[] {
-  const cats = v.categories ?? v.category ?? [];
+  const cats = v.category ?? [];
   return Array.isArray(cats) ? cats : [cats].filter(Boolean);
 }
 export default function VenuesPage() {
