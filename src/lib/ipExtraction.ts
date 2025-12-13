@@ -37,12 +37,11 @@ function normalizeIp(candidate: string): string | null {
     return ip;
   }
   
-  // Basic IPv6 validation (simplified)
-  const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{1,4}$/;
+  // Basic IPv6 validation - now includes IPv4-mapped addresses
+  const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$|^(?:[0-9a-fA-F]{1,4}:)*::(?:[0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{1,4}$|^::ffff:(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/i;
   if (ipv6Regex.test(ip)) {
     return ip;
-  }
-  
+  }  
   // Invalid IP format
   return null;
 }
@@ -83,6 +82,18 @@ export function extractClientIp(request: NextRequest): string {
       }
     }
     
+    // Check for Cloudflare's trusted cf-connecting-ip header
+    const cfConnectingIp = request.headers.get('cf-connecting-ip');
+    if (cfConnectingIp) {
+      const trimmedIp = cfConnectingIp.trim();
+      if (trimmedIp && trimmedIp.length > 0) {
+        const normalizedIp = normalizeIp(trimmedIp);
+        if (normalizedIp) {
+          return normalizedIp;
+        }
+      }
+    }
+    
     // Check for other Vercel IP headers for validation (these indicate Vercel processing is active)
     const vercelIpCountry = request.headers.get('x-vercel-ip-country');
     const vercelIpRegion = request.headers.get('x-vercel-ip-region');
@@ -111,6 +122,18 @@ export function extractClientIp(request: NextRequest): string {
   const realIp = request.headers.get('x-real-ip');
   if (realIp) {
     const trimmedIp = realIp.trim();
+    if (trimmedIp && trimmedIp.length > 0) {
+      const normalizedIp = normalizeIp(trimmedIp);
+      if (normalizedIp) {
+        return normalizedIp;
+      }
+    }
+  }
+  
+  // Check for Cloudflare's trusted cf-connecting-ip header
+  const cfConnectingIp = request.headers.get('cf-connecting-ip');
+  if (cfConnectingIp) {
+    const trimmedIp = cfConnectingIp.trim();
     if (trimmedIp && trimmedIp.length > 0) {
       const normalizedIp = normalizeIp(trimmedIp);
       if (normalizedIp) {

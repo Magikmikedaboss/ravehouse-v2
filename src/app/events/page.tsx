@@ -4,8 +4,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Surface from "@/components/ui/Surface";import Chip from "@/components/ui/Chip";
-import SectionHeader from "@/components/ui/SectionHeader";
+import Surface from "@/components/ui/Surface";
+import Chip from "@/components/ui/Chip";import SectionHeader from "@/components/ui/SectionHeader";
 import { ButtonLink } from "@/components/ui/Button";
 
 // Calendar Export Component
@@ -40,7 +40,8 @@ function CalendarExportButton() {
       console.error('Calendar export error:', err);
     } finally {
       setIsExporting(false);
-    }  };
+    }
+  };
 
   return (
     <button
@@ -57,6 +58,15 @@ function CalendarExportButton() {
   );
 }
 
+// Helper function to escape ICS special characters
+function escapeICSText(text: string): string {
+  return text
+    .replace(/\\/g, '\\\\')  // Escape backslashes first
+    .replace(/;/g, '\\;')    // Escape semicolons
+    .replace(/,/g, '\\,')    // Escape commas
+    .replace(/\n/g, '\\n');  // Escape newlines
+}
+
 // Helper function to generate ICS calendar content
 function generateICSContent(events: typeof upcomingEvents): string {
   const now = new Date();
@@ -70,8 +80,8 @@ function generateICSContent(events: typeof upcomingEvents): string {
       `UID:${event.id}@ravehouse.com`,
       `DTSTART:${formatICSDate(eventDate)}`,
       `DTEND:${formatICSDate(endDate)}`,
-      `SUMMARY:${event.title}`,
-      `DESCRIPTION:${event.status}\\n${event.price}`,
+      `SUMMARY:${escapeICSText(event.title)}`,
+      `DESCRIPTION:${escapeICSText(event.status)}\\n${escapeICSText(event.price)}`,
       'LOCATION:Las Vegas, NV',
       `DTSTAMP:${formatICSDate(now)}`,
       'END:VEVENT'
@@ -249,7 +259,7 @@ export default function EventsPage() {
     <div className="space-y-10 pb-10">
       {/* Hero section */}
       <section className="space-y-6">
-        <div className="relative w-full overflow-hidden rounded-[var(--rh-radius-lg)] border border-subtle bg-surface shadow-rh-soft">
+        <div className="relative w-full overflow-hidden rounded-[var(--rh-radius-lg)] border border-subtle bg-surface shadow-soft">
           {/* Background image + overlays */}
           <div className="pointer-events-none absolute inset-0">
             <Image
@@ -278,10 +288,10 @@ export default function EventsPage() {
               <Chip variant="cyan" size="sm" className="flex">Warehouse · Rooftop · Afterhours</Chip>
             </div>
             {/* Heading and blurb */}
-            <h1 className="text-3xl font-bold text-primary drop-shadow-lg sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold text-primary drop-shadow-strong sm:text-4xl md:text-5xl">
               Upcoming raves across Las Vegas
             </h1>
-            <p className="text-sm text-secondary drop-shadow-md">
+            <p className="text-sm text-secondary drop-shadow-medium">
               Secret afterhours, rooftops and warehouse nights all week.
             </p>
 

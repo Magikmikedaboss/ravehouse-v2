@@ -10,7 +10,7 @@ export default function AfterglowGallery() {
         title="Afterglow gallery"
         description="Flashes from the floor. Photos and aftermovies from recent raves."
         endSlot={
-          <Link href="/gallery" className="hover:text-white">
+          <Link href="/gallery" className="hover:text-primary">
             Open full gallery →
           </Link>        }
       />

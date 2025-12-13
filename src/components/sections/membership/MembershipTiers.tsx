@@ -97,13 +97,12 @@ export default function MembershipTiers() {
               </div>
 
               <ul className="mt-3 space-y-2 text-xs text-white/80">
-                {tier.perks.map((perk) => (
-                  <li key={perk} className="flex gap-2">
+                {tier.perks.map((perk, idx) => (
+                  <li key={`${tier.name}-${idx}`} className="flex gap-2">
                     <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-rh-pink-light" />
                     <span>{perk}</span>
                   </li>
-                ))}
-              </ul>
+                ))}              </ul>
             </div>
 
             <div className="border-t border-subtle p-4">

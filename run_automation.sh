@@ -25,7 +25,7 @@ fi
 if ! python -c "import openai" 2>/dev/null; then
     echo "📦 Installing required packages..."
     # Note: OpenAI v2.x has breaking changes from v1.x, ensure automation script is compatible
-    pip install openai==2.9.0 || {
+    pip install openai==2.11.0 || {
         echo "❌ ERROR: Failed to install required packages." >&2
         exit 1
     }

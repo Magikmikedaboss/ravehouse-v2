@@ -80,12 +80,12 @@ export default function SiteHeader() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[rgb(var(--rh-border-subtle))]/20 bg-[rgb(var(--rh-bg-card))]/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-subtle backdrop-blur bg-slate-100/90 dark:bg-black/80">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-4 md:gap-6 md:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <div className="flex flex-col leading-tight">
-            <span className="text-lg font-black tracking-wider bg-gradient-to-r from-rh-pink-light via-white to-rh-cyan bg-clip-text text-transparent">
+            <span className="text-lg font-black tracking-wider text-brand-gradient">
               RAVEHOUSE
             </span>
             <span className="text-[10px] font-bold tracking-[0.2em] text-rh-pink-light/80 uppercase">
@@ -106,18 +106,18 @@ export default function SiteHeader() {
                       <>
                         <NavigationMenu.Trigger className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                           active
-                            ? "bg-white dark:bg-black text-black dark:text-white shadow"
-                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white data-[state=open]:bg-black/10 dark:data-[state=open]:bg-white/10 data-[state=open]:text-black dark:data-[state=open]:text-white"
+                            ? "bg-surface text-primary shadow"
+                            : "text-secondary hover:bg-surface/10 hover:text-primary data-[state=open]:bg-surface/10 data-[state=open]:text-primary"
                         }`}>
                           {item.label}
                         </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="absolute top-full left-0 w-48 rounded-lg border border-black/10 dark:border-white/10 bg-white/90 dark:bg-black/90 backdrop-blur shadow-rh-medium z-50 p-2 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52">
+                        <NavigationMenu.Content className="absolute top-full left-0 w-48 rounded-lg border border-subtle bg-card/90 backdrop-blur shadow-rh-medium z-50 p-2 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52">
                           <div className="space-y-1">
                             {item.children.map((child) => (
                               <NavigationMenu.Link key={child.href} asChild>
                                 <Link
                                   href={child.href}
-                                  className="block px-3 py-2 text-xs text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition rounded-md focus:bg-black/10 dark:focus:bg-white/10 focus:text-black dark:focus:text-white focus:outline-none"
+                                  className="block px-3 py-2 text-xs text-secondary hover:bg-surface/10 hover:text-primary transition rounded-md focus:bg-surface/10 focus:text-primary focus:outline-none"
                                 >
                                   {child.label}
                                 </Link>
@@ -132,8 +132,8 @@ export default function SiteHeader() {
                           href={item.href}
                           className={`rounded-full px-3 py-1 text-xs font-medium transition ${
                             active
-                              ? "bg-white dark:bg-black text-black dark:text-white shadow"
-                              : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
+                              ? "bg-surface text-primary shadow"
+                              : "text-secondary hover:bg-surface/10 hover:text-primary"
                           }`}
                         >
                           {item.label}
@@ -167,7 +167,7 @@ export default function SiteHeader() {
           ref={toggleButtonRef}
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="ml-auto md:hidden relative z-50 rounded-lg p-2 text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition"
+          className="ml-auto md:hidden relative z-50 rounded-lg p-2 text-secondary hover:bg-surface/10 hover:text-primary transition"
           aria-label="Toggle mobile menu"
           aria-expanded={mobileMenuOpen}
         >
@@ -199,8 +199,8 @@ export default function SiteHeader() {
                         }}
                         className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
                           active
-                            ? "bg-white dark:bg-black text-black dark:text-white"
-                            : "text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white"
+                            ? "bg-surface text-primary"
+                            : "text-secondary hover:bg-surface/10 hover:text-primary"
                         }`}
                       >
                         {item.label}
@@ -211,7 +211,7 @@ export default function SiteHeader() {
                         onClick={() => setExpandedMobileItem(
                           expandedMobileItem === item.label ? null : item.label
                         )}
-                        className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/10 hover:text-black dark:hover:text-white transition"
+                        className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-secondary hover:bg-surface/10 hover:text-primary transition"
                         aria-expanded={expandedMobileItem === item.label}
                       >
                         {item.label}
@@ -237,7 +237,7 @@ export default function SiteHeader() {
                               setMobileMenuOpen(false);
                               setExpandedMobileItem(null);
                             }}
-                            className="block rounded-lg px-3 py-2 text-sm text-black/60 dark:text-white/60 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition"
+                            className="block rounded-lg px-3 py-2 text-sm text-secondary/80 hover:bg-surface/5 hover:text-primary transition"
                           >
                             {child.label}
                           </Link>
@@ -248,10 +248,10 @@ export default function SiteHeader() {
                 );
               })}
 
-              <div className="mt-4 flex flex-col gap-3 border-t border-black/10 dark:border-white/10 pt-4">
+              <div className="mt-4 flex flex-col gap-3 border-t border-subtle pt-4">
                 {/* Theme toggle - ISOLATED IN MOBILE MENU */}
                 <div className="flex items-center justify-between py-1">
-                  <span className="text-sm font-medium text-black/70 dark:text-white/70">Theme</span>
+                  <span className="text-sm font-medium text-secondary">Theme</span>
                   <div ref={mobileThemeToggleRef} className="relative z-10">
                     <ThemeToggle />
                   </div>

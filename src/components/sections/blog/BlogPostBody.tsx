@@ -98,7 +98,7 @@ export default function BlogPostBody({ post }: Props) {
                 </h3>
               ),
               p: ({ children }) => (
-                <p className="text-white/80 leading-relaxed mb-4">
+                <p className="text-secondary leading-relaxed mb-4">
                   {children}
                 </p>
               ),

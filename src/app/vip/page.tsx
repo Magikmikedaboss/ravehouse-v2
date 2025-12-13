@@ -70,19 +70,21 @@ export default function VipPage() {
       }
       
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));      
+      await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
+      // Reset form on success
+      e.currentTarget.reset();
+      setSelectedOption(null);
     } catch (error) {
       if (process.env.NODE_ENV !== 'production') {
         console.error('VIP application error:', error);
       }
       // TODO: Report to error tracking service in production
       setSubmitStatus('error');
-    } finally {      setIsSubmitting(false);
+    } finally {
+      setIsSubmitting(false);
     }
-  };
-
-  const chipOptions = [
+  };  const chipOptions = [
     { label: "Vegas local", variant: "pink" as const },
     { label: "Visiting for a weekend", variant: "cyan" as const },
     { label: "Birthday / celebration", variant: "orange" as const },

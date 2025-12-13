@@ -50,6 +50,11 @@ export default function NewsletterSignup() {
         >
           Join
         </Button>      </div>
+      {status === "error" && (
+        <div aria-live="assertive" aria-atomic="true">
+          <p className="text-xxs text-red-400">{errorMessage}</p>
+        </div>
+      )}
       {status === "success" && (
         <div aria-live="polite" aria-atomic="true">
           <p className="text-xxs text-rh-green">Thanks! Check your inbox.</p>

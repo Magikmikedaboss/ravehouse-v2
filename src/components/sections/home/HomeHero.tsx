@@ -51,13 +51,13 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
             
             {/* Main content */}
             <div className="flex-1 flex flex-col justify-center sm:absolute sm:left-4 sm:right-4 sm:top-1/2 sm:-translate-y-1/2 lg:left-8 lg:right-8">
-              <p className="text-xs uppercase tracking-widest text-white/70 font-medium mb-3 sm:mb-4">
+              <p className="text-xs uppercase tracking-widest text-secondary font-medium mb-3 sm:mb-4">
                 Underground parties for the nocturnal.
               </p>
               <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-primary leading-tight mb-4 sm:mb-6">
                 RAVEHOUSE<br />ENTERTAINMENT
               </h1>
-              <p className="max-w-lg text-sm text-white/90 leading-relaxed mb-6 sm:mb-8">
+              <p className="max-w-lg text-sm text-primary leading-relaxed mb-6 sm:mb-8">
                 Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
                 across Las Vegas. No fluff, just sweat and strobes.
               </p>
@@ -86,9 +86,9 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
         <Surface className="flex flex-col justify-between p-5">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs text-white/50">Warehouse Eclipse</p>
-              <h2 className="text-lg font-semibold text-white">This Saturday</h2>
-              <p className="mt-1 text-xs text-white/70">
+              <p className="text-xs text-muted">Warehouse Eclipse</p>
+              <h2 className="text-lg font-semibold text-primary">This Saturday</h2>
+              <p className="mt-1 text-xs text-secondary">
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
@@ -103,7 +103,7 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
                   {upcomingEvent ? `${upcomingEvent.spotsLeft} / ${upcomingEvent.capacity}` : '84 / 400'}
                 </span>
               </div>
-              <div className="mt-3 font-semibold text-white">
+              <div className="mt-3 font-semibold text-primary">
                 {upcomingEvent?.price || '$45 GA'}
               </div>
             </div>
@@ -118,12 +118,12 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
         </Surface>
 
         <Surface className="p-5">
-          <p className="text-xs text-white/60">This week at Ravehouse Entertainment</p>
-          <h2 className="mt-1 text-lg font-semibold text-white">
+          <p className="text-xs text-muted">This week at Ravehouse Entertainment</p>
+          <h2 className="mt-1 text-lg font-semibold text-primary">
             2 events · Rooftop &amp; Warehouse · <span className="text-rh-pink-light">Vegas Strip</span>
           </h2>
-          <p className="mt-2 text-xs text-white/60">
-            Tap into: <span className="font-medium text-white"><span className="text-rh-cyan">House</span> · <span className="text-rh-purple">Techno</span> · <span className="text-rh-orange">Bass</span></span>
+          <p className="mt-2 text-xs text-muted">
+            Tap into: <span className="font-medium text-primary"><span className="text-rh-cyan">House</span> · <span className="text-rh-purple">Techno</span> · <span className="text-rh-orange">Bass</span></span>
           </p>
           <ButtonLink
             href="/events"
@@ -135,21 +135,21 @@ export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
         </Surface>
 
         <Surface className="p-5">
-          <p className="text-xs text-white/60">Since 2019</p>
+          <p className="text-xs text-muted">Since 2019</p>
           <h2 className="mt-1 text-lg font-semibold">
             150+ Events Thrown
           </h2>
           <div className="mt-3 grid grid-cols-2 gap-4 text-center">
             <div>
               <div className="text-2xl font-bold text-rh-cyan">25K+</div>
-              <div className="text-xs text-white/60">Attendees</div>
+              <div className="text-xs text-muted">Attendees</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-rh-pink-light">6</div>
-              <div className="text-xs text-white/60">Years Running</div>
+              <div className="text-xs text-muted">Years Running</div>
             </div>
           </div>
-          <p className="mt-3 text-xs text-white/60">
+          <p className="mt-3 text-xs text-muted">
             Underground raves that keep Vegas dancing all night long.
           </p>
         </Surface>

@@ -13,7 +13,26 @@ const newsletterSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  // Validate input first
+  // Rate limiting first - check before any processing
+  const ip = extractClientIp(request);
+  
+  const rateLimitResult = await checkRateLimit(ip);
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { 
+        error: 'Too many requests',
+        retryAfter: rateLimitResult.retryAfter 
+      },
+      { 
+        status: 429,
+        headers: {
+          'Retry-After': rateLimitResult.retryAfter?.toString() || '60'
+        }
+      }
+    );
+  }
+
+  // Parse and validate input only after rate limit check passes
   let body;
   try {
     body = await request.json();
@@ -35,25 +54,6 @@ export async function POST(request: NextRequest) {
         }))
       },
       { status: 400 }
-    );
-  }
-
-  // Rate limiting
-  const ip = extractClientIp(request);
-
-  const rateLimitResult = await checkRateLimit(ip);
-  if (!rateLimitResult.allowed) {
-    return NextResponse.json(
-      { 
-        error: 'Too many requests',
-        retryAfter: rateLimitResult.retryAfter 
-      },
-      { 
-        status: 429,
-        headers: {
-          'Retry-After': rateLimitResult.retryAfter?.toString() || '60'
-        }
-      }
     );
   }
   // TODO: Implement newsletter signup

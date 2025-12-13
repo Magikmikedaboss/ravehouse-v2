@@ -65,7 +65,7 @@ export default function VenuesPage() {
   return (
     <div className="space-y-10 pb-10">
       {/* Hero */}
-      <section className="surface overflow-hidden shadow-rh-medium">
+      <section className="surface overflow-hidden shadow-medium">
         <div className="relative h-56 w-full bg-gradient-to-br from-rave-cyan via-rave-purple to-rave-pink">
           {/* subtle moving sheen */}
           <div className="pointer-events-none absolute inset-0 opacity-50">
@@ -89,13 +89,13 @@ export default function VenuesPage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/vip"
-              className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold text-primary shadow-rh-glow"
+              className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold text-primary shadow-glow"
             >
               Get VIP access
             </Link>
             <Link
               href="/events"
-              className="rounded-full border border-subtle bg-card/20 px-5 py-2.5 text-sm font-semibold text-primary shadow-rh-soft"
+              className="rounded-full border border-subtle bg-card/20 px-5 py-2.5 text-sm font-semibold text-primary shadow-soft"
             >
               See upcoming events
             </Link>
@@ -112,7 +112,7 @@ export default function VenuesPage() {
       {/* Controls + Preview */}
       <section className="grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
         {/* Filters + search */}
-        <div className="surface p-5 shadow-rh-soft">
+        <div className="surface p-5 shadow-soft">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-semibold">Choose your night</h2>
             <span className="text-xxs text-muted">{list.length} venues</span>
@@ -162,7 +162,7 @@ export default function VenuesPage() {
         </div>
 
         {/* Preview panel */}
-        <aside className="surface p-5 shadow-rh-soft">
+        <aside className="surface p-5 shadow-soft">
           <p className="text-xs text-muted">Atlas preview</p>
 
           {activeVenue ? (
@@ -207,7 +207,7 @@ export default function VenuesPage() {
               <div className="mt-4 grid gap-2">
                 <Link
                   href={`/venues/${activeVenue.slug}`}
-                  className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-primary shadow-rh-medium text-center"
+                  className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-primary shadow-medium text-center"
                 >
                   Open venue page
                 </Link>
@@ -215,13 +215,13 @@ export default function VenuesPage() {
                 <div className="grid grid-cols-2 gap-2">
                   <Link
                     href={`/events?venue=${encodeURIComponent(activeVenue.name)}`}
-                    className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
+                    className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-soft text-center"
                   >
                     Events here
                   </Link>
                   <Link
                     href={`/contact?subject=Stay%20near%20${encodeURIComponent(activeVenue.name)}`}
-                    className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
+                    className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-soft text-center"
                   >
                     Stay nearby
                   </Link>
@@ -253,7 +253,7 @@ export default function VenuesPage() {
             return (
               <article
                 key={v.slug}
-                className={`surface flex flex-col p-5 shadow-rh-soft transition-transform hover:-translate-y-0.5 ${
+                className={`surface flex flex-col p-5 shadow-soft transition-transform hover:-translate-y-0.5 ${
                   isActive ? "ring-2 ring-accent/30" : ""
                 }`}
                 onMouseEnter={() => setActiveSlug(v.slug)}
@@ -306,7 +306,7 @@ export default function VenuesPage() {
                 <div className="mt-4 grid gap-2">
                   <Link
                     href={`/venues/${v.slug}`}
-                    className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-primary shadow-rh-medium text-center"
+                    className="w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-primary shadow-medium text-center"
                   >
                     Open venue page
                   </Link>
@@ -314,14 +314,14 @@ export default function VenuesPage() {
                   <div className="grid grid-cols-2 gap-2">
                     <Link
                       href={`/events?venue=${encodeURIComponent(v.name)}`}
-                      className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
+                      className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-soft text-center"
                     >
                       Events here
                     </Link>
 
                     <Link
                       href={`/contact?subject=Stay%20near%20${encodeURIComponent(v.name)}`}
-                      className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-rh-soft text-center"
+                      className="rounded-full border border-subtle bg-card/20 px-4 py-2 text-xxs font-semibold text-primary shadow-soft text-center"
                     >
                       Stay nearby
                     </Link>
@@ -333,7 +333,7 @@ export default function VenuesPage() {
         </div>
 
         {/* Footer note */}
-        <div className="surface p-5 text-xs text-secondary shadow-rh-soft">
+        <div className="surface p-5 text-xs text-secondary shadow-soft">
           <h3 className="text-sm font-semibold text-primary">
             Want this to feel even more &quot;Ravehouse&quot;?
           </h3>

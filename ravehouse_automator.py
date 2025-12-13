@@ -347,8 +347,21 @@ IMPORTANT: Return only valid JSON array, no additional text."""
     
     def optimize_component(self, file_path: Path):
         """Optimize a single component with event-specific focus"""
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except FileNotFoundError:
+            print(f"Error: File not found: {file_path}")
+            return
+        except PermissionError:
+            print(f"Error: Permission denied accessing file: {file_path}")
+            return
+        except UnicodeDecodeError as e:
+            print(f"Error: Unicode decode error reading file: {file_path} - {e}")
+            return
+        except Exception as e:
+            print(f"Error: Unexpected error reading file: {file_path} - {e}")
+            raise
         
         prompt = f"""
         Optimize this rave/event website component:
@@ -848,19 +861,31 @@ def main():
     try:
         automator = RaveHouseAutomator(API_KEY)
     except Exception as e:
-        print(f"❌ Failed to initialize automator: {e}")
-        sys.exit(1)
+        print(f"Error initializing automator: {e}")
+        return
     
-    # Example configurations
-    # Dry run first to see costs
+    # Dry run configuration
     dry_config = RunConfiguration(
         dry_run=True,
         enable_accessibility=True,
-        enable_optimization=True,
-        enable_seo=False,  # Skip expensive SEO generation
+        enable_optimization=False,  # Skip heavy optimization
+        enable_seo=True,
         enable_performance=True,
-        cost_per_1k_tokens=0.03
+        max_retries=2
     )
+    
+    # Uncomment to define production configuration:
+    # prod_config = RunConfiguration(
+    #     dry_run=False,
+    #     enable_accessibility=True,
+    #     enable_optimization=False,  # Skip heavy optimization
+    #     enable_seo=True,
+    #     enable_performance=True,
+    #     max_retries=2
+    # )
+    
+    print("Running dry run first...")
+    automator.run_daily_maintenance(dry_config)    
     
     # Production run configuration
     prod_config = RunConfiguration(
@@ -871,9 +896,6 @@ def main():
         enable_performance=True,
         max_retries=2
     )
-    
-    print("Running dry run first...")
-    automator.run_daily_maintenance(dry_config)
     
     # Uncomment to run actual automation
     # print("\nRunning production automation...")

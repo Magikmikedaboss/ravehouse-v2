@@ -93,14 +93,17 @@ class CodeAutomator:
             suggestions = self.analyze_file(file_path)
             
             if suggestions and suggestions.get('priority') in ['high', 'medium']:
-                print(f"📋 Found {len(suggestions['improvements'])} improvements")
+                improvements = suggestions.get('improvements', [])
+                if not isinstance(improvements, list):
+                    improvements = []
                 
-                for improvement in suggestions['improvements']:
+                print(f"📋 Found {len(improvements)} improvements")
+                
+                for improvement in improvements:
                     success = self.apply_improvement(file_path, improvement)
                     if success:
-                        print(f"✅ Applied: {improvement['description']}")
-                        time.sleep(1)  # Rate limiting
-            
+                        print(f"✅ Applied: {improvement.get('description', 'No description')}")
+                        time.sleep(1)  # Rate limiting            
             self.processed_files.add(str(file_path))
             time.sleep(2)  # API rate limiting
     
@@ -147,12 +150,9 @@ class CodeAutomator:
                 print(f"Empty documentation response for {file_path}")
                 return
             
-            docs_path = file_path.parent / f"{file_path.stem}.md"
-            
-            with open(docs_path, 'w') as f:
+            docs_path = file_path.parent / f"{file_path.stem}.md"            
+            with open(docs_path, 'w', encoding='utf-8') as f:
                 f.write(docs)
-            
-            print(f"📝 Generated docs: {docs_path}")
         except openai.APIError as e:
             print(f"Doc generation error: {e}")
         except IOError as e:

@@ -1,6 +1,7 @@
 // src/components/sections/blog/BlogList.tsx
 
 import Link from "next/link";
+import { format } from "date-fns";
 import { BLOG_POSTS } from "@/lib/blog";
 import Surface from "@/components/ui/Surface";
 import Chip from "@/components/ui/Chip";
@@ -52,11 +53,7 @@ export default function BlogList({ selectedCategory = "All", view = "grid" }: Bl
               <div className="flex flex-1 flex-col justify-between p-4">
                 <div className="space-y-2">
                   <p className="text-xxs text-white/50">
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
+                    {format(new Date(post.date), "MMM d, yyyy")}
                   </p>
                   <p className="text-xs text-white/70 line-clamp-3">
                     {post.excerpt}

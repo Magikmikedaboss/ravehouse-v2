@@ -11,32 +11,28 @@ if (-not $env:OPENAI_API_KEY) {
     exit 1
 }
 # Check if Python packages are installed
-try {
-    python -c "import openai" 2>$null
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "📦 Installing required packages..." -ForegroundColor Yellow
-        pip install openai==2.9.0
-        if ($LASTEXITCODE -ne 0) {
-            Write-Host "❌ Error: Failed to install required packages" -ForegroundColor Red
-            exit 1
-        }
-    }
-} catch {
+$importCheck = python -c "import openai" 2>&1
+if ($LASTEXITCODE -ne 0) {
     Write-Host "📦 Installing required packages..." -ForegroundColor Yellow
-    pip install openai==2.9.0
-}# Run the automation script
-Write-Host "🤖 Running automated code improvements..." -ForegroundColor Green
+    pip install openai==2.11.0    if ($LASTEXITCODE -ne 0) {
+        Write-Host "❌ Error: Failed to install required packages" -ForegroundColor Red
+        exit 1
+    }
+}
 
-# Check if the Python automation script exists
-if (-not (Test-Path "ravehouse_automator.py")) {
-    Write-Host "❌ Error: ravehouse_automator.py not found in current directory" -ForegroundColor Red
-    Write-Host "Please ensure the automation script exists before running" -ForegroundColor Yellow
+# Run the automation script
+Write-Host "🤖 Running automated code improvements..." -ForegroundColor Green
+# Resolve the Python automation script path relative to this script's location
+$scriptPath = Join-Path $PSScriptRoot 'ravehouse_automator.py'
+if (-not (Test-Path $scriptPath)) {
+    Write-Host "❌ Error: ravehouse_automator.py not found at $scriptPath" -ForegroundColor Red
+    Write-Host "Please ensure the automation script exists in the same directory as this script" -ForegroundColor Yellow
     exit 1
 }
 
 # Execute the Python automation script
 Write-Host "🤖 Running Python automation script..." -ForegroundColor Green
-& python "ravehouse_automator.py"
+& python $scriptPath
 $pythonExitCode = $LASTEXITCODE
 
 if ($pythonExitCode -ne 0) {
@@ -120,5 +116,7 @@ if ($tscFailed -or $eslintFailed -or $auditFailed -or $eslintModified) {
     Write-Host "- Test changes in development" -ForegroundColor White
     Write-Host "- Deploy updates to staging" -ForegroundColor White
 }
-# Pause to see results
-Read-Host "Press Enter to continue..."
+# Pause to see results (only in interactive mode)
+if ($Host.UI.RawUI -and [Environment]::UserInteractive) {
+    Read-Host "Press Enter to continue..."
+}

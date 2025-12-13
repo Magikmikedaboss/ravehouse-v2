@@ -46,8 +46,8 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
             onClick={() => handleCategoryChange(category)}
             className={`rounded-full border px-3 py-1.5 transition ${
               active === category
-                ? "border-white bg-white text-black"
-                : "border-white/15 bg-white/10 text-white/90"
+                ? "border-primary bg-surface text-primary"
+                : "border-subtle bg-surface/10 text-secondary"
             }`}
           >
             {category}
@@ -55,7 +55,7 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
         ))}      </div>
 
       {/* Secondary controls: bump to text-xs minimum */}
-      <div className="flex items-center gap-2 text-xs text-white/60">
+      <div className="flex items-center gap-2 text-xs text-secondary/60">
         <button
           type="button"
           aria-pressed={currentView === "grid"}
@@ -63,8 +63,8 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
           onClick={() => handleViewChange("grid")}
           className={`rounded-full border px-3 py-1.5 transition ${
             currentView === "grid"
-              ? "border-white bg-white text-black"
-              : "border-white/15 bg-white/10 text-white/90"
+              ? "border-primary bg-surface text-primary"
+              : "border-subtle bg-surface/10 text-secondary"
           }`}
         >
           Grid
@@ -76,8 +76,8 @@ export default function BlogFilters({ selectedCategory: externalSelected, onCate
           onClick={() => handleViewChange("stack")}
           className={`rounded-full border px-3 py-1.5 transition ${
             currentView === "stack"
-              ? "border-white bg-white text-black"
-              : "border-white/15 bg-white/10 text-white/90"
+              ? "border-primary bg-surface text-primary"
+              : "border-subtle bg-surface/10 text-secondary"
           }`}
         >
           Stack

@@ -48,12 +48,12 @@ export async function POST(request: NextRequest) {
   let requestBody;
   try {
     requestBody = await request.json();
-} catch {
-  return NextResponse.json(
-    { error: 'Invalid JSON in request body' },
-    { status: 400 }
-  );
-}
+  } catch {
+    return NextResponse.json(
+      { error: 'Invalid JSON in request body' },
+      { status: 400 }
+    );
+  }
 
   // Validate request body with Zod
   const validationResult = membershipRequestSchema.safeParse(requestBody);

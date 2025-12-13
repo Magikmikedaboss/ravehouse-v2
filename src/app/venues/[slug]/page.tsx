@@ -72,11 +72,12 @@ export default function VenueDetailPage({
     : [venue.bestFor].filter(Boolean);
 
   const intensity = Math.round(clamp(Number(venue.intensity ?? 3), 1, 5)) as 1 | 2 | 3 | 4 | 5;
-  const intensityPct = (intensity / 5) * 100;  const vibeMeta: VibeMeta | null =
+  const intensityPct = (intensity / 5) * 100;
+  
+  const vibeMeta: VibeMeta | null =
     activeTag && VIBE_GLOSSARY[activeTag]
       ? { label: activeTag, note: VIBE_GLOSSARY[activeTag] }
       : null;
-
   return (
     <div className="space-y-10 pb-20">
       {/* Breadcrumbs */}
