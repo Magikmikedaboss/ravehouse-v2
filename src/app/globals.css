@@ -122,6 +122,10 @@
   .shadow-rh-pink {
     box-shadow: 0 8px 24px rgba(246, 104, 121, 0.4);
   }
+
+  .shadow-rh-glow-pink {
+    box-shadow: 0 0 35px rgba(246, 104, 121, 0.45);
+  }
   
   /* New colored shadow utilities */
   .shadow-rh-cyan-glow {
@@ -170,6 +174,15 @@
   .text-brand-orange { color: rgb(var(--rh-orange)); }
   .text-brand-purple { color: rgb(var(--rh-purple)); }
   .text-brand-green  { color: rgb(var(--rh-green)); }
+
+  /* Brand gradient text utility */
+  .text-brand-gradient {
+    background: linear-gradient(to right, rgb(var(--rh-pink-light)), rgb(var(--rh-text-primary)), rgb(var(--rh-cyan)));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 
   /* Font-size utilities for consistent sizing with relative units */
   .text-10 { font-size: 0.625rem; line-height: 1.2; }  /* 10px equivalent */

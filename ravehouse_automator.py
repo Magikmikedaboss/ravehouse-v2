@@ -130,14 +130,15 @@ class RaveHouseAutomator:
                 self.logger.exception(f"Batch {i+1} failed after all retries: {e}")
                 continue
         
-        self.logger.info(f"Analysis complete. Total estimated cost: ${total_estimated_cost:.4f}, API calls: {total_api_calls}")        # Return both results and usage data
+        self.logger.info(f"Analysis complete. Total estimated cost: ${total_estimated_cost:.4f}, API calls: {total_api_calls}")
+        
+        # Return both results and usage data
         return {
             "results": improvements,
             "api_calls": total_api_calls,
             "cost": total_estimated_cost,
             "tokens": total_api_calls * 1000  # Estimate tokens based on API calls
-        }
-    
+        }    
     def _create_batches(self, components: List[Path], batch_size: int) -> List[List[Path]]:
         """Split components into batches"""
         batches = []
@@ -780,11 +781,10 @@ IMPORTANT: Return only valid JSON array, no additional text."""
         report.total_estimated_cost = total_estimated_cost
         report.total_api_calls = total_api_calls
         
-        print(f"\n💰 Cost Estimate:")
+        print("\n💰 Cost Estimate:")
         print(f"   Enabled tasks: {len(enabled_tasks)}")
         print(f"   Estimated API calls: {total_api_calls}")
-        print(f"   Estimated cost: ${total_estimated_cost:.2f}")
-        
+        print(f"   Estimated cost: ${total_estimated_cost:.2f}")        
         if config.dry_run:
             print("\n🔍 DRY RUN - No actual API calls will be made")
         else:

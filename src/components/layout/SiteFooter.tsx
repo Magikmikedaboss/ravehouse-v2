@@ -7,16 +7,7 @@ export default function SiteFooter() {
     <footer className="border-t border-[rgb(var(--rh-border))] bg-[rgb(var(--rh-bg-card))]/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 text-sm md:flex-row md:items-start md:justify-between md:px-6 lg:px-8">
         <div className="space-y-2">
-          <div 
-            className="font-black text-lg tracking-wider"
-            style={{
-              color: 'white',
-              background: 'linear-gradient(to right, #ff6b9d, #ffffff, #00d4ff)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-          >
+          <div className="font-black text-lg tracking-wider text-brand-gradient">
             RAVEHOUSE
           </div>
           <p className="text-[rgb(var(--rh-text-secondary))]">Las Vegas underground party brand. No VIP ropes, just better nights.</p>

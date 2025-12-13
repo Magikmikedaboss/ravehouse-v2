@@ -25,10 +25,29 @@ const membershipRequestSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-// Rate limiting (before parsing to prevent abuse)
-let requestBody;
-try {
-  requestBody = await request.json();
+  // Rate limiting (before parsing to prevent abuse)
+  const ip = extractClientIp(request);
+  
+  try {
+    const rateLimitResult = await checkRateLimit(ip);
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded' },
+        { status: 429 }
+      );
+    }
+  } catch (error) {
+    console.error('Rate limiting error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+
+  // Parse and validate request body
+  let requestBody;
+  try {
+    requestBody = await request.json();
 } catch {
   return NextResponse.json(
     { error: 'Invalid JSON in request body' },

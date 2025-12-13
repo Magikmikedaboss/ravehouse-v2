@@ -27,7 +27,13 @@ export async function POST(request: NextRequest) {
   const validation = newsletterSchema.safeParse(body);
   if (!validation.success) {
     return NextResponse.json(
-      { error: 'Invalid email', details: validation.error.flatten() },
+      { 
+        error: 'Invalid email', 
+        details: validation.error.issues.map((issue) => ({
+          field: issue.path.join('.'),
+          message: issue.message
+        }))
+      },
       { status: 400 }
     );
   }

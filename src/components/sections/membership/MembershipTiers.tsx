@@ -70,8 +70,8 @@ export default function MembershipTiers() {
             key={tier.name}
             className={`flex h-full flex-col justify-between border ${
               tier.highlighted
-                ? "border-rh-pink-light/70 shadow-[0_0_35px_rgba(246,104,121,0.45)]"
-                : "border-white/10"
+                ? "border-rh-pink-light/70 shadow-rh-glow-pink"
+                : "border-subtle"
             }`}
           >
             <div className="space-y-3 p-5">
@@ -106,14 +106,14 @@ export default function MembershipTiers() {
               </ul>
             </div>
 
-            <div className="border-t border-white/10 p-4">
+            <div className="border-t border-subtle p-4">
               <button
                 disabled={true}
                 aria-label={`Join ${tier.name} coming soon - not yet available`}
                 className={`w-full rounded-full px-3 py-2 text-xs font-semibold transition ${
                   tier.highlighted
-                    ? "bg-white text-black opacity-50"
-                    : "bg-white/5 text-white opacity-50"
+                    ? "bg-surface text-primary opacity-50"
+                    : "bg-surface/5 text-primary opacity-50"
                 }`}
               >
                 Join {tier.name} (coming soon)

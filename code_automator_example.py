@@ -15,8 +15,18 @@ class CodeAutomator:
         
     def analyze_file(self, file_path):
         """Send file to ChatGPT for analysis"""
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except FileNotFoundError:
+            print(f"Error: File not found - {file_path}")
+            return None
+        except PermissionError:
+            print(f"Error: Permission denied reading file - {file_path}")
+            return None
+        except OSError as e:
+            print(f"Error: Failed to read file {file_path}: {e}")
+            return None
         
         prompt = f"""
         Analyze this Next.js React component and suggest improvements:
@@ -102,8 +112,18 @@ class CodeAutomator:
     
     def generate_page_docs(self, file_path):
         """Generate documentation for a page component"""
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except FileNotFoundError:
+            print(f"Error: File not found - {file_path}")
+            return
+        except PermissionError:
+            print(f"Error: Permission denied reading file - {file_path}")
+            return
+        except OSError as e:
+            print(f"Error: Failed to read file {file_path}: {e}")
+            return
         
         prompt = f"""
         Generate documentation for this Next.js page component:
