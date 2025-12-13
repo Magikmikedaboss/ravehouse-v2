@@ -10,10 +10,9 @@ export default function AfterglowGallery() {
         title="Afterglow gallery"
         description="Flashes from the floor. Photos and aftermovies from recent raves."
         endSlot={
-          <Link href="/gallery" className="hover:text-white">
+          <Link href="/gallery" className="hover:text-primary">
             Open full gallery →
-          </Link>
-        }
+          </Link>        }
       />
 
       <Surface className="overflow-hidden p-4">
@@ -21,8 +20,7 @@ export default function AfterglowGallery() {
           {Array.from({ length: 5 }).map((_, i) => (
             <div
               key={i}
-              className="h-32 min-w-[180px] flex-1 rounded-2xl bg-gradient-to-br from-rave-pink/40 via-rave-orange/40 to-black"
-            />
+              className="h-32 min-w-[180px] flex-1 rounded-2xl bg-gradient-to-br from-rh-pink-light/40 via-rh-pink-dark/40 to-black"            />
           ))}
         </div>
       </Surface>

@@ -39,7 +39,7 @@ export default function TicketsPage() {
     <div className="space-y-10 pb-10">
       {/* PAGE HEADER */}
       <section className="space-y-4">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
+        <p className="text-xxs uppercase tracking-[0.3em] text-white/50">
           My access
         </p>
         <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
@@ -52,20 +52,15 @@ export default function TicketsPage() {
               you&apos;ve unlocked with Ravehouse Entertainment. Show this screen at the door, keep
               brightness high for scan.
             </p>
-            <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
-              <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Las Vegas · PT</Chip>
-              <Chip className="bg-rave-orange/15 border-rave-orange/30">
-                Show this screen at the door
-              </Chip>
-              <Chip className="bg-rave-purple/15 border-rave-purple/30">
-                Keep brightness high for scan
-              </Chip>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Chip variant="cyan"   size="sm">Las Vegas · PT</Chip>
+              <Chip variant="orange" size="sm">Show this screen at the door</Chip>
+              <Chip variant="purple" size="sm">Keep brightness high for scan</Chip>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-xs">
-            <Chip className="bg-rave-pink/25 border-none text-[11px]">
-              2 active tickets tonight
-            </Chip>            <ButtonLink href="/tickets" variant="secondary" className="px-4 py-2">
+          <div className="flex flex-wrap items-center gap-3">
+            <Chip variant="pink" size="sm">2 active tickets tonight</Chip>
+            <ButtonLink href="/tickets" variant="secondary" className="px-3 py-1 text-xxs">
               Export as PDF wallet
             </ButtonLink>
           </div>
@@ -74,19 +69,19 @@ export default function TicketsPage() {
 
       {/* MAIN BODY */}
       <section className="space-y-4">
-        <div className="flex items-center justify-between text-xs text-white/70">
+        <div className="flex items-center justify-between text-xs text-secondary">
           <div className="flex gap-2">
-            <button className="rounded-full bg-white text-black px-3 py-1 font-medium">
+            <button className="rounded-full bg-primary text-[rgb(var(--rh-bg-page))] px-2.5 py-1 font-medium">
               Upcoming
             </button>
-            <button className="rounded-full border border-white/15 bg-white/5 px-3 py-1">
+            <button className="rounded-full border border-subtle bg-surface/10 px-2.5 py-1 text-secondary hover:bg-surface/20 hover:text-primary">
               Past nights
             </button>
-            <button className="rounded-full border border-white/15 bg-white/5 px-3 py-1">
+            <button className="rounded-full border border-subtle bg-surface/10 px-2.5 py-1 text-secondary hover:bg-surface/20 hover:text-primary">
               Transfers
             </button>
           </div>
-          <button className="text-white/60 hover:text-white">
+          <button className="text-secondary hover:text-primary">
             Show all as stack
           </button>
         </div>
@@ -107,16 +102,13 @@ export default function TicketsPage() {
                 >
                   {/* Ticket info */}
                   <div className="space-y-2">
-                    <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-white/60">
-                      <Chip className="bg-rave-pink/20 border-rave-pink/40">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xxs text-white/60">
+                      <Chip variant="pink">
                         {ticket.when}
                       </Chip>
                       <Chip
-                        className={
-                          index === 0
-                            ? "bg-green-500/15 border-green-400/30 text-green-300"
-                            : "bg-rave-cyan/20 border-none text-rave-cyan/80"
-                        }
+                        variant={index === 0 ? "success" : "cyan"}
+                        size="sm"
                       >
                         {index === 0 ? "Checked in early" : "Upcoming · Not scanned"}
                       </Chip>
@@ -126,7 +118,7 @@ export default function TicketsPage() {
                       {ticket.title}
                     </h2>
 
-                    <div className="grid gap-2 text-[11px] text-white/70 sm:grid-cols-3">
+                    <div className="grid gap-2 text-xxs text-white/70 sm:grid-cols-3">
                       <div>
                         <p className="text-white/50">Entry window</p>
                         <p className="mt-0.5">{ticket.entryWindow}</p>
@@ -141,17 +133,18 @@ export default function TicketsPage() {
                       </div>
                     </div>
 
-                    <p className="mt-1 text-[11px] text-white/60">
+                    <p className="mt-1 text-xxs text-white/60">
                       {index === 0
                         ? "Admit 1 · No re-entry · 21+ · Bring valid ID. Location drops 3h before doors."
                         : "Host will text with booth arrival details. Bottle minimum applies."}
                     </p>
 
-                    <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-white/70">
+                    <div className="mt-2 flex flex-wrap gap-2 text-xxs text-white/70">
                       {ticket.tags.map((t) => (
                         <Chip
                           key={t}
-                          className="bg-white/5 border-white/10 text-[11px]"
+                          className="bg-white/10 border-white/15 text-white"
+                          size="sm"
                         >
                           {t}
                         </Chip>
@@ -164,7 +157,7 @@ export default function TicketsPage() {
                           key={action}
                           href="#"
                           variant={i === 0 ? "secondary" : "primary"}
-                          className="px-3 py-1 text-[11px]"
+                          className="px-3 py-1 text-xxs"
                         >
                           {action}
                         </ButtonLink>
@@ -173,13 +166,12 @@ export default function TicketsPage() {
                   </div>
 
                   {/* Right mini card: barcode + meta */}
-                  <div className="flex flex-col justify-between rounded-2xl bg-black/40 p-3 text-xs">
+                  <div className="flex flex-col justify-between rounded-2xl bg-surface/40 p-3 text-xs">
                     <div>
-                      <p className="text-[11px] text-white/50">
+                      <p className="text-xxs text-white/50">
                         Venue drop: {index === 0 ? "10:00PM" : "Skyline Tower · Strip"}
                       </p>
-                      <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rave-pink/30 via-rave-purple/30 to-black/80 flex items-center justify-center">
-                        {Array.from({ length: 18 }).map((_, idx) => (
+                      <div className="mt-2 h-20 rounded-xl bg-gradient-to-br from-rh-pink/30 via-rh-purple/30 to-black/80 flex items-center justify-center">                        {Array.from({ length: 18 }).map((_, idx) => (
                           <div
                             key={idx}
                             className="w-[3px] rounded-full bg-black/80"
@@ -189,12 +181,12 @@ export default function TicketsPage() {
                           />
                         ))}
                       </div>
-                      <p className="mt-2 text-[11px] text-white/60">
+                      <p className="mt-2 text-xxs text-white/60">
                         Door staff will scan either code. Keep this open in line.
                       </p>
                     </div>
 
-                    <div className="mt-3 flex items-center justify-between text-[11px] text-white/60">
+                    <div className="mt-3 flex items-center justify-between text-xxs text-white/60">
                       <div>
                         <p className="text-white/40">Ticket ID</p>
                         <p className="font-mono text-xs text-white">{ticket.id}</p>
@@ -227,7 +219,7 @@ export default function TicketsPage() {
                     How deep you&apos;ve gone into the underground this year.
                   </h3>
                 </div>
-                <Chip className="bg-rave-orange/15 border-rave-orange/30 text-[11px]">
+                <Chip variant="orange">
                   Member since 2023
                 </Chip>
               </div>
@@ -247,18 +239,17 @@ export default function TicketsPage() {
                 </div>
               </div>
 
-              <p className="text-[11px] text-white/60">
+              <p className="text-xxs text-white/60">
                 3 more nights and you hit your next status.
               </p>
 
-              <div className="flex gap-2 text-[11px]">
-                <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
+              <div className="flex gap-2 text-xxs">
+                <button className="flex-1 rounded-full bg-white/5 px-2.5 py-1 text-center text-white/75">
                   Local
                 </button>
-                <button className="flex-1 rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-3 py-1 text-center text-black font-semibold">
-                  Glow
+                <button className="flex-1 rounded-full bg-gradient-to-r from-rh-pink to-rh-orange px-2.5 py-1 text-center text-white font-semibold">                  Glow
                 </button>
-                <button className="flex-1 rounded-full bg-white/5 px-3 py-1 text-center text-white/75">
+                <button className="flex-1 rounded-full bg-white/5 px-2.5 py-1 text-center text-white/75">
                   Afterhours
                 </button>
               </div>
@@ -269,11 +260,11 @@ export default function TicketsPage() {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-xs text-white/60">Ticket perks</p>
-                  <h3 className="mt-1 text-sm font-semibold text-white">
+                  <h3 className="mt-2 text-sm font-semibold text-white">
                     Your tickets are more than barcodes. Unlock extras as you go.
                   </h3>
                 </div>
-                <button className="text-[11px] text-white/60 hover:text-white">
+                <button className="text-xxs text-white/60 hover:text-white">
                   Manage
                 </button>
               </div>
@@ -281,27 +272,27 @@ export default function TicketsPage() {
               <div className="grid gap-3 text-xs md:grid-cols-3">
                 <div>
                   <p className="text-white/50">Skip-line tokens</p>
-                  <p className="mt-1 text-lg font-semibold text-white">2</p>
-                  <p className="text-[11px] text-white/60">Available</p>
+                  <p className="mt-2 text-lg font-semibold text-white">2</p>
+                  <p className="text-xxs text-white/60">Available</p>
                 </div>
                 <div>
                   <p className="text-white/50">Guestlist credits</p>
-                  <p className="mt-1 text-lg font-semibold text-white">1</p>
-                  <p className="text-[11px] text-white/60">For this month</p>
+                  <p className="mt-2 text-lg font-semibold text-white">1</p>
+                  <p className="text-xxs text-white/60">For this month</p>
                 </div>
                 <div>
                   <p className="text-white/50">Free drink chips</p>
-                  <p className="mt-1 text-lg font-semibold text-white">
+                  <p className="mt-2 text-lg font-semibold text-white">
                     0 <span className="text-xs text-white/60">→ earn 2 more nights</span>
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 text-[11px]">
-                <button className="rounded-full bg-white/10 px-3 py-1">
+              <div className="flex flex-wrap gap-2 text-xxs">
+                <button className="rounded-full bg-white/10 px-2.5 py-1 text-white/80">
                   Apply skip-line to Eclipse
                 </button>
-                <button className="rounded-full bg-white/10 px-3 py-1">
+                <button className="rounded-full bg-white/10 px-2.5 py-1 text-white/80">
                   Save perks for afterhours
                 </button>
               </div>
@@ -321,7 +312,7 @@ export default function TicketsPage() {
                   Add all
                 </ButtonLink>
               </div>
-              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2 text-[11px] text-white/70">
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/5 px-3 py-2 text-xxs text-white/70">
                 <div>
                   <p className="font-medium text-white">
                     Turn on &quot;Door alert&quot; notifications?
@@ -330,7 +321,7 @@ export default function TicketsPage() {
                     We&apos;ll nudge you 20 minutes before your entry window.
                   </p>
                 </div>
-                <button className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-black">
+                <button className="rounded-full bg-white px-2.5 py-1 text-xxs font-semibold text-black">
                   Enable
                 </button>
               </div>

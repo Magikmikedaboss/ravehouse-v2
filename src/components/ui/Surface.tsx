@@ -8,7 +8,7 @@ type SurfaceProps = {
 export default function Surface({ children, className = "", ...props }: SurfaceProps) {
   return (
     <div
-      className={`rounded-3xl bg-background/80 border border-white/5 shadow-card backdrop-blur ${className}`}
+      className={`rounded-[var(--rh-radius-lg)] bg-[rgb(var(--rh-bg-card))] border border-[rgb(var(--rh-border-subtle))]/20 shadow-rh-soft backdrop-blur ${className}`}
       {...props}
     >
       {children}

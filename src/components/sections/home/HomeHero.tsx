@@ -4,50 +4,79 @@ import { ButtonLink } from "@/components/ui/Button";
 import Chip from "@/components/ui/Chip";
 import Surface from "@/components/ui/Surface";
 
-export default function HomeHero() {
+type UpcomingEvent = {
+  spotsLeft: number;
+  capacity: number;
+  price: string;
+  title?: string;
+  venue?: string;
+  date?: string;
+};
+
+type HomeHeroProps = {
+  upcomingEvent?: UpcomingEvent;
+};
+
+export default function HomeHero({ upcomingEvent }: HomeHeroProps) {
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
       {/* Main hero card */}
-      <Surface className="overflow-hidden">
-        <div className="relative h-80 w-full sm:h-[420px]">
-          {/* TODO: swap with your real hero image */}
+      <Surface className="relative overflow-hidden">
+        {/* Background image - responsive height */}
+        <div className="relative h-[400px] sm:h-[480px] w-full">
           <Image
-            src="/images/hero-warehouse.jpg"
+            src="/images/events/vecteezy_crowded-dance-floor-illuminated-by-disco-balls-and-colorful_71852730.jpeg"
             alt="Warehouse crowd at Ravehouse Entertainment"
             fill
-            className="object-cover"
+            className="object-cover object-[center_35%]"
+            priority
+            fetchPriority="high"
+            sizes="100vw"
           />
-          <div className="absolute inset-x-4 top-4 flex justify-between text-xs text-white/80">
-            <Chip className="bg-black/60 border-white/20">
-              Next up: Warehouse Eclipse
-            </Chip>
-            <Chip className="bg-black/60 border-white/20">
-              Las Vegas, NV · Secret warehouse
-            </Chip>
-          </div>
+          {/* Gradient overlay - responsive to theme */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgb(var(--rh-bg-page))]/70 via-[rgb(var(--rh-bg-page))]/20 to-transparent" />
         </div>
 
-        <div className="p-6 sm:p-8">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-white/50">
-            Underground parties for the nocturnal.
-          </p>
-          <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
-            RAVEHOUSE ENTERTAINMENT
-          </h1>
-          <p className="mt-3 max-w-xl text-sm text-white/70">
-            Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
-            across Las Vegas. No fluff, just sweat and strobes.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <ButtonLink href="/events">See Upcoming Raves</ButtonLink>
-            <ButtonLink href="/tickets" variant="secondary">
-              Join Guestlist
-            </ButtonLink>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-            <Chip className="bg-rave-pink/15 border-rave-pink/30">This Friday · 2AM – Sunrise</Chip>
-            <Chip className="bg-rave-cyan/15 border-rave-cyan/30">Location drops day-of only</Chip>
-            <Chip className="bg-rave-purple/15 border-rave-purple/30">21+ · Techno, house, bass</Chip>
+        {/* Mobile: stacked layout | Desktop: absolute positioning */}
+        <div className="absolute inset-0 p-4 sm:p-6 lg:p-8">
+          
+          {/* Mobile: Normal flow | Desktop: Positioned layout */}
+          <div className="flex flex-col h-full justify-between sm:block sm:h-auto">
+            
+            {/* Top chips */}
+            <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
+              <Chip variant="pink" size="sm">Next up: Warehouse Eclipse</Chip>
+              <Chip variant="cyan" size="sm">Las Vegas, NV · Secret warehouse</Chip>
+            </div>
+            
+            {/* Main content */}
+            <div className="flex-1 flex flex-col justify-center sm:absolute sm:left-4 sm:right-4 sm:top-1/2 sm:-translate-y-1/2 lg:left-8 lg:right-8">
+              <p className="text-xs uppercase tracking-widest text-secondary font-medium mb-3 sm:mb-4">
+                Underground parties for the nocturnal.
+              </p>
+              <h1 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-primary leading-tight mb-4 sm:mb-6">
+                RAVEHOUSE<br />ENTERTAINMENT
+              </h1>
+              <p className="max-w-lg text-sm text-primary leading-relaxed mb-6 sm:mb-8">
+                Dive into neon-soaked warehouses, late-night rooftops and off-grid sound systems
+                across Las Vegas. No fluff, just sweat and strobes.
+              </p>
+              
+              <div className="flex flex-wrap gap-3">
+                <ButtonLink href="/events">See Upcoming Raves</ButtonLink>
+                <ButtonLink href="/tickets" variant="secondary">Join Guestlist</ButtonLink>
+              </div>
+            </div>
+            
+            {/* Bottom chips */}
+            <div className="sm:absolute sm:bottom-4 sm:left-4 sm:right-4 lg:bottom-8 lg:left-8 lg:right-8">
+              <div className="flex flex-wrap gap-2">
+                <Chip variant="orange" size="sm">This Friday · 2AM – Sunrise</Chip>
+                <Chip variant="purple" size="sm">Location drops day-of only</Chip>
+                <Chip variant="green" size="sm">21+ · Techno, house, bass</Chip>
+              </div>
+            </div>
+            
           </div>
         </div>
       </Surface>
@@ -57,27 +86,31 @@ export default function HomeHero() {
         <Surface className="flex flex-col justify-between p-5">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs text-white/50">Warehouse Eclipse</p>
-              <h2 className="text-lg font-semibold">This Saturday</h2>
-              <p className="mt-1 text-xs text-white/60">
+              <p className="text-xs text-muted">Warehouse Eclipse</p>
+              <h2 className="text-lg font-semibold text-primary">This Saturday</h2>
+              <p className="mt-1 text-xs text-secondary">
                 11:30PM – Late · Downtown LV · Secret lineup
               </p>
-              <div className="mt-2 flex flex-wrap gap-2 text-[11px]">
-                <Chip className="bg-rave-pink/20 border-transparent">Techno</Chip>
-                <Chip className="bg-rave-orange/20 border-transparent">Warehouse</Chip>
-                <Chip className="bg-rave-cyan/20 border-transparent">Secret lineup</Chip>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <Chip variant="pink" size="sm">Techno</Chip>
+                <Chip variant="cyan" size="sm">Warehouse</Chip>
+                <Chip variant="orange" size="sm">Secret lineup</Chip>
               </div>
             </div>
             <div className="text-right text-sm">
-              <div className="rounded-full bg-white/5 px-3 py-1 text-xs text-white/60">
-                Spots left: <span className="font-semibold text-rave-cyan">84 / 400</span>
+              <div className="rounded-full bg-surface/10 px-3 py-1 text-xs text-secondary">
+                Spots left: <span className="font-semibold text-blue-400">
+                  {upcomingEvent ? `${upcomingEvent.spotsLeft} / ${upcomingEvent.capacity}` : '84 / 400'}
+                </span>
               </div>
-              <div className="mt-3 font-semibold">$45 GA</div>
+              <div className="mt-3 font-semibold text-primary">
+                {upcomingEvent?.price || '$45 GA'}
+              </div>
             </div>
           </div>
           <ButtonLink
             href="/events/warehouse-eclipse"
-            className="mt-4 w-full justify-center bg-white text-black"
+            className="mt-4 w-full justify-center"
             variant="secondary"
           >
             View Event
@@ -85,37 +118,38 @@ export default function HomeHero() {
         </Surface>
 
         <Surface className="p-5">
-          <p className="text-xs text-white/60">This week at Ravehouse Entertainment</p>
-          <h2 className="mt-1 text-lg font-semibold">
-            2 events · Rooftop &amp; Warehouse · Vegas Strip
+          <p className="text-xs text-muted">This week at Ravehouse Entertainment</p>
+          <h2 className="mt-1 text-lg font-semibold text-primary">
+            2 events · Rooftop &amp; Warehouse · <span className="text-rh-pink-light">Vegas Strip</span>
           </h2>
-          <p className="mt-2 text-xs text-white/60">
-            Tap into: <span className="font-medium">House · Techno · Bass</span>
+          <p className="mt-2 text-xs text-muted">
+            Tap into: <span className="font-medium text-primary"><span className="text-rh-cyan">House</span> · <span className="text-rh-purple">Techno</span> · <span className="text-rh-orange">Bass</span></span>
           </p>
           <ButtonLink
             href="/events"
-            className="mt-4 bg-gradient-to-r from-rave-cyan to-rave-purple text-black"
+            className="mt-4"
+            variant="primary"
           >
             Free RSVP available
           </ButtonLink>
         </Surface>
 
         <Surface className="p-5">
-          <p className="text-xs text-white/60">Since 2019</p>
+          <p className="text-xs text-muted">Since 2019</p>
           <h2 className="mt-1 text-lg font-semibold">
             150+ Events Thrown
           </h2>
           <div className="mt-3 grid grid-cols-2 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-rave-cyan">25K+</div>
-              <div className="text-xs text-white/60">Attendees</div>
+              <div className="text-2xl font-bold text-rh-cyan">25K+</div>
+              <div className="text-xs text-muted">Attendees</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-rave-pink">6</div>
-              <div className="text-xs text-white/60">Years Running</div>
+              <div className="text-2xl font-bold text-rh-pink-light">6</div>
+              <div className="text-xs text-muted">Years Running</div>
             </div>
           </div>
-          <p className="mt-3 text-xs text-white/60">
+          <p className="mt-3 text-xs text-muted">
             Underground raves that keep Vegas dancing all night long.
           </p>
         </Surface>

@@ -1,5 +1,9 @@
 // src/app/vip/page.tsx
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import Chip from "@/components/ui/Chip";
 
 const vipPlans = [
   {
@@ -41,11 +45,57 @@ const vipPlans = [
 ];
 
 export default function VipPage() {
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        instagram: formData.get('instagram'),
+        details: formData.get('details'),
+        selectedOption: selectedOption
+      };
+
+      // TODO: Replace with actual API endpoint
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('VIP application data:', data);
+      }
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setSubmitStatus('success');
+      // Reset form on success
+      e.currentTarget.reset();
+      setSelectedOption(null);
+    } catch (error) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('VIP application error:', error);
+      }
+      // TODO: Report to error tracking service in production
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };  const chipOptions = [
+    { label: "Vegas local", variant: "pink" as const },
+    { label: "Visiting for a weekend", variant: "cyan" as const },
+    { label: "Birthday / celebration", variant: "orange" as const },
+    { label: "Corporate / brand group", variant: "purple" as const }
+  ];
+
   return (
     <div className="space-y-10 pb-10">
       {/* Hero */}
       <section className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
-        <article className="surface overflow-hidden">
+        <article className="surface overflow-hidden shadow-rh-medium">
           <div className="h-64 w-full bg-gradient-to-br from-rave-pink via-rave-purple to-rave-cyan" />
           <div className="p-6 sm:p-8">
             <p className="text-xs uppercase tracking-[0.25em] text-white/60">
@@ -58,30 +108,30 @@ export default function VipPage() {
               Skip the line, own the booth, and lock in the best spots at our underground
               warehouses and partner venues across Las Vegas.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="#apply"
-                className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold shadow-glow"
+                className="rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-5 py-2.5 text-sm font-semibold shadow-rh-glow"
               >
                 Join VIP Waitlist
               </Link>
               <Link
                 href="#perks"
-                className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white/90"
+                className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white/90 shadow-rh-soft"
               >
                 View VIP Perks
               </Link>
             </div>
-            <div className="mt-4 flex flex-wrap gap-2 text-[11px] text-white/50">
-              <span className="chip bg-rave-pink/15 border-rave-pink/30">Priority entry at all events</span>
-              <span className="chip bg-rave-cyan/15 border-rave-cyan/30">Dedicated host &amp; bottle service</span>
-              <span className="chip bg-rave-purple/15 border-rave-purple/30">Local venue deals all week</span>
+            <div className="mt-4 flex flex-wrap gap-2 text-xxs text-white/50">
+              <Chip variant="pink">Priority entry at all events</Chip>
+              <Chip variant="cyan">Dedicated host &amp; bottle service</Chip>
+              <Chip variant="purple">Local venue deals all week</Chip>
             </div>
           </div>
         </article>
 
         <div className="space-y-4">
-          <div className="surface p-5">
+          <div className="surface p-5 shadow-rh-soft">
             <p className="text-xs text-white/50">Tonight: VIP at Warehouse Eclipse</p>
             <h3 className="mt-1 text-lg font-semibold">Front-row booth</h3>
             <p className="mt-1 text-xs text-white/60">
@@ -92,18 +142,18 @@ export default function VipPage() {
               <span>From $480 / table</span>
               <span className="text-white/60">VIP tables left: 3 / 12</span>
             </div>
-            <button className="mt-4 w-full rounded-full bg-white px-4 py-2 text-xs font-semibold text-black">
+            <button className="mt-4 w-full rounded-full bg-card border border-primary/20 px-4 py-2 text-xs font-semibold text-primary shadow-rh-soft">
               Reserve table
             </button>
           </div>
 
-          <div className="surface p-5">
+          <div className="surface p-5 shadow-rh-soft">
             <p className="text-xs text-white/50">Local venue partners</p>
             <h3 className="mt-1 text-lg font-semibold">Use your VIP status off-warehouse</h3>
             <p className="mt-2 text-xs text-white/60">
               Strip rooftops, downtown lounges and afterhours dens in one network.
             </p>
-            <button className="mt-4 w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-black">
+            <button className="mt-4 w-full rounded-full bg-gradient-to-r from-rave-cyan to-rave-purple px-4 py-2 text-xs font-semibold text-black shadow-rh-medium">
               See venue map
             </button>
           </div>
@@ -119,20 +169,20 @@ export default function VipPage() {
         </p>
 
         <div className="grid gap-4 md:grid-cols-3">
-          <div className="surface p-4 text-sm">
+          <div className="surface p-4 text-sm shadow-rh-soft">
             <h3 className="text-sm font-semibold">Built for crews, hosts &amp; heavy dancers.</h3>
             <p className="mt-2 text-xs text-white/70">
               Host friends from out of town, celebrate a win, or just refuse to wait in line.
               Our team handles entries, upgrades and late-night moves while you stay on the floor.
             </p>
           </div>
-          <div className="surface p-4 text-sm">
+          <div className="surface p-4 text-sm shadow-rh-soft">
             <h3 className="text-sm font-semibold">Zero-wait entry</h3>
             <p className="mt-2 text-xs text-white/70">
               Private check-in lane &amp; direct host contact for every event.
             </p>
           </div>
-          <div className="surface p-4 text-sm">
+          <div className="surface p-4 text-sm shadow-rh-soft">
             <h3 className="text-sm font-semibold">Sound-first rooms</h3>
             <p className="mt-2 text-xs text-white/70">
               VIP spots tuned around the system, not away from it.
@@ -150,7 +200,7 @@ export default function VipPage() {
 
         <div className="grid gap-4 md:grid-cols-3">
           {vipPlans.map((plan) => (
-            <article key={plan.name} className="surface flex flex-col p-5">
+            <article key={plan.name} className="surface flex flex-col p-5 shadow-rh-soft">
               <div className="flex items-baseline justify-between gap-2">
                 <div>
                   <h3 className="text-sm font-semibold">{plan.name}</h3>
@@ -163,7 +213,7 @@ export default function VipPage() {
                   <li key={b}>• {b}</li>
                 ))}
               </ul>
-              <button className="mt-4 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black">
+              <button className="mt-4 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black shadow-rh-soft">
                 {plan.cta}
               </button>
             </article>
@@ -177,7 +227,7 @@ export default function VipPage() {
           <h2 className="text-lg font-semibold">How VIP nights work</h2>
           <ol className="space-y-3 text-sm text-white/70">
             <li>
-              <span className="font-semibold text-white">1. Tell us how you rave.</span>{" "}
+              <span className="font-semibold text-primary">1. Tell us how you rave.</span>{" "}
               Share your crew size, favorite sounds and if you&apos;re a Vegas local or
               visiting.
             </li>
@@ -194,58 +244,89 @@ export default function VipPage() {
           </ol>
         </div>
 
-        <form className="surface space-y-4 p-5">
+        <form className="surface space-y-4 p-5 shadow-rh-medium" onSubmit={handleSubmit}>
           <h3 className="text-sm font-semibold">Apply for VIP access</h3>
           <p className="text-xs text-white/70">
             Drop your details and our team will text you back within 24 hours with options.
           </p>
 
+          {submitStatus === 'success' && (
+            <div className="rounded-lg bg-green-500/20 border border-green-500/40 p-3 text-xs text-green-200">
+              Application submitted successfully! We&apos;ll be in touch soon.
+            </div>
+          )}
+          
+          {submitStatus === 'error' && (
+            <div className="rounded-lg bg-red-500/20 border border-red-500/40 p-3 text-xs text-red-200">
+              Something went wrong. Please try again.
+            </div>
+          )}
+
           <div className="space-y-3 text-xs">
             <input
+              name="name"
+              required
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Full name"
             />
             <input
+              name="phone"
+              type="tel"
+              required
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Phone number for confirmations"
             />
             <input
+              name="instagram"
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Instagram / handle (optional)"
             />
             <textarea
+              name="details"
               rows={3}
               className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-2 outline-none placeholder:text-white/30"
               placeholder="Tell us about your night – date, crew size, budget, favorite vibes."
             />
             <div className="flex flex-wrap gap-2">
-              {["Vegas local", "Visiting for a weekend", "Birthday / celebration", "Corporate / brand group"].map(
-                (chip, index) => (
+              {chipOptions.map((item) => {
+                const isSelected = selectedOption === item.label;
+                return (
                   <button
-                    key={chip}
+                    key={item.label}
                     type="button"
-                    className={`chip text-[11px] ${
-                      index === 0 ? "bg-rave-pink/15 border-rave-pink/30" :
-                      index === 1 ? "bg-rave-cyan/15 border-rave-cyan/30" :
-                      index === 2 ? "bg-rave-orange/15 border-rave-orange/30" :
-                      "bg-rave-purple/15 border-rave-purple/30"
+                    onClick={() => setSelectedOption(isSelected ? null : item.label)}
+                    aria-pressed={isSelected}
+                    className={`cursor-pointer transition-transform hover:scale-105 ${
+                      isSelected ? 'ring-2 ring-white/30 ring-offset-2 ring-offset-black' : ''
                     }`}
                   >
-                    {chip}
+                    <Chip 
+                      variant={item.variant} 
+                      size="sm"
+                      selected={isSelected}
+                    >
+                      {item.label}
+                    </Chip>
                   </button>
-                ),
-              )}
+                );
+              })}
+              <input
+                type="hidden"
+                name="selectedOption"
+                value={selectedOption ?? ''}
+              />
             </div>
           </div>
 
           <button
             type="submit"
-            className="mt-2 w-full rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-4 py-2 text-xs font-semibold text-black shadow-glow"
+            disabled={isSubmitting}
+            className="mt-2 w-full rounded-full bg-gradient-to-r from-rave-pink to-rave-orange px-4 py-2 text-xs font-semibold text-black shadow-rh-glow disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit request
+            {isSubmitting ? 'Submitting...' : 'Submit request'}
           </button>
 
-          <p className="text-[11px] text-white/45">
+          <p className="text-xxs text-white/45">
             By applying you agree to respectful, consent-forward behavior at all events.
           </p>
         </form>

@@ -9,9 +9,12 @@ type Props = {
 
 export default function SiteShell({ children }: Props) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1b0612] via-[#13010f] to-[#050309] text-white">
+    <div className="min-h-screen bg-page text-[rgb(var(--rh-text-primary))]">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <SiteHeader />
-      <main className="mx-auto max-w-6xl px-4 pb-16 pt-6 md:px-6 lg:px-8">
+      <main id="main-content" className="mx-auto max-w-6xl px-4 pb-16 pt-6 md:px-6 lg:px-8">
         {children}
       </main>
       <SiteFooter />

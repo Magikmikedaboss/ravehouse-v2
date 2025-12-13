@@ -31,23 +31,21 @@ export default function ThisIsRavehouse() {
       <div className="grid gap-4 md:grid-cols-4">
         {stats.map((s) => (
           <Surface key={s.label} className="p-4">
-            <p className="text-xs text-white/50">{s.label}</p>
-            <div className="mt-2 text-2xl font-semibold">{s.value}</div>
-            <p className="mt-1 text-xs text-white/70">{s.blurb}</p>
-          </Surface>
+            <p className="text-xs text-[rgb(var(--rh-text-secondary))]">{s.label}</p>
+            <div className="mt-2 text-lg font-semibold text-[rgb(var(--rh-text-primary))] sm:text-xl md:text-2xl">{s.value}</div>
+            <p className="mt-1 text-xs text-[rgb(var(--rh-text-secondary))]">{s.blurb}</p>          </Surface>
         ))}
 
         <Surface className="flex flex-col justify-between p-4">
           <div>
-            <p className="text-xs text-white/50">Booking &amp; collabs</p>
-            <p className="mt-2 text-sm text-white/80">
+            <p className="text-xs text-[rgb(var(--rh-text-secondary))]">Booking &amp; collabs</p>
+            <p className="mt-2 text-sm text-[rgb(var(--rh-text-primary))]/90">
               Bring Ravehouse Entertainment to your warehouse, festival afterparty or brand experience.
             </p>
-          </div>
-          <ButtonLink
+          </div>          <ButtonLink
             href="/contact"
             variant="secondary"
-            className="mt-4 w-full justify-center bg-white text-black"
+            className="mt-4 w-full justify-center"
           >
             Request booking deck
           </ButtonLink>
