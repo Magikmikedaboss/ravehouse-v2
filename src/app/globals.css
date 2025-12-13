@@ -139,11 +139,16 @@
   /* Theme-aware alias utilities */
   .text-primary   { color: rgb(var(--rh-text-primary)); }
   .text-secondary { color: rgb(var(--rh-text-secondary)); }
+  .text-muted     { color: rgb(var(--rh-text-secondary) / 0.7); }
   .bg-page        { background-color: rgb(var(--rh-bg-page)); }
   .bg-card        { background-color: rgb(var(--rh-bg-card)); }
   .bg-surface     { background-color: rgb(var(--rh-bg-surface)); }
   .border-subtle  { border-color: rgb(var(--rh-border-subtle)); }
   .border-primary { border-color: rgb(var(--rh-border)); }
+
+  /* Additional semantic utilities */
+  .surface        { background-color: rgb(var(--rh-bg-card)); }
+  .accent         { color: rgb(var(--rh-pink-light)); }
 
   /* Text opacity variants for consistent theming */
   .text-primary\/80  { color: rgb(var(--rh-text-primary) / 0.8); }

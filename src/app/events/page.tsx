@@ -24,21 +24,23 @@ function CalendarExportButton() {
       // Create and download the .ics file
       const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
       const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'ravehouse-events.ics';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      try {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'ravehouse-events.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } finally {
+        window.URL.revokeObjectURL(url);
+      }
       
     } catch (err) {
       setError('Failed to export calendar. Please try again.');
       console.error('Calendar export error:', err);
     } finally {
       setIsExporting(false);
-    }
-  };
+    }  };
 
   return (
     <button

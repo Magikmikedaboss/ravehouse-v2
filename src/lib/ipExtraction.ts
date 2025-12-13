@@ -92,8 +92,9 @@ export function extractClientIp(request: NextRequest): string {
     if (!vercelForwardedFor && !vercelRealIp && !vercelIpCountry && !vercelIpRegion) {
       console.warn('Running on Vercel but no Vercel IP headers found');
     }
-  }
-  
+    // On Vercel, don't fall back to potentially spoofable standard headers
+    return 'unknown';
+  }  
   // Fallback to standard headers for non-Vercel deployments with trusted proxy configs
   // WARNING: These can be spoofed by clients and should only be used with verified trusted proxies
   const forwardedFor = request.headers.get('x-forwarded-for');

@@ -24,18 +24,18 @@ const sizeClasses: Record<ChipSize, string> = {
 const base = "inline-flex items-center rounded-full border font-medium transition";
 
 const variantArbitrary: Record<ChipVariant, string> = {
-  default:      "bg-white/10 border-white/20 text-white",
-  neutral:      "bg-white/10 border-white/20 text-white/85",
-  pink:         "bg-[rgb(var(--rh-pink-light)/0.20)]   border-[rgb(var(--rh-pink-light)/0.40)]   text-white",
-  cyan:         "bg-[rgb(var(--rh-cyan)/0.20)]         border-[rgb(var(--rh-cyan)/0.40)]         text-white",
-  orange:       "bg-[rgb(var(--rh-orange)/0.20)]       border-[rgb(var(--rh-orange)/0.40)]       text-white",
-  purple:       "bg-[rgb(var(--rh-purple)/0.20)]       border-[rgb(var(--rh-purple)/0.40)]       text-white",
-  green:        "bg-[rgb(var(--rh-green)/0.20)]        border-[rgb(var(--rh-green)/0.40)]        text-white",
-  lightOverlay: "bg-white/15 border-white/25 text-white",
-  badge:        "bg-white/90 border-transparent text-black",
-  success:      "bg-[rgb(var(--rh-green)/0.20)] border-[rgb(var(--rh-green)/0.40)] text-white",
-  brand:        "bg-[rgb(var(--rh-pink-dark)/0.20)] border-[rgb(var(--rh-pink-dark)/0.40)] text-white",
-  dark:         "bg-black/40 border-white/10 text-white",
+  default:      "bg-surface/10 border-subtle text-primary",
+  neutral:      "bg-surface/10 border-subtle text-primary/85",
+  pink:         "bg-[rgb(var(--rh-pink-light)/0.20)]   border-[rgb(var(--rh-pink-light)/0.40)]   text-primary",
+  cyan:         "bg-[rgb(var(--rh-cyan)/0.20)]         border-[rgb(var(--rh-cyan)/0.40)]         text-primary",
+  orange:       "bg-[rgb(var(--rh-orange)/0.20)]       border-[rgb(var(--rh-orange)/0.40)]       text-primary",
+  purple:       "bg-[rgb(var(--rh-purple)/0.20)]       border-[rgb(var(--rh-purple)/0.40)]       text-primary",
+  green:        "bg-[rgb(var(--rh-green)/0.20)]        border-[rgb(var(--rh-green)/0.40)]        text-primary",
+  lightOverlay: "bg-surface/15 border-subtle text-primary",
+  badge:        "bg-surface/90 border-transparent text-secondary",
+  success:      "bg-[rgb(var(--rh-green)/0.20)] border-[rgb(var(--rh-green)/0.40)] text-primary",
+  brand:        "bg-[rgb(var(--rh-pink-dark)/0.20)] border-[rgb(var(--rh-pink-dark)/0.40)] text-primary",
+  dark:         "bg-surface/40 border-subtle text-primary",
   danger:       "bg-red-500/15 border-red-500/35 text-red-200",
 };
 
@@ -68,7 +68,7 @@ export default function Chip({
   const safeExtras = stripSizeTokens(className);
   
   // Handle selected state with proper specificity
-  const selectedStyles = selected ? "bg-white/20 border-white/40" : "";
+  const selectedStyles = selected ? "bg-surface/20 border-primary/40" : "";
   
   return (
     <span className={clsx(base, variantArbitrary[variant], safeExtras, sizeClasses[size], selectedStyles)}>

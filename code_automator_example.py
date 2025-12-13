@@ -103,7 +103,8 @@ class CodeAutomator:
     def generate_page_docs(self, file_path):
         """Generate documentation for a page component"""
         with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()        
+            content = f.read()
+        
         prompt = f"""
         Generate documentation for this Next.js page component:
         
@@ -124,7 +125,9 @@ class CodeAutomator:
             docs = response.choices[0].message.content
             if not docs:
                 print(f"Empty documentation response for {file_path}")
-                return            docs_path = file_path.parent / f"{file_path.stem}.md"
+                return
+            
+            docs_path = file_path.parent / f"{file_path.stem}.md"
             
             with open(docs_path, 'w') as f:
                 f.write(docs)
@@ -133,7 +136,8 @@ class CodeAutomator:
         except openai.APIError as e:
             print(f"Doc generation error: {e}")
         except IOError as e:
-            print(f"File write error for {docs_path}: {e}")    
+            print(f"File write error for {docs_path}: {e}")
+
     def run_continuous_improvements(self, hours=2):
         """Run automation for specified hours"""
         start_time = time.time()
@@ -158,6 +162,7 @@ class CodeAutomator:
             time.sleep(1800)  # 30 minute cycles
         
         print("✅ Automation session complete!")
+
 if __name__ == "__main__":
     # Load API key from environment variable
     API_KEY = os.environ.get("OPENAI_API_KEY")

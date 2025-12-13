@@ -23,13 +23,13 @@ const baseClasses =
 
 function variantClasses(variant: Variant = "primary") {
   if (variant === "secondary") {
-    return "border border-[rgb(var(--rh-border))]/20 bg-[rgb(var(--rh-bg-surface))]/10 text-[rgb(var(--rh-text-primary))] hover:bg-[rgb(var(--rh-bg-surface))]/15";
+    return "border border-subtle bg-surface/10 text-primary hover:bg-surface/15";
   }
   if (variant === "ghost") {
     return "btn-ghost";
   }
   if (variant === "primary") {
-    return "bg-gradient-to-br from-[rgb(var(--rh-pink-light))] to-[rgb(var(--rh-pink-dark))] text-white shadow-rh-glow hover:shadow-[0_0_22px_rgba(246,104,121,0.7),0_14px_36px_rgba(0,0,0,0.85)] hover:-translate-y-1";
+    return "bg-gradient-to-br from-[rgb(var(--rh-pink-light))] to-[rgb(var(--rh-pink-dark))] text-primary shadow-rh-glow hover:shadow-[0_0_22px_rgba(246,104,121,0.7),0_14px_36px_rgba(0,0,0,0.85)] hover:-translate-y-1";
   }
   return "";
 }

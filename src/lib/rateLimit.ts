@@ -122,8 +122,8 @@ export async function checkRateLimit(
     if (fingerprint?.sessionId) {
       // Hash sessionId to avoid storing raw session data
       const sessHash = crypto.createHash('sha256').update(fingerprint.sessionId, 'utf8').digest('hex').slice(0, 16);
-      fallbackComponents.push(`sess:${sessHash}`);    }
-    
+      fallbackComponents.push(`sess:${sessHash}`);
+    }    
     // If no fingerprinting data available, use a very restrictive shared bucket
     if (fallbackComponents.length === 1) {
       fallbackComponents.push('anonymous');

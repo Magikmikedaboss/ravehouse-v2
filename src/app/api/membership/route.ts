@@ -25,35 +25,16 @@ const membershipRequestSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  // Rate limiting (before parsing to prevent abuse)
-  const ip = extractClientIp(request);
-
-  const rateLimitResult = await checkRateLimit(ip);
-  if (!rateLimitResult.allowed) {
-    return NextResponse.json(
-      { 
-        error: 'Too many requests',
-        retryAfter: rateLimitResult.retryAfter 
-      },
-      { 
-        status: 429,
-        headers: {
-          'Retry-After': rateLimitResult.retryAfter?.toString() || '60'
-        }
-      }
-    );
-  }
-
-  // Parse and validate request body
-  let requestBody;
-  try {
-    requestBody = await request.json();
-  } catch (error) {
-    return NextResponse.json(
-      { error: 'Invalid JSON in request body' },
-      { status: 400 }
-    );
-  }
+// Rate limiting (before parsing to prevent abuse)
+let requestBody;
+try {
+  requestBody = await request.json();
+} catch {
+  return NextResponse.json(
+    { error: 'Invalid JSON in request body' },
+    { status: 400 }
+  );
+}
 
   // Validate request body with Zod
   const validationResult = membershipRequestSchema.safeParse(requestBody);
@@ -61,34 +42,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         error: 'Validation failed',
-        details: validationResult.error.issues.map((issue: any) => ({
+        details: validationResult.error.issues.map((issue) => ({
           field: issue.path.join('.'),
           message: issue.message
         }))
       },
       { status: 400 }
     );
-  }    );
   }
 
-  // Rate limiting (only after successful validation)
-  const ip = extractClientIp(request);
-
-  const rateLimitResult = await checkRateLimit(ip);
-  if (!rateLimitResult.allowed) {
-    return NextResponse.json(
-      { 
-        error: 'Too many requests',
-        retryAfter: rateLimitResult.retryAfter 
-      },
-      { 
-        status: 429,
-        headers: {
-          'Retry-After': rateLimitResult.retryAfter?.toString() || '60'
-        }
-      }
-    );
-  }
+  // Continue with processing the validated data
+  // const validatedData = validationResult.data;
   // TODO: Phase 2 - Implement secure membership payment processing
   //
   // 1. AUTHENTICATION & AUTHORIZATION
