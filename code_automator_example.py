@@ -124,11 +124,7 @@ class CodeAutomator:
             docs = response.choices[0].message.content
             if not docs:
                 print(f"Empty documentation response for {file_path}")
-            docs = response.choices[0].message.content
-            if not docs:
-                print(f"Empty documentation response for {file_path}")
-                return
-            docs_path = file_path.parent / f"{file_path.stem}.md"
+                return            docs_path = file_path.parent / f"{file_path.stem}.md"
             
             with open(docs_path, 'w') as f:
                 f.write(docs)
@@ -169,7 +165,6 @@ if __name__ == "__main__":
         print("Error: OPENAI_API_KEY environment variable not set")
         exit(1)
     
-    automator = CodeAutomator(API_KEY)    
     automator = CodeAutomator(API_KEY)
     
     # Run for 2 hours, checking every 30 minutes

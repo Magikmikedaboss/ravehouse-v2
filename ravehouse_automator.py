@@ -380,10 +380,9 @@ IMPORTANT: Return only valid JSON array, no additional text."""
             print()
             
         except Exception as e:
-                print(f"Error optimizing {file_path}: {e}")
-    
-        def generate_seo_metadata(self) -> Optional[Dict[str, Union[int, float]]]:
-            """Auto-generate SEO metadata for event pages"""
+            print(f"Error optimizing {file_path}: {e}")
+    def generate_seo_metadata(self) -> Optional[Dict[str, Union[int, float]]]:
+        """Auto-generate SEO metadata for event pages"""
         pages = list(Path("src/app").rglob("page.tsx"))
         
         api_calls = 0

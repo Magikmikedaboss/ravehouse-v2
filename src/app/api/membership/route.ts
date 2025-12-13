@@ -25,7 +25,26 @@ const membershipRequestSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  // Parse and validate request body before rate limiting
+  // Rate limiting (before parsing to prevent abuse)
+  const ip = extractClientIp(request);
+
+  const rateLimitResult = await checkRateLimit(ip);
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { 
+        error: 'Too many requests',
+        retryAfter: rateLimitResult.retryAfter 
+      },
+      { 
+        status: 429,
+        headers: {
+          'Retry-After': rateLimitResult.retryAfter?.toString() || '60'
+        }
+      }
+    );
+  }
+
+  // Parse and validate request body
   let requestBody;
   try {
     requestBody = await request.json();
@@ -49,6 +68,7 @@ export async function POST(request: NextRequest) {
       },
       { status: 400 }
     );
+  }    );
   }
 
   // Rate limiting (only after successful validation)

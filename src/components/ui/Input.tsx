@@ -17,8 +17,8 @@ export function Input({ label, error, className = "", id, ...props }: InputProps
       {label && (
         <label htmlFor={inputId} className="block text-xs font-medium text-[rgb(var(--rh-text-primary))]/80">
           {label}
-        </label>      )}
-      <input
+        </label>
+      )}      <input
         id={inputId}
         aria-invalid={error ? "true" : "false"}
         aria-describedby={error ? errorId : undefined}
